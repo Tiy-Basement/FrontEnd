@@ -10,7 +10,7 @@ let config = function($stateProvider, $urlRouterProvider) {
     .state('root.home', {
       url: '/',
       controller: 'HomeController',
-      templateUrl: 'templates/app-calendar/home.tpl.html'
+      templateUrl: 'templates/app-layout/home.tpl.html'
     })
     .state('root.login', {
       url: '/login',
