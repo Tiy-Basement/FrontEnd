@@ -4,6 +4,6 @@ let SignupController = function() {
 
 };
 
-SignupController.$inject = [''];
+SignupController.$inject = [];
 
 export default SignupController;
