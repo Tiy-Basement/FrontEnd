@@ -1,10 +1,11 @@
 import angular from 'angular';
 
-// import HomeController from './controllers/home.controller';
+import SplashController from './controllers/splash.controller';
 
 angular
   .module('app.layout', [])
+  .controller('SplashController', SplashController)
 ;
 
 
-  // .controller('HomeController', HomeController)
+  

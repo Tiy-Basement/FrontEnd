@@ -7,10 +7,10 @@ let config = function($stateProvider, $urlRouterProvider) {
       abstract: true,
       templateUrl: 'templates/app-layout/layout.tpl.html'
     })
-    .state('root.home', {
+    .state('root.splash', {
       url: '/',
-      controller: 'HomeController',
-      templateUrl: 'templates/app-calendar/home.tpl.html'
+      controller: 'SplashController',
+      templateUrl: 'templates/app-layout/splash.tpl.html'
     })
     .state('root.login', {
       url: '/login',
