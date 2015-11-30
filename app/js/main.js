@@ -4,6 +4,53 @@
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
+var LoginController = function LoginController() {};
+
+LoginController.$inject = [''];
+
+exports['default'] = LoginController;
+module.exports = exports['default'];
+
+},{}],2:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var SignupController = function SignupController() {};
+
+SignupController.$inject = [''];
+
+exports['default'] = SignupController;
+module.exports = exports['default'];
+
+},{}],3:[function(require,module,exports){
+'use strict';
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _angular = require('angular');
+
+var _angular2 = _interopRequireDefault(_angular);
+
+require('angular-ui-router');
+
+var _controllersSignupController = require('./controllers/signup.controller');
+
+var _controllersSignupController2 = _interopRequireDefault(_controllersSignupController);
+
+var _controllersLoginController = require('./controllers/login.controller');
+
+var _controllersLoginController2 = _interopRequireDefault(_controllersLoginController);
+
+_angular2['default'].module('app.auth', ['ui.router']);
+
+},{"./controllers/login.controller":1,"./controllers/signup.controller":2,"angular":11,"angular-ui-router":9}],4:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
 var config = function config($stateProvider, $urlRouterProvider) {
 
   $urlRouterProvider.otherwise('/');
@@ -11,10 +58,10 @@ var config = function config($stateProvider, $urlRouterProvider) {
   $stateProvider.state('root', {
     abstract: true,
     templateUrl: 'templates/app-layout/layout.tpl.html'
-  }).state('root.home', {
+  }).state('root.splash', {
     url: '/',
-    controller: 'HomeController',
-    templateUrl: 'templates/app-calendar/home.tpl.html'
+    controller: 'SplashController',
+    templateUrl: 'templates/app-layout/splash.tpl.html'
   }).state('root.login', {
     url: '/login',
     controller: 'LoginController',
@@ -31,7 +78,7 @@ config.$inject = ['$stateProvider', '$urlRouterProvider'];
 exports['default'] = config;
 module.exports = exports['default'];
 
-},{}],2:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -48,7 +95,45 @@ var _config2 = _interopRequireDefault(_config);
 
 _angular2['default'].module('app.core', ['ui.router']).config(_config2['default']);
 
-},{"./config":1,"angular":6,"angular-ui-router":4}],3:[function(require,module,exports){
+},{"./config":4,"angular":11,"angular-ui-router":9}],6:[function(require,module,exports){
+// this is throwing an error; it needs something as a parameter
+// on line 4 and the same thing in the single quotes on line 14.
+
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var SplashController = function SplashController() {
+
+  console.log('I am using my home controller.');
+
+  var vm = this;
+
+  vm.title = 'Home Page';
+};
+
+SplashController.$inject = [];
+
+exports['default'] = SplashController;
+module.exports = exports['default'];
+
+},{}],7:[function(require,module,exports){
+'use strict';
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _angular = require('angular');
+
+var _angular2 = _interopRequireDefault(_angular);
+
+var _controllersSplashController = require('./controllers/splash.controller');
+
+var _controllersSplashController2 = _interopRequireDefault(_controllersSplashController);
+
+_angular2['default'].module('app.layout', []).controller('SplashController', _controllersSplashController2['default']);
+
+},{"./controllers/splash.controller":6,"angular":11}],8:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -59,9 +144,13 @@ var _angular2 = _interopRequireDefault(_angular);
 
 require('./app-core/index');
 
-_angular2['default'].module('app', ['app.core']);
+require('./app-layout/index');
 
-},{"./app-core/index":2,"angular":6}],4:[function(require,module,exports){
+require('./app-auth/index');
+
+_angular2['default'].module('app', ['app.core', 'app.layout', 'app.auth']);
+
+},{"./app-auth/index":3,"./app-core/index":5,"./app-layout/index":7,"angular":11}],9:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.15
@@ -4432,7 +4521,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],5:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -33451,11 +33540,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],6:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":5}]},{},[3])
+},{"./angular":10}]},{},[8])
 
 
 //# sourceMappingURL=main.js.map
