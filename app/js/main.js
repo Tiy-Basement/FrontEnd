@@ -70,6 +70,10 @@ var config = function config($stateProvider, $urlRouterProvider) {
     url: '/signup',
     controller: 'SignupController',
     templateUrl: 'templates/app-auth/signup.tpl.html'
+  }).state('root.home', {
+    url: '/:id',
+    controller: 'HomeController',
+    templateUrl: 'templates/app-calendar/home.tpl.html'
   });
 };
 
