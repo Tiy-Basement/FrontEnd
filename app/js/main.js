@@ -14,7 +14,15 @@ var config = function config($stateProvider, $urlRouterProvider) {
   }).state('root.home', {
     url: '/',
     controller: 'HomeController',
-    templateUrl: 'templates/app-layout/home.tpl.html'
+    templateUrl: 'templates/app-calendar/home.tpl.html'
+  }).state('root.login', {
+    url: '/login',
+    controller: 'LoginController',
+    templateUrl: 'templates/app-auth/login.tpl.html'
+  }).state('root.signup', {
+    url: '/signup',
+    controller: 'SignupController',
+    templateUrl: 'templates/app-auth/signup.tpl.html'
   });
 };
 
