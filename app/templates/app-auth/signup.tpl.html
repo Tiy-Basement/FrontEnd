@@ -1,7 +1,7 @@
-<form ng-submit>
-  <label>User Name<input type="text"></label>
-  <label>Email<input type="text"></label>
-  <label>Phone Number<input type="text"></label>
-  <label>Password<input type="text"></label>
+<form ng-submit='vm.newUser(user)'>
+  <label>User Name<input ng-model="user.name"></label>
+  <label>Email<input ng-model="user.email"></label>
+  <label>Phone Number<input ng-model="user.phone"></label>
+  <label>Password<input ng-model="user.password"></label>
   <button>Sign Up</button>
 </form>

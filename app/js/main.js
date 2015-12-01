@@ -12,17 +12,28 @@ exports["default"] = LoginController;
 module.exports = exports["default"];
 
 },{}],2:[function(require,module,exports){
-"use strict";
+'use strict';
 
-Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var SignupController = function SignupController() {};
+var SignupController = function SignupController(SignupService) {
 
-SignupController.$inject = [];
+  var vm = this;
 
-exports["default"] = SignupController;
-module.exports = exports["default"];
+  vm.newUser = addUser;
+
+  function addUser(userObj) {
+    SignupService.addUser(userObj).then(function (res) {
+      console.log(res);
+    });
+  }
+};
+
+SignupController.$inject = ['SignupService'];
+
+exports['default'] = SignupController;
+module.exports = exports['default'];
 
 },{}],3:[function(require,module,exports){
 'use strict';
