@@ -1,7 +1,9 @@
 let SignupService = function($http) {
 
+  let url = 'https://tiy-basement.herokuapp.com/signup';
+
   function User (userObj) {
-    this.name = userObj.name;
+    this.username = userObj.username;
     this.email = userObj.email;
     this.phone = userObj.phone;
     this.password = userObj.password;
@@ -10,7 +12,7 @@ let SignupService = function($http) {
   this.createUser = function (userObj) {
     let u = new User(userObj);
     console.log(u);
-    // return $http.post(url, u, /*  server headers/config  */);
+    return $http.post(url, u);
   };
 
 };
