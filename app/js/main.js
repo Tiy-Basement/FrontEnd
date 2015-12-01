@@ -71,15 +71,15 @@ var config = function config($stateProvider, $urlRouterProvider) {
     templateUrl: 'templates/app-layout/layout.tpl.html'
   }).state('root.splash', {
     url: '/',
-    controller: 'SplashController',
+    controller: 'SplashController as vm',
     templateUrl: 'templates/app-layout/splash.tpl.html'
   }).state('root.login', {
     url: '/login',
-    controller: 'LoginController',
+    controller: 'LoginController as vm',
     templateUrl: 'templates/app-auth/login.tpl.html'
   }).state('root.signup', {
     url: '/signup',
-    controller: 'SignupController',
+    controller: 'SignupController as vm',
     templateUrl: 'templates/app-auth/signup.tpl.html'
   });
 };
@@ -107,9 +107,6 @@ var _config2 = _interopRequireDefault(_config);
 _angular2['default'].module('app.core', ['ui.router']).config(_config2['default']);
 
 },{"./config":4,"angular":11,"angular-ui-router":9}],6:[function(require,module,exports){
-// this is throwing an error; it needs something as a parameter
-// on line 4 and the same thing in the single quotes on line 14.
-
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {

@@ -9,17 +9,17 @@ let config = function($stateProvider, $urlRouterProvider) {
     })
     .state('root.splash', {
       url: '/',
-      controller: 'SplashController',
+      controller: 'SplashController as vm',
       templateUrl: 'templates/app-layout/splash.tpl.html'
     })
     .state('root.login', {
       url: '/login',
-      controller: 'LoginController',
+      controller: 'LoginController as vm',
       templateUrl: 'templates/app-auth/login.tpl.html'
     })
     .state('root.signup', {
       url: '/signup',
-      controller: 'SignupController',
+      controller: 'SignupController as vm',
       templateUrl: 'templates/app-auth/signup.tpl.html'
     })
   ;
