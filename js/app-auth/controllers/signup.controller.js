@@ -1,5 +1,7 @@
 let SignupController = function(SignupService) {
   
+  console.log('I am using my signup controller!');
+
   let vm = this;
 
   vm.newUser = addUser;
