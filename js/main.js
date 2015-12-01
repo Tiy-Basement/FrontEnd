@@ -8,4 +8,3 @@ import './app-calendar/index';
 angular
   .module('app', ['app.core', 'app.layout', 'app.auth', 'app.calendar'])
 ;
-
