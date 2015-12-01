@@ -6,9 +6,10 @@ Object.defineProperty(exports, '__esModule', {
 });
 var LoginController = function LoginController(LoginService, $scope, $cookies) {
 
+  console.log('I am using my login controller!');
+
   $scope.login = function (userObj) {
     LoginService.reqLogin(userObj).then(function (res) {
-      console.log(res);
       $cookies.put('Access-Token', res.data.user.access_token);
     });
   };
@@ -27,10 +28,15 @@ Object.defineProperty(exports, '__esModule', {
 });
 var SignupController = function SignupController(SignupService, $scope, $cookies) {
 
+  console.log('I am using my signup controller!');
+
+  // let vm = this;
+
+  // vm.addUser = addUser;
+
   $scope.addUser = function (userObj) {
     SignupService.createUser(userObj).then(function (res) {
       $cookies.put('Access-Token', res.data.user.access_token);
-      console.log(res);
     });
   };
 };
@@ -84,7 +90,6 @@ var LoginService = function LoginService($http) {
 
   this.reqLogin = function (userObj) {
     var u = new User(userObj);
-    console.log(u);
     return $http.post(url, u);
   };
 };
