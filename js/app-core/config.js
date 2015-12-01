@@ -24,7 +24,7 @@ let config = function($stateProvider, $urlRouterProvider) {
     })
     .state('root.home', {
       url: '/:id',
-      controller: 'HomeController',
+      controller: 'HomeController as vm',
       templateUrl: 'templates/app-calendar/home.tpl.html'
     })
   ;
