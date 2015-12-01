@@ -128,10 +128,9 @@ Object.defineProperty(exports, '__esModule', {
   value: true
 });
 exports['default'] = {
-  URL: '',
+  URL: 'https://tiy-basement.herokuapp.com',
   CONFIG: {
     headers: {
-      'Access-Token': '',
       'Content-Type': undefined
     }
   }

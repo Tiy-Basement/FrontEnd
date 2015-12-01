@@ -1,9 +1,8 @@
 export default {
-  URL: '',
+  URL: 'https://tiy-basement.herokuapp.com',
   CONFIG: {
     headers: {
-      'Access-Token': '',
-      'Content-Type': undefined
+      'Content-Type': undefined,
     }
   }
 };
