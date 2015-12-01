@@ -4,12 +4,18 @@
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var LoginController = function LoginController() {
+var LoginController = function LoginController(LoginService, $scope, $cookies) {
 
   console.log('I am using my login controller!');
+
+  $scope.login = function (userObj) {
+    LoginService.reqLogin(userObj).then(function (res) {
+      $cookies.put('Access-Token', res.data.user.access_token);
+    });
+  };
 };
 
-LoginController.$inject = [];
+LoginController.$inject = ['LoginService', '$scope', '$cookies'];
 
 exports['default'] = LoginController;
 module.exports = exports['default'];
@@ -30,7 +36,7 @@ var SignupController = function SignupController(SignupService, $scope, $cookies
 
   $scope.addUser = function (userObj) {
     SignupService.createUser(userObj).then(function (res) {
-      console.log(res);
+      $cookies.put('Access-Token', res.data.user.access_token);
     });
   };
 };
@@ -61,9 +67,39 @@ var _servicesSignupService = require('./services/signup.service');
 
 var _servicesSignupService2 = _interopRequireDefault(_servicesSignupService);
 
-_angular2['default'].module('app.auth', []).controller('SignupController', _controllersSignupController2['default']).controller('LoginController', _controllersLoginController2['default']).service('SignupService', _servicesSignupService2['default']);
+var _servicesLoginService = require('./services/login.service');
 
-},{"./controllers/login.controller":1,"./controllers/signup.controller":2,"./services/signup.service":4,"angular":15}],4:[function(require,module,exports){
+var _servicesLoginService2 = _interopRequireDefault(_servicesLoginService);
+
+_angular2['default'].module('app.auth', []).controller('SignupController', _controllersSignupController2['default']).controller('LoginController', _controllersLoginController2['default']).service('SignupService', _servicesSignupService2['default']).service('LoginService', _servicesLoginService2['default']);
+
+},{"./controllers/login.controller":1,"./controllers/signup.controller":2,"./services/login.service":4,"./services/signup.service":5,"angular":16}],4:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var LoginService = function LoginService($http) {
+
+  var url = 'https://tiy-basement.herokuapp.com/login';
+
+  function User(userObj) {
+    this.username = userObj.username;
+    this.password = userObj.password;
+  }
+
+  this.reqLogin = function (userObj) {
+    var u = new User(userObj);
+    return $http.post(url, u);
+  };
+};
+
+LoginService.$inject = ['$http'];
+
+exports['default'] = LoginService;
+module.exports = exports['default'];
+
+},{}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -71,10 +107,10 @@ Object.defineProperty(exports, '__esModule', {
 });
 var SignupService = function SignupService($http) {
 
-  // let url = heroku stuff
+  var url = 'https://tiy-basement.herokuapp.com/signup';
 
   function User(userObj) {
-    this.name = userObj.name;
+    this.username = userObj.username;
     this.email = userObj.email;
     this.phone = userObj.phone;
     this.password = userObj.password;
@@ -83,7 +119,7 @@ var SignupService = function SignupService($http) {
   this.createUser = function (userObj) {
     var u = new User(userObj);
     console.log(u);
-    // return $http.post(url, u, /*  server headers/config  */);
+    return $http.post(url, u);
   };
 };
 
@@ -92,7 +128,7 @@ SignupService.$inject = ['$http'];
 exports['default'] = SignupService;
 module.exports = exports['default'];
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -129,24 +165,26 @@ config.$inject = ['$stateProvider', '$urlRouterProvider'];
 exports['default'] = config;
 module.exports = exports['default'];
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
 exports['default'] = {
-  URL: '',
-  CONFIG: {
-    headers: {
-      'Access-Token': '',
-      'Content-Type': undefined
+  SERVER: {
+    URL: 'https://tiy-basement.herokuapp.com/',
+    CONFIG: {
+      headers: {
+        'Access-Token': '',
+        'Content-Type': undefined
+      }
     }
   }
 };
 module.exports = exports['default'];
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -169,7 +207,7 @@ var _constantsFileserverConstant2 = _interopRequireDefault(_constantsFileserverC
 
 _angular2['default'].module('app.core', ['ui.router', 'ngCookies']).config(_config2['default']).constant('FILESERVER', _constantsFileserverConstant2['default']);
 
-},{"./config":5,"./constants/fileserver.constant":6,"angular":15,"angular-cookies":12,"angular-ui-router":13}],8:[function(require,module,exports){
+},{"./config":6,"./constants/fileserver.constant":7,"angular":16,"angular-cookies":13,"angular-ui-router":14}],9:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -189,7 +227,7 @@ SplashController.$inject = [];
 exports['default'] = SplashController;
 module.exports = exports['default'];
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -204,7 +242,7 @@ var _controllersSplashController2 = _interopRequireDefault(_controllersSplashCon
 
 _angular2['default'].module('app.layout', []).controller('SplashController', _controllersSplashController2['default']);
 
-},{"./controllers/splash.controller":8,"angular":15}],10:[function(require,module,exports){
+},{"./controllers/splash.controller":9,"angular":16}],11:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -225,7 +263,7 @@ _angular2['default'].module('app', ['app.core', 'app.layout', 'app.auth']);
 
 // , 'app.calendar'
 
-},{"./app-auth/index":3,"./app-core/index":7,"./app-layout/index":9,"angular":15}],11:[function(require,module,exports){
+},{"./app-auth/index":3,"./app-core/index":8,"./app-layout/index":10,"angular":16}],12:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -548,11 +586,11 @@ angular.module('ngCookies').provider('$$cookieWriter', function $$CookieWriterPr
 
 })(window, window.angular);
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 require('./angular-cookies');
 module.exports = 'ngCookies';
 
-},{"./angular-cookies":11}],13:[function(require,module,exports){
+},{"./angular-cookies":12}],14:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.15
@@ -4923,7 +4961,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -33942,11 +33980,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":14}]},{},[10])
+},{"./angular":15}]},{},[11])
 
 
 //# sourceMappingURL=main.js.map
