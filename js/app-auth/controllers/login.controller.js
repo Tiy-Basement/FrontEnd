@@ -4,6 +4,6 @@ let LoginController = function() {
 
 };
 
-LoginController.$inject = [''];
+LoginController.$inject = [];
 
 export default LoginController;
