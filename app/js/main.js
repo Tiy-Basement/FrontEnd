@@ -66,6 +66,10 @@ Object.defineProperty(exports, '__esModule', {
 });
 var SignupService = function SignupService($http) {
 
+  // let url = heroku stuff
+
+  this.addUser = addUser;
+
   function User(userObj) {
     this.name = userObj.name;
     this.email = userObj.email;
@@ -75,6 +79,7 @@ var SignupService = function SignupService($http) {
 
   function addUser(userObj) {
     var u = new User(userObj);
+    console.log(u);
     // return $http.post(url, u, /*  server headers/config  */);
   }
 };
