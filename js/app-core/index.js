@@ -1,4 +1,4 @@
-gimport angular from 'angular';
+import angular from 'angular';
 import 'angular-ui-router';
 import 'angular-cookies';
 

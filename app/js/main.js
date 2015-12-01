@@ -8,7 +8,6 @@ var LoginController = function LoginController(LoginService, $scope, $cookies) {
 
   $scope.login = function (userObj) {
     LoginService.reqLogin(userObj).then(function (res) {
-      console.log(res);
       $cookies.put('Access-Token', res.data.user.access_token);
     });
   };
@@ -30,7 +29,6 @@ var SignupController = function SignupController(SignupService, $scope, $cookies
   $scope.addUser = function (userObj) {
     SignupService.createUser(userObj).then(function (res) {
       $cookies.put('Access-Token', res.data.user.access_token);
-      console.log(res);
     });
   };
 };
@@ -84,7 +82,6 @@ var LoginService = function LoginService($http) {
 
   this.reqLogin = function (userObj) {
     var u = new User(userObj);
-    console.log(u);
     return $http.post(url, u);
   };
 };
@@ -167,12 +164,6 @@ Object.defineProperty(exports, '__esModule', {
   value: true
 });
 exports['default'] = {
-<<<<<<< HEAD
-  URL: 'https://tiy-basement.herokuapp.com',
-  CONFIG: {
-    headers: {
-      'Content-Type': undefined
-=======
   SERVER: {
     URL: 'https://tiy-basement.herokuapp.com/',
     CONFIG: {
@@ -180,7 +171,6 @@ exports['default'] = {
         'Access-Token': '',
         'Content-Type': undefined
       }
->>>>>>> master
     }
   }
 };
