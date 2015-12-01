@@ -4,7 +4,7 @@ let SignupController = function(SignupService) {
 
   let vm = this;
 
-  vm.newUser = addUser;
+  vm.addUser = addUser;
 
   function addUser (userObj) {
     SignupService.addUser(userObj).then( (res) => {
