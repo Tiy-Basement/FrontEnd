@@ -9,7 +9,6 @@ let LoginService = function($http) {
 
   this.reqLogin = function(userObj) {
     let u = new User(userObj);
-    console.log(u);
     return $http.post(url, u);
   };
 
