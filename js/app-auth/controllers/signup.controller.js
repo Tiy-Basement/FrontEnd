@@ -1,19 +1,21 @@
-let SignupController = function(SignupService) {
-  
+let SignupController = function(SignupService, $scope, $cookies) {
+ 
   console.log('I am using my signup controller!');
 
-  let vm = this;
+  // let vm = this;
 
-  vm.addUser = addUser;
+  // vm.addUser = addUser;
 
-  function addUser (userObj) {
-    SignupService.addUser(userObj).then( (res) => {
+  $scope.addUser = function (userObj) {
+    SignupService.createUser(userObj).then( (res) => {
       console.log(res);
     });
-  }
+  };
+
+
 
 };
 
-SignupController.$inject = ['SignupService'];
+SignupController.$inject = ['SignupService', '$scope', '$cookies'];
 
 export default SignupController;
