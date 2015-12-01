@@ -22,6 +22,11 @@ let config = function($stateProvider, $urlRouterProvider) {
       controller: 'SignupController as vm',
       templateUrl: 'templates/app-auth/signup.tpl.html'
     })
+    .state('root.home', {
+      url: '/:id',
+      controller: 'HomeController',
+      templateUrl: 'templates/app-calendar/home.tpl.html'
+    })
   ;
 
 };
