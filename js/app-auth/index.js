@@ -2,7 +2,6 @@ import angular from 'angular';
 
 import SignupController from './controllers/signup.controller';
 import LoginController from './controllers/login.controller';
-import SignupService from './services/signup.service';
 
 import SignupService from './services/signup.service';
 

@@ -53,36 +53,6 @@ var _controllersLoginController = require('./controllers/login.controller');
 var _controllersLoginController2 = _interopRequireDefault(_controllersLoginController);
 
 var _servicesSignupService = require('./services/signup.service');
-<<<<<<< HEAD
-
-var _servicesSignupService2 = _interopRequireDefault(_servicesSignupService);
-
-_angular2['default'].module('app.auth', ['ui.router']).controller('SignupController', _controllersSignupController2['default']).controller('LoginController', _controllersLoginController2['default']).service('SignupService', _servicesSignupService2['default']);
-
-},{"./controllers/login.controller":1,"./controllers/signup.controller":2,"./services/signup.service":4,"angular":12,"angular-ui-router":10}],4:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
-var SignupService = function SignupService($http) {
-
-  function User(userObj) {
-    this.name = userObj.name;
-    this.email = userObj.email;
-    this.phone = userObj.phone;
-    this.password = userObj.password;
-  }
-
-  function addUser(userObj) {
-    var u = new User(userObj);
-    // return $http.post(url, u, /*  server headers/config  */);
-  }
-};
-
-SignupService.$inject = ['$http'];
-
-=======
 
 var _servicesSignupService2 = _interopRequireDefault(_servicesSignupService);
 
@@ -111,7 +81,6 @@ var SignupService = function SignupService($http) {
 
 SignupService.$inject = ['$http'];
 
->>>>>>> 0abd741e34c03032d4fff389ef4adfb724979d43
 exports['default'] = SignupService;
 module.exports = exports['default'];
 
@@ -170,12 +139,6 @@ var _config2 = _interopRequireDefault(_config);
 _angular2['default'].module('app.core', ['ui.router']).config(_config2['default']);
 
 },{"./config":5,"angular":12,"angular-ui-router":10}],7:[function(require,module,exports){
-<<<<<<< HEAD
-// this is throwing an error; it needs something as a parameter
-// on line 4 and the same thing in the single quotes on line 14.
-
-=======
->>>>>>> 0abd741e34c03032d4fff389ef4adfb724979d43
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -229,11 +192,8 @@ require('./app-auth/index');
 
 _angular2['default'].module('app', ['app.core', 'app.layout', 'app.auth']);
 
-<<<<<<< HEAD
-=======
 // , 'app.calendar'
 
->>>>>>> 0abd741e34c03032d4fff389ef4adfb724979d43
 },{"./app-auth/index":3,"./app-core/index":6,"./app-layout/index":8,"angular":12}],10:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
