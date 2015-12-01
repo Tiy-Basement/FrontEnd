@@ -8,7 +8,6 @@ var LoginController = function LoginController(LoginService, $scope, $cookies) {
 
   $scope.login = function (userObj) {
     LoginService.reqLogin(userObj).then(function (res) {
-      console.log(res);
       $cookies.put('Access-Token', res.data.user.access_token);
     });
   };
@@ -30,7 +29,6 @@ var SignupController = function SignupController(SignupService, $scope, $cookies
   $scope.addUser = function (userObj) {
     SignupService.createUser(userObj).then(function (res) {
       $cookies.put('Access-Token', res.data.user.access_token);
-      console.log(res);
     });
   };
 };
@@ -84,7 +82,6 @@ var LoginService = function LoginService($http) {
 
   this.reqLogin = function (userObj) {
     var u = new User(userObj);
-    console.log(u);
     return $http.post(url, u);
   };
 };
