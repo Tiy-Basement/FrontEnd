@@ -7,10 +7,11 @@ let SignupService = function($http) {
     this.password = userObj.password;
   }
 
-  function addUser(userObj) {
+  this.createUser = function (userObj) {
     let u = new User(userObj);
+    console.log(u);
     // return $http.post(url, u, /*  server headers/config  */);
-  }
+  };
 
 };
    
