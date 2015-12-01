@@ -63,7 +63,7 @@ var _servicesSignupService2 = _interopRequireDefault(_servicesSignupService);
 
 _angular2['default'].module('app.auth', []).controller('SignupController', _controllersSignupController2['default']).controller('LoginController', _controllersLoginController2['default']).service('SignupService', _servicesSignupService2['default']);
 
-},{"./controllers/login.controller":1,"./controllers/signup.controller":2,"./services/signup.service":4,"angular":12}],4:[function(require,module,exports){
+},{"./controllers/login.controller":1,"./controllers/signup.controller":2,"./services/signup.service":4,"angular":13}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -134,6 +134,23 @@ module.exports = exports['default'];
 },{}],6:[function(require,module,exports){
 'use strict';
 
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+exports['default'] = {
+  URL: '',
+  CONFIG: {
+    headers: {
+      'Access-Token': '',
+      'Content-Type': undefined
+    }
+  }
+};
+module.exports = exports['default'];
+
+},{}],7:[function(require,module,exports){
+'use strict';
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var _angular = require('angular');
@@ -146,9 +163,13 @@ var _config = require('./config');
 
 var _config2 = _interopRequireDefault(_config);
 
-_angular2['default'].module('app.core', ['ui.router']).config(_config2['default']);
+var _constantsFileserverConstant = require('./constants/fileserver.constant');
 
-},{"./config":5,"angular":12,"angular-ui-router":10}],7:[function(require,module,exports){
+var _constantsFileserverConstant2 = _interopRequireDefault(_constantsFileserverConstant);
+
+_angular2['default'].module('app.core', ['ui.router']).config(_config2['default']).constant('FILESERVER', _constantsFileserverConstant2['default']);
+
+},{"./config":5,"./constants/fileserver.constant":6,"angular":13,"angular-ui-router":11}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -168,7 +189,7 @@ SplashController.$inject = [];
 exports['default'] = SplashController;
 module.exports = exports['default'];
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -183,7 +204,7 @@ var _controllersSplashController2 = _interopRequireDefault(_controllersSplashCon
 
 _angular2['default'].module('app.layout', []).controller('SplashController', _controllersSplashController2['default']);
 
-},{"./controllers/splash.controller":7,"angular":12}],9:[function(require,module,exports){
+},{"./controllers/splash.controller":8,"angular":13}],10:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -204,7 +225,7 @@ _angular2['default'].module('app', ['app.core', 'app.layout', 'app.auth']);
 
 // , 'app.calendar'
 
-},{"./app-auth/index":3,"./app-core/index":6,"./app-layout/index":8,"angular":12}],10:[function(require,module,exports){
+},{"./app-auth/index":3,"./app-core/index":7,"./app-layout/index":9,"angular":13}],11:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.15
@@ -4575,7 +4596,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -33594,11 +33615,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":11}]},{},[9])
+},{"./angular":12}]},{},[10])
 
 
 //# sourceMappingURL=main.js.map
