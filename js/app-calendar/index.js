@@ -1,8 +1,11 @@
+// require('fullcalendar');
+// require('angular-ui-calendar');
+
 import angular from 'angular';
-import $ from 'jquery';
-import 'angular-ui-calendar';
 import moment from 'moment';
+import $ from 'jquery';
 import 'fullcalendar';
+import 'angular-ui-calendar';
 
 import HomeController from './controllers/home.controller';
 
