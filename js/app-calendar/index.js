@@ -1,10 +1,12 @@
 import angular from 'angular';
+import $ from 'jquery';
 import 'angular-ui-calendar';
-// import fullcalendar
+import moment from 'moment';
+import 'fullcalendar';
 
 import HomeController from './controllers/home.controller';
 
 angular
-  .module('app.auth', ['ui.calendar'])
+  .module('app.calendar', ['ui.calendar'])
   .controller('HomeController', HomeController)
 ;
