@@ -147,6 +147,9 @@ exports['default'] = HomeController;
 module.exports = exports['default'];
 
 },{}],7:[function(require,module,exports){
+// require('fullcalendar');
+// require('angular-ui-calendar');
+
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -155,17 +158,17 @@ var _angular = require('angular');
 
 var _angular2 = _interopRequireDefault(_angular);
 
-var _jquery = require('jquery');
-
-var _jquery2 = _interopRequireDefault(_jquery);
-
-require('angular-ui-calendar');
-
 var _moment = require('moment');
 
 var _moment2 = _interopRequireDefault(_moment);
 
+var _jquery = require('jquery');
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
 require('fullcalendar');
+
+require('angular-ui-calendar');
 
 var _controllersHomeController = require('./controllers/home.controller');
 
