@@ -147,12 +147,9 @@ exports['default'] = HomeController;
 module.exports = exports['default'];
 
 },{}],7:[function(require,module,exports){
-<<<<<<< HEAD
-=======
 // require('fullcalendar');
 // require('angular-ui-calendar');
 
->>>>>>> 6036f329d4aad3a64c9ff42e0d11dab4cfef9a71
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -161,11 +158,6 @@ var _angular = require('angular');
 
 var _angular2 = _interopRequireDefault(_angular);
 
-<<<<<<< HEAD
-require('angular-ui-calendar');
-
-// import fullcalendar
-=======
 var _moment = require('moment');
 
 var _moment2 = _interopRequireDefault(_moment);
@@ -177,21 +169,14 @@ var _jquery2 = _interopRequireDefault(_jquery);
 require('fullcalendar');
 
 require('angular-ui-calendar');
->>>>>>> 6036f329d4aad3a64c9ff42e0d11dab4cfef9a71
 
 var _controllersHomeController = require('./controllers/home.controller');
 
 var _controllersHomeController2 = _interopRequireDefault(_controllersHomeController);
 
-<<<<<<< HEAD
-_angular2['default'].module('app.auth', ['ui.calendar']).controller('HomeController', _controllersHomeController2['default']);
-
-},{"./controllers/home.controller":6,"angular":19,"angular-ui-calendar":16}],8:[function(require,module,exports){
-=======
 _angular2['default'].module('app.calendar', ['ui.calendar']).controller('HomeController', _controllersHomeController2['default']);
 
 },{"./controllers/home.controller":6,"angular":19,"angular-ui-calendar":16,"fullcalendar":20,"jquery":21,"moment":22}],8:[function(require,module,exports){
->>>>>>> 6036f329d4aad3a64c9ff42e0d11dab4cfef9a71
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -321,15 +306,9 @@ require('./app-layout/index');
 require('./app-auth/index');
 
 require('./app-calendar/index');
-<<<<<<< HEAD
 
 _angular2['default'].module('app', ['app.core', 'app.layout', 'app.auth', 'app.calendar']);
 
-=======
-
-_angular2['default'].module('app', ['app.core', 'app.layout', 'app.auth', 'app.calendar']);
-
->>>>>>> 6036f329d4aad3a64c9ff42e0d11dab4cfef9a71
 },{"./app-auth/index":3,"./app-calendar/index":7,"./app-core/index":10,"./app-layout/index":12,"angular":19}],14:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
@@ -34395,9 +34374,6 @@ $provide.value("$locale", {
 require('./angular');
 module.exports = angular;
 
-<<<<<<< HEAD
-},{"./angular":18}]},{},[13])
-=======
 },{"./angular":18}],20:[function(require,module,exports){
 /*!
  * FullCalendar v2.5.0
@@ -58306,7 +58282,6 @@ return jQuery;
 
 }));
 },{}]},{},[13])
->>>>>>> 6036f329d4aad3a64c9ff42e0d11dab4cfef9a71
 
 
 //# sourceMappingURL=main.js.map
