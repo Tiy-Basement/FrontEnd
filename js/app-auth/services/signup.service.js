@@ -2,8 +2,6 @@ let SignupService = function($http) {
 
   // let url = heroku stuff
 
-  this.addUser = addUser;
-
   function User (userObj) {
     this.name = userObj.name;
     this.email = userObj.email;
