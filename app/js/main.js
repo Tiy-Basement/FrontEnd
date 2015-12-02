@@ -4,18 +4,24 @@
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var LoginController = function LoginController(LoginService, $scope, $cookies) {
+var LoginController = function LoginController(LoginService, $scope, $cookies, $state) {
 
   console.log('I am using my login controller!');
 
   $scope.login = function (userObj) {
     LoginService.reqLogin(userObj).then(function (res) {
-      $cookies.put('Access-Token', res.data.user.access_token);
+      if (res.data.user.access_token) {
+        $cookies.put('Access-Token', res.data.user.access_token);
+        $state.go('root.home');
+      } else {
+        alert('There was an error creating your account. Please try again');
+        $state.go('root.splash');
+      }
     });
   };
 };
 
-LoginController.$inject = ['LoginService', '$scope', '$cookies'];
+LoginController.$inject = ['LoginService', '$scope', '$cookies', '$state'];
 
 exports['default'] = LoginController;
 module.exports = exports['default'];
@@ -26,7 +32,7 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var SignupController = function SignupController(SignupService, $scope, $cookies) {
+var SignupController = function SignupController(SignupService, $scope, $cookies, $state) {
 
   console.log('I am using my signup controller!');
 
@@ -36,12 +42,17 @@ var SignupController = function SignupController(SignupService, $scope, $cookies
 
   $scope.addUser = function (userObj) {
     SignupService.createUser(userObj).then(function (res) {
-      $cookies.put('Access-Token', res.data.user.access_token);
+      if (res.data.user.access_token) {
+        $cookies.put('Access-Token', res.data.user.access_token).then($state.go('root.home'));
+      } else {
+        alert('There was an error creating your account. Please try again');
+        $state.go('root.splash');
+      }
     });
   };
 };
 
-SignupController.$inject = ['SignupService', '$scope', '$cookies'];
+SignupController.$inject = ['SignupService', '$scope', '$cookies', '$state'];
 
 exports['default'] = SignupController;
 module.exports = exports['default'];
