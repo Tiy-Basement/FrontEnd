@@ -6391,7 +6391,11 @@ body {
   background: #e2ebf3; }
 
 .container {
-  width: 60%;
+  width: 90%;
   margin: 20px auto; }
+
+.cal {
+  min-width: 1400px;
+  margin: 0 auto; }
 
 /*# sourceMappingURL=main.css.map */
