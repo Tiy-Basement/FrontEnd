@@ -10,10 +10,6 @@ import 'angular-ui-calendar';
 import HomeController from './controllers/home.controller';
 
 angular
-<<<<<<< HEAD
-  .module('app.auth', [])
-=======
   .module('app.calendar', ['ui.calendar'])
->>>>>>> master
   .controller('HomeController', HomeController)
 ;

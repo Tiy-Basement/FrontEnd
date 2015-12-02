@@ -8467,12 +8467,9 @@ th.hide-for-touch {
 .fa-percent:before {
   content: ""; }
 
-body {
-  background: #e2ebf3; }
-
 .container {
-  width: 60%;
-  margin: 20px auto; }
+  width: 100%;
+  height: 1000px; }
 
 footer {
   position: fixed;
@@ -8481,8 +8478,5 @@ footer {
   height: 50px;
   border: 1px solid black;
   text-align: center; }
-
-.splashContainer {
-  width: 100%; }
 
 /*# sourceMappingURL=main.css.map */
