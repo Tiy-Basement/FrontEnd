@@ -3,7 +3,7 @@
 
 import angular from 'angular';
 import moment from 'moment';
-import $ from 'jquery';
+window.$ = require('jquery');
 import 'fullcalendar';
 import 'angular-ui-calendar';
 

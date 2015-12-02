@@ -162,10 +162,6 @@ var _moment = require('moment');
 
 var _moment2 = _interopRequireDefault(_moment);
 
-var _jquery = require('jquery');
-
-var _jquery2 = _interopRequireDefault(_jquery);
-
 require('fullcalendar');
 
 require('angular-ui-calendar');
@@ -173,6 +169,8 @@ require('angular-ui-calendar');
 var _controllersHomeController = require('./controllers/home.controller');
 
 var _controllersHomeController2 = _interopRequireDefault(_controllersHomeController);
+
+window.$ = require('jquery');
 
 _angular2['default'].module('app.calendar', ['ui.calendar']).controller('HomeController', _controllersHomeController2['default']);
 
@@ -910,7 +908,7 @@ angular.module('ui.calendar', [])
 
         scope.initCalendar = function(){
           if (!calendar) {
-            calendar = angular.element(elm).html('');
+            calendar = $(elm);
           }
           calendar.fullCalendar(options);
           if(attrs.calendar) {
