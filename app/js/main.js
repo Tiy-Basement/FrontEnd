@@ -4,18 +4,24 @@
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var LoginController = function LoginController(LoginService, $scope, $cookies) {
+var LoginController = function LoginController(LoginService, $scope, $cookies, $state) {
 
   console.log('I am using my login controller!');
 
   $scope.login = function (userObj) {
     LoginService.reqLogin(userObj).then(function (res) {
-      $cookies.put('Access-Token', res.data.user.access_token);
+      if (res.data.user.access_token) {
+        $cookies.put('Access-Token', res.data.user.access_token);
+        $state.go('root.home');
+      } else {
+        alert('There was an error creating your account. Please try again');
+        $state.go('root.splash');
+      }
     });
   };
 };
 
-LoginController.$inject = ['LoginService', '$scope', '$cookies'];
+LoginController.$inject = ['LoginService', '$scope', '$cookies', '$state'];
 
 exports['default'] = LoginController;
 module.exports = exports['default'];
@@ -26,7 +32,7 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var SignupController = function SignupController(SignupService, $scope, $cookies) {
+var SignupController = function SignupController(SignupService, $scope, $cookies, $state) {
 
   console.log('I am using my signup controller!');
 
@@ -36,12 +42,17 @@ var SignupController = function SignupController(SignupService, $scope, $cookies
 
   $scope.addUser = function (userObj) {
     SignupService.createUser(userObj).then(function (res) {
-      $cookies.put('Access-Token', res.data.user.access_token);
+      if (res.data.user.access_token) {
+        $cookies.put('Access-Token', res.data.user.access_token).then($state.go('root.home'));
+      } else {
+        alert('There was an error creating your account. Please try again');
+        $state.go('root.splash');
+      }
     });
   };
 };
 
-SignupController.$inject = ['SignupService', '$scope', '$cookies'];
+SignupController.$inject = ['SignupService', '$scope', '$cookies', '$state'];
 
 exports['default'] = SignupController;
 module.exports = exports['default'];
@@ -73,7 +84,7 @@ var _servicesLoginService2 = _interopRequireDefault(_servicesLoginService);
 
 _angular2['default'].module('app.auth', []).controller('SignupController', _controllersSignupController2['default']).controller('LoginController', _controllersLoginController2['default']).service('SignupService', _servicesSignupService2['default']).service('LoginService', _servicesLoginService2['default']);
 
-},{"./controllers/login.controller":1,"./controllers/signup.controller":2,"./services/login.service":4,"./services/signup.service":5,"angular":19}],4:[function(require,module,exports){
+},{"./controllers/login.controller":1,"./controllers/signup.controller":2,"./services/login.service":4,"./services/signup.service":5,"angular":20}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -134,6 +145,139 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
+var CalendarController = function CalendarController($scope, $compile, uiCalendarConfig) {
+
+  var date = new Date();
+  var d = date.getDate();
+  var m = date.getMonth();
+  var y = date.getFullYear();
+
+  $scope.changeTo = 'Hungarian';
+
+  /* event source that pulls from google.com */
+  $scope.eventSource = {
+    // url: // yyooooo event sources here,
+    //className: 'gcal-event',           // an option!
+    currentTimezone: 'America/Atlanta' // an option!
+  };
+  /* event source that contains custom events on the scope */
+  $scope.events = [{ title: 'All Day Event', start: new Date(y, m, 1) }, { title: 'Long Event', start: new Date(y, m, d - 5), end: new Date(y, m, d - 2) }, { id: 999, title: 'Repeating Event', start: new Date(y, m, d - 3, 16, 0), allDay: false }, { id: 999, title: 'Repeating Event', start: new Date(y, m, d + 4, 16, 0), allDay: false }, { title: 'Birthday Party', start: new Date(y, m, d + 1, 19, 0), end: new Date(y, m, d + 1, 22, 30), allDay: false }, { title: 'Click for Google', start: new Date(y, m, 28), end: new Date(y, m, 29), url: 'http://google.com/' }];
+  /* event source that calls a function on every view switch */
+  $scope.eventsF = function (start, end, timezone, callback) {
+    var s = new Date(start).getTime() / 1000;
+    var e = new Date(end).getTime() / 1000;
+    var m = new Date(start).getMonth();
+    var events = [{ title: 'Feed Me ' + m, start: s + 50000, end: s + 100000, allDay: false, className: ['customFeed'] }];
+    callback(events);
+  };
+
+  $scope.calEventsExt = {
+    color: '#f00',
+    textColor: 'yellow',
+    events: [{ type: 'party', title: 'Lunch', start: new Date(y, m, d, 12, 0), end: new Date(y, m, d, 14, 0), allDay: false }, { type: 'party', title: 'Lunch 2', start: new Date(y, m, d, 12, 0), end: new Date(y, m, d, 14, 0), allDay: false }, { type: 'party', title: 'Click for Google', start: new Date(y, m, 28), end: new Date(y, m, 29), url: 'http://google.com/' }]
+  };
+  /* alert on eventClick */
+  $scope.alertOnEventClick = function (date, jsEvent, view) {
+    $scope.alertMessage = date.title + ' was clicked ';
+  };
+  /* alert on Drop */
+  $scope.alertOnDrop = function (event, delta, revertFunc, jsEvent, ui, view) {
+    $scope.alertMessage = 'Event Droped to make dayDelta ' + delta;
+  };
+  /* alert on Resize */
+  $scope.alertOnResize = function (event, delta, revertFunc, jsEvent, ui, view) {
+    $scope.alertMessage = 'Event Resized to make dayDelta ' + delta;
+  };
+  /* add and removes an event source of choice */
+  $scope.addRemoveEventSource = function (sources, source) {
+    var canAdd = 0;
+    angular.forEach(sources, function (value, key) {
+      if (sources[key] === source) {
+        sources.splice(key, 1);
+        canAdd = 1;
+      }
+    });
+    if (canAdd === 0) {
+      sources.push(source);
+    }
+  };
+  /* add custom event*/
+  $scope.addEvent = function () {
+    $scope.events.push({
+      title: 'Open Sesame',
+      start: new Date(y, m, 28),
+      end: new Date(y, m, 29),
+      className: ['openSesame']
+    });
+  };
+
+  /* remove event */
+  $scope.remove = function (index) {
+    $scope.events.splice(index, 1);
+  };
+
+  /* Change View */
+  $scope.changeView = function (view, calendar) {
+    uiCalendarConfig.calendars[calendar].fullCalendar('changeView', view);
+  };
+
+  /* Change View */
+  $scope.renderCalender = function (calendar) {
+    if (uiCalendarConfig.calendars[calendar]) {
+      uiCalendarConfig.calendars[calendar].fullCalendar('render');
+    }
+  };
+
+  /* Render Tooltip */
+  $scope.eventRender = function (event, element, view) {
+    element.attr({ 'tooltip': event.title,
+      'tooltip-append-to-body': true });
+    $compile(element)($scope);
+  };
+
+  /* config object */
+  $scope.uiConfig = {
+    calendar: {
+      editable: true,
+      header: {
+        left: 'month agendaWeek',
+        center: 'title',
+        right: 'today prev,next'
+      },
+      eventClick: $scope.alertOnEventClick,
+      eventDrop: $scope.alertOnDrop,
+      eventResize: $scope.alertOnResize,
+      eventRender: $scope.eventRender
+    }
+  };
+
+  $scope.changeLang = function () {
+    if ($scope.changeTo === 'Hungarian') {
+      $scope.uiConfig.calendar.dayNames = ["Vasárnap", "Hétfő", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat"];
+      $scope.uiConfig.calendar.dayNamesShort = ["Vas", "Hét", "Kedd", "Sze", "Csüt", "Pén", "Szo"];
+      $scope.changeTo = 'English';
+    } else {
+      $scope.uiConfig.calendar.dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      $scope.uiConfig.calendar.dayNamesShort = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+      $scope.changeTo = 'Hungarian';
+    }
+  };
+  /* event sources array*/
+  $scope.eventSources = [$scope.events, $scope.eventSource, $scope.eventsF];
+  $scope.eventSources2 = [$scope.calEventsExt, $scope.eventsF, $scope.events];
+};
+
+CalendarController.$inject = ['$scope', '$compile', 'uiCalendarConfig'];
+
+exports['default'] = CalendarController;
+module.exports = exports['default'];
+
+},{}],7:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
 var HomeController = function HomeController($scope) {
 
   console.log('Hey, home page!');
@@ -146,7 +290,7 @@ HomeController.$inject = ['$scope'];
 exports['default'] = HomeController;
 module.exports = exports['default'];
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 // require('fullcalendar');
 // require('angular-ui-calendar');
 
@@ -162,9 +306,13 @@ var _moment = require('moment');
 
 var _moment2 = _interopRequireDefault(_moment);
 
+require('angular-ui-calendar');
+
 require('fullcalendar');
 
-require('angular-ui-calendar');
+var _controllersCalendarController = require('./controllers/calendar.controller');
+
+var _controllersCalendarController2 = _interopRequireDefault(_controllersCalendarController);
 
 var _controllersHomeController = require('./controllers/home.controller');
 
@@ -172,9 +320,9 @@ var _controllersHomeController2 = _interopRequireDefault(_controllersHomeControl
 
 window.$ = require('jquery');
 
-_angular2['default'].module('app.calendar', ['ui.calendar']).controller('HomeController', _controllersHomeController2['default']);
+_angular2['default'].module('app.calendar', ['ui.calendar']).controller('CalendarController', _controllersCalendarController2['default']).controller('HomeController', _controllersHomeController2['default']);
 
-},{"./controllers/home.controller":6,"angular":19,"angular-ui-calendar":16,"fullcalendar":20,"jquery":21,"moment":22}],8:[function(require,module,exports){
+},{"./controllers/calendar.controller":6,"./controllers/home.controller":7,"angular":20,"angular-ui-calendar":17,"fullcalendar":21,"jquery":22,"moment":23}],9:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -211,7 +359,7 @@ config.$inject = ['$stateProvider', '$urlRouterProvider'];
 exports['default'] = config;
 module.exports = exports['default'];
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -230,7 +378,7 @@ exports['default'] = {
 };
 module.exports = exports['default'];
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -253,7 +401,7 @@ var _constantsFileserverConstant2 = _interopRequireDefault(_constantsFileserverC
 
 _angular2['default'].module('app.core', ['ui.router', 'ngCookies']).config(_config2['default']).constant('FILESERVER', _constantsFileserverConstant2['default']);
 
-},{"./config":8,"./constants/fileserver.constant":9,"angular":19,"angular-cookies":15,"angular-ui-router":17}],11:[function(require,module,exports){
+},{"./config":9,"./constants/fileserver.constant":10,"angular":20,"angular-cookies":16,"angular-ui-router":18}],12:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -273,7 +421,7 @@ SplashController.$inject = [];
 exports['default'] = SplashController;
 module.exports = exports['default'];
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -288,7 +436,7 @@ var _controllersSplashController2 = _interopRequireDefault(_controllersSplashCon
 
 _angular2['default'].module('app.layout', []).controller('SplashController', _controllersSplashController2['default']);
 
-},{"./controllers/splash.controller":11,"angular":19}],13:[function(require,module,exports){
+},{"./controllers/splash.controller":12,"angular":20}],14:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -307,7 +455,7 @@ require('./app-calendar/index');
 
 _angular2['default'].module('app', ['app.core', 'app.layout', 'app.auth', 'app.calendar']);
 
-},{"./app-auth/index":3,"./app-calendar/index":7,"./app-core/index":10,"./app-layout/index":12,"angular":19}],14:[function(require,module,exports){
+},{"./app-auth/index":3,"./app-calendar/index":8,"./app-core/index":11,"./app-layout/index":13,"angular":20}],15:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -630,11 +778,11 @@ angular.module('ngCookies').provider('$$cookieWriter', function $$CookieWriterPr
 
 })(window, window.angular);
 
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 require('./angular-cookies');
 module.exports = 'ngCookies';
 
-},{"./angular-cookies":14}],16:[function(require,module,exports){
+},{"./angular-cookies":15}],17:[function(require,module,exports){
 /*
 *  AngularJs Fullcalendar Wrapper for the JQuery FullCalendar
 *  API @ http://arshaw.com/fullcalendar/
@@ -978,7 +1126,7 @@ angular.module('ui.calendar', [])
     };
 }]);
 
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.15
@@ -5349,7 +5497,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -34368,11 +34516,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":18}],20:[function(require,module,exports){
+},{"./angular":19}],21:[function(require,module,exports){
 /*!
  * FullCalendar v2.5.0
  * Docs & License: http://fullcalendar.io/
@@ -45871,7 +46019,7 @@ fcViews.agendaWeek = {
 
 return FC; // export for Node/CommonJS
 });
-},{"jquery":21,"moment":22}],21:[function(require,module,exports){
+},{"jquery":22,"moment":23}],22:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -55083,7 +55231,7 @@ return jQuery;
 
 }));
 
-},{}],22:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 //! moment.js
 //! version : 2.10.6
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -58279,7 +58427,7 @@ return jQuery;
     return _moment;
 
 }));
-},{}]},{},[13])
+},{}]},{},[14])
 
 
 //# sourceMappingURL=main.js.map
