@@ -27,9 +27,29 @@ let config = function($stateProvider, $urlRouterProvider) {
       templateUrl: 'templates/app-auth/signup.tpl.html'
     })
     .state('root.home', {
-      url: '/:id',
+      url: '/users/:id',
       controller: 'HomeController as vm',
       templateUrl: 'templates/app-calendar/home.tpl.html'
+    })
+    .state('root.band', {
+      url: '/bands/:id',
+      controller: 'BandController as vm',
+      templateUrl: 'templates/app-calendar/band.tpl.html'
+    })
+    .state('root.addBand', {
+      url: '/add-band',
+      controller: 'AddBandController as vm',
+      templateUrl: 'templates/app-calendar/addBand.tpl.html'
+    })
+    .state('root.addMember', {
+      url: '/add-member',
+      controller: 'AddMemberController as vm',
+      templateUrl: 'templates/app-calendar/addMember.tpl.html'
+    })
+    .state('root.addEvent', {
+      url: '/add-event',
+      controller: 'AddEventController as vm',
+      templateUrl: 'templates/app-calendar/addEvent.tpl.html'
     })
   ;
 
