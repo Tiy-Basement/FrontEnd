@@ -370,7 +370,10 @@ var config = function config($stateProvider, $urlRouterProvider) {
   $stateProvider.state('root', {
     abstract: true,
     templateUrl: 'templates/app-layout/layout.tpl.html'
-  }).state('root.splash', {
+  }).state('root2', {
+    abstract: true,
+    templateUrl: 'templates/app-layout/layout2.tpl.html'
+  }).state('root2.splash', {
     url: '/',
     controller: 'SplashController as vm',
     templateUrl: 'templates/app-layout/splash.tpl.html'
@@ -384,7 +387,7 @@ var config = function config($stateProvider, $urlRouterProvider) {
     templateUrl: 'templates/app-auth/signup.tpl.html'
   }).state('root.home', {
     url: '/:id',
-    controller: 'HomeController',
+    controller: 'HomeController as vm',
     templateUrl: 'templates/app-calendar/home.tpl.html'
   });
 };
@@ -442,16 +445,31 @@ _angular2['default'].module('app.core', ['ui.router', 'ngCookies']).config(_conf
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var SplashController = function SplashController() {
+var SplashController = function SplashController($state) {
 
   console.log('I am using my home controller.');
 
   var vm = this;
 
-  vm.title = 'Home Page';
+  vm.title = 'basement';
+  vm.tagline = 'tagline here';
+  vm.gotoLogin = gotoLogin;
+  vm.gotoSignUp = gotoSignUp;
+  vm.gotoHome = gotoHome;
+  function gotoLogin() {
+    $state.go('root.login');
+  }
+
+  function gotoSignUp() {
+    $state.go('root.signup');
+  }
+
+  function gotoHome() {
+    $state.go('root.home');
+  }
 };
 
-SplashController.$inject = [];
+SplashController.$inject = ['$state'];
 
 exports['default'] = SplashController;
 module.exports = exports['default'];

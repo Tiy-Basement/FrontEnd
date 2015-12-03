@@ -7,7 +7,11 @@ let config = function($stateProvider, $urlRouterProvider) {
       abstract: true,
       templateUrl: 'templates/app-layout/layout.tpl.html'
     })
-    .state('root.splash', {
+    .state('root2', {
+      abstract: true,
+      templateUrl: 'templates/app-layout/layout2.tpl.html'
+    })
+    .state('root2.splash', {
       url: '/',
       controller: 'SplashController as vm',
       templateUrl: 'templates/app-layout/splash.tpl.html'
@@ -24,7 +28,7 @@ let config = function($stateProvider, $urlRouterProvider) {
     })
     .state('root.home', {
       url: '/:id',
-      controller: 'HomeController',
+      controller: 'HomeController as vm',
       templateUrl: 'templates/app-calendar/home.tpl.html'
     })
   ;

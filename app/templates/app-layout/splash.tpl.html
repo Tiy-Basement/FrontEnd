@@ -1,8 +1,25 @@
-<div class="container">
-  <div class="title">{{vm.title}}</div>
-  <div class="about">"The best band management app in your neck of the woods!" <br> -John Rae</div>
-  <div class="nav">
-    <a href="/#/login">Login</a>
-    <a href="/#/signup">Sign up</a>
+<div class="splashContainer">
+
+  <div class="gradient"></div>
+
+  <div class="backgroundPic"></div>
+
+  <ul class="buttonUl">
+    <li><button class="login" ng-click="vm.gotoLogin()">login</button></li>
+    <li><button class="signUp" ng-click="vm.gotoSignUp()">sign up</button></li>
+  </ul>
+
+  <div class="bigCircle">
+    <div class="title"> {{vm.title}} </div>
+    <div class="tagLine"> {{vm.tagLine}}</div>
   </div>
+
+  <footer>
+    <ul>
+      <li><i class="fa fa-twitter"></i><span class="footText">follow us on twitter</span></li>
+      <li><i class="fa fa-github"></i><span class="footText">github repo</span></li>
+      <li ng-click="vm.gotoHome()"><i class="fa fa-calendar"></i><span class="footText"> view group calendar</span></li>
+    </ul>
+  </footer>
+
 </div>
