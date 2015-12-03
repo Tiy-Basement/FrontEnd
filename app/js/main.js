@@ -418,6 +418,7 @@ var SplashController = function SplashController($state) {
   vm.gotoLogin = gotoLogin;
   vm.gotoSignUp = gotoSignUp;
   vm.gotoHome = gotoHome;
+
   function gotoLogin() {
     $state.go('root.login');
   }

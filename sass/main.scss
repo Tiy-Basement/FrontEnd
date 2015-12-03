@@ -20,39 +20,33 @@ footer{
   height: 90px;
   text-align: center;
 
-    ul li{
+     ul li{
       display: inline-block;
-      padding-right: 20px;
+      padding-right: 30px;
       padding: 10px;
       height: 100px;
-      float: left;
-      color: white;
+      border-radius: 100px;
+      float:right;
+      color: black;
       font-family: 'Fjalla One';
       font-size: 1.6em;
+      transition: .3s all ease;
+      opacity: .6
     }
+     ul li:hover{
+      opacity: 1;
+      text-shadow: 1px 1px 20px white;
+      font-size: 1.7em;
+     }
     .fa{
       color: black;
-      font-size: 2em;
-      transition: .3s all ease;
-      opacity: .9;
-    }
-    .fa:hover{
-      text-shadow: 1px 1px 20px #FFF4A9;
-      font-size: 2.6em;
+      font-size: 3em;
       opacity: 1;
-    }
+      text-shadow: 1px 1px 10px white;
 }
 
-.fa-twitter:before{
- color: white;
+    
 }
-
-span{
-  background-color: black;
-  border-radius: 200px;
-  opacity: .8;
-}
-
 //  welcome to da sPlAsH pAgE {o_o}
 
 
@@ -87,6 +81,20 @@ span{
     transition: 1s all ease;
     box-shadow: 1px 1px 20px white;
     opacity: .8;
+
+  .welcome{
+    font-family: 'Fjalla One', cursive;
+    padding-top: 100px;
+    padding-left: 100px;
+    font-size: .5em;
+    color: white;
+    text-align: left;
+    transition: 1s all ease;
+    text-shadow: 1px 1px 5px #8CFF89;
+  }
+  .welcome:hover{
+    font-size: .6em;
+  }
 }
 .bigCircle:hover{
   height: 350px;
@@ -98,12 +106,12 @@ span{
 
 .title {
   font-family: 'Fjalla One', cursive;
-  padding-top: 135px;
   text-align: center;
   color:white;
   text-shadow: 1px 1px 10px white;
   transition: 1s all ease;
 }
+
 
 
 
