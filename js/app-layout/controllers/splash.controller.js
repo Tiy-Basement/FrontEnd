@@ -8,7 +8,7 @@ let SplashController = function($state) {
   vm.tagline = 'tagline here';
   vm.gotoLogin = gotoLogin;
   vm.gotoSignUp = gotoSignUp;
-
+  vm.gotoHome = gotoHome;
   function gotoLogin(){
     $state.go('root.login');
   }
@@ -17,6 +17,9 @@ let SplashController = function($state) {
     $state.go('root.signup');
   }
 
+  function gotoHome(){
+    $state.go('root.home');
+  }
 };
 
 SplashController.$inject = ['$state'];

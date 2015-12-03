@@ -8467,6 +8467,10 @@ th.hide-for-touch {
 .fa-percent:before {
   content: ""; }
 
+.container {
+  width: 90%;
+  margin: 0 auto 20% auto; }
+
 footer {
   position: fixed;
   bottom: 0;
