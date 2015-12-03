@@ -123,8 +123,8 @@ gulp.task('watch', function() {
     gulp.start('hint:html');
   });
   watch('./js/**/*.js', function () {
-    gulp.start('hint:js');
-    gulp.start('style:js');
+   gulp.start('hint:js');
+   gulp.start('style:js');
   });
 });
 

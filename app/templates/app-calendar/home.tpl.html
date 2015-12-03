@@ -1,5 +1,7 @@
 <div class="homeCont">
-  <div  class="homeCalendar" ui-calendar ng-model="eventSources"></div>
+  <div ng-controller="CalendarController">
+    <div  class="homeCalendar" ui-calendar ng-model="eventSources"></div>
+  </div>
   <div class="sidebar">
     <div class="myBands"></div>
     <div class="myNotes"></div>
