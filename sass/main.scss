@@ -8,6 +8,20 @@ body {
 }
 
 .container {
-  width: 60%;
-  margin: 20px auto;
+  width: 100%;
+  // margin: 20px auto;
+}
+
+.homeCont {
+  // display: inline-block;
+  margin: 70px;
+  .calendar {
+    width: 90%;
+    display: inline-block;
+    vertical-align: top;
+  }
+  .sidebar {
+    width: 5%;
+    display: inline-block;
+  }
 }

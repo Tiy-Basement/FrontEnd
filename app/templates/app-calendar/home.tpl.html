@@ -1,9 +1,26 @@
 <div class="homeCont">
-  <div ng-controller="CalendarController">
-    <div  class="homeCalendar" ui-calendar ng-model="eventSources"></div>
+  <div class="calendar" ng-controller="CalendarController">
+    <div  class="span8 calendar" ui-calendar=uiConfig.calendar ng-model="eventSources"></div>
   </div>
   <div class="sidebar">
-    <div class="myBands"></div>
-    <div class="myNotes"></div>
+    <div class="myBands">
+      <div>My Bands</div>
+      <ul>
+        <li><a href=""></a> A band</li>
+        <li>Another band</li>
+        <li>A third band</li>
+        <li>TOO MANY BANDS</li>
+      </ul>
+    </div>
+    <div class="myNotes">
+      <ul>
+        <li>An event note</li>
+        <li>Another event note</li>
+        <li>Event note 3</li>
+        <li>Fourth event note</li>
+        <li>Next event note</li>
+        <li>ALL THE EVENTS</li>
+      </ul>
+    </div>
   </div>
 </div>

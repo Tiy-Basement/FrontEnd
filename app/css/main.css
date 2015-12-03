@@ -6391,7 +6391,16 @@ body {
   background: #e2ebf3; }
 
 .container {
-  width: 60%;
-  margin: 20px auto; }
+  width: 100%; }
+
+.homeCont {
+  margin: 70px; }
+  .homeCont .calendar {
+    width: 90%;
+    display: inline-block;
+    vertical-align: top; }
+  .homeCont .sidebar {
+    width: 5%;
+    display: inline-block; }
 
 /*# sourceMappingURL=main.css.map */
