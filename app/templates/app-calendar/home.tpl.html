@@ -1,3 +1,26 @@
-<div ng-controller="CalendarController">
-  <div ui-calendar="uiConfig.calendar" class="span8 calendar" ng-model="eventSources"></div> 
+<div class="homeContainer">
+  <div class="calendar" ng-controller="CalendarController">
+    <div  class="span8 calendar" ui-calendar=uiConfig.calendar ng-model="eventSources"></div>
+  </div>
+  <aside class="sidebar">
+    <div class="myBands">
+      <h5>My Bands</h5>
+      <ul>
+        <li><a href="">A band</a></li>
+        <li><a href="">A band</a></li>
+        <li><a href="">A band</a></li>
+        <li><a href="">A band</a></li>
+      </ul>
+    </div>
+    <div class="myNotes">
+      <h5>My Notes</h5>
+      <ul>
+        <li><a href="">An event note</a></li>
+        <li><a href="">An event note</a></li>
+        <li><a href="">An event note</a></li>
+        <li><a href="">An event note</a></li>
+        <li><a href="">An event note</a></li>
+      </ul>
+    </div>
+  </aside>
 </div>

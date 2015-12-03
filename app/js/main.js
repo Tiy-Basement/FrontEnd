@@ -84,7 +84,7 @@ var _servicesLoginService2 = _interopRequireDefault(_servicesLoginService);
 
 _angular2['default'].module('app.auth', []).controller('SignupController', _controllersSignupController2['default']).controller('LoginController', _controllersLoginController2['default']).service('SignupService', _servicesSignupService2['default']).service('LoginService', _servicesLoginService2['default']);
 
-},{"./controllers/login.controller":1,"./controllers/signup.controller":2,"./services/login.service":4,"./services/signup.service":5,"angular":20}],4:[function(require,module,exports){
+},{"./controllers/login.controller":1,"./controllers/signup.controller":2,"./services/login.service":4,"./services/signup.service":5,"angular":21}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -140,6 +140,22 @@ exports['default'] = SignupService;
 module.exports = exports['default'];
 
 },{}],6:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var BandController = function BandController($scope) {
+
+  console.log('band controller what what');
+};
+
+BandController.$inject = ['$scope'];
+
+exports['default'] = BandController;
+module.exports = exports['default'];
+
+},{}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -272,7 +288,7 @@ CalendarController.$inject = ['$scope', '$compile', 'uiCalendarConfig'];
 exports['default'] = CalendarController;
 module.exports = exports['default'];
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -283,6 +299,21 @@ var HomeController = function HomeController($scope) {
   console.log('Hey, home page!');
 
   $scope.eventSources = [];
+
+  // $scope.uiConfig = {
+  //   calendar:{
+  //     height: 450,
+  //     editable: true,
+  //     header:{
+  //       left: 'month basicWeek basicDay agendaWeek agendaDay',
+  //       center: 'title',
+  //       right: 'today prev,next'
+  //     },
+  //     dayClick: $scope.alertEventOnClick,
+  //     eventDrop: $scope.alertOnDrop,
+  //     eventResize: $scope.alertOnResize
+  //   }
+  // };
 };
 
 HomeController.$inject = ['$scope'];
@@ -290,7 +321,7 @@ HomeController.$inject = ['$scope'];
 exports['default'] = HomeController;
 module.exports = exports['default'];
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 // require('fullcalendar');
 // require('angular-ui-calendar');
 
@@ -318,11 +349,15 @@ var _controllersHomeController = require('./controllers/home.controller');
 
 var _controllersHomeController2 = _interopRequireDefault(_controllersHomeController);
 
+var _controllersBandController = require('./controllers/band.controller');
+
+var _controllersBandController2 = _interopRequireDefault(_controllersBandController);
+
 window.$ = require('jquery');
 
-_angular2['default'].module('app.calendar', ['ui.calendar']).controller('CalendarController', _controllersCalendarController2['default']).controller('HomeController', _controllersHomeController2['default']);
+_angular2['default'].module('app.calendar', ['ui.calendar']).controller('CalendarController', _controllersCalendarController2['default']).controller('HomeController', _controllersHomeController2['default']).controller('BandController', _controllersBandController2['default']);
 
-},{"./controllers/calendar.controller":6,"./controllers/home.controller":7,"angular":20,"angular-ui-calendar":17,"fullcalendar":21,"jquery":22,"moment":23}],9:[function(require,module,exports){
+},{"./controllers/band.controller":6,"./controllers/calendar.controller":7,"./controllers/home.controller":8,"angular":21,"angular-ui-calendar":18,"fullcalendar":22,"jquery":23,"moment":24}],10:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -335,7 +370,10 @@ var config = function config($stateProvider, $urlRouterProvider) {
   $stateProvider.state('root', {
     abstract: true,
     templateUrl: 'templates/app-layout/layout.tpl.html'
-  }).state('root.splash', {
+  }).state('root2', {
+    abstract: true,
+    templateUrl: 'templates/app-layout/layout2.tpl.html'
+  }).state('root2.splash', {
     url: '/',
     controller: 'SplashController as vm',
     templateUrl: 'templates/app-layout/splash.tpl.html'
@@ -359,7 +397,7 @@ config.$inject = ['$stateProvider', '$urlRouterProvider'];
 exports['default'] = config;
 module.exports = exports['default'];
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -378,7 +416,7 @@ exports['default'] = {
 };
 module.exports = exports['default'];
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -401,7 +439,7 @@ var _constantsFileserverConstant2 = _interopRequireDefault(_constantsFileserverC
 
 _angular2['default'].module('app.core', ['ui.router', 'ngCookies']).config(_config2['default']).constant('FILESERVER', _constantsFileserverConstant2['default']);
 
-},{"./config":9,"./constants/fileserver.constant":10,"angular":20,"angular-cookies":16,"angular-ui-router":18}],12:[function(require,module,exports){
+},{"./config":10,"./constants/fileserver.constant":11,"angular":21,"angular-cookies":17,"angular-ui-router":19}],13:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -436,7 +474,7 @@ SplashController.$inject = ['$state'];
 exports['default'] = SplashController;
 module.exports = exports['default'];
 
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -451,7 +489,7 @@ var _controllersSplashController2 = _interopRequireDefault(_controllersSplashCon
 
 _angular2['default'].module('app.layout', []).controller('SplashController', _controllersSplashController2['default']);
 
-},{"./controllers/splash.controller":12,"angular":20}],14:[function(require,module,exports){
+},{"./controllers/splash.controller":13,"angular":21}],15:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -470,7 +508,7 @@ require('./app-calendar/index');
 
 _angular2['default'].module('app', ['app.core', 'app.layout', 'app.auth', 'app.calendar']);
 
-},{"./app-auth/index":3,"./app-calendar/index":8,"./app-core/index":11,"./app-layout/index":13,"angular":20}],15:[function(require,module,exports){
+},{"./app-auth/index":3,"./app-calendar/index":9,"./app-core/index":12,"./app-layout/index":14,"angular":21}],16:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -793,11 +831,11 @@ angular.module('ngCookies').provider('$$cookieWriter', function $$CookieWriterPr
 
 })(window, window.angular);
 
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 require('./angular-cookies');
 module.exports = 'ngCookies';
 
-},{"./angular-cookies":15}],17:[function(require,module,exports){
+},{"./angular-cookies":16}],18:[function(require,module,exports){
 /*
 *  AngularJs Fullcalendar Wrapper for the JQuery FullCalendar
 *  API @ http://arshaw.com/fullcalendar/
@@ -1141,7 +1179,7 @@ angular.module('ui.calendar', [])
     };
 }]);
 
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.15
@@ -5512,7 +5550,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -34531,11 +34569,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":19}],21:[function(require,module,exports){
+},{"./angular":20}],22:[function(require,module,exports){
 /*!
  * FullCalendar v2.5.0
  * Docs & License: http://fullcalendar.io/
@@ -46034,7 +46072,7 @@ fcViews.agendaWeek = {
 
 return FC; // export for Node/CommonJS
 });
-},{"jquery":22,"moment":23}],22:[function(require,module,exports){
+},{"jquery":23,"moment":24}],23:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -55246,7 +55284,7 @@ return jQuery;
 
 }));
 
-},{}],23:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 //! moment.js
 //! version : 2.10.6
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -58442,7 +58480,7 @@ return jQuery;
     return _moment;
 
 }));
-},{}]},{},[14])
+},{}]},{},[15])
 
 
 //# sourceMappingURL=main.js.map
