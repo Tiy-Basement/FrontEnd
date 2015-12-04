@@ -32,12 +32,12 @@ let config = function($stateProvider, $urlRouterProvider) {
       templateUrl: 'templates/app-calendar/home.tpl.html'
     })
     .state('root.band', {
-      url: '/bands/:id',
+      url: '/goup/:id',
       controller: 'BandController as vm',
       templateUrl: 'templates/app-calendar/band.tpl.html'
     })
     .state('root.addBand', {
-      url: '/add-band',
+      url: '/add-group',
       controller: 'AddBandController as vm',
       templateUrl: 'templates/app-calendar/addBand.tpl.html'
     })
