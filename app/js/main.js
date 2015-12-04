@@ -163,7 +163,15 @@ Object.defineProperty(exports, '__esModule', {
 });
 var AddGroupController = function AddGroupController($scope) {
 
-  console.log('I am using my Add Group Controller');
+  var vm = this;
+
+  vm.addGroup = addGroup;
+
+  function addGroup(groupObj) {
+    AddService.addGroup(groupObj).then(function (res) {
+      console.log(res);
+    });
+  }
 };
 
 AddGroupController.$inject = ['$scope'];
