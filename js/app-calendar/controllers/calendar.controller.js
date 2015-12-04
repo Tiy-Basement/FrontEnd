@@ -65,6 +65,7 @@ let CalendarController = function ($scope,$compile,uiCalendarConfig) {
       sources.push(source);
     }
   };
+
   /* add custom event*/
   $scope.addEvent = function() {
     $scope.events.push({

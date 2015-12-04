@@ -9,8 +9,8 @@ import 'fullcalendar';
 
 import CalendarController from './controllers/calendar.controller';
 import HomeController from './controllers/home.controller';
-import BandController from './controllers/band.controller';
-import AddBandController from './controllers/addBand.controller';
+import GroupController from './controllers/group.controller';
+import AddGroupController from './controllers/addGroup.controller';
 import AddMemberController from './controllers/addMember.controller';
 import AddEventController from './controllers/addEvent.controller';
 
@@ -20,7 +20,7 @@ angular
   .controller('CalendarController', CalendarController)
   .controller('HomeController', HomeController)
   .controller('BandController', BandController)
-  .controller('AddBandController', AddBandController)
+  .controller('AddGroupController', AddGroupController)
   .controller('AddMemberController', AddMemberController)
   .controller('AddEventController', AddEventController)
 ;
