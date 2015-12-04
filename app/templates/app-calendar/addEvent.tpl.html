@@ -1,6 +1,6 @@
-<form>
-  <label>Title<input type="text"></label>
-  <label>Begins at: <input type="text"></label>
-  <label>Ends at: <input type="text"></label>
+<form ng-submit="addEvent(e)">
+  <label>Title<input type="text" ng-model="e.title"></label>
+  <label>Begins at: <input type="text" ng-model="e.start"></label>
+  <label>Ends at: <input type="text" ng-model="e.end"></label>
   <button>Add Event</button>
 </form>
