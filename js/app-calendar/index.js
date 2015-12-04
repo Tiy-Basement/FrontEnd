@@ -19,7 +19,7 @@ angular
   .module('app.calendar', ['ui.calendar'])
   .controller('CalendarController', CalendarController)
   .controller('HomeController', HomeController)
-  .controller('BandController', BandController)
+  .controller('GroupController', GroupController)
   .controller('AddGroupController', AddGroupController)
   .controller('AddMemberController', AddMemberController)
   .controller('AddEventController', AddEventController)
