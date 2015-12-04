@@ -1,16 +1,14 @@
-let AddGroupController = function($scope) {
-  
-  let vm = this;
+let AddGroupController = function($scope, AddService) {
 
-  vm.addGroup = addGroup;
 
-  function addGroup (groupObj) {
+  $scope.addGroup = function (groupObj) {
     AddService.addGroup(groupObj).then( (res) => {
       console.log(res);
     });
-  }
+  };
+  
 };
 
-AddGroupController.$inject = ['$scope'];
+AddGroupController.$inject = ['$scope', 'AddService'];
 
 export default AddGroupController;
