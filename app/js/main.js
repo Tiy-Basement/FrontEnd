@@ -147,7 +147,7 @@ Object.defineProperty(exports, '__esModule', {
 });
 var AddBandController = function AddBandController($scope) {
 
-  console.log('I am using my Add Band Controller');
+  $scope.addBand = function (band) {};
 };
 
 AddBandController.$inject = ['$scope'];
@@ -473,7 +473,6 @@ exports['default'] = {
     URL: 'https://tiy-basement.herokuapp.com/',
     CONFIG: {
       headers: {
-        'Access-Token': '',
         'Content-Type': undefined
       }
     }
