@@ -4,6 +4,6 @@ let AddGroupController = function($scope) {
 
 };
 
-AddBandController.$inject = ['$scope'];
+AddGroupController.$inject = ['$scope'];
 
-export default AddBandController;
+export default AddGroupController;

@@ -166,9 +166,9 @@ var AddGroupController = function AddGroupController($scope) {
   console.log('I am using my Add Group Controller');
 };
 
-AddBandController.$inject = ['$scope'];
+AddGroupController.$inject = ['$scope'];
 
-exports['default'] = AddBandController;
+exports['default'] = AddGroupController;
 module.exports = exports['default'];
 
 },{}],8:[function(require,module,exports){
@@ -300,17 +300,6 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
     }
   };
 
-  $scope.changeLang = function () {
-    if ($scope.changeTo === 'Hungarian') {
-      $scope.uiConfig.calendar.dayNames = ["Vasárnap", "Hétfő", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat"];
-      $scope.uiConfig.calendar.dayNamesShort = ["Vas", "Hét", "Kedd", "Sze", "Csüt", "Pén", "Szo"];
-      $scope.changeTo = 'English';
-    } else {
-      $scope.uiConfig.calendar.dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-      $scope.uiConfig.calendar.dayNamesShort = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-      $scope.changeTo = 'Hungarian';
-    }
-  };
   /* event sources array*/
   $scope.eventSources = [$scope.events, $scope.eventSource, $scope.eventsF];
   $scope.eventSources2 = [$scope.calEventsExt, $scope.eventsF, $scope.events];
@@ -332,7 +321,7 @@ var GroupController = function GroupController($scope) {
   console.log('group controller what what');
 };
 
-BandController.$inject = ['$scope'];
+GroupController.$inject = ['$scope'];
 
 exports['default'] = GroupController;
 module.exports = exports['default'];
@@ -401,7 +390,7 @@ var _controllersAddEventController2 = _interopRequireDefault(_controllersAddEven
 
 window.$ = require('jquery');
 
-_angular2['default'].module('app.calendar', ['ui.calendar']).controller('CalendarController', _controllersCalendarController2['default']).controller('HomeController', _controllersHomeController2['default']).controller('BandController', BandController).controller('AddGroupController', _controllersAddGroupController2['default']).controller('AddMemberController', _controllersAddMemberController2['default']).controller('AddEventController', _controllersAddEventController2['default']);
+_angular2['default'].module('app.calendar', ['ui.calendar']).controller('CalendarController', _controllersCalendarController2['default']).controller('HomeController', _controllersHomeController2['default']).controller('GroupController', _controllersGroupController2['default']).controller('AddGroupController', _controllersAddGroupController2['default']).controller('AddMemberController', _controllersAddMemberController2['default']).controller('AddEventController', _controllersAddEventController2['default']);
 
 },{"./controllers/addEvent.controller":6,"./controllers/addGroup.controller":7,"./controllers/addMember.controller":8,"./controllers/calendar.controller":9,"./controllers/group.controller":10,"./controllers/home.controller":11,"angular":24,"angular-ui-calendar":21,"fullcalendar":25,"jquery":26,"moment":27}],13:[function(require,module,exports){
 'use strict';
@@ -470,7 +459,6 @@ exports['default'] = {
     URL: 'https://tiy-basement.herokuapp.com/',
     CONFIG: {
       headers: {
-        'Access-Token': '',
         'Content-Type': undefined
       }
     }
