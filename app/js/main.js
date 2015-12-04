@@ -161,7 +161,7 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var AddGroupController = function AddGroupController($scope) {
+var AddGroupController = function AddGroupController($scope, AddService) {
 
   var vm = this;
 
@@ -174,7 +174,7 @@ var AddGroupController = function AddGroupController($scope) {
   }
 };
 
-AddGroupController.$inject = ['$scope'];
+AddGroupController.$inject = ['$scope', 'AddService'];
 
 exports['default'] = AddGroupController;
 module.exports = exports['default'];
