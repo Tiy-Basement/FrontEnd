@@ -145,22 +145,6 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var AddBandController = function AddBandController($scope) {
-
-  console.log('I am using my Add Band Controller');
-};
-
-AddBandController.$inject = ['$scope'];
-
-exports['default'] = AddBandController;
-module.exports = exports['default'];
-
-},{}],7:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
 var AddEventController = function AddEventController($scope) {
 
   console.log('I am using my Add Event Controller');
@@ -169,6 +153,30 @@ var AddEventController = function AddEventController($scope) {
 AddEventController.$inject = ['$scope'];
 
 exports['default'] = AddEventController;
+module.exports = exports['default'];
+
+},{}],7:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var AddGroupController = function AddGroupController($scope) {
+
+  var vm = this;
+
+  vm.addGroup = addGroup;
+
+  function addGroup(groupObj) {
+    AddService.addGroup(groupObj).then(function (res) {
+      console.log(res);
+    });
+  }
+};
+
+AddGroupController.$inject = ['$scope'];
+
+exports['default'] = AddGroupController;
 module.exports = exports['default'];
 
 },{}],8:[function(require,module,exports){
@@ -188,22 +196,6 @@ exports['default'] = AddMemberController;
 module.exports = exports['default'];
 
 },{}],9:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
-var BandController = function BandController($scope) {
-
-  console.log('band controller what what');
-};
-
-BandController.$inject = ['$scope'];
-
-exports['default'] = BandController;
-module.exports = exports['default'];
-
-},{}],10:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -265,13 +257,13 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
       sources.push(source);
     }
   };
+
   /* add custom event*/
   $scope.addEvent = function () {
     $scope.events.push({
       title: 'Open Sesame',
       start: new Date(y, m, 28),
-      end: new Date(y, m, 29),
-      className: ['openSesame']
+      end: new Date(y, m, 29)
     });
   };
 
@@ -315,17 +307,6 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
     }
   };
 
-  $scope.changeLang = function () {
-    if ($scope.changeTo === 'Hungarian') {
-      $scope.uiConfig.calendar.dayNames = ["Vasárnap", "Hétfő", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat"];
-      $scope.uiConfig.calendar.dayNamesShort = ["Vas", "Hét", "Kedd", "Sze", "Csüt", "Pén", "Szo"];
-      $scope.changeTo = 'English';
-    } else {
-      $scope.uiConfig.calendar.dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-      $scope.uiConfig.calendar.dayNamesShort = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-      $scope.changeTo = 'Hungarian';
-    }
-  };
   /* event sources array*/
   $scope.eventSources = [$scope.events, $scope.eventSource, $scope.eventsF];
   $scope.eventSources2 = [$scope.calEventsExt, $scope.eventsF, $scope.events];
@@ -334,6 +315,22 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
 CalendarController.$inject = ['$scope', '$compile', 'uiCalendarConfig'];
 
 exports['default'] = CalendarController;
+module.exports = exports['default'];
+
+},{}],10:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var GroupController = function GroupController($scope) {
+
+  console.log('group controller what what');
+};
+
+GroupController.$inject = ['$scope'];
+
+exports['default'] = GroupController;
 module.exports = exports['default'];
 
 },{}],11:[function(require,module,exports){
@@ -382,13 +379,13 @@ var _controllersHomeController = require('./controllers/home.controller');
 
 var _controllersHomeController2 = _interopRequireDefault(_controllersHomeController);
 
-var _controllersBandController = require('./controllers/band.controller');
+var _controllersGroupController = require('./controllers/group.controller');
 
-var _controllersBandController2 = _interopRequireDefault(_controllersBandController);
+var _controllersGroupController2 = _interopRequireDefault(_controllersGroupController);
 
-var _controllersAddBandController = require('./controllers/addBand.controller');
+var _controllersAddGroupController = require('./controllers/addGroup.controller');
 
-var _controllersAddBandController2 = _interopRequireDefault(_controllersAddBandController);
+var _controllersAddGroupController2 = _interopRequireDefault(_controllersAddGroupController);
 
 var _controllersAddMemberController = require('./controllers/addMember.controller');
 
@@ -400,9 +397,9 @@ var _controllersAddEventController2 = _interopRequireDefault(_controllersAddEven
 
 window.$ = require('jquery');
 
-_angular2['default'].module('app.calendar', ['ui.calendar']).controller('CalendarController', _controllersCalendarController2['default']).controller('HomeController', _controllersHomeController2['default']).controller('BandController', _controllersBandController2['default']).controller('AddBandController', _controllersAddBandController2['default']).controller('AddMemberController', _controllersAddMemberController2['default']).controller('AddEventController', _controllersAddEventController2['default']);
+_angular2['default'].module('app.calendar', ['ui.calendar']).controller('CalendarController', _controllersCalendarController2['default']).controller('HomeController', _controllersHomeController2['default']).controller('GroupController', _controllersGroupController2['default']).controller('AddGroupController', _controllersAddGroupController2['default']).controller('AddMemberController', _controllersAddMemberController2['default']).controller('AddEventController', _controllersAddEventController2['default']);
 
-},{"./controllers/addBand.controller":6,"./controllers/addEvent.controller":7,"./controllers/addMember.controller":8,"./controllers/band.controller":9,"./controllers/calendar.controller":10,"./controllers/home.controller":11,"angular":24,"angular-ui-calendar":21,"fullcalendar":25,"jquery":26,"moment":27}],13:[function(require,module,exports){
+},{"./controllers/addEvent.controller":6,"./controllers/addGroup.controller":7,"./controllers/addMember.controller":8,"./controllers/calendar.controller":9,"./controllers/group.controller":10,"./controllers/home.controller":11,"angular":24,"angular-ui-calendar":21,"fullcalendar":25,"jquery":26,"moment":27}],13:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -434,14 +431,14 @@ var config = function config($stateProvider, $urlRouterProvider) {
     url: '/users/:id',
     controller: 'HomeController as vm',
     templateUrl: 'templates/app-calendar/home.tpl.html'
-  }).state('root.band', {
-    url: '/goup/:id',
-    controller: 'BandController as vm',
-    templateUrl: 'templates/app-calendar/band.tpl.html'
-  }).state('root.addBand', {
+  }).state('root.group', {
+    url: '/group/:id',
+    controller: 'GroupController as vm',
+    templateUrl: 'templates/app-calendar/group.tpl.html'
+  }).state('root.addGroup', {
     url: '/add-group',
-    controller: 'AddBandController as vm',
-    templateUrl: 'templates/app-calendar/addBand.tpl.html'
+    controller: 'AddGroupController as vm',
+    templateUrl: 'templates/app-calendar/addGroup.tpl.html'
   }).state('root.addMember', {
     url: '/add-member',
     controller: 'AddMemberController as vm',
@@ -469,7 +466,6 @@ exports['default'] = {
     URL: 'https://tiy-basement.herokuapp.com/',
     CONFIG: {
       headers: {
-        'Access-Token': '',
         'Content-Type': undefined
       }
     }
@@ -511,12 +507,12 @@ var SplashController = function SplashController($state) {
   console.log('I am using my splash controller.');
 
   var vm = this;
-
+  // vm.welcome = 'welcome to';
   vm.title = 'basement';
-  vm.tagline = 'tagline here';
   vm.gotoLogin = gotoLogin;
   vm.gotoSignUp = gotoSignUp;
   vm.gotoHome = gotoHome;
+
   function gotoLogin() {
     $state.go('root.login');
   }

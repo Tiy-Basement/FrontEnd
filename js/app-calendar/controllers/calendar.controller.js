@@ -65,13 +65,13 @@ let CalendarController = function ($scope,$compile,uiCalendarConfig) {
       sources.push(source);
     }
   };
+
   /* add custom event*/
   $scope.addEvent = function() {
     $scope.events.push({
       title: 'Open Sesame',
       start: new Date(y, m, 28),
       end: new Date(y, m, 29),
-      className: ['openSesame']
     });
   };
 
@@ -115,17 +115,6 @@ let CalendarController = function ($scope,$compile,uiCalendarConfig) {
     }
   };
 
-  $scope.changeLang = function() {
-    if($scope.changeTo === 'Hungarian'){
-      $scope.uiConfig.calendar.dayNames = ["Vasárnap", "Hétfő", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat"];
-      $scope.uiConfig.calendar.dayNamesShort = ["Vas", "Hét", "Kedd", "Sze", "Csüt", "Pén", "Szo"];
-      $scope.changeTo= 'English';
-    } else {
-      $scope.uiConfig.calendar.dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-      $scope.uiConfig.calendar.dayNamesShort = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-      $scope.changeTo = 'Hungarian';
-    }
-  };
   /* event sources array*/
   $scope.eventSources = [$scope.events, $scope.eventSource, $scope.eventsF];
   $scope.eventSources2 = [$scope.calEventsExt, $scope.eventsF, $scope.events];

@@ -31,15 +31,15 @@ let config = function($stateProvider, $urlRouterProvider) {
       controller: 'HomeController as vm',
       templateUrl: 'templates/app-calendar/home.tpl.html'
     })
-    .state('root.band', {
-      url: '/goup/:id',
-      controller: 'BandController as vm',
-      templateUrl: 'templates/app-calendar/band.tpl.html'
+    .state('root.group', {
+      url: '/group/:id',
+      controller: 'GroupController as vm',
+      templateUrl: 'templates/app-calendar/group.tpl.html'
     })
-    .state('root.addBand', {
+    .state('root.addGroup', {
       url: '/add-group',
-      controller: 'AddBandController as vm',
-      templateUrl: 'templates/app-calendar/addBand.tpl.html'
+      controller: 'AddGroupController as vm',
+      templateUrl: 'templates/app-calendar/addGroup.tpl.html'
     })
     .state('root.addMember', {
       url: '/add-member',
