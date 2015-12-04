@@ -8467,11 +8467,6 @@ th.hide-for-touch {
 .fa-percent:before {
   content: ""; }
 
-.container {
-  margin: 50px auto;
-  width: 100%;
-  text-align: center; }
-
 .splashContainer .gradient {
   bottom: 0;
   position: fixed;
