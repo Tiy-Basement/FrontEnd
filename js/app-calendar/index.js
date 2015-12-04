@@ -14,6 +14,8 @@ import AddGroupController from './controllers/addGroup.controller';
 import AddMemberController from './controllers/addMember.controller';
 import AddEventController from './controllers/addEvent.controller';
 
+import AddService from './services/add.service';
+
 
 angular
   .module('app.calendar', ['ui.calendar'])
@@ -23,4 +25,5 @@ angular
   .controller('AddGroupController', AddGroupController)
   .controller('AddMemberController', AddMemberController)
   .controller('AddEventController', AddEventController)
+  .service('AddService', AddService)
 ;
