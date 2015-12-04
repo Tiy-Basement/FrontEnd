@@ -8467,11 +8467,6 @@ th.hide-for-touch {
 .fa-percent:before {
   content: ""; }
 
-.container {
-  margin: 50px auto;
-  width: 100%;
-  text-align: center; }
-
 .splashContainer .gradient {
   bottom: 0;
   position: fixed;
@@ -8493,98 +8488,94 @@ th.hide-for-touch {
   text-align: center; }
 
 .splashContainer .bigCircle {
-  height: 400px;
-  width: 400px;
-  font-size: 4em;
-  margin: 5% 0 0% 60%;
-  border-radius: 400px;
+  height: 360px;
+  width: 360px;
+  margin: 0% 35% 50% 34.5%;
+  text-align: center;
+  position: fixed;
+  border-radius: 360px;
   background-color: black;
   transition: 1s all ease;
   box-shadow: 1px 1px 20px white;
   opacity: .8; }
+  .splashContainer .bigCircle .titleText {
+    font-size: 5em;
+    font-family: 'Fjalla One', cursive;
+    padding-top: 120px;
+    text-align: center;
+    color: white;
+    text-shadow: 1px 1px 10px white;
+    transition: 1s all ease; }
+  .splashContainer .bigCircle .titleText:hover {
+    font-size: 5.1em;
+    color: white; }
+  .splashContainer .bigCircle .welcomeText {
+    font-size: .5em;
+    font-family: 'Fjalla One', cursive;
+    padding-top: 100px;
+    padding-left: 100px;
+    color: white;
+    text-align: left;
+    transition: 1s all ease;
+    text-shadow: 1px 1px 5px #8CFF89; }
+  .splashContainer .bigCircle .welcomeText:hover {
+    font-size: .6em; }
 
 .splashContainer .bigCircle:hover {
-  height: 350px;
   width: 350px;
-  font-size: 4em;
-  box-shadow: 1px 1px 30px white;
-  opacity: .7; }
+  height: 350px;
+  border-radius: 360px;
+  box-shadow: 0px 0px 40px white; }
 
-.splashContainer .title {
-  font-family: 'Fjalla One', cursive;
-  padding-top: 135px;
+.splashContainer .buttonBox {
+  height: 200px;
+  width: 40%;
+  margin: 25% 30% 25% 30%;
   text-align: center;
-  color: white;
-  text-shadow: 1px 1px 10px white;
-  transition: 1s all ease; }
-
-.splashContainer footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 90px;
-  text-align: center; }
-  .splashContainer footer ul li {
-    display: inline-block;
-    padding-right: 20px;
-    padding: 10px;
-    height: 100px;
-    float: left;
-    color: white;
-    font-family: 'Fjalla One';
-    font-size: 1.6em; }
-  .splashContainer footer .fa {
-    color: black;
-    font-size: 2em;
-    transition: .3s all ease;
-    opacity: .9; }
-  .splashContainer footer .fa:hover {
-    text-shadow: 1px 1px 20px #FFF4A9;
-    font-size: 2.6em;
-    opacity: 1; }
-
-.splashContainer .fa-twitter:before {
-  color: white; }
-
-.splashContainer .footText {
-  background-color: black;
-  border-radius: 200px;
-  opacity: .8; }
-
-.splashContainer .buttonUl li {
   display: inline-block;
-  float: left;
-  margin: 15% 5% 0 5%;
-  transition: 1s all ease; }
-  .splashContainer .buttonUl li .login, .splashContainer .buttonUl li .signUp {
+  top: 0;
+  position: fixed;
+  z-index: 1; }
+
+.splashContainer .buttonBox li {
+  display: inline-block;
+  transition: 1s all ease;
+  padding-right: 35px;
+  padding-top: 30px; }
+  .splashContainer .buttonBox li .login, .splashContainer .buttonBox li .signUp {
     font-family: 'Fjalla One';
     width: 200px;
     height: 200px;
     border-radius: 200px;
     background-color: white;
     color: black;
-    opacity: .8;
+    opacity: .7;
     transition: 1s all ease;
-    font-size: 3em; }
-  .splashContainer .buttonUl li .login:hover {
+    font-size: 2.3em; }
+  .splashContainer .buttonBox li .login:hover {
+    font-size: 1.7em;
     width: 190px;
     height: 190px;
-    font-size: 2em;
     text-align: center;
-    -webkit-text-stroke: 1px white;
-    box-shadow: 1px 1px 30px #FFF8E9; }
-  .splashContainer .buttonUl li .signUp {
+    background: #FBF4FF;
+    color: black;
+    opacity: .9;
+    -webkit-text-stroke: 1px grey;
+    text-shadow: 1px 1px 20px white;
+    box-shadow: 10px 10px 50px #FFF8E9; }
+  .splashContainer .buttonBox li .signUp {
     border-radius: 200px;
     margin-top: 0px;
-    color: #313131;
-    font-size: 2em;
-    transition: .5s all ease-in-out; }
-  .splashContainer .buttonUl li .signUp:hover {
+    font-size: 2.3em;
+    transition: .5s all ease; }
+  .splashContainer .buttonBox li .signUp:hover {
     width: 190px;
     height: 190px;
     font-size: 2em;
-    -webkit-text-stroke: 1px white;
-    box-shadow: 1px 1px 30px #FFF8E9; }
+    background: #FBF4FF;
+    opacity: .9;
+    -webkit-text-stroke: 1px grey;
+    box-shadow: 10px 10px 50px white; }
 
 .homeContainer .calendar {
   width: 79%;
@@ -8599,5 +8590,44 @@ th.hide-for-touch {
   margin: 0;
   display: inline-block;
   text-align: left; }
+
+footer {
+  height: 70px;
+  width: 100%;
+  bottom: 0;
+  padding-bottom: 20px;
+  color: black;
+  text-align: center;
+  position: fixed;
+  z-index: 9999;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, white 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  opacity: .9; }
+  footer ul {
+    margin: 0 30% 20% 30%;
+    display: inline-block; }
+  footer li {
+    font-family: 'Fjalla One';
+    height: 80px;
+    padding: 10px 20px 10px 0;
+    opacity: .8;
+    text-align: center;
+    display: inline-block;
+    transition: .3s all ease;
+    border-radius: 20px; }
+  footer li:hover {
+    font-size: 1.7em; }
+  footer .fa {
+    font-size: 2em;
+    color: black;
+    transition: .4s all ease;
+    opacity: .9; }
+  footer .footText {
+    text-decoration: italic;
+    font-size: 1.1em;
+    transition: 1s all ease; }
+  footer .footText:hover {
+    opacity: .6;
+    border-radius: 20px; }
 
 /*# sourceMappingURL=main.css.map */
