@@ -1,6 +1,8 @@
-<form ng-submit="addEvent(e)">
-  <label>Title<input type="text" ng-model="e.title"></label>
-  <label>Begins at: <input type="text" ng-model="e.start"></label>
-  <label>Ends at: <input type="text" ng-model="e.end"></label>
+<form>
+  <label>Title: <input type="text"></label>
+  <label>Location: <input type="text"></label>
+  <label>Begins at: <input type="datetime-local"></label>
+  <label>Ends at: <input type="datetime-local"></label>
+  <label>Note: <textarea maxlength=140></textarea></label>
   <button>Add Event</button>
 </form>
