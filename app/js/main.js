@@ -145,12 +145,16 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var AddEventController = function AddEventController($scope) {
+var AddEventController = function AddEventController($scope, AddService) {
 
-  console.log('I am using my Add Event Controller');
+  $scope.addEvent = function (eventObj) {
+    AddService.addEvent(eventObj).then(function (res) {
+      console.log(res);
+    });
+  };
 };
 
-AddEventController.$inject = ['$scope'];
+AddEventController.$inject = ['$scope', 'AddService'];
 
 exports['default'] = AddEventController;
 module.exports = exports['default'];
@@ -162,6 +166,8 @@ Object.defineProperty(exports, '__esModule', {
   value: true
 });
 var AddGroupController = function AddGroupController($scope, AddService) {
+
+  console.log(AddService.addGroup);
 
   $scope.addGroup = function (groupObj) {
     AddService.addGroup(groupObj).then(function (res) {
@@ -410,15 +416,18 @@ var AddService = function AddService($http, $cookies) {
   function Group(groupObj) {
     this.name = groupObj.name;
     if (groupObj.password) {
-      return this.password = groupObj.password;
+      return this.join_password = groupObj.password;
     } else {
-      return this.password = null;
+      return this.join_password = null;
     }
   }
 
-  var addGroup = function addGroup(groupObj, $cookies) {
+  this.addGroup = function (groupObj) {
     var g = new Group(groupObj);
-    return $http.post('http://tiy-basement.herokuapp.com/group', g, { headers: $cookies.get(access_token) });
+    var tkn = $cookies.get('Access-Token');
+    return $http.post('http://tiy-basement.herokuapp.com/group', g, { headers: {
+        'Access-Token': tkn
+      } });
   };
 
   function Event(eventObj) {
@@ -429,9 +438,12 @@ var AddService = function AddService($http, $cookies) {
     this.note = eventObj.note;
   }
 
-  this.addEvent = function (eventObj, $cookies) {
+  this.addEvent = function (eventObj) {
     var e = new Event(eventObj);
-    return $http.post('http://tiy-basement.herokuapp.com/event', e, { headers: $cookies.get(access_token) });
+    var tkn = $cookies.get('Access-Token');
+    return $http.post('http://tiy-basement.herokuapp.com/event', e, { headers: {
+        'Access-Token': tkn
+      } });
   };
 };
 

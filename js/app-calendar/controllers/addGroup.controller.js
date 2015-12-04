@@ -1,5 +1,6 @@
 let AddGroupController = function($scope, AddService) {
 
+  console.log(AddService.addGroup);
 
   $scope.addGroup = function (groupObj) {
     AddService.addGroup(groupObj).then( (res) => {

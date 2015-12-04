@@ -1,9 +1,14 @@
-let AddEventController = function($scope) {
+let AddEventController = function($scope, AddService) {
   
-  console.log('I am using my Add Event Controller');
+  $scope.addEvent = function(eventObj) {
+    AddService.addEvent(eventObj).then((res) => {
+      console.log(res);
+    })
+  }
+
 
 };
 
-AddEventController.$inject = ['$scope'];
+AddEventController.$inject = ['$scope', 'AddService'];
 
 export default AddEventController;
