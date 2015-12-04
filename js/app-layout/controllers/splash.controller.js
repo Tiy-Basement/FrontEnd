@@ -1,6 +1,6 @@
 let SplashController = function($state) {
   
-  console.log('I am using my home controller.');
+  console.log('I am using my splash controller.');
 
   let vm = this;
   // vm.welcome = 'welcome to';
