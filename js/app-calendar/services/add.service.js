@@ -3,19 +3,19 @@ let AddService = function($http, $cookies) {
   function Group (groupObj) {
     this.name = groupObj.name;
     if(groupObj.password) {
-      return this.password = groupObj.password;
+      return (this.password = groupObj.password);
+    } else {
+      return  (this.password = null);
     }
-  };
+  }
 
   let addGroup = function (groupObj, $cookies) {
     let g = new Group(groupObj);
     return $http.post(
       'http://tiy-basement.herokuapp.com/group',
       g,
-      {headers: {
-        'Access-Token': $cookies.get(access_token);
-      }}
-    )
+      {headers: $cookies.get(access_token)}
+    );
   };
 
   function Event (eventObj) {
@@ -31,9 +31,7 @@ let AddService = function($http, $cookies) {
     return $http.post(
       'http://tiy-basement.herokuapp.com/event',
       e,
-      {headers: {
-        'Access-Token': $cookies.get(access_token)
-      }
+      {headers: $cookies.get(access_token)}
     );
   };
 

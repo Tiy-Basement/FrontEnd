@@ -270,8 +270,7 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
     $scope.events.push({
       title: 'Open Sesame',
       start: new Date(y, m, 28),
-      end: new Date(y, m, 29),
-      className: ['openSesame']
+      end: new Date(y, m, 29)
     });
   };
 
