@@ -1,22 +1,26 @@
-<div class="gradient"></div>
+<div class="splashContainer">
 
-<div class="backgroundPic"></div>
+  <div class="gradient"></div>
+  <div class="backgroundPic"></div>
 
-<ul class="buttonUl">
-  <li><button class="login" ng-click="vm.gotoLogin()">login</button></li>
-  <li><button class="signUp" ng-click="vm.gotoSignUp()">sign up</button></li>
-</ul>
+  <div class="bigCircle">
+    <div class="titleText"> {{vm.title}} </div>
+    <div class="welcomeText"> {{vm.welcome}}</div>
+  </div>
 
-<div class="bigCircle">
-  <div class="welcome">welcome to</div>
-  <div class="title"> {{vm.title}} </div>
-  <div class="tagLine"> {{vm.tagLine}}</div>
-</div>
-
-<footer>
-  <ul>
-    <li class="footerLi"><i class="fa fa-twitter"></i>follow us on twitter</li>
-    <li class="footerLi"><i class="fa fa-github"></i>github repo</li>
-    <li class="footerLi" ng-click="vm.gotoHome()"><i class="fa fa-calendar"></i>view group calendar</li>
+  <ul class="buttonUl">
+    <li><button class="login" ng-click="vm.gotoLogin()">login</button></li>
+    <li><button class="signUp" ng-click="vm.gotoSignUp()">sign up</button></li>
   </ul>
-</footer>
+
+  <footer>
+    <ul>
+      <li><i class="fa fa-github"></i><span class="footText"> github</span></li>
+
+      <li ng-click="vm.gotoHome()"><i class="fa fa-calendar"></i><span class="footText"> group calendar</span></li>
+
+      <li><i class="fa fa-twitter"></i><span class="footText">twitter</span></li>
+    </ul>
+  </footer>
+
+</div>

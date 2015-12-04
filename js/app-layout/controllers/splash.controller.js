@@ -3,9 +3,8 @@ let SplashController = function($state) {
   console.log('I am using my home controller.');
 
   let vm = this;
-
+  // vm.welcome = 'welcome to';
   vm.title = 'basement';
-  vm.tagline = 'tagline here';
   vm.gotoLogin = gotoLogin;
   vm.gotoSignUp = gotoSignUp;
   vm.gotoHome = gotoHome;
