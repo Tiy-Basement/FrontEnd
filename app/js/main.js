@@ -84,7 +84,7 @@ var _servicesLoginService2 = _interopRequireDefault(_servicesLoginService);
 
 _angular2['default'].module('app.auth', []).controller('SignupController', _controllersSignupController2['default']).controller('LoginController', _controllersLoginController2['default']).service('SignupService', _servicesSignupService2['default']).service('LoginService', _servicesLoginService2['default']);
 
-},{"./controllers/login.controller":1,"./controllers/signup.controller":2,"./services/login.service":4,"./services/signup.service":5,"angular":24}],4:[function(require,module,exports){
+},{"./controllers/login.controller":1,"./controllers/signup.controller":2,"./services/login.service":4,"./services/signup.service":5,"angular":25}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -323,6 +323,30 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
+var DeleteGroupController = function DeleteGroupController(DeleteService) {
+
+  var vm = this;
+
+  vm.deleteGroup = deleteGroup;
+
+  function deleteGroup(groupObj, password) {
+    DeleteService.deleteGroup(groupObj).then(function (res) {
+      console.log('from controller: deleted group');
+    });
+  }
+};
+
+DeleteGroupController.$inject = ['DeleteService'];
+
+exports['default'] = DeleteGroupController;
+module.exports = exports['default'];
+
+},{}],11:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
 var GroupController = function GroupController($scope) {
 
   console.log('group controller what what');
@@ -333,7 +357,7 @@ GroupController.$inject = ['$scope'];
 exports['default'] = GroupController;
 module.exports = exports['default'];
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -351,7 +375,7 @@ HomeController.$inject = ['$scope'];
 exports['default'] = HomeController;
 module.exports = exports['default'];
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 // require('fullcalendar');
 // require('angular-ui-calendar');
 
@@ -395,11 +419,15 @@ var _controllersAddEventController = require('./controllers/addEvent.controller'
 
 var _controllersAddEventController2 = _interopRequireDefault(_controllersAddEventController);
 
+var _controllersDeleteGroupController = require('./controllers/deleteGroup.controller');
+
+var _controllersDeleteGroupController2 = _interopRequireDefault(_controllersDeleteGroupController);
+
 window.$ = require('jquery');
 
-_angular2['default'].module('app.calendar', ['ui.calendar']).controller('CalendarController', _controllersCalendarController2['default']).controller('HomeController', _controllersHomeController2['default']).controller('GroupController', _controllersGroupController2['default']).controller('AddGroupController', _controllersAddGroupController2['default']).controller('AddMemberController', _controllersAddMemberController2['default']).controller('AddEventController', _controllersAddEventController2['default']);
+_angular2['default'].module('app.calendar', ['ui.calendar']).controller('CalendarController', _controllersCalendarController2['default']).controller('HomeController', _controllersHomeController2['default']).controller('GroupController', _controllersGroupController2['default']).controller('AddGroupController', _controllersAddGroupController2['default']).controller('AddMemberController', _controllersAddMemberController2['default']).controller('AddEventController', _controllersAddEventController2['default']).controller('DeleteGroupController', _controllersDeleteGroupController2['default']);
 
-},{"./controllers/addEvent.controller":6,"./controllers/addGroup.controller":7,"./controllers/addMember.controller":8,"./controllers/calendar.controller":9,"./controllers/group.controller":10,"./controllers/home.controller":11,"angular":24,"angular-ui-calendar":21,"fullcalendar":25,"jquery":26,"moment":27}],13:[function(require,module,exports){
+},{"./controllers/addEvent.controller":6,"./controllers/addGroup.controller":7,"./controllers/addMember.controller":8,"./controllers/calendar.controller":9,"./controllers/deleteGroup.controller":10,"./controllers/group.controller":11,"./controllers/home.controller":12,"angular":25,"angular-ui-calendar":22,"fullcalendar":26,"jquery":27,"moment":28}],14:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -439,6 +467,10 @@ var config = function config($stateProvider, $urlRouterProvider) {
     url: '/add-group',
     controller: 'AddGroupController as vm',
     templateUrl: 'templates/app-calendar/addGroup.tpl.html'
+  }).state('root.deleteGroup', {
+    url: '/delete-group',
+    controller: 'DeleteGroupController as vm',
+    templateUrl: 'templates/app-calendar/deleteGroup.tpl.html'
   }).state('root.addMember', {
     url: '/add-member',
     controller: 'AddMemberController as vm',
@@ -455,7 +487,7 @@ config.$inject = ['$stateProvider', '$urlRouterProvider'];
 exports['default'] = config;
 module.exports = exports['default'];
 
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -473,7 +505,7 @@ exports['default'] = {
 };
 module.exports = exports['default'];
 
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -496,7 +528,7 @@ var _constantsFileserverConstant2 = _interopRequireDefault(_constantsFileserverC
 
 _angular2['default'].module('app.core', ['ui.router', 'ngCookies']).config(_config2['default']).constant('FILESERVER', _constantsFileserverConstant2['default']);
 
-},{"./config":13,"./constants/fileserver.constant":14,"angular":24,"angular-cookies":20,"angular-ui-router":22}],16:[function(require,module,exports){
+},{"./config":14,"./constants/fileserver.constant":15,"angular":25,"angular-cookies":21,"angular-ui-router":23}],17:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -531,7 +563,7 @@ SplashController.$inject = ['$state'];
 exports['default'] = SplashController;
 module.exports = exports['default'];
 
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -546,7 +578,7 @@ var _controllersSplashController2 = _interopRequireDefault(_controllersSplashCon
 
 _angular2['default'].module('app.layout', []).controller('SplashController', _controllersSplashController2['default']);
 
-},{"./controllers/splash.controller":16,"angular":24}],18:[function(require,module,exports){
+},{"./controllers/splash.controller":17,"angular":25}],19:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -565,7 +597,7 @@ require('./app-calendar/index');
 
 _angular2['default'].module('app', ['app.core', 'app.layout', 'app.auth', 'app.calendar']);
 
-},{"./app-auth/index":3,"./app-calendar/index":12,"./app-core/index":15,"./app-layout/index":17,"angular":24}],19:[function(require,module,exports){
+},{"./app-auth/index":3,"./app-calendar/index":13,"./app-core/index":16,"./app-layout/index":18,"angular":25}],20:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -888,11 +920,11 @@ angular.module('ngCookies').provider('$$cookieWriter', function $$CookieWriterPr
 
 })(window, window.angular);
 
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 require('./angular-cookies');
 module.exports = 'ngCookies';
 
-},{"./angular-cookies":19}],21:[function(require,module,exports){
+},{"./angular-cookies":20}],22:[function(require,module,exports){
 /*
 *  AngularJs Fullcalendar Wrapper for the JQuery FullCalendar
 *  API @ http://arshaw.com/fullcalendar/
@@ -1236,7 +1268,7 @@ angular.module('ui.calendar', [])
     };
 }]);
 
-},{}],22:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.15
@@ -5607,7 +5639,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],23:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -34626,11 +34658,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],24:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":23}],25:[function(require,module,exports){
+},{"./angular":24}],26:[function(require,module,exports){
 /*!
  * FullCalendar v2.5.0
  * Docs & License: http://fullcalendar.io/
@@ -46129,7 +46161,7 @@ fcViews.agendaWeek = {
 
 return FC; // export for Node/CommonJS
 });
-},{"jquery":26,"moment":27}],26:[function(require,module,exports){
+},{"jquery":27,"moment":28}],27:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -55341,7 +55373,7 @@ return jQuery;
 
 }));
 
-},{}],27:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 //! moment.js
 //! version : 2.10.6
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -58537,7 +58569,7 @@ return jQuery;
     return _moment;
 
 }));
-},{}]},{},[18])
+},{}]},{},[19])
 
 
 //# sourceMappingURL=main.js.map
