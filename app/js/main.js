@@ -187,12 +187,12 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var AddMemberController = function AddMemberController($scope) {
+var AddMemberController = function AddMemberController($scope, AddService) {
 
   console.log('I am using my Add Member Controller');
 };
 
-AddMemberController.$inject = ['$scope'];
+AddMemberController.$inject = ['$scope', 'AddService'];
 
 exports['default'] = AddMemberController;
 module.exports = exports['default'];
@@ -413,6 +413,7 @@ Object.defineProperty(exports, '__esModule', {
 });
 var AddService = function AddService($http, $cookies) {
 
+  //group constructor
   function Group(groupObj) {
     this.name = groupObj.name;
     if (groupObj.password) {
@@ -421,7 +422,7 @@ var AddService = function AddService($http, $cookies) {
       return this.join_password = null;
     }
   }
-
+  //post group to server
   this.addGroup = function (groupObj) {
     var g = new Group(groupObj);
     var tkn = $cookies.get('Access-Token');
@@ -430,6 +431,7 @@ var AddService = function AddService($http, $cookies) {
       } });
   };
 
+  //event constructor
   function Event(eventObj) {
     this.title = eventObj.title;
     this.start = eventObj.start;
@@ -437,11 +439,24 @@ var AddService = function AddService($http, $cookies) {
     this.location = eventObj.location;
     this.note = eventObj.note;
   }
-
+  //post request to server
   this.addEvent = function (eventObj) {
     var e = new Event(eventObj);
     var tkn = $cookies.get('Access-Token');
     return $http.post('http://tiy-basement.herokuapp.com/event', e, { headers: {
+        'Access-Token': tkn
+      } });
+  };
+  //member constructor
+  function Member(mem) {
+    this.username = mem.username;
+  }
+  //post member to server
+  this.addMember = function (mem) {
+    var e = new Member(mem);
+    var tkn = $cookies.get('Access-Token');
+    return $http.post('http://tiy-basement.herokuapp.com/', //dont forget to add endpoint when ready
+    e, { headers: {
         'Access-Token': tkn
       } });
   };
