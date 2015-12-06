@@ -1,9 +1,12 @@
-let AddMemberController = function($scope) {
+let AddMemberController = function($scope, AddService) {
   
-  console.log('I am using my Add Member Controller');
-
+  $scope.addMember = function(mem) {
+    AddService.addMember(mem).then((res) => {
+      console.log(res);
+    });
+  };
 };
 
-AddMemberController.$inject = ['$scope'];
+AddMemberController.$inject = ['$scope', 'AddService'];
 
 export default AddMemberController;

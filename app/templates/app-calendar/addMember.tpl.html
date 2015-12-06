@@ -1,4 +1,4 @@
-<form>
-  <label>Username<input type="text"></label>
+<form ng-submit="addMember(mem)">
+  <label>Username<input type="text" ng-model="mem.username"></label>
   <button>Add Member</button>
 </form>
