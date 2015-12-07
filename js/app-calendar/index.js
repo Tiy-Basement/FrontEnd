@@ -29,11 +29,7 @@ angular
   .controller('AddGroupController', AddGroupController)
   .controller('AddMemberController', AddMemberController)
   .controller('AddEventController', AddEventController)
-<<<<<<< HEAD
   .service('AddService', AddService)
-=======
   .controller('DeleteGroupController', DeleteGroupController)
   .service('DeleteService', DeleteService)
-  .directive('deleteItem', deleteItem)
->>>>>>> wes
 ;
