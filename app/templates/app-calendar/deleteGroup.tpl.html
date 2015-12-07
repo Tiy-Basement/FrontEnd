@@ -1,0 +1,13 @@
+<div class="deleteGroupContainer">
+
+<span>This allows the group owner to delete a group from existence, which will also delete the group calendar and all events for group members.</span>
+  <form ng-submit="vm.deleteGroup(groupObj)">
+
+    <input type="text" placeholder="enter name of group" ng-model="groupObj.name">
+
+    <input type="password" placeholder="enter password" ng-model="groupObj.password">
+    <button>submit</button>
+
+  </form>
+
+</div>
