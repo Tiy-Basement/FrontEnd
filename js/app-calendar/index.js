@@ -15,6 +15,10 @@ import AddMemberController from './controllers/addMember.controller';
 import AddEventController from './controllers/addEvent.controller';
 import DeleteGroupController from './controllers/deleteGroup.controller';
 
+import DeleteService from './services/delete.service';
+
+import deleteItem from './directives/delete.directive';
+
 angular
   .module('app.calendar', ['ui.calendar'])
   .controller('CalendarController', CalendarController)
@@ -24,4 +28,6 @@ angular
   .controller('AddMemberController', AddMemberController)
   .controller('AddEventController', AddEventController)
   .controller('DeleteGroupController', DeleteGroupController)
+  .service('DeleteService', DeleteService)
+  .directive('deleteItem', deleteItem)
 ;

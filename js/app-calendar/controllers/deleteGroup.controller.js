@@ -4,11 +4,14 @@ let DeleteGroupController = function(DeleteService) {
 
   vm.deleteGroup = deleteGroup;
 
-  function deleteGroup (groupObj, password) {
-    DeleteService.deleteGroup(groupObj).then( (res) => {
-      console.log ('from controller: deleted group');
+
+  function deleteGroup(groupObj) {
+    DeleteService.deleteGroup(groupObj).then((res) => {
+      console.log(res);
     });
   }
+  
+
 };
 
 DeleteGroupController.$inject = ['DeleteService'];
