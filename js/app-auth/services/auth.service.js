@@ -1,0 +1,40 @@
+let AuthService = function($http, FILESERVER, $cookies, $state) {
+  
+  console.log(FILESERVER);
+
+  this.checkAuth = function () {
+    let token = $cookies.get('Access-Token');
+
+    console.log(token);
+
+    FILESERVER.SERVER.CONFIG.headers['access_token'] = token;
+
+    if (token) {
+      console.log(token);
+    } else {
+      $state.go('root2.splash');
+    }
+  };
+
+  // this.sendLogin = function (userObj) {
+  //   return $http.post(FILESERVER.SERVER.URL + 'login', userObj, FILESERVER.SERVER.CONFIG);
+  // };
+
+  // this.loginSuccess = function (res) {
+  //   console.log(res);
+  //   $cookies.put('authToken', res.data.auth_token);
+  //   FILESERVER.SERVER.CONFIG.header['access_token'] = res.data.user.auth_token;
+  //   $state.go('root.home');
+  // };
+
+  this.logout = function () {
+    $cookies.remove('Access-Token');
+    FILESERVER.SERVER.CONFIG.headers['access_token'] = null;
+    $state.go('root2.splash');
+  };
+
+};
+
+AuthService.$inject = ['$http', 'FILESERVER', '$cookies', '$state'];
+
+export default AuthService;
