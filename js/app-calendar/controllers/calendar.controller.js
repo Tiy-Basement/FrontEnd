@@ -108,10 +108,12 @@ let CalendarController = function ($scope,$compile,uiCalendarConfig) {
         center: 'title',
         right: 'today prev,next'
       },
+      defaultView: 'agendaWeek',
+      slotDuration: '01:00:00',
       eventClick: $scope.alertOnEventClick,
       eventDrop: $scope.alertOnDrop,
       eventResize: $scope.alertOnResize,
-      eventRender: $scope.eventRender
+      eventRender: $scope.eventRender,
     }
   };
 

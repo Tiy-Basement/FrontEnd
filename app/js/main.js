@@ -38,8 +38,6 @@ Object.defineProperty(exports, '__esModule', {
 });
 var SignupController = function SignupController(SignupService, $scope, $cookies, $state) {
 
-  console.log('I am using my signup controller!');
-
   // let vm = this;
 
   // vm.addUser = addUser;
@@ -47,7 +45,8 @@ var SignupController = function SignupController(SignupService, $scope, $cookies
   $scope.addUser = function (userObj) {
     SignupService.createUser(userObj).then(function (res) {
       if (res.data.user.access_token) {
-        $cookies.put('Access-Token', res.data.user.access_token).then($state.go('root.home'));
+        $cookies.put('Access-Token', res.data.user.access_token);
+        $state.go('root.home');
       } else {
         alert('There was an error creating your account. Please try again');
         $state.go('root.splash');
@@ -104,14 +103,10 @@ Object.defineProperty(exports, '__esModule', {
 });
 var AuthService = function AuthService($http, FILESERVER, $cookies, $state) {
 
-  console.log(FILESERVER);
-
   this.checkAuth = function () {
     var token = $cookies.get('Access-Token');
 
-    console.log(token);
-
-    FILESERVER.SERVER.CONFIG.headers['access_token'] = token;
+    FILESERVER.SERVER.CONFIG.headers['Access-Token'] = token;
 
     if (token) {
       console.log(token);
@@ -133,7 +128,7 @@ var AuthService = function AuthService($http, FILESERVER, $cookies, $state) {
 
   this.logout = function () {
     $cookies.remove('Access-Token');
-    FILESERVER.SERVER.CONFIG.headers['access_token'] = null;
+    FILESERVER.SERVER.CONFIG.headers['Access-Token'] = null;
     $state.go('root2.splash');
   };
 };
@@ -365,6 +360,8 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
         center: 'title',
         right: 'today prev,next'
       },
+      defaultView: 'agendaWeek',
+      slotDuration: '01:00:00',
       eventClick: $scope.alertOnEventClick,
       eventDrop: $scope.alertOnDrop,
       eventResize: $scope.alertOnResize,
@@ -388,10 +385,7 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var GroupController = function GroupController($scope) {
-
-  console.log('group controller what what');
-};
+var GroupController = function GroupController($scope) {};
 
 GroupController.$inject = ['$scope'];
 
@@ -405,8 +399,6 @@ Object.defineProperty(exports, '__esModule', {
   value: true
 });
 var HomeController = function HomeController($scope, AuthService, $state, $cookies) {
-
-  console.log('Hey, home page!');
 
   $scope.eventSources = [];
 

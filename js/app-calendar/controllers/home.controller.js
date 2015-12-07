@@ -1,6 +1,4 @@
 let HomeController = function($scope, AuthService, $state, $cookies) {
-  
-  console.log('Hey, home page!');
 
   $scope.eventSources = [];
 
