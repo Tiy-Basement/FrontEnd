@@ -14,6 +14,10 @@ let LoginController = function(LoginService, $scope, $cookies, $state) {
     });
   };
 
+  $scope.logmeout = function() {
+    AuthService.logout();
+  };
+
 };
 
 LoginController.$inject = ['LoginService', '$scope', '$cookies', '$state'];
