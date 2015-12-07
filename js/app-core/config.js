@@ -5,6 +5,7 @@ let config = function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('root', {
       abstract: true,
+      controller: 'LogoutController as vm',
       templateUrl: 'templates/app-layout/layout.tpl.html'
     })
     .state('root2', {
@@ -21,6 +22,11 @@ let config = function($stateProvider, $urlRouterProvider) {
       controller: 'LoginController as vm',
       templateUrl: 'templates/app-auth/login.tpl.html'
     })
+    // .state('root.logout', {
+    //   url: '/logout',
+    //   controller: 'LoginController as vm',
+    //   templateUrl: 'templates/app-auth/logout.tpl.html'
+    // })
     .state('root.signup', {
       url: '/signup',
       controller: 'SignupController as vm',
