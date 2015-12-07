@@ -189,7 +189,11 @@ Object.defineProperty(exports, '__esModule', {
 });
 var AddMemberController = function AddMemberController($scope, AddService) {
 
-  console.log('I am using my Add Member Controller');
+  $scope.addMember = function (mem) {
+    AddService.addMember(mem).then(function (res) {
+      console.log(res);
+    });
+  };
 };
 
 AddMemberController.$inject = ['$scope', 'AddService'];
@@ -261,13 +265,13 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
   };
 
   /* add custom event*/
-  $scope.addEvent = function () {
-    $scope.events.push({
-      title: 'Open Sesame',
-      start: new Date(y, m, 28),
-      end: new Date(y, m, 29)
-    });
-  };
+  // $scope.addEvent = function() {
+  //   $scope.events.push({
+  //     title: 'Open Sesame',
+  //     start: new Date(y, m, 28),
+  //     end: new Date(y, m, 29),
+  //   });
+  // };
 
   /* remove event */
   $scope.remove = function (index) {

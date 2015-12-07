@@ -67,13 +67,13 @@ let CalendarController = function ($scope,$compile,uiCalendarConfig) {
   };
 
   /* add custom event*/
-  $scope.addEvent = function() {
-    $scope.events.push({
-      title: 'Open Sesame',
-      start: new Date(y, m, 28),
-      end: new Date(y, m, 29),
-    });
-  };
+  // $scope.addEvent = function() {
+  //   $scope.events.push({
+  //     title: 'Open Sesame',
+  //     start: new Date(y, m, 28),
+  //     end: new Date(y, m, 29),
+  //   });
+  // };
 
   /* remove event */
   $scope.remove = function(index) {
