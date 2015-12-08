@@ -4,7 +4,7 @@ let AuthService = function($http, FILESERVER, $cookies, $state) {
     let token = $cookies.get('Access-Token');
     let id = $cookies.get('UserID');
 
-    FILESERVER.SERVER.CONFIG.headers['access_token'] = token;
+    FILESERVER.SERVER.CONFIG.headers['Access-Token'] = token;
 
     if (token) {
       // console.log(token);

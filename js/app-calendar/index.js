@@ -17,6 +17,8 @@ import AddEventController from './controllers/addEvent.controller';
 import AddService from './services/add.service';
 import UserService from './services/user.service';
 
+import ModalInput from './directives/event.directive';
+
 
 angular
   .module('app.calendar', ['ui.calendar'])
@@ -28,4 +30,5 @@ angular
   .controller('AddEventController', AddEventController)
   .service('AddService', AddService)
   .service('UserService', UserService)
+  .directive('ModalInput', ModalInput)
 ;
