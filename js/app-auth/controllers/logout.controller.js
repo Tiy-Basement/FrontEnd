@@ -1,11 +1,11 @@
-let LogoutController = function($scope, AuthService, $state) {
+// let LogoutController = function($scope, AuthService, $state) {
   
-  $scope.logmeout = function() {
-    AuthService.logout();
-  };
+//   $scope.logmeout = function() {
+//     AuthService.logout();
+//   };
 
-};
+// };
 
-LogoutController.$inject = ['$scope', 'AuthService', '$state'];
+// LogoutController.$inject = ['$scope', 'AuthService', '$state'];
 
-export default LogoutController;
+// export default LogoutController;

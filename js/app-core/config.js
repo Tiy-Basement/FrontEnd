@@ -33,8 +33,13 @@ let config = function($stateProvider, $urlRouterProvider) {
       templateUrl: 'templates/app-auth/signup.tpl.html'
     })
     .state('root.home', {
+      url: '/users/me',
+      controller: 'UserController as vm',
+      templateUrl: 'templates/app-calendar/home.tpl.html'
+    })
+    .state('root.user', {
       url: '/users/:id',
-      controller: 'HomeController as vm',
+      controller: 'UserController as vm',
       templateUrl: 'templates/app-calendar/home.tpl.html'
     })
     .state('root.group', {
@@ -64,3 +69,5 @@ let config = function($stateProvider, $urlRouterProvider) {
 config.$inject = ['$stateProvider', '$urlRouterProvider'];
 
 export default config;
+
+
