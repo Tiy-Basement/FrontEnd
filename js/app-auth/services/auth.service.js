@@ -7,7 +7,7 @@ let AuthService = function($http, FILESERVER, $cookies, $state) {
 
     console.log(token);
 
-    FILESERVER.SERVER.CONFIG.headers['access_token'] = token;
+    FILESERVER.SERVER.CONFIG.headers['Access-Token'] = token;
 
     if (token) {
       console.log(token);
@@ -29,7 +29,7 @@ let AuthService = function($http, FILESERVER, $cookies, $state) {
 
   this.logout = function () {
     $cookies.remove('Access-Token');
-    FILESERVER.SERVER.CONFIG.headers['access_token'] = null;
+    FILESERVER.SERVER.CONFIG.headers['Access-Token'] = null;
     $state.go('root2.splash');
   };
 

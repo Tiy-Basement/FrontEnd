@@ -57,6 +57,11 @@ let config = function($stateProvider, $urlRouterProvider) {
       controller: 'AddMemberController as vm',
       templateUrl: 'templates/app-calendar/addMember.tpl.html'
     })
+     .state('root.user', {
+      url: '/delete-user',
+      controller: 'DeleteUserController as vm',
+      templateUrl: 'templates/app-calendar/delete-user.tpl.html'
+    })
     .state('root.addEvent', {
       url: '/add-event',
       controller: 'AddEventController as vm',
