@@ -35,12 +35,12 @@ let config = function($stateProvider, $urlRouterProvider) {
     .state('root.home', {
       url: '/users/me',
       controller: 'UserController as vm',
-      templateUrl: 'templates/app-calendar/home.tpl.html'
+      templateUrl: 'templates/app-calendar/user.tpl.html'
     })
     .state('root.user', {
       url: '/users/:id',
       controller: 'UserController as vm',
-      templateUrl: 'templates/app-calendar/home.tpl.html'
+      templateUrl: 'templates/app-calendar/user.tpl.html'
     })
     .state('root.group', {
       url: '/group/:id',
