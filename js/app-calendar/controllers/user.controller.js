@@ -1,8 +1,4 @@
-let UserController = function($scope, AuthService, $state, $cookies, $stateParams, FILESERVER, UserService) {
-  
-  var url = FILESERVER.SERVER.URL + 'users/' + $cookies.get('UserID');
-
-  // $http.get(url).
+let UserController = function($scope, AuthService, $state, $cookies, $stateParams, UserService) {
 
   // console.log('Hey, home page!');
 
@@ -26,18 +22,20 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
     });
   }
 
-  // console.log($stateParams); // id is an empty string, until click on home button, then becomes ':id' ==> comes straight from url
+  console.log($stateParams);
+  console.log($cookies.get);
 
-  // activate();
 
-  // function activate () {
-  //   UserService.getUser($stateParams.id).then( (res) => {
-  //     console.log(res.data);
-  //   });
-  // }
+  // HELP FROM TIM
+
+  if ($stateParams) {
+    // use $stateParams.id to access data from back end
+  } else {
+    // use $cookies.get(user_id) to access data from back end
+  }
 
 };
 
-UserController.$inject = ['$scope', 'AuthService', '$state', '$cookies', '$stateParams', 'FILESERVER', 'UserService'];
+UserController.$inject = ['$scope', 'AuthService', '$state', '$cookies', '$stateParams', 'UserService'];
 
 export default UserController;
