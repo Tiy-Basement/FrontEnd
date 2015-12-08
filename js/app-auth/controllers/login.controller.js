@@ -7,7 +7,7 @@ let LoginController = function(LoginService, $scope, $cookies, $state, FILESERVE
       if (res.data.user.access_token) {  
         $cookies.put('Access-Token', res.data.user.access_token);
         $cookies.put('UserID', res.data.user.id);
-        $state.go('root.user', { id: res.data.user.id} );
+        $state.go('root.home', { id: res.data.user.id} );
       } else {
         $state.go('root2.splash');
       }
