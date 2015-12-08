@@ -5,6 +5,7 @@ let DeleteService = function($http, FILESERVER, $cookies, $state) {
   this.deleteGroup = deleteGroup;
   this.deleteUser = deleteUser;
 
+
   function deleteGroup () {
     let token = $cookies.get('Access-Token');
     FILESERVER.SERVER.CONFIG.headers['Access-Token'] = token;
@@ -17,14 +18,12 @@ let DeleteService = function($http, FILESERVER, $cookies, $state) {
     }
   }
 
-
   function deleteUser (){
     let token = $cookies.get('Access-Token');
     FILESERVER.SERVER.CONFIG.headers['Access-Token'] = token;
 
     if(token) {
-      prompt('are you sure');
-      $http.delete(url+'/users/:id');
+      $http.delete(url+'/users', FILESERVER.CONFIG);
     } else {
       $state.go('root2.splash');
     }

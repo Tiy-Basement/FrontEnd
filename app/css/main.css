@@ -8467,9 +8467,6 @@ th.hide-for-touch {
 .fa-percent:before {
   content: ""; }
 
-body {
-  background-color: black; }
-
 .splashContainer {
   width: 100%; }
   .splashContainer .gradient {
@@ -8559,14 +8556,14 @@ body {
       -webkit-text-stroke: 1px grey;
       box-shadow: 10px 10px 50px white; }
 
-.homeContainer .calendar {
+.userContainer .calendar {
   width: 79%;
   display: inline-block;
   vertical-align: top;
   padding: 0;
   margin: 0; }
 
-.homeContainer .sidebar {
+.userContainer .sidebar {
   width: 19%;
   padding: 0;
   margin: 0;

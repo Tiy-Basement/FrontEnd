@@ -33,9 +33,14 @@ let config = function($stateProvider, $urlRouterProvider) {
       templateUrl: 'templates/app-auth/signup.tpl.html'
     })
     .state('root.home', {
+      url: '/users/me',
+      controller: 'UserController as vm',
+      templateUrl: 'templates/app-calendar/user.tpl.html'
+    })
+    .state('root.user', {
       url: '/users/:id',
-      controller: 'HomeController as vm',
-      templateUrl: 'templates/app-calendar/home.tpl.html'
+      controller: 'UserController as vm',
+      templateUrl: 'templates/app-calendar/user.tpl.html'
     })
     .state('root.group', {
       url: '/group/:id',
@@ -47,25 +52,30 @@ let config = function($stateProvider, $urlRouterProvider) {
       controller: 'AddGroupController as vm',
       templateUrl: 'templates/app-calendar/addGroup.tpl.html'
     })
-     .state('root.deleteGroup', {
-      url: '/delete-group',
-      controller: 'DeleteGroupController as vm',
-      templateUrl: 'templates/app-calendar/deleteGroup.tpl.html'
+    .state('root.addEvent', {
+      url: '/add-event',
+      controller: 'AddEventController as vm',
+      templateUrl: 'templates/app-calendar/addEvent.tpl.html'
     })
     .state('root.addMember', {
       url: '/add-member',
       controller: 'AddMemberController as vm',
       templateUrl: 'templates/app-calendar/addMember.tpl.html'
     })
-     .state('root.user', {
-      url: '/delete-user',
-      controller: 'DeleteUserController as vm',
-      templateUrl: 'templates/app-calendar/delete-user.tpl.html'
+     .state('root.deleteGroup', {
+      url: '/delete-group',
+      controller: 'DeleteController as vm',
+      templateUrl: 'templates/app-calendar/deleteGroup.tpl.html'
     })
-    .state('root.addEvent', {
-      url: '/add-event',
-      controller: 'AddEventController as vm',
-      templateUrl: 'templates/app-calendar/addEvent.tpl.html'
+     .state('root.deleteUser', {
+      url: '/delete-user',
+      controller: 'DeleteController as vm',
+      templateUrl: 'templates/app-calendar/deleteUser.tpl.html'
+    })
+    .state('root.deleteEvent', {
+      url: '/delete-event',
+      controller: 'DeleteController as vm',
+      templateUrl: 'templates/app-calendar/deleteEvent.tpl.html'
     })
   ;
 
@@ -74,3 +84,5 @@ let config = function($stateProvider, $urlRouterProvider) {
 config.$inject = ['$stateProvider', '$urlRouterProvider'];
 
 export default config;
+
+
