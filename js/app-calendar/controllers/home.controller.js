@@ -1,12 +1,12 @@
-let HomeController = function($scope, AuthService, $state, $cookies) {
-  
+let HomeController = function($scope, HomeService, AuthService, $state, $cookies) {
+
   console.log('Hey, home page!');
+  
+  let vm = this;
+
+  vm.user = [];
 
   $scope.eventSources = [];
-
-  $scope.logmeout = function() {
-    AuthService.logout();
-  };
 
   let promise = AuthService.checkAuth();
 
@@ -27,6 +27,6 @@ let HomeController = function($scope, AuthService, $state, $cookies) {
 
 };
 
-HomeController.$inject = ['$scope', 'AuthService', '$state', '$cookies'];
+HomeController.$inject = ['$scope', 'HomeService', 'AuthService', '$state', '$cookies'];
 
 export default HomeController;

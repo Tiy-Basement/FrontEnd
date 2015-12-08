@@ -1,26 +1,39 @@
 let HomeService = function($http, FILESERVER, $cookies, $state) {
   
   let url = 'http://tiy-basement.herokuapp.com';
-  this.showUser = showUser;
 
-   function User (userObj) {
+  this.getUser = getUser;
+  this.getGroup = getGroup;
+
+  function User (userObj) {
     this.username = userObj.username;
     this.email = userObj.email;
     this.phone = userObj.phone;
     this.password = userObj.password;
-    this.showUser = userObj.showUser;
   }
 
+  function Group (groupObj) {
+    this.name = groupObj.name;
+    if(groupObj.password) {
+      return (this.join_password = groupObj.password);
+    } else {
+      return  (this.join_password = null);
+    }
+  }
 
-
-  function showUser (userObj) {
+  function getGroup(groupObj) {
     let token = $cookies.get('Access-Token');
-    let u = new User(userObj);
     FILESERVER.SERVER.CONFIG.headers['Access-Token'] = token;
-
     if (token) {
-      console.log(u.username);
-      return  $http.get(url+'/user', FILESERVER.CONFIG );
+      return $http.get(url+'/group', FILESERVER.CONFIG);
+    }
+  }
+
+  function getUser (userObj) {
+    let token = $cookies.get('Access-Token');
+    FILESERVER.SERVER.CONFIG.headers['Access-Token'] = token;
+    if (token) {
+      return  $http.get(url+'/users', FILESERVER.CONFIG );
     } else {
       $state.go('root2.splash');
     }

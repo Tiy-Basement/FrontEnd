@@ -3,6 +3,9 @@
 @import 'foundation';
 @import 'font-awesome';
 
+body{
+  background-color: black;
+}
 
 //calendar
 // .container {
@@ -16,7 +19,7 @@
 // {o_o} I will be your guide~
 
 .splashContainer {
- 
+  width: 100%;
   .gradient {
     bottom: 0;
     position: fixed;
@@ -42,9 +45,6 @@
   .bigCircle {
       height: 360px;
       width: 360px;
-      margin: 0% 35% 50% 34.5%;
-      text-align: center;
-      position: fixed;
       border-radius: 360px;
       background-color: black;
       transition: 1s all ease;
@@ -63,20 +63,8 @@
           font-size: 5.1em;
           color: white;
         }
-       .welcomeText{ // {o_o} welcome is currently commented out in SplashController
-        font-size: .5em;
-        font-family: 'Fjalla One', cursive;
-        padding-top: 100px;
-        padding-left: 100px;
-        color: white;
-        text-align: left;
-        transition: 1s all ease;
-        text-shadow: 1px 1px 5px #8CFF89;
-        }
-        .welcomeText:hover{
-        font-size: .6em;
-        }
       }
+
   .bigCircle:hover{
     width: 350px;
     height: 350px;
@@ -87,19 +75,16 @@
 // {o_o} splash login and signup buttons
   .buttonBox {
     height: 200px;
-    width: 40%;
-    margin: 25% 30% 25% 30%;
+    width: 60%;
+    margin: 5% 20% 10% 20%;
     text-align: center;
     display: inline-block;
     top:0;
-    position: fixed;
     z-index: 1;
   }
   .buttonBox li {
     display: inline-block;
     transition: 1s all ease;
-    padding-right: 35px;
-    padding-top: 30px;
     .login, .signUp {
       font-family: 'Fjalla One';
       width: 200px;
@@ -124,7 +109,6 @@
       box-shadow: 10px 10px 50px #FFF8E9;
     }
     .signUp {
-      border-radius: 200px;
       margin-top:0px;
       font-size: 2.3em;
       transition: .5s all ease;
@@ -168,30 +152,30 @@
     height: 70px;
     width: 100%;
     bottom: 0;
-    padding-bottom: 20px;
-    color: black;
-    text-align: center;
     position: fixed;
+    color: black;
+ 
     z-index: 9999;
     background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     opacity: .9;
-      ul{
-        margin: 0 30% 20% 30%;
-        display: inline-block;
-      }
-      li{
-        font-family: 'Fjalla One';
-        height: 80px;
-        padding: 10px 20px 10px 0;
-        opacity: .8;
+      ul{ 
+        margin: 0% 0 0 0;
+        height: 50px;
+        padding: 0;
         text-align: center;
-        display: inline-block;
-        transition: .3s all ease;
-        border-radius: 20px;
-      }
-      li:hover{
-        font-size:1.7em;
-      }
+        
+        li{
+          font-family: 'Fjalla One';
+          height: 80px;
+          opacity: .8;
+          text-align: center;
+          display: inline-block;
+          transition: .3s all ease;
+          border-radius: 20px;
+        }
+        li:hover{
+          font-size:1.3em;
+        }
       .fa{ //font-awesome icons
         font-size: 2em;
         color: black;
@@ -207,8 +191,8 @@
         opacity: .6;
         border-radius: 20px;
       }
-    }
-
+  }
+}
 // Login page
 // .loginContainer {
 //   margin: 50px;
