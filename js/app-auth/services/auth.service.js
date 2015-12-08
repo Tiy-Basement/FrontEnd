@@ -1,13 +1,13 @@
 let AuthService = function($http, FILESERVER, $cookies, $state) {
-  
 
   this.checkAuth = function () {
     let token = $cookies.get('Access-Token');
+    let id = $cookies.get('UserID');
 
-    FILESERVER.SERVER.CONFIG.headers['Access-Token'] = token;
+    FILESERVER.SERVER.CONFIG.headers['access_token'] = token;
 
     if (token) {
-      console.log(token);
+      // console.log(token);
     } else {
       $state.go('root2.splash');
     }

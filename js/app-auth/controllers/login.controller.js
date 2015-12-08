@@ -1,4 +1,4 @@
-let LoginController = function(LoginService, $scope, $cookies, $state) {
+let LoginController = function(LoginService, $scope, $cookies, $state, FILESERVER, UserService) {
   
   console.log('I am using my login controller!');
 
@@ -6,10 +6,10 @@ let LoginController = function(LoginService, $scope, $cookies, $state) {
     LoginService.reqLogin(userObj).then((res)=> {
       if (res.data.user.access_token) {  
         $cookies.put('Access-Token', res.data.user.access_token);
-        $state.go('root.home');
+        $cookies.put('UserID', res.data.user.id);
+        $state.go('root.home', { id: res.data.user.id} );
       } else {
-        alert('There was an error creating your account. Please try again');
-        $state.go('root.splash');
+        $state.go('root2.splash');
       }
     });
   };
@@ -20,6 +20,8 @@ let LoginController = function(LoginService, $scope, $cookies, $state) {
 
 };
 
-LoginController.$inject = ['LoginService', '$scope', '$cookies', '$state'];
+LoginController.$inject = ['LoginService', '$scope', '$cookies', '$state', 'FILESERVER', 'UserService'];
 
 export default LoginController;
+
+      //   alert('There was an error creating your account. Please try again');
