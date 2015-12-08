@@ -4,7 +4,7 @@ let DeleteService = function($http, $cookies) {
   
   this.deleteGroup = deleteGroup;
 
-
+};
 
 DeleteService.$inject = ['$http', '$cookies'];
 
