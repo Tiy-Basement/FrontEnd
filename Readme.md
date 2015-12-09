@@ -12,6 +12,7 @@ Basement is a web-based application to schedule group events based around indivi
 - jQuery
 - Moment
 
+
 ### Authors
 
 - [Cary](https://github.com/ceduncan1)
@@ -27,3 +28,10 @@ Basement is a web-based application to schedule group events based around indivi
 - [SASS](http://sass-lang.com/)
 - [Mocha](https://mochajs.org/)
 - [Chai](http://chaijs.com/)
+
+
+### [The backend's repo](https://github.com/Tiy-Basement/basement)
+#### Authors:
+
+- [Dan](https://github.com/danodemo)
+- [Don](https://github.com/ddeckard72)
