@@ -4,7 +4,7 @@ let DeleteService = function($http, FILESERVER, $cookies, $state) {
   
   this.deleteGroup = deleteGroup;
   this.deleteUser = deleteUser;
-  this.deleteEvent =deleteEvent;
+  this.deleteEvent = deleteEvent;
 
   function deleteGroup () {
     let token = $cookies.get('Access-Token');

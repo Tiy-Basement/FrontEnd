@@ -19,8 +19,12 @@ import AddService from './services/add.service';
 import UserService from './services/user.service';
 import DeleteService from './services/delete.service';
 
+
 import userName from './directives/user.directive';
 import groupItem from './directives/group.directive';
+
+// import ModalInput from './directives/event.directive';
+
 
 angular
   .module('app.calendar', ['ui.calendar'])
@@ -36,4 +40,5 @@ angular
   .service('UserService', UserService)
   .directive('userName', userName)
   .directive('groupItem', groupItem)
+  // .directive('ModalInput', ModalInput)
 ;

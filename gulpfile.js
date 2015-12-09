@@ -122,10 +122,10 @@ gulp.task('watch', function() {
   watch('./app/index.html', function () {
     gulp.start('hint:html');
   });
-  watch('./js/**/*.js', function () {
-   gulp.start('hint:js');
-   gulp.start('style:js');
-  });
+  // watch('./js/**/*.js', function () {
+  //  gulp.start('hint:js');
+  //  gulp.start('style:js');
+  // });
 });
 
 gulp.task('server', ['default'], function () {
@@ -138,7 +138,7 @@ gulp.task('server', ['default'], function () {
 gulp.task('default', ['sass',
                       'fonts',
                       'normalize',
-                      'lint',
+                      // 'lint',
                       'browserify',
                       'browserify-test']);
 

@@ -1,6 +1,8 @@
+
 let UserController = function($scope, AuthService, $state, $cookies, $stateParams, FILESERVER, UserService) {
   
   let vm = this;
+
 
   
   $scope.eventSources = [];
@@ -23,8 +25,29 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
     });
   }
 
+
+  console.log($stateParams);
+  console.log($cookies.get);
+
+
+  $scope.getGroups = function () {
+    UserService.getGroups().then( (res) => {
+      console.log(res);
+    });
+  };
+
+
+
+  // HELP FROM TIM -- getting calendar data
+
+  if ($stateParams) {
+    // use $stateParams.id to access data from back end
+  } else {
+    // use $cookies.get(user_id) to access data from back end
+  }
+
 };
 
-UserController.$inject = ['$scope', 'AuthService', '$state', '$cookies', '$stateParams', 'FILESERVER', 'UserService'];
+UserController.$inject = ['$scope', 'AuthService', '$state', '$cookies', '$stateParams','FILESERVER','UserService'];
 
 export default UserController;
