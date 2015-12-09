@@ -208,16 +208,17 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var AddEventController = function AddEventController($scope, AddService) {
+var AddEventController = function AddEventController($scope, AddService, $state) {
 
   $scope.addEvent = function (eventObj) {
     AddService.addEvent(eventObj).then(function (res) {
       console.log(res);
+      $state.go('root.home', { id: res.data.event.user_id });
     });
   };
 };
 
-AddEventController.$inject = ['$scope', 'AddService'];
+AddEventController.$inject = ['$scope', 'AddService', '$state'];
 
 exports['default'] = AddEventController;
 module.exports = exports['default'];
@@ -228,18 +229,19 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var AddGroupController = function AddGroupController($scope, AddService) {
+var AddGroupController = function AddGroupController($scope, AddService, $state) {
 
   console.log(AddService.addGroup);
 
   $scope.addGroup = function (groupObj) {
     AddService.addGroup(groupObj).then(function (res) {
       console.log(res);
+      $state.go('root.group', { id: res.data.group.id });
     });
   };
 };
 
-AddGroupController.$inject = ['$scope', 'AddService'];
+AddGroupController.$inject = ['$scope', 'AddService', '$state'];
 
 exports['default'] = AddGroupController;
 module.exports = exports['default'];
@@ -543,7 +545,7 @@ var AddService = function AddService($http, $cookies) {
   this.addEvent = function (eventObj) {
     var e = new Event(eventObj);
     var tkn = $cookies.get('Access-Token');
-    return $http.post('http://tiy-basement.herokuapp.com/event', e, { headers: {
+    return $http.post('http://tiy-basement.herokuapp.com/events', e, { headers: {
         'Access-Token': tkn
       } });
   };
