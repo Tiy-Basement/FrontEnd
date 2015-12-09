@@ -9,7 +9,7 @@ let userName = function (UserService){
 
       template:`
         <div class="userText">
-          Welcome, {{vm.users}}
+          Welcome, {{vm.user.username}}
         </div>
       `,
 

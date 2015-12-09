@@ -1,0 +1,21 @@
+{
+  "name": "browserify-example",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Wesley Aspinall <wra427@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/Tiy-Basement/FrontEnd",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "bootstrap-sass-official#~3.3.6"
+  }
+}

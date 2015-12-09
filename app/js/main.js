@@ -449,21 +449,9 @@ Object.defineProperty(exports, '__esModule', {
 });
 var UserController = function UserController($scope, AuthService, $state, $cookies, $stateParams, FILESERVER, UserService) {
 
-  var url = FILESERVER.SERVER.URL + 'users/' + $cookies.get('UserID');
-
   var vm = this;
-  // $http.get(url).
-  // console.log('Hey, home page!');
 
   $scope.eventSources = [];
-  vm.showUserName = showUserName;
-  showUserName();
-
-  function showUserName(id) {
-    UserService.showUserName($stateParams.id).then(function (res) {
-      vm.users = res.data;
-    });
-  }
 
   $scope.logmeout = function () {
     AuthService.logout();
@@ -482,16 +470,6 @@ var UserController = function UserController($scope, AuthService, $state, $cooki
       }
     });
   }
-
-  // console.log($stateParams); // id is an empty string, until click on home button, then becomes ':id' ==> comes straight from url
-
-  // activate();
-
-  // function activate () {
-  //   UserService.getUser($stateParams.id).then( (res) => {
-  //     console.log(res.data);
-  //   });
-  // }
 };
 
 UserController.$inject = ['$scope', 'AuthService', '$state', '$cookies', '$stateParams', 'FILESERVER', 'UserService'];
@@ -540,7 +518,7 @@ var userName = function userName(UserService) {
       user: '='
     },
 
-    template: '\n        <div class="userText">\n          Welcome, {{vm.users}}\n        </div>\n      ',
+    template: '\n        <div class="userText">\n          Welcome, {{vm.user.username}}\n        </div>\n      ',
 
     controller: 'UserController as vm',
     link: function link(scope, element, attribute) {}
@@ -744,22 +722,7 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var UserService = function UserService($http, FILESERVER) {
-
-  this.showUserName = showUserName;
-
-  function showUserName() {
-    return $http.get(FILESERVER.SERVER.URL + '/users/', FILESERVER.SERVER.CONFIG);
-  }
-
-  function getGroup(groupObj) {
-    var token = $cookies.get('Access-Token');
-    FILESERVER.SERVER.CONFIG.headers['Access-Token'] = token;
-    if (token) {
-      return $http.get(url + '/group', FILESERVER.CONFIG);
-    }
-  }
-};
+var UserService = function UserService($http, FILESERVER) {};
 
 UserService.$inject = ['$http', 'FILESERVER'];
 
@@ -856,7 +819,7 @@ exports['default'] = {
     URL: 'https://tiy-basement.herokuapp.com/',
     CONFIG: {
       headers: {
-        'access_token': undefined
+        'Access_Token': undefined
       }
     }
   }
