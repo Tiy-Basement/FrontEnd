@@ -1,4 +1,4 @@
-let userItem = function (HomeService){
+let userName = function (UserService){
     return {
 
       restrict: 'E',
@@ -9,16 +9,16 @@ let userItem = function (HomeService){
 
       template:`
         <div class="userText">
-          Welcome, {{vm.user.username}}
+          Welcome, {{vm.users}}
         </div>
       `,
 
-      controller: 'HomeController as vm',
+      controller: 'UserController as vm',
       link: function(scope,element,attribute) {
             
       }
     }; 
   };
 
-userItem.$inject = ['HomeService'];
-export default userItem;
+userName.$inject = ['UserService'];
+export default userName;

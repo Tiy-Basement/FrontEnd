@@ -1,7 +1,7 @@
 let GroupController = function($scope) {
+  vm.groups = [];
   
-  console.log('group controller what what');
-
+    
 };
 
 GroupController.$inject = ['$scope'];

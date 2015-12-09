@@ -1,11 +1,19 @@
 let UserService = function($http, FILESERVER) {
   
-  // console.log('User Service');
+  this.showUserName = showUserName;
 
-  function getUser (id) {
-    return $http.get(FILESERVER.SERVER.URL + '/' + id, FILESERVER.SERVER.CONFIG);
+
+  function showUserName () {
+    return $http.get(FILESERVER.SERVER.URL + '/users/', FILESERVER.SERVER.CONFIG);
   }
 
+ function getGroup(groupObj) {
+  let token = $cookies.get('Access-Token');
+  FILESERVER.SERVER.CONFIG.headers['Access-Token'] = token;
+    if (token) {
+      return $http.get(url+'/group', FILESERVER.CONFIG);
+    }
+  }
 };
 
 UserService.$inject = ['$http', 'FILESERVER'];

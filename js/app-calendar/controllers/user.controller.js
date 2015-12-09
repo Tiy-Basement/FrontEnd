@@ -2,11 +2,20 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
   
   var url = FILESERVER.SERVER.URL + 'users/' + $cookies.get('UserID');
 
+  let vm = this;
   // $http.get(url).
-
   // console.log('Hey, home page!');
 
   $scope.eventSources = [];
+  vm.showUserName = showUserName;
+  showUserName();
+
+  function showUserName(id){
+    UserService.showUserName($stateParams.id).then((res) =>{
+      vm.users = res.data;
+    });
+  }
+
 
   $scope.logmeout = function() {
     AuthService.logout();

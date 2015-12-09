@@ -1,5 +1,5 @@
 
-let groupItem = function($state, HomeService) {
+let groupItem = function($state, UserService) {
   
   return {
     restrict: 'E',
@@ -12,13 +12,13 @@ let groupItem = function($state, HomeService) {
         {{vm.group.name}}
       </div>
     `,
-    controller: 'HomeController as vm',
+    controller: 'GroupController as vm',
     link: function (scope, element, attrs) {
-      return HomeService.getGroup();
+
     }
   };
 };
 
-groupItem.$inject = ['$state', 'HomeService'];
+groupItem.$inject = ['$state', 'UserService'];
 
 export default groupItem;

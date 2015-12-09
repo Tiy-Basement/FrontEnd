@@ -4,15 +4,15 @@ let DeleteService = function($http, FILESERVER, $cookies, $state) {
   
   this.deleteGroup = deleteGroup;
   this.deleteUser = deleteUser;
-
+  this.deleteEvent =deleteEvent;
 
   function deleteGroup () {
     let token = $cookies.get('Access-Token');
     FILESERVER.SERVER.CONFIG.headers['Access-Token'] = token;
 
     if (token) {
-      $http.delete(url +'/group', FILESERVER.CONFIG);
-      return $state.go('root.home');
+      return $http.delete(url +'/group', 
+      FILESERVER.CONFIG);
     } else {
       $state.go('root2.splash');
     }
@@ -29,6 +29,17 @@ let DeleteService = function($http, FILESERVER, $cookies, $state) {
     }
   }
 
+
+  function deleteEvent(){
+    let token = $cookies.get('Access-Token');
+    FILESERVER.SERVER.CONFIG.headers['Access-Token'] = token;
+
+    if(token) {
+      alert('you are fucking absolutely everything up');
+    } else {
+      $state.go('root2.splash');
+    }
+  }
 
 };
 

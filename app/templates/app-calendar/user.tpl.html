@@ -5,20 +5,25 @@
     <div  class="span8 calendar" ui-calendar=uiConfig.calendar ng-model="eventSources"></div>
   </div>
   <aside class="sidebar">
-    <div class="myBands">
-      <h5>My Groups</h5>
-      <h7><a href="#/add-group">Add a Group</a></h7> 
-       <h6><a href="#/delete-group">delete group</a></h6>
-        <h6><a href="#/delete-user">delete user</a></h6>
+    <div class="myGroups">
 
-         <user-item>hello: {{user.username}}</user-item>
+      <user-name>{{vm.users}}</user-name>
+      <br>
+      <h7><a href="#/add-group">add a group</a></h7>
+      <h6><a href="#/delete-group">delete group</a></h6>
+
+      <h5>My Groups</h5>
       <ul>
-        <group-item> <group-item>
+        <li><group-item ng-repeat="g in vm.groups" group="g"> <group-item></li>
       </ul>
     </div>
     <div class="myNotes">
       <h5>Upcoming Events</h5>
-      <h7><a href="#/add-event">Add an Event</a></h7>
+
+      <h7><a href="#/delete-event">delete an event</a></h7> 
+      <br>
+
+      <h7><a href="#/add-event">add an event</a></h7>
       <ul>
         <li><a href="">An event note</a></li>
         <li><a href="">An event note</a></li>
