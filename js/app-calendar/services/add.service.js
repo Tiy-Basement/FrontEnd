@@ -35,7 +35,7 @@ let AddService = function($http, $cookies) {
     let e = new Event(eventObj);
     let tkn = $cookies.get('Access-Token');
     return $http.post(
-      'http://tiy-basement.herokuapp.com/event',
+      'http://tiy-basement.herokuapp.com/events',
       e,
       {headers: {
         'Access-Token' : tkn

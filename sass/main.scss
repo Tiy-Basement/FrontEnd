@@ -1,6 +1,6 @@
 // Put any @imports here
 // See Readme for a list of supported ones
-@import 'foundation';
+@import 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap'; 
 @import 'font-awesome';
 
 
@@ -22,7 +22,7 @@
     position: fixed;
     width: 100%;
     height: 100%;
-// {o_o} gradient from colorzilla (http://www.colorzilla.com/gradient-editor/)
+ // {o_o} gradient from colorzilla (http://www.colorzilla.com/gradient-editor/)
     background: -webkit-linear-gradient(top, rgba(0,0,0,0.89) 0%,rgba(0,0,0,0.02) 56%,rgba(0,0,0,0) 57%,rgba(0,0,0,0) 70%,rgba(0,0,0,0) 71%); /* Chrome10-25,Safari5.1-6 */
   }
   .backgroundPic {

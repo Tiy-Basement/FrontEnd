@@ -17,7 +17,7 @@ import AddEventController from './controllers/addEvent.controller';
 import AddService from './services/add.service';
 import UserService from './services/user.service';
 
-import ModalInput from './directives/event.directive';
+// import ModalInput from './directives/event.directive';
 
 
 angular
@@ -30,5 +30,5 @@ angular
   .controller('AddEventController', AddEventController)
   .service('AddService', AddService)
   .service('UserService', UserService)
-  .directive('ModalInput', ModalInput)
+  // .directive('ModalInput', ModalInput)
 ;

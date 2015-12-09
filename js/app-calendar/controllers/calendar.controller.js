@@ -1,4 +1,4 @@
-let CalendarController = function ($scope,$compile,uiCalendarConfig) {
+let CalendarController = function ($scope,$compile,uiCalendarConfig, $cookies) {
 
   var date = new Date();
   var d = date.getDate();
@@ -7,9 +7,14 @@ let CalendarController = function ($scope,$compile,uiCalendarConfig) {
   
   $scope.changeTo = 'Hungarian';
 
+  let tkn = $cookies.get('Access-Token');
+
   /* event source that pulls from google.com */
   $scope.eventSource = {
-    // url: // yyooooo event sources here,
+    url: 'http://tiy-basement.herokuapp.com/user/events',
+    headers: {
+      'Access-Token': tkn
+    },
     //className: 'gcal-event',           // an option!
     currentTimezone: 'America/Atlanta' // an option!
   };
@@ -123,6 +128,6 @@ let CalendarController = function ($scope,$compile,uiCalendarConfig) {
 };
 
 
-CalendarController.$inject = ['$scope', '$compile', 'uiCalendarConfig'];
+CalendarController.$inject = ['$scope', '$compile', 'uiCalendarConfig', '$cookies'];
 
 export default CalendarController;
