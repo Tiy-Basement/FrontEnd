@@ -13,7 +13,7 @@ var LoginController = function LoginController(LoginService, $scope, $cookies, $
       if (res.data.user.access_token) {
         $cookies.put('Access-Token', res.data.user.access_token);
         $cookies.put('UserID', res.data.user.id);
-        $state.go('root.user', { id: res.data.user.id });
+        $state.go('root.home', { id: res.data.user.id });
       } else {
         $state.go('root2.splash');
       }
@@ -638,6 +638,10 @@ var config = function config($stateProvider, $urlRouterProvider) {
     url: '/add-group',
     controller: 'AddGroupController as vm',
     templateUrl: 'templates/app-calendar/addGroup.tpl.html'
+  }).state('root.joinGroup', {
+    url: '/join-group',
+    controller: 'GroupController as vm',
+    templateUrl: 'templates/app-calendar/joinGroup.tpl.html'
   }).state('root.addMember', {
     url: '/add-member',
     controller: 'AddMemberController as vm',

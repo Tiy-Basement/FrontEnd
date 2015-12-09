@@ -52,6 +52,11 @@ let config = function($stateProvider, $urlRouterProvider) {
       controller: 'AddGroupController as vm',
       templateUrl: 'templates/app-calendar/addGroup.tpl.html'
     })
+    .state('root.joinGroup', {
+      url: '/join-group',
+      controller: 'GroupController as vm',
+      templateUrl: 'templates/app-calendar/joinGroup.tpl.html'
+    })
     .state('root.addMember', {
       url: '/add-member',
       controller: 'AddMemberController as vm',
