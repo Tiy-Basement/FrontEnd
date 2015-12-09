@@ -611,7 +611,7 @@ var config = function config($stateProvider, $urlRouterProvider) {
 
   $stateProvider.state('root', {
     abstract: true,
-    // controller: 'LogoutController as vm',
+    // controller: 'NavController as vm',
     templateUrl: 'templates/app-layout/layout.tpl.html'
   }).state('root2', {
     abstract: true,

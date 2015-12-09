@@ -5,7 +5,6 @@ import 'angular-cookies';
 import config from './config';
 import FILESERVER from './constants/fileserver.constant';
 
-
 angular
   .module('app.core', ['ui.router', 'ngCookies'])
   .config(config)
