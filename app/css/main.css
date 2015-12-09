@@ -7896,15 +7896,12 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+.container {
+  width: 100%;
+  padding: 0; }
+
 .splashContainer {
   width: 100%; }
-  .splashContainer .gradient {
-    bottom: 0;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.89) 0%, rgba(0, 0, 0, 0.02) 56%, transparent 57%, transparent 70%, transparent 71%);
-    /* Chrome10-25,Safari5.1-6 */ }
   .splashContainer .backgroundPic {
     background-image: url("https://images.unsplash.com/32/6Icr9fARMmTjTHqTzK8z_DSC_0123.jpg?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=daa627483e622ee4279de1e9e6c48f4f");
     background-size: 100%;
@@ -7912,9 +7909,8 @@ button.close {
     background-repeat: no-repeat;
     width: 100%;
     height: 100%;
-    z-index: -1;
-    top: 0;
     position: fixed;
+    top: 0;
     text-align: center; }
   .splashContainer .bigCircle {
     height: 360px;
@@ -7945,9 +7941,7 @@ button.close {
     width: 60%;
     margin: 5% 20% 10% 20%;
     text-align: center;
-    display: inline-block;
-    top: 0;
-    z-index: 1; }
+    display: inline-block; }
   .splashContainer .buttonBox li {
     display: inline-block;
     transition: 1s all ease; }
@@ -8005,6 +7999,7 @@ footer {
   bottom: 0;
   position: fixed;
   color: black;
+  background-color: white;
   z-index: 9999;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, white 100%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
