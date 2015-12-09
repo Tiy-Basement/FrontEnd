@@ -437,7 +437,13 @@ var UserController = function UserController($scope, AuthService, $state, $cooki
   console.log($stateParams);
   console.log($cookies.get);
 
-  // HELP FROM TIM
+  $scope.getGroups = function () {
+    UserService.getGroups().then(function (res) {
+      console.log(res);
+    });
+  };
+
+  // HELP FROM TIM -- getting calendar data
 
   if ($stateParams) {
     // use $stateParams.id to access data from back end
@@ -581,6 +587,10 @@ var UserService = function UserService($http, FILESERVER) {
 
   function getUser(id) {
     return $http.get(FILESERVER.SERVER.URL + '/' + id, FILESERVER.SERVER.CONFIG);
+  }
+
+  function getGroups() {
+    return $http.get(FILESERVER.SERVER.URL + '/' + 'users/groups', FILESERVER.SERVER.CONFIG);
   }
 };
 

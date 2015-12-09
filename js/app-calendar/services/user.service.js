@@ -6,6 +6,10 @@ let UserService = function($http, FILESERVER) {
     return $http.get(FILESERVER.SERVER.URL + '/' + id, FILESERVER.SERVER.CONFIG);
   }
 
+  function getGroups () {
+    return $http.get(FILESERVER.SERVER.URL + '/' + 'users/groups', FILESERVER.SERVER.CONFIG);
+  }
+
 };
 
 UserService.$inject = ['$http', 'FILESERVER'];

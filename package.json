@@ -41,6 +41,7 @@
     "angular-ui-calendar": "^1.0.2",
     "angular-ui-router": "^0.2.15",
     "bootstrap": "^3.3.6",
+    "bootstrap-sass": "^3.3.6",
     "font-awesome": "^4.4.0",
     "fullcalendar": "^2.5.0",
     "jquery": "^2.1.4",
