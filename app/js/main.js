@@ -401,11 +401,7 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var UserController = function UserController($scope, AuthService, $state, $cookies, $stateParams, FILESERVER, UserService) {
-
-  var url = FILESERVER.SERVER.URL + 'users/' + $cookies.get('UserID');
-
-  // $http.get(url).
+var UserController = function UserController($scope, AuthService, $state, $cookies, $stateParams, UserService) {
 
   // console.log('Hey, home page!');
 
@@ -429,18 +425,19 @@ var UserController = function UserController($scope, AuthService, $state, $cooki
     });
   }
 
-  // console.log($stateParams); // id is an empty string, until click on home button, then becomes ':id' ==> comes straight from url
+  console.log($stateParams);
+  console.log($cookies.get);
 
-  // activate();
+  // HELP FROM TIM
 
-  // function activate () {
-  //   UserService.getUser($stateParams.id).then( (res) => {
-  //     console.log(res.data);
-  //   });
-  // }
+  if ($stateParams) {
+    // use $stateParams.id to access data from back end
+  } else {
+      // use $cookies.get(user_id) to access data from back end
+    }
 };
 
-UserController.$inject = ['$scope', 'AuthService', '$state', '$cookies', '$stateParams', 'FILESERVER', 'UserService'];
+UserController.$inject = ['$scope', 'AuthService', '$state', '$cookies', '$stateParams', 'UserService'];
 
 exports['default'] = UserController;
 module.exports = exports['default'];
