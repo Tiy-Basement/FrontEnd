@@ -202,16 +202,17 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var AddEventController = function AddEventController($scope, AddService) {
+var AddEventController = function AddEventController($scope, AddService, $state) {
 
   $scope.addEvent = function (eventObj) {
     AddService.addEvent(eventObj).then(function (res) {
       console.log(res);
+      $state.go('root.home', { id: res.data.event.user_id });
     });
   };
 };
 
-AddEventController.$inject = ['$scope', 'AddService'];
+AddEventController.$inject = ['$scope', 'AddService', '$state'];
 
 exports['default'] = AddEventController;
 module.exports = exports['default'];
@@ -222,18 +223,19 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var AddGroupController = function AddGroupController($scope, AddService) {
+var AddGroupController = function AddGroupController($scope, AddService, $state) {
 
   console.log(AddService.addGroup);
 
   $scope.addGroup = function (groupObj) {
     AddService.addGroup(groupObj).then(function (res) {
       console.log(res);
+      $state.go('root.group', { id: res.data.group.id });
     });
   };
 };
 
-AddGroupController.$inject = ['$scope', 'AddService'];
+AddGroupController.$inject = ['$scope', 'AddService', '$state'];
 
 exports['default'] = AddGroupController;
 module.exports = exports['default'];
@@ -433,7 +435,13 @@ var UserController = function UserController($scope, AuthService, $state, $cooki
   console.log($stateParams);
   console.log($cookies.get);
 
-  // HELP FROM TIM
+  $scope.getGroups = function () {
+    UserService.getGroups().then(function (res) {
+      console.log(res);
+    });
+  };
+
+  // HELP FROM TIM -- getting calendar data
 
   if ($stateParams) {
     // use $stateParams.id to access data from back end
@@ -581,6 +589,10 @@ var UserService = function UserService($http, FILESERVER) {
   function getUser(id) {
     return $http.get(FILESERVER.SERVER.URL + '/' + id, FILESERVER.SERVER.CONFIG);
   }
+
+  function getGroups() {
+    return $http.get(FILESERVER.SERVER.URL + '/' + 'users/groups', FILESERVER.SERVER.CONFIG);
+  }
 };
 
 UserService.$inject = ['$http', 'FILESERVER'];
@@ -639,6 +651,10 @@ var config = function config($stateProvider, $urlRouterProvider) {
     url: '/add-group',
     controller: 'AddGroupController as vm',
     templateUrl: 'templates/app-calendar/addGroup.tpl.html'
+  }).state('root.joinGroup', {
+    url: '/join-group',
+    controller: 'GroupController as vm',
+    templateUrl: 'templates/app-calendar/joinGroup.tpl.html'
   }).state('root.addMember', {
     url: '/add-member',
     controller: 'AddMemberController as vm',

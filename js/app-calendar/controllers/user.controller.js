@@ -26,7 +26,18 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
   console.log($cookies.get);
 
 
-  // HELP FROM TIM
+  $scope.getGroups = function () {
+    UserService.getGroups().then( (res) => {
+      console.log(res);
+    });
+  };
+
+
+
+
+
+
+  // HELP FROM TIM -- getting calendar data
 
   if ($stateParams) {
     // use $stateParams.id to access data from back end
