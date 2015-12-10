@@ -1,3 +1,4 @@
+
 let AddGroupController = function($scope, AddService, $state) {
 
   console.log(AddService.addGroup);
@@ -10,6 +11,8 @@ let AddGroupController = function($scope, AddService, $state) {
   };
   
 };
+
+
 
 AddGroupController.$inject = ['$scope', 'AddService', '$state'];
 

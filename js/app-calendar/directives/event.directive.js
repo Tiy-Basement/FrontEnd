@@ -1,4 +1,4 @@
-let modalEvent = function() {
+let modalform = function() {
   
   return{ 
 
@@ -25,6 +25,6 @@ let modalEvent = function() {
 
 };
 
-modalEvent.$inject = [''];
+modalform.$inject = [];
 
-export default modalEvent;
+export default modalform;

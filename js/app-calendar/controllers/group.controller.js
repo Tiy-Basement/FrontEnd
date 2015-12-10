@@ -1,4 +1,4 @@
-let GroupController = function($scope, GroupService) {
+let GroupController = function(UserService,$stateParams) {
 
   let vm = this;
 
@@ -14,6 +14,6 @@ let GroupController = function($scope, GroupService) {
 
 };
 
-GroupController.$inject = ['$scope', 'GroupService'];
+GroupController.$inject = ['UserService','$stateParams'];
 
 export default GroupController;

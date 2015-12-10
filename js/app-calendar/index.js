@@ -10,12 +10,16 @@ import GroupController from './controllers/group.controller';
 import AddGroupController from './controllers/addGroup.controller';
 import AddMemberController from './controllers/addMember.controller';
 import AddEventController from './controllers/addEvent.controller';
+import DeleteController from './controllers/delete.controller';
 
 import AddService from './services/add.service';
 import UserService from './services/user.service';
+import DeleteService from './services/delete.service';
 
-// import ModalInput from './directives/event.directive';
-import groupDirective from './directives/group.directive.js';
+import userName from './directives/user.directive';
+import groupItem from './directives/group.directive';
+
+import modalform from './directives/event.directive';
 
 
 angular
@@ -26,8 +30,11 @@ angular
   .controller('AddGroupController', AddGroupController)
   .controller('AddMemberController', AddMemberController)
   .controller('AddEventController', AddEventController)
+  .controller('DeleteController', DeleteController)
   .service('AddService', AddService)
+  .service('DeleteService', DeleteService)
   .service('UserService', UserService)
-  // .directive('ModalInput', ModalInput)
-  .directive('groupDirective', groupDirective)
+  .directive('modalform', modalform)
+  .directive('userName', userName)
+  .directive('groupItem', groupItem)
 ;
