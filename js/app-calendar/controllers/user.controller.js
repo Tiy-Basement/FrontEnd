@@ -32,6 +32,20 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
     });
   };
 
+  // let vm = this;
+
+  this.groups = [];
+
+  this.activate = activate;
+
+  // activate();
+
+  function activate () {
+    UserService.getGroups().then( (res) => {
+      console.log(res);
+      // vm.groups = res.data.results;
+    });
+  }
 
 
 

@@ -454,6 +454,21 @@ var UserController = function UserController($scope, AuthService, $state, $cooki
     });
   };
 
+  // let vm = this;
+
+  this.groups = [];
+
+  this.activate = activate;
+
+  // activate();
+
+  function activate() {
+    UserService.getGroups().then(function (res) {
+      console.log(res);
+      // vm.groups = res.data.results;
+    });
+  }
+
   // HELP FROM TIM -- getting calendar data
 
   if ($stateParams) {
@@ -474,7 +489,7 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var groupItem = function groupItem($state, UserService, $cookies) {
+var groupItem = function groupItem($state, UserService) {
 
   return {
     restrict: 'E',
@@ -486,13 +501,13 @@ var groupItem = function groupItem($state, UserService, $cookies) {
     controller: 'GroupController as vm',
     link: function link(scope, element, attrs) {
       element.on('click', function () {
-        $state.go('root.group', { id: group.group_id });
+        $state.go('root.group', { id: scope.group.group_id });
       });
     }
   };
 };
 
-groupItem.$inject = ['$state', 'UserService', '$cookies'];
+groupItem.$inject = ['$state', 'UserService'];
 
 exports['default'] = groupItem;
 module.exports = exports['default'];
