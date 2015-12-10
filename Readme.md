@@ -4,10 +4,10 @@ Basement is a web-based application to schedule group events based around indivi
 
 
 ### Libraries, frameworks, sub-modules, etc.
-
-- Foundation 
+ 
 - Angular
 - Angular UI-Calendar
+- Bootstrap
 - FullCalendar
 - jQuery
 - Moment
@@ -30,8 +30,8 @@ Basement is a web-based application to schedule group events based around indivi
 - [Chai](http://chaijs.com/)
 
 
-### [The backend's repo](https://github.com/Tiy-Basement/basement)
-#### Authors:
+### [Backend Repo](https://github.com/Tiy-Basement/basement)
+<!-- #### Authors:
 
 - [Dan](https://github.com/danodemo)
-- [Don](https://github.com/ddeckard72)
+- [Don](https://github.com/ddeckard72) -->
