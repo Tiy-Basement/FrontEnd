@@ -410,7 +410,7 @@ var DeleteController = function DeleteController(DeleteService) {
   }
 
   function deleteGroup(id) {
-    DeleteService.deleteGroup(id).then(function (res) {
+    DeleteService.deleteGroup($cookies.get(group_id)).then(function (res) {
       console.log(res);
     });
   }
@@ -431,14 +431,11 @@ module.exports = exports['default'];
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-  value: true
+    value: true
 });
-var GroupController = function GroupController($scope) {
+var GroupController = function GroupController(UserService, $stateParams) {};
 
-  vm.groups = [];
-};
-
-GroupController.$inject = ['$scope'];
+GroupController.$inject = ['UserService', '$stateParams'];
 
 exports['default'] = GroupController;
 module.exports = exports['default'];
@@ -452,9 +449,25 @@ Object.defineProperty(exports, '__esModule', {
 
 var UserController = function UserController($scope, AuthService, $state, $cookies, $stateParams, FILESERVER, UserService) {
 
+  // ASK
+  // WHY ARE THREE REQUESTS SENT
+  // HOW TO GET ID'S FROM USERS AND GROUPS
+
   var vm = this;
 
   $scope.eventSources = [];
+  vm.groups = [];
+
+  activateGroup();
+  function activateGroup(obj) {
+    UserService.getGroups(obj).then(function (res) {
+      vm.groups = res.data.users;
+      console.log(vm.groups);
+    });
+  }
+
+  activateUser();
+  function activateUser() {}
 
   $scope.logmeout = function () {
     AuthService.logout();
@@ -474,14 +487,8 @@ var UserController = function UserController($scope, AuthService, $state, $cooki
     });
   }
 
-  console.log($stateParams);
-  console.log($cookies.get);
-
-  $scope.getGroups = function () {
-    UserService.getGroups().then(function (res) {
-      console.log(res);
-    });
-  };
+  // console.log($stateParams);
+  // console.log($cookies.get);
 
   // HELP FROM TIM -- getting calendar data
 
@@ -498,23 +505,23 @@ exports['default'] = UserController;
 module.exports = exports['default'];
 
 },{}],14:[function(require,module,exports){
+//I SUBSTITUTED THE USER ENDPOINT
+//BC THE GROUP ONE DOESN'T GIVE ME A RESPONSE
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-
 var groupItem = function groupItem($state, UserService) {
 
   return {
     restrict: 'E',
     replace: true,
     scope: {
-      car: '='
+      Group: '='
     },
-    template: '\n      <div>\n        {{vm.group.name}}\n      </div>\n    ',
-    controller: 'GroupController as vm',
-    link: function link(scope, element, attrs) {}
+    template: '\n      <li ng-repeat="G in vm.groups" Group="G">\n        {{G.username}}\n      </li>\n    ',
+    controller: 'UserController as vm'
   };
 };
 
@@ -538,10 +545,9 @@ var userName = function userName(UserService) {
       user: '='
     },
 
-    template: '\n        <div class="userText">\n          Welcome, {{vm.user.username}}\n        </div>\n      ',
+    template: '\n        <div class="userText">\n          Welcome, {{user.username}}\n        </div>\n      ',
 
-    controller: 'UserController as vm',
-    link: function link(scope, element, attribute) {}
+    controller: 'UserController as vm'
   };
 };
 
@@ -745,14 +751,30 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var UserService = function UserService($http, FILESERVER) {
+var UserService = function UserService($http, FILESERVER, $cookies) {
 
+  this.getGroups = getGroups;
+
+  // User Constructor
+  function User(userObj) {
+    this.id = userObj.id;
+  }
+  // getUser Function
+  function getUser(id) {
+    return $http.get(FILESERVER.SERVER.URL + 'users', FILESERVER.SERVER.CONFIG);
+  }
+
+  // Group Constructor
+  function Group(groupObj) {
+    this.username = groupObj.username;
+  }
+  // getGroups Function
   function getGroups() {
-    return $http.get(FILESERVER.SERVER.URL + '/' + 'users/groups', FILESERVER.SERVER.CONFIG);
+    return $http.get(FILESERVER.SERVER.URL + 'users', FILESERVER.SERVER.CONFIG);
   }
 };
 
-UserService.$inject = ['$http', 'FILESERVER'];
+UserService.$inject = ['$http', 'FILESERVER', '$cookies'];
 
 exports['default'] = UserService;
 module.exports = exports['default'];

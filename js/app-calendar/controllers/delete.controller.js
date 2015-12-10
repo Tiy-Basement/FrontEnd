@@ -13,7 +13,7 @@ let DeleteController = function(DeleteService) {
   }
 
   function deleteGroup(id) {
-    DeleteService.deleteGroup(id).then((res) => {
+    DeleteService.deleteGroup($cookies.get(group_id)).then((res) => {
       console.log(res);
     });
   }
