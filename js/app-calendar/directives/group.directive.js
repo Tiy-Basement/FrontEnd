@@ -7,7 +7,7 @@ let groupItem = function($state, UserService) {
       group: '='
     },
     template: `
-      <div class="sideGroup" ng-click="vm.getGroups(group)">
+      <div class="sideGroup" ng-click="vm.clicked(group)">
         <div>{{ group.name }}</div>
       </div>
     `,
