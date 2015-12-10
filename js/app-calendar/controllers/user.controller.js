@@ -22,8 +22,8 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
     });
   }
 
-  console.log($stateParams);
-  console.log($cookies.get);
+  // console.log($stateParams);
+  // console.log($cookies.get);
 
 
   $scope.getGroups = function () {

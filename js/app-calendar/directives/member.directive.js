@@ -7,7 +7,7 @@ let memberItem = function($state, SOMESERVICE) {
       member: '='
     },
     template: `
-      <div class="sideMember" ng-click="vm.clicked(member)">
+      <div class="sideMember">
         <div>{{ member.name }}</div>
       </div>
     `,

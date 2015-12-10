@@ -1,6 +1,3 @@
-// require('fullcalendar');
-// require('angular-ui-calendar');
-
 import angular from 'angular';
 import moment from 'moment';
 window.$ = require('jquery');
@@ -18,6 +15,7 @@ import AddService from './services/add.service';
 import UserService from './services/user.service';
 
 // import ModalInput from './directives/event.directive';
+import groupDirective from './directives/group.directive.js';
 
 
 angular
@@ -31,4 +29,5 @@ angular
   .service('AddService', AddService)
   .service('UserService', UserService)
   // .directive('ModalInput', ModalInput)
+  .directive('groupDirective', groupDirective)
 ;
