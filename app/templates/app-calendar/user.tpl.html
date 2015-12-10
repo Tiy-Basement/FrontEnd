@@ -10,7 +10,7 @@
       <h7><a href="#/add-group">Add a Group</a></h7>
       <br>
       <h7><a href="#/join-group">Join an Existing Group</a></h7>
-      <group-item id="group-{{ $index }}" ng-repeat = "g in vm.groups" group="g"></group-item>
+      <group-item ng-repeat="g in vm.groups" group="g"></group-item>
     </div>
     <div class="myNotes">
       <h5>Upcoming Events</h5>
