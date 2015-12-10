@@ -5,7 +5,7 @@ let UserService = function($http, FILESERVER, $cookies) {
 
   // User Constructor
   function User(userObj){
-    this.id = userObj.id;
+    this.id = userObj.user;
   }
   // getUser Function
   function getUser(id){
