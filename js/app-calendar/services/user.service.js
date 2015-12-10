@@ -22,9 +22,6 @@ let UserService = function($http, FILESERVER, $cookies) {
     return $http.get(FILESERVER.SERVER.URL + 'users/'+ 'groups', FILESERVER.SERVER.CONFIG);
   }
 
-
-
-
 };
 
 UserService.$inject = ['$http', 'FILESERVER','$cookies'];
