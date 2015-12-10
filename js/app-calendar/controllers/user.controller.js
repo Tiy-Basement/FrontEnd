@@ -1,8 +1,29 @@
-let UserController = function($scope, AuthService, $state, $cookies, $stateParams, UserService) {
 
-  // console.log('Hey, home page!');
+let UserController = function($scope, AuthService, $state, $cookies, $stateParams, FILESERVER, UserService) {
+  
+   // ASK
+  // WHY ARE THREE REQUESTS SENT
+ // HOW TO GET ID'S FROM USERS AND GROUPS
+
+  let vm = this;
+
 
   $scope.eventSources = [];
+  vm.groups = [];
+
+  
+  activateGroup();
+  function activateGroup(obj){
+    UserService.getGroups(obj).then((res) => {
+      vm.groups = res.data.users;
+      console.log(vm.groups);
+    });
+  }
+
+  activateUser();
+  function activateUser(){
+
+  }
 
   $scope.logmeout = function() {
     AuthService.logout();
@@ -22,19 +43,12 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
     });
   }
 
-  // console.log($stateParams);
-  // console.log($cookies.get);
-
 
   $scope.getGroups = function () {
     UserService.getGroups().then( (res) => {
       console.log(res);
     });
   };
-
-
-
-
 
 
   // HELP FROM TIM -- getting calendar data
@@ -47,6 +61,6 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
 
 };
 
-UserController.$inject = ['$scope', 'AuthService', '$state', '$cookies', '$stateParams', 'UserService'];
+UserController.$inject = ['$scope','AuthService', '$state', '$cookies', '$stateParams','FILESERVER','UserService'];
 
 export default UserController;

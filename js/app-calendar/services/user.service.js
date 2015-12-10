@@ -1,17 +1,31 @@
-let UserService = function($http, FILESERVER) {
-  
-  // console.log('User Service');
+let UserService = function($http, FILESERVER, $cookies) {
 
-  function getUser (id) {
-    return $http.get(FILESERVER.SERVER.URL + '/' + id, FILESERVER.SERVER.CONFIG);
+  this.getGroups = getGroups;
+ 
+
+  // User Constructor
+  function User(userObj){
+    this.id = userObj.id;
+  }
+  // getUser Function
+  function getUser(id){
+    return $http.get(FILESERVER.SERVER.URL + 'users', FILESERVER.SERVER.CONFIG);
   }
 
-  function getGroups () {
-    return $http.get(FILESERVER.SERVER.URL + '/' + 'users/groups', FILESERVER.SERVER.CONFIG);
+  // Group Constructor
+  function Group (groupObj) {
+    this.username = groupObj.username;
   }
+  // getGroups Function
+  function getGroups() {
+    return $http.get(FILESERVER.SERVER.URL + 'users', FILESERVER.SERVER.CONFIG);
+  }
+
+
+
 
 };
 
-UserService.$inject = ['$http', 'FILESERVER'];
+UserService.$inject = ['$http', 'FILESERVER','$cookies'];
 
 export default UserService;
