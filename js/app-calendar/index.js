@@ -23,7 +23,7 @@ import DeleteService from './services/delete.service';
 import userName from './directives/user.directive';
 import groupItem from './directives/group.directive';
 
-// import ModalInput from './directives/event.directive';
+import modalform from './directives/event.directive';
 
 
 angular
@@ -38,7 +38,7 @@ angular
   .service('AddService', AddService)
   .service('DeleteService', DeleteService)
   .service('UserService', UserService)
+  .directive('modalform', modalform)
   .directive('userName', userName)
   .directive('groupItem', groupItem)
-  // .directive('ModalInput', ModalInput)
 ;
