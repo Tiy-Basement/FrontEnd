@@ -1,11 +1,12 @@
 let UserService = function($http, FILESERVER, $cookies) {
 
   this.getGroups = getGroups;
- 
+  this.getUser = getUser;
 
   // User Constructor
   function User(userObj){
-    this.id = userObj.user;
+    this.user_id = userObj.user_id;
+    this.username= userObj.username;
   }
   // getUser Function
   function getUser(id){
@@ -18,7 +19,7 @@ let UserService = function($http, FILESERVER, $cookies) {
   }
   // getGroups Function
   function getGroups() {
-    return $http.get(FILESERVER.SERVER.URL + 'users', FILESERVER.SERVER.CONFIG);
+    return $http.get(FILESERVER.SERVER.URL + 'users/'+ 'groups', FILESERVER.SERVER.CONFIG);
   }
 
 

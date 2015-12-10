@@ -14,6 +14,11 @@ let groupItem = function($state, UserService) {
       </li>
     `,
     controller: 'UserController as vm',
+    link: function (scope, element, attrs) {
+      element.on('click', function () {
+        $state.go('root.group', {id: scope.G.group_id});
+      });
+    }
   };
 };
 

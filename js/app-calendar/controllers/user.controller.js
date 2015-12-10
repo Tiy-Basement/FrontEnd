@@ -20,12 +20,12 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
     });
   }
 
-  activateUser();
-  function activateUser(obj){
-    UserService.getUser(obj).then((res) => {
-    console.log('fuck'+ res);
-    })
-  }
+  // activateUser();
+  // function activateUser(obj){
+  //   UserService.getUser($stateParams.user_id).then((res) => {
+  //   console.log($stateParams.user_id);
+  //   })
+  // }
 
   $scope.logmeout = function() {
     AuthService.logout();

@@ -466,8 +466,12 @@ var UserController = function UserController($scope, AuthService, $state, $cooki
     });
   }
 
-  activateUser();
-  function activateUser() {}
+  // activateUser();
+  // function activateUser(obj){
+  //   UserService.getUser($stateParams.user_id).then((res) => {
+  //   console.log($stateParams.user_id);
+  //   })
+  // }
 
   $scope.logmeout = function () {
     AuthService.logout();
@@ -521,7 +525,12 @@ var groupItem = function groupItem($state, UserService) {
       Group: '='
     },
     template: '\n      <li ng-repeat="G in vm.groups" Group="G">\n        {{G.username}}\n      </li>\n    ',
-    controller: 'UserController as vm'
+    controller: 'UserController as vm',
+    link: function link(scope, element, attrs) {
+      element.on('click', function () {
+        $state.go('root.group', { id: scope.G.group_id });
+      });
+    }
   };
 };
 
@@ -754,10 +763,12 @@ Object.defineProperty(exports, '__esModule', {
 var UserService = function UserService($http, FILESERVER, $cookies) {
 
   this.getGroups = getGroups;
+  this.getUser = getUser;
 
   // User Constructor
   function User(userObj) {
-    this.id = userObj.id;
+    this.user_id = userObj.user_id;
+    this.username = userObj.username;
   }
   // getUser Function
   function getUser(id) {
@@ -770,7 +781,7 @@ var UserService = function UserService($http, FILESERVER, $cookies) {
   }
   // getGroups Function
   function getGroups() {
-    return $http.get(FILESERVER.SERVER.URL + 'users', FILESERVER.SERVER.CONFIG);
+    return $http.get(FILESERVER.SERVER.URL + 'users/' + 'groups', FILESERVER.SERVER.CONFIG);
   }
 };
 
