@@ -225,7 +225,7 @@ Object.defineProperty(exports, '__esModule', {
 
 var AddGroupController = function AddGroupController($scope, AddService, $state) {
 
-  console.log(AddService.addGroup);
+  // console.log(AddService.addGroup);
 
   $scope.addGroup = function (groupObj) {
     AddService.addGroup(groupObj).then(function (res) {
@@ -275,7 +275,7 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
 
   var tkn = $cookies.get('Access-Token');
   var userId = $cookies.get('UserID');
-  console.log(userId);
+  // console.log(userId);
 
   /* event source that pulls from google.com */
   $scope.eventSource = {

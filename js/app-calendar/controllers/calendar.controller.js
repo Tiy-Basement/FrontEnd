@@ -7,7 +7,7 @@ let CalendarController = function ($scope,$compile,uiCalendarConfig, $cookies, )
   
   let tkn = $cookies.get('Access-Token');
   let userId = $cookies.get('UserID');
-  console.log(userId);
+  // console.log(userId);
 
   /* event source that pulls from google.com */
   $scope.eventSource = {
