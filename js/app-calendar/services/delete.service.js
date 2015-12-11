@@ -1,4 +1,4 @@
-let DeleteService = function($http, FILESERVER, $cookies, $state) {
+let DeleteService = function($http, FILESERVER, $cookies, $state, $stateParams) {
 
   let url = 'http://tiy-basement.herokuapp.com';
   
@@ -6,16 +6,21 @@ let DeleteService = function($http, FILESERVER, $cookies, $state) {
   this.deleteUser = deleteUser;
   this.deleteEvent = deleteEvent;
 
-  function deleteGroup () {
-    let token = $cookies.get('Access-Token');
-    FILESERVER.SERVER.CONFIG.headers['Access-Token'] = token;
+   // Group Constructor
+  function Group (groupObj) {
+    this.id       = groupObj.id;
+    this.username = groupObj.username;
+  }
 
-    if (token) {
-      return $http.delete(url +'/group', 
-      FILESERVER.CONFIG);
-    } else {
-      $state.go('root2.splash');
-    }
+ // let groupId = $cookies.get('groupId');
+ //  console.log(groupId);
+
+
+
+  function deleteGroup () {
+    console.log($stateParams.id);
+    // return $http.delete(url +'group/'+$stateParams.id, 
+    //   FILESERVER.CONFIG);
   }
 
   function deleteUser (){
@@ -43,6 +48,6 @@ let DeleteService = function($http, FILESERVER, $cookies, $state) {
 
 };
 
-DeleteService.$inject = ['$http', 'FILESERVER', '$cookies', '$state'];
+DeleteService.$inject = ['$http', 'FILESERVER', '$cookies', '$state', '$stateParams'];
 
 export default DeleteService;

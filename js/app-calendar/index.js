@@ -10,9 +10,9 @@ import 'fullcalendar';
 import CalendarController from './controllers/calendar.controller';
 import UserController from './controllers/user.controller';
 import GroupController from './controllers/group.controller';
-import AddGroupController from './controllers/addGroup.controller';
-import AddMemberController from './controllers/addMember.controller';
-import AddEventController from './controllers/addEvent.controller';
+import AddGroupController from './controllers/add-controllers/addGroup.controller';
+import AddMemberController from './controllers/add-controllers/addMember.controller';
+import AddEventController from './controllers/add-controllers/addEvent.controller';
 import DeleteController from './controllers/delete.controller';
 
 import AddService from './services/add.service';

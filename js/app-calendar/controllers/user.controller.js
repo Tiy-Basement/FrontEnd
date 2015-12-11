@@ -11,14 +11,14 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
   $scope.eventSources = [];
   vm.groups = [];
 
-  
-  activateGroup();
-  function activateGroup(obj){
-    UserService.getGroups(obj).then((res) => {
-      vm.groups = res.data.users;
-      console.log(vm.groups);
-    });
-  }
+  UserService.getGroups().then((res) => console.log(res));
+
+  // let activateGroup = function (){
+  //   UserService.getGroups().then((res) => {
+  //     console.log(res);
+  //   });
+  // };
+  // activateGroup();
 
   // activateUser();
   // function activateUser(obj){
@@ -45,12 +45,6 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
     });
   }
 
-
-  $scope.getGroups = function () {
-    UserService.getGroups().then( (res) => {
-      console.log(res);
-    });
-  };
 
 
   // HELP FROM TIM -- getting calendar data
