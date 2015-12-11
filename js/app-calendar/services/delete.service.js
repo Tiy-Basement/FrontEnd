@@ -4,46 +4,27 @@ let DeleteService = function($http, FILESERVER, $cookies, $state, $stateParams) 
   
   this.deleteGroup = deleteGroup;
   this.deleteUser = deleteUser;
-  this.deleteEvent = deleteEvent;
 
    // Group Constructor
   function Group (groupObj) {
-    this.id       = groupObj.id;
-    this.username = groupObj.username;
+    this.id = groupObj.id;
   }
 
- // let groupId = $cookies.get('groupId');
- //  console.log(groupId);
+  // Group Constructor
+  function User (userObj) {
+    this.id = userObj.id;
+  }
 
 
-
+  //Delete Group Function
   function deleteGroup () {
-    console.log($stateParams.id);
-    // return $http.delete(url +'group/'+$stateParams.id, 
-    //   FILESERVER.CONFIG);
+   $http.delete(url+'/group/'+$stateParams.id, FILESERVER.SERVER.CONFIG);
   }
-
+  
+  //Delete User Function 
   function deleteUser (){
-    let token = $cookies.get('Access-Token');
-    FILESERVER.SERVER.CONFIG.headers['Access-Token'] = token;
+  $http.delete(url+'/user/'+$stateParams.id, FILESERVER.CONFIG);
 
-    if(token) {
-      $http.delete(url+'/users', FILESERVER.CONFIG);
-    } else {
-      $state.go('root2.splash');
-    }
-  }
-
-
-  function deleteEvent(){
-    let token = $cookies.get('Access-Token');
-    FILESERVER.SERVER.CONFIG.headers['Access-Token'] = token;
-
-    if(token) {
-      alert('you are fucking absolutely everything up');
-    } else {
-      $state.go('root2.splash');
-    }
   }
 
 };

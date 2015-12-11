@@ -1,9 +1,5 @@
 
 let UserController = function($scope, AuthService, $state, $cookies, $stateParams, FILESERVER, UserService) {
-  
-   // ASK
-  // WHY ARE THREE REQUESTS SENT
- // HOW TO GET ID'S FROM USERS AND GROUPS
 
   let vm = this;
 

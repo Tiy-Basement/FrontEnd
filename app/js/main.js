@@ -417,19 +417,18 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var GroupController = function GroupController(DeleteService, $stateParams) {
+var GroupController = function GroupController(DeleteService, $stateParams, $state, $cookies) {
 
   var vm = this;
   vm.deleteGroup = deleteGroup;
 
-  function deleteGroup() {
-    DeleteService.deleteGroup().then(function (res) {
-      console.log(res);
-    });
-  }
+  function deleteGroup(obj) {
+    DeleteService.deleteGroup(obj);
+    $state.go('root.home');
+  };
 };
 
-GroupController.$inject = ['DeleteService', '$stateParams'];
+GroupController.$inject = ['DeleteService', '$stateParams', '$state', '$cookies'];
 
 exports['default'] = GroupController;
 module.exports = exports['default'];
@@ -442,10 +441,6 @@ Object.defineProperty(exports, '__esModule', {
 });
 
 var UserController = function UserController($scope, AuthService, $state, $cookies, $stateParams, FILESERVER, UserService) {
-
-  // ASK
-  // WHY ARE THREE REQUESTS SENT
-  // HOW TO GET ID'S FROM USERS AND GROUPS
 
   var vm = this;
 
@@ -745,43 +740,25 @@ var DeleteService = function DeleteService($http, FILESERVER, $cookies, $state, 
 
   this.deleteGroup = deleteGroup;
   this.deleteUser = deleteUser;
-  this.deleteEvent = deleteEvent;
 
   // Group Constructor
   function Group(groupObj) {
     this.id = groupObj.id;
-    this.username = groupObj.username;
   }
 
-  // let groupId = $cookies.get('groupId');
-  //  console.log(groupId);
+  // Group Constructor
+  function User(userObj) {
+    this.id = userObj.id;
+  }
 
+  //Delete Group Function
   function deleteGroup() {
-    console.log($stateParams.id);
-    // return $http.delete(url +'group/'+$stateParams.id,
-    //   FILESERVER.CONFIG);
+    $http['delete'](url + '/group/' + $stateParams.id, FILESERVER.SERVER.CONFIG);
   }
 
+  //Delete User Function
   function deleteUser() {
-    var token = $cookies.get('Access-Token');
-    FILESERVER.SERVER.CONFIG.headers['Access-Token'] = token;
-
-    if (token) {
-      $http['delete'](url + '/users', FILESERVER.CONFIG);
-    } else {
-      $state.go('root2.splash');
-    }
-  }
-
-  function deleteEvent() {
-    var token = $cookies.get('Access-Token');
-    FILESERVER.SERVER.CONFIG.headers['Access-Token'] = token;
-
-    if (token) {
-      alert('you are fucking absolutely everything up');
-    } else {
-      $state.go('root2.splash');
-    }
+    $http['delete'](url + '/user/' + $stateParams.id, FILESERVER.CONFIG);
   }
 };
 
