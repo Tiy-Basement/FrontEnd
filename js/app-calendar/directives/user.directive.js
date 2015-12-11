@@ -13,7 +13,7 @@ let userName = function (UserService){
         </div>
       `,
 
-      controller: 'UserController as vm',
+      // controller: 'UserController as vm',
     }; 
   };
 

@@ -1,9 +1,5 @@
 
 let UserController = function($scope, AuthService, $state, $cookies, $stateParams, FILESERVER, UserService) {
-  
-   // ASK
-  // WHY ARE THREE REQUESTS SENT
- // HOW TO GET ID'S FROM USERS AND GROUPS
 
   let vm = this;
 
@@ -11,19 +7,21 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
   $scope.eventSources = [];
   vm.groups = [];
 
-  
-  activateGroup();
-  function activateGroup(obj){
-    UserService.getGroups(obj).then((res) => {
-      vm.groups = res.data.users;
-      console.log(vm.groups);
-    });
-  }
+  UserService.getGroups().then((res) => console.log(res));
 
-  activateUser();
-  function activateUser(){
+  // let activateGroup = function (){
+  //   UserService.getGroups().then((res) => {
+  //     console.log(res);
+  //   });
+  // };
+  // activateGroup();
 
-  }
+  // activateUser();
+  // function activateUser(obj){
+  //   UserService.getUser($stateParams.user_id).then((res) => {
+  //   console.log($stateParams.user_id);
+  //   })
+  // }
 
   $scope.logmeout = function() {
     AuthService.logout();
@@ -43,27 +41,27 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
     });
   }
 
-  $scope.getGroups = function () {
-    UserService.getGroups().then( (res) => {
-      console.log(res);
-    });
-  };
 
-  // let vm = this;
+  // $scope.getGroups = function () {
+  //   UserService.getGroups().then( (res) => {
+  //     console.log(res);
+  //   });
+  // };
 
-  this.groups = [];
+  // // let vm = this;
 
-  this.activate = activate;
+  // this.groups = [];
 
-  // activate();
+  // this.activate = activate;
 
-  function activate () {
-    UserService.getGroups().then( (res) => {
-      console.log(res);
-      // vm.groups = res.data.results;
-    });
-  }
+  // // activate();
 
+  // function activate () {
+  //   UserService.getGroups().then( (res) => {
+  //     console.log(res);
+  //     // vm.groups = res.data.results;
+  //   });
+  // }
 
 
 

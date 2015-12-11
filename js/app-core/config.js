@@ -52,7 +52,6 @@ let config = function($stateProvider, $urlRouterProvider) {
       controller: 'AddGroupController as vm',
       templateUrl: 'templates/app-calendar/addGroup.tpl.html'
     })
-
     .state('root.addEvent', {
       url: '/add-event',
       controller: 'AddEventController as vm',

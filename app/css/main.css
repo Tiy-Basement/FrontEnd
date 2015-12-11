@@ -7902,92 +7902,16 @@ button.close {
 
 .splashContainer {
   width: 100%; }
-  .splashContainer .gradient {
-    bottom: 0;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.89) 0%, rgba(0, 0, 0, 0.02) 56%, transparent 57%, transparent 70%, transparent 71%);
-    /* Chrome10-25,Safari5.1-6 */ }
   .splashContainer .backgroundPic {
-    background-image: url("https://images.unsplash.com/32/6Icr9fARMmTjTHqTzK8z_DSC_0123.jpg?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=daa627483e622ee4279de1e9e6c48f4f");
-    background-size: 100%;
-    background-position: cover;
-    background-repeat: no-repeat;
     width: 100%;
-    height: 100%;
-    z-index: -1;
-    top: 0;
+    height: 900px;
+    background-image: url(http://40.media.tumblr.com/cfb040c4a856fb09eb26993ceb35c68d/tumblr_nqnuyep1Hs1tccw0fo4_500.png);
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-color: #626F95;
     position: fixed;
-    text-align: center; }
-  .splashContainer .bigCircle {
-    height: 360px;
-    width: 360px;
-    border-radius: 360px;
-    background-color: black;
-    transition: 1s all ease;
-    box-shadow: 1px 1px 20px white;
-    opacity: .8; }
-    .splashContainer .bigCircle .titleText {
-      font-size: 5em;
-      font-family: 'Fjalla One', cursive;
-      padding-top: 120px;
-      text-align: center;
-      color: white;
-      text-shadow: 1px 1px 10px white;
-      transition: 1s all ease; }
-    .splashContainer .bigCircle .titleText:hover {
-      font-size: 5.1em;
-      color: white; }
-  .splashContainer .bigCircle:hover {
-    width: 350px;
-    height: 350px;
-    border-radius: 360px;
-    box-shadow: 0px 0px 40px white; }
-  .splashContainer .buttonBox {
-    height: 200px;
-    width: 60%;
-    margin: 5% 20% 10% 20%;
-    text-align: center;
-    display: inline-block;
-    top: 0;
-    z-index: 1; }
-  .splashContainer .buttonBox li {
-    display: inline-block;
-    transition: 1s all ease; }
-    .splashContainer .buttonBox li .login, .splashContainer .buttonBox li .signUp {
-      font-family: 'Fjalla One';
-      width: 200px;
-      height: 200px;
-      border-radius: 200px;
-      background-color: white;
-      color: black;
-      opacity: .7;
-      transition: 1s all ease;
-      font-size: 2.3em; }
-    .splashContainer .buttonBox li .login:hover {
-      font-size: 1.7em;
-      width: 190px;
-      height: 190px;
-      text-align: center;
-      background: #FBF4FF;
-      color: black;
-      opacity: .9;
-      -webkit-text-stroke: 1px grey;
-      text-shadow: 1px 1px 20px white;
-      box-shadow: 10px 10px 50px #FFF8E9; }
-    .splashContainer .buttonBox li .signUp {
-      margin-top: 0px;
-      font-size: 2.3em;
-      transition: .5s all ease; }
-    .splashContainer .buttonBox li .signUp:hover {
-      width: 190px;
-      height: 190px;
-      font-size: 2em;
-      background: #FBF4FF;
-      opacity: .9;
-      -webkit-text-stroke: 1px grey;
-      box-shadow: 10px 10px 50px white; }
+    top: 0px;
+    z-index: -1; }
 
 .userContainer .calendar {
   width: 79%;
@@ -8004,41 +7928,26 @@ button.close {
   text-align: left; }
 
 footer {
-  height: 70px;
+  height: 200px;
   width: 100%;
   bottom: 0;
+  text-align: center;
   position: fixed;
-  color: black;
+  color: #2B3C4A;
   z-index: 9999;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, white 100%);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  opacity: .9; }
+  background: -webkit-linear-gradient(top, transparent -1%, transparent 0%, rgba(0, 0, 0, 0.23) 100%); }
   footer ul {
-    margin: 0% 0 0 0;
-    height: 50px;
-    padding: 0;
-    text-align: center; }
+    margin: 0;
+    padding-bottom: 10px;
+    text-align: center;
+    display: inline-block; }
     footer ul li {
       font-family: 'Fjalla One';
-      height: 80px;
       opacity: .8;
-      text-align: center;
-      display: inline-block;
-      transition: .3s all ease;
-      border-radius: 20px; }
-    footer ul li:hover {
-      font-size: 1.3em; }
-    footer ul .fa {
-      font-size: 2em;
-      color: black;
-      transition: .4s all ease;
-      opacity: .9; }
-    footer ul .footText {
-      text-decoration: italic;
-      font-size: 1.1em;
-      transition: 1s all ease; }
-    footer ul .footText:hover {
-      opacity: .6;
-      border-radius: 20px; }
+      display: inline-block; }
+      footer ul li .fa, footer ul li span, footer ul li button {
+        transition: .3s all ease; }
+      footer ul li span:hover, footer ul li .fa:hover, footer ul li button:hover {
+        text-shadow: 1px 1px 1px white; }
 
 /*# sourceMappingURL=main.css.map */
