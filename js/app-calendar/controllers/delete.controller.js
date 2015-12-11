@@ -1,4 +1,4 @@
-let DeleteController = function(DeleteService) {
+let DeleteController = function($cookies, DeleteService) {
   
   let vm = this;
 
@@ -12,8 +12,8 @@ let DeleteController = function(DeleteService) {
     });
   }
 
-  function deleteGroup(id) {
-    DeleteService.deleteGroup($cookies.get(group_id)).then((res) => {
+  function deleteGroup(blah) {
+    DeleteService.deleteGroup(blah).then((res) => {
       console.log(res);
     });
   }
