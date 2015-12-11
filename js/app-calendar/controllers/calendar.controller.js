@@ -1,4 +1,4 @@
-let CalendarController = function ($scope,$compile,uiCalendarConfig, $cookies, ) {
+let CalendarController = function ($scope, $compile, uiCalendarConfig, $cookies, $http) {
 
   var date = new Date();
   var d = date.getDate();
@@ -7,17 +7,43 @@ let CalendarController = function ($scope,$compile,uiCalendarConfig, $cookies, )
   
   let tkn = $cookies.get('Access-Token');
   let userId = $cookies.get('UserID');
-  console.log(userId);
 
-  /* event source that pulls from google.com */
-  $scope.eventSource = {
-    url: 'http://tiy-basement.herokuapp.com/user/'+ userId +'/events',
-    data: null,
-    headers: {
+  $scope.events = [];
+
+  $scope.eventSources = [ $scope.events ];
+
+  
+  $http.get(
+    'http://tiy-basement.herokuapp.com/user/'+ userId + '/events',
+    {headers: {
       'Access-Token': tkn
-    },
-    currentTimezone: 'America/Atlanta'
-  };
+    }}
+  ).then( (res) => {
+    // trying to push the response into the event array 
+    // so the calendar can read it
+    angular.copy(res.data, $scope.events);
+
+    // console.log($scope.eventSources);
+    // angular.forEach(res.data, (event) => {
+    //   console.log(event);
+    //   $scope.events.push(event);
+    //   console.log($scope.events);
+    // });
+
+
+    // $scope.events.push({
+    //     title  : 'event1',
+    //     start  : '2015-12-01'
+    // });
+
+    // console.log($scope.events);
+
+
+    // console.log('jd', $scope.events);
+
+
+  });
+
 
   /* event source that calls a function on every view switch */
   $scope.eventsF = function (start, end, timezone, callback) {
@@ -32,14 +58,17 @@ let CalendarController = function ($scope,$compile,uiCalendarConfig, $cookies, )
   $scope.alertOnEventClick = function( date, jsEvent, view){
     $scope.alertMessage = (date.title + ' was clicked ');
   };
+
   /* alert on Drop */
   $scope.alertOnDrop = function(event, delta, revertFunc, jsEvent, ui, view){
     $scope.alertMessage = ('Event Droped to make dayDelta ' + delta);
   };
+
   /* alert on Resize */
   $scope.alertOnResize = function(event, delta, revertFunc, jsEvent, ui, view ){
     $scope.alertMessage = ('Event Resized to make dayDelta ' + delta);
   };
+
   /* add and removes an event source of choice */
   $scope.addRemoveEventSource = function(sources,source) {
     var canAdd = 0;
@@ -89,7 +118,6 @@ let CalendarController = function ($scope,$compile,uiCalendarConfig, $cookies, )
         right: 'today prev,next'
       },
       defaultView: 'agendaWeek',
-      slotDuration: '01:00:00',
       eventClick: $scope.alertOnEventClick,
       eventDrop: $scope.alertOnDrop,
       eventResize: $scope.alertOnResize,
@@ -98,10 +126,11 @@ let CalendarController = function ($scope,$compile,uiCalendarConfig, $cookies, )
   };
 
   /* event sources array*/
-  $scope.eventSources = [$scope.eventSource, $scope.eventsF];
+  // $scope.eventSources = [$scope.events];
+  // console.log($scope.eventSources)
 };
 
 
-CalendarController.$inject = ['$scope', '$compile', 'uiCalendarConfig', '$cookies'];
+CalendarController.$inject = ['$scope', '$compile', 'uiCalendarConfig', '$cookies', '$http'];
 
 export default CalendarController;
