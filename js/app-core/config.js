@@ -52,6 +52,11 @@ let config = function($stateProvider, $urlRouterProvider) {
       controller: 'AddGroupController as vm',
       templateUrl: 'templates/app-calendar/addGroup.tpl.html'
     })
+    .state('root.editGroup', {
+      url: '/edit-group',
+      controller: 'GroupController as vm',
+      templateUrl: 'templates/app-calendar/editGroup.tpl.html'
+    })
     .state('root.addEvent', {
       url: '/add-event',
       controller: 'AddEventController as vm',
@@ -67,11 +72,11 @@ let config = function($stateProvider, $urlRouterProvider) {
       controller: 'AddMemberController as vm',
       templateUrl: 'templates/app-calendar/addMember.tpl.html'
     })
-     .state('root.deleteGroup', {
-      url: '/delete-group',
-      controller: 'DeleteController as vm',
-      templateUrl: 'templates/app-calendar/deleteGroup.tpl.html'
-    })
+    //  .state('root.deleteGroup', {
+    //   url: '/delete-group',
+    //   controller: 'DeleteController as vm',
+    //   templateUrl: 'templates/app-calendar/deleteGroup.tpl.html'
+    // })
      .state('root.deleteUser', {
       url: '/delete-user',
       controller: 'DeleteController as vm',
