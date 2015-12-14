@@ -1,9 +1,11 @@
 let GroupController = function(DeleteService, $stateParams, $state, $cookies, UserService, EditService) {
 
+  // console.log($stateParams);
+
   let vm = this;
 
   vm.deleteGroup = deleteGroup;
-  // vm.editGroup = editGroup;
+  vm.editGroup = editGroup;
 
   
   
@@ -11,15 +13,15 @@ let GroupController = function(DeleteService, $stateParams, $state, $cookies, Us
   function deleteGroup(obj) {
       DeleteService.deleteGroup(obj);
       $state.go('root.home');
-    };
+  };
 
-  // function editGroup(obj) {
-  //   // console.log('editing the group');
-  //   EditService.editGroup(obj).then( (res) => {
-  //     console.log(res);
-  //   });
-  //   // $state.go('root.group', )
-  // }
+  function editGroup (groupObj) {
+    // console.log('editing the group');
+    EditService.editGroup(groupObj).then( (res) => {
+      console.log(res);
+      // $state.go('root.group', { id: res.data.id});
+    });
+  }
 
 
 

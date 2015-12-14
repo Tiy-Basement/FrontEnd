@@ -405,10 +405,12 @@ Object.defineProperty(exports, '__esModule', {
 });
 var GroupController = function GroupController(DeleteService, $stateParams, $state, $cookies, UserService, EditService) {
 
+  // console.log($stateParams);
+
   var vm = this;
 
   vm.deleteGroup = deleteGroup;
-  // vm.editGroup = editGroup;
+  vm.editGroup = editGroup;
 
   //deleteGroup Function
   function deleteGroup(obj) {
@@ -416,13 +418,13 @@ var GroupController = function GroupController(DeleteService, $stateParams, $sta
     $state.go('root.home');
   };
 
-  // function editGroup(obj) {
-  //   // console.log('editing the group');
-  //   EditService.editGroup(obj).then( (res) => {
-  //     console.log(res);
-  //   });
-  //   // $state.go('root.group', )
-  // }
+  function editGroup(groupObj) {
+    // console.log('editing the group');
+    EditService.editGroup(groupObj).then(function (res) {
+      console.log(res);
+      // $state.go('root.group', { id: res.data.id});
+    });
+  }
 
   // vm.groups = [];
 
@@ -787,20 +789,42 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var EditService = function EditService($http, $cookies) {
+var EditService = function EditService($http, $cookies, $stateParams, FILESERVER) {
 
-  console.log('edit service');
+  // console.log('edit service');
 
-  this.editGroup = function (groupObj) {
+  // console.log($stateParams.id);
+
+  var tkn = $cookies.get('Access-Token');
+  // console.log(tkn);
+
+  var url = FILESERVER.SERVER.URL + 'group/' + $stateParams.id;
+  // console.log(url);
+
+  // let url2 = FILESERVER.SERVER.URL + 'users/info';
+  // $http.get(url2, {headers: {'Access-Token': tkn}});
+
+  //group constructor
+  function Group(groupObj) {
+    this.name = groupObj.name;
+    this.password = groupObj.password;
+    this.id = groupObj.id;
+  }
+
+  var id = $stateParams.id;
+  console.log(id);
+
+  function editGroup(groupObj) {
     var g = new Group(groupObj);
     var tkn = $cookies.get('Access-Token');
-    return $http.put('http://tiy-basement.herokuapp.com/group/:id', g, { headers: {
+    console.log(tkn);
+    return $http.put(url, g, { headers: {
         'Access-Token': tkn
       } });
   };
 };
 
-EditService.$inject = ['$http', '$cookies'];
+EditService.$inject = ['$http', '$cookies', '$stateParams', 'FILESERVER'];
 
 exports['default'] = EditService;
 module.exports = exports['default'];
@@ -820,7 +844,7 @@ var UserService = function UserService($http, FILESERVER, $cookies) {
   }
 
   var userId = $cookies.get('UserID');
-  console.log(userId);
+  // console.log(userId);
 
   var token = $cookies.get('Access-Token');
 
@@ -887,7 +911,7 @@ var config = function config($stateProvider, $urlRouterProvider) {
     controller: 'AddGroupController as vm',
     templateUrl: 'templates/app-calendar/addGroup.tpl.html'
   }).state('root.editGroup', {
-    url: '/edit-group',
+    url: '/edit-group/:id',
     controller: 'GroupController as vm',
     templateUrl: 'templates/app-calendar/editGroup.tpl.html'
   }).state('root.addEvent', {

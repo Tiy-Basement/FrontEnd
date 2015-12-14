@@ -53,7 +53,7 @@ let config = function($stateProvider, $urlRouterProvider) {
       templateUrl: 'templates/app-calendar/addGroup.tpl.html'
     })
     .state('root.editGroup', {
-      url: '/edit-group',
+      url: '/edit-group/:id',
       controller: 'GroupController as vm',
       templateUrl: 'templates/app-calendar/editGroup.tpl.html'
     })
