@@ -1,5 +1,6 @@
+
 let AddService = function($http, $cookies, FILESERVER, $stateParams) {
-  
+
   // let this = vm;
 
   this.joinGroup = joinGroup;
@@ -50,6 +51,7 @@ let AddService = function($http, $cookies, FILESERVER, $stateParams) {
     this.location = eventObj.location;
     this.note = eventObj.note;
   }
+
   //post request to server
   this.addEvent = function (eventObj) {
     let e = new Event(eventObj);
@@ -62,6 +64,17 @@ let AddService = function($http, $cookies, FILESERVER, $stateParams) {
       }} 
     );
   };
+
+  this.addGroupEvent = function(eventObj){
+    let e = new Event(eventObj);
+    let tkn = $cookies.get('Access-Token');
+    return $http.post(
+      'http://tiy-basement.herokuapp.com/group/' + $stateParams.id + '/events',
+      e,
+      {headers:{'Access-Token': tkn}}
+    );
+  };
+
   //member constructor
   function Member(mem) {
     this.username = mem.username;

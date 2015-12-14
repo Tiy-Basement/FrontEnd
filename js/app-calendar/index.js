@@ -11,6 +11,7 @@ import AddGroupController from './controllers/add-controllers/addGroup.controlle
 import AddMemberController from './controllers/add-controllers/addMember.controller';
 import AddEventController from './controllers/add-controllers/addEvent.controller';
 import DeleteController from './controllers/delete.controller';
+import GroupEventController from './controllers/add-controllers/addGroupEvent.controller.js';
 
 import AddService from './services/add.service';
 import DeleteService from './services/delete.service';
@@ -31,6 +32,7 @@ angular
   .controller('AddGroupController', AddGroupController)
   .controller('AddMemberController', AddMemberController)
   .controller('AddEventController', AddEventController)
+  .controller('GroupEventController', GroupEventController)
   .controller('DeleteController', DeleteController)
   .service('AddService', AddService)
   .service('DeleteService', DeleteService)

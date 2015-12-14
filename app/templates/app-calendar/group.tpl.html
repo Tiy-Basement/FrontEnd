@@ -1,6 +1,6 @@
 <div class="homeContainer">
   <div class="calendar" ng-controller="CalendarController">
-    <div  class="span8 calendar" ui-calendar=uiConfig.calendar ng-model="eventSources"></div>
+    <div  class="span8 calendar" ui-calendar='uiConfig.calendar' ng-model="groupSource"></div>
   </div>
   <aside class="sidebar">
     <form ng-submit="vm.deleteGroup()">
@@ -20,6 +20,7 @@
       <button ng-click="deleteGroup()"><h6>Delete Group</h6></button>
     </div>
     <div class="Notes">
+      <button ng-controller="GroupController" ng-click="routeToAdd()">Add Group Event</button>
       <h5>Upcoming Events</h5>
       <h6><a href="#/add-event">Add a Group Event</a></h6>
       <h6><a href="#/delete-event">Delete a Group Event</a></h6>

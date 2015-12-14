@@ -1,4 +1,4 @@
-let CalendarController = function ($scope, $compile, uiCalendarConfig, $cookies, $http) {
+let CalendarController = function ($scope, $compile, uiCalendarConfig, $cookies, $http, $stateParams) {
 
   var date = new Date();
   var d = date.getDate();
@@ -9,14 +9,27 @@ let CalendarController = function ($scope, $compile, uiCalendarConfig, $cookies,
   let userId = $cookies.get('UserID');
 
 
-  $scope.eventSource = {
+
+  // gets user events for home calendar
+  $scope.myEvents = {
     url: 'http://tiy-basement.herokuapp.com/user/'+ userId + '/events',
+    headers: {
+      'Access-Token': tkn
+    },
+    color: '#7D90C3',
+  };
+
+  //gets events for the group calendar
+  $scope.groupEvents = {
+    url: 'http://tiy-basement.herokuapp.com/group/' + $stateParams.id + '/events',  
     headers: {
       'Access-Token': tkn
     },
   };
   
-  $scope.eventSources = [ $scope.eventSource ];
+  $scope.eventSources = [ $scope.myEvents ];
+
+  $scope.groupSource = [ $scope.groupEvents ];
 
 
   /* event source that calls a function on every view switch */
@@ -98,6 +111,6 @@ let CalendarController = function ($scope, $compile, uiCalendarConfig, $cookies,
 };
 
 
-CalendarController.$inject = ['$scope', '$compile', 'uiCalendarConfig', '$cookies', '$http'];
+CalendarController.$inject = ['$scope', '$compile', 'uiCalendarConfig', '$cookies', '$http', '$stateParams'];
 
 export default CalendarController;

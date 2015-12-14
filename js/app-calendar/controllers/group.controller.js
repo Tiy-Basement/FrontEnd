@@ -1,6 +1,5 @@
-let GroupController = function(DeleteService, $stateParams, $state, $cookies, UserService, EditService, AddService) {
 
-  // console.log($stateParams);
+let GroupController = function(DeleteService, $stateParams, $state, $cookies, UserService, EditService, AddService, $scope) {
 
   let vm = this;
 
@@ -11,7 +10,12 @@ let GroupController = function(DeleteService, $stateParams, $state, $cookies, Us
   vm.toGroupEdit = toGroupEdit;
 
   let id = $stateParams.id;
- 
+
+  //routes to add group event page
+  $scope.routeToAdd = function () {
+    $state.go('root.addGroupEvent', {id: $stateParams.id});
+  };
+  
   // edit group
   function editGroup (groupObj) {
     console.log('editing the group');
@@ -26,6 +30,7 @@ let GroupController = function(DeleteService, $stateParams, $state, $cookies, Us
     DeleteService.deleteGroup(obj);
     $state.go('root.home');
   };
+
 
 
   // join an existing group
@@ -53,20 +58,8 @@ let GroupController = function(DeleteService, $stateParams, $state, $cookies, Us
     $state.go('root.editGroup', { id: $stateParams.id })
   }
 
-
-
-  // vm.groups = [];
-
-  // activate();
-
-  // function activate () {
-  //   UserService.getGroups().then( (res) => {
-  //     vm.groups = res.data.results;
-  //   });
-  // }
-
 };
 
-GroupController.$inject = ['DeleteService','$stateParams','$state', '$cookies', 'UserService', 'EditService', 'AddService'];
+GroupController.$inject = ['DeleteService','$stateParams','$state', '$cookies', 'UserService', 'EditService', 'AddService', '$scope'];
 
 export default GroupController;
