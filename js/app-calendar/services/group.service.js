@@ -1,4 +1,4 @@
-let GroupService = function($http, FILESERVER, $cookies) {
+let GroupService = function($http, FILESERVER, $cookies, $stateParams) {
   
 
    // Group Constructor
@@ -11,13 +11,14 @@ let GroupService = function($http, FILESERVER, $cookies) {
   console.log(userId);
 
   let token = $cookies.get('Access-Token');
+  console.log($stateParams.id);
 
   this.getMembers = function (){
-    console.log('hello');
+    return $http.get(FILESERVER.SERVER.URL+'group/'+$stateParams.id+'/members', {headers:{'Access-Token':token}})
   }
 
 };
 
-GroupService.$inject = ['$http','FILESERVER', '$cookies'];
+GroupService.$inject = ['$http','FILESERVER', '$cookies', '$stateParams'];
 
 export default GroupService;

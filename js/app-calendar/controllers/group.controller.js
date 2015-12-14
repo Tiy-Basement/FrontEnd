@@ -10,10 +10,12 @@ let GroupController = function(GroupService, DeleteService, $stateParams, $state
       $state.go('root.home');
     };
 
-  //getMembers
+  //getMembers Function 
+  getMembers();
   function getMembers(obj){
     GroupService.getMembers(obj).then((res) => {
       console.log(res); 
+      vm.members = [];
     })
   }
 

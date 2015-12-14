@@ -12,7 +12,7 @@
     <div class="members">
       <h5>Members</h5>
       <ul>
-        <li><a href=""></a></li>
+        <li ng-repeat='member in vm.members'><a href="">{{member.name}}</a></li>
       </ul>
       <h7><a href="#/add-member">Add a Member</a></h7>
     </div>

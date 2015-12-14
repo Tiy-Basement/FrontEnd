@@ -415,10 +415,12 @@ var GroupController = function GroupController(GroupService, DeleteService, $sta
     $state.go('root.home');
   };
 
-  //getMembers
+  //getMembers Function
+  getMembers();
   function getMembers(obj) {
     GroupService.getMembers(obj).then(function (res) {
       console.log(res);
+      vm.members = [];
     });
   }
 };
@@ -764,7 +766,7 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var GroupService = function GroupService($http, FILESERVER, $cookies) {
+var GroupService = function GroupService($http, FILESERVER, $cookies, $stateParams) {
 
   // Group Constructor
   function Group(groupObj) {
@@ -776,13 +778,14 @@ var GroupService = function GroupService($http, FILESERVER, $cookies) {
   console.log(userId);
 
   var token = $cookies.get('Access-Token');
+  console.log($stateParams.id);
 
   this.getMembers = function () {
-    console.log('hello');
+    return $http.get(FILESERVER.SERVER.URL + 'group/' + $stateParams.id + '/members', { headers: { 'Access-Token': token } });
   };
 };
 
-GroupService.$inject = ['$http', 'FILESERVER', '$cookies'];
+GroupService.$inject = ['$http', 'FILESERVER', '$cookies', '$stateParams'];
 
 exports['default'] = GroupService;
 module.exports = exports['default'];
