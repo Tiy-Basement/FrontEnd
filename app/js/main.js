@@ -384,17 +384,10 @@ var DeleteController = function DeleteController($cookies, DeleteService) {
   var vm = this;
 
   vm.deleteEvent = deleteEvent;
-  vm.deleteGroup = deleteGroup;
   vm.deleteUser = deleteUser;
 
   function deleteEvent(eventObj) {
     DeleteService.deleteEvent(eventObj).then(function (res) {
-      console.log(res);
-    });
-  }
-
-  function deleteGroup(blah) {
-    DeleteService.deleteGroup(blah).then(function (res) {
       console.log(res);
     });
   }
@@ -422,6 +415,7 @@ var GroupController = function GroupController(DeleteService, $stateParams, $sta
   var vm = this;
   vm.deleteGroup = deleteGroup;
 
+  //deleteGroup Function
   function deleteGroup(obj) {
     DeleteService.deleteGroup(obj);
     $state.go('root.home');
@@ -447,23 +441,13 @@ var UserController = function UserController($scope, AuthService, $state, $cooki
   $scope.eventSources = [];
   vm.groups = [];
 
-  UserService.getGroups().then(function (res) {
-    return console.log(res);
-  });
-
-  // let activateGroup = function (){
-  //   UserService.getGroups().then((res) => {
-  //     console.log(res);
-  //   });
-  // };
-  // activateGroup();
-
-  // activateUser();
-  // function activateUser(obj){
-  //   UserService.getUser($stateParams.user_id).then((res) => {
-  //   console.log($stateParams.user_id);
-  //   })
-  // }
+  //getUserGroups Function
+  activate();
+  function activate(userObj) {
+    UserService.getUserGroups(userObj).then(function (res) {
+      console.log(res);
+    });
+  }
 
   $scope.logmeout = function () {
     AuthService.logout();
@@ -535,8 +519,6 @@ exports['default'] = modalform;
 module.exports = exports['default'];
 
 },{}],15:[function(require,module,exports){
-//I SUBSTITUTED THE USER ENDPOINT
-//BC THE GROUP ONE DOESN'T GIVE ME A RESPONSE
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -550,13 +532,9 @@ var groupItem = function groupItem($state, UserService) {
     scope: {
       Group: '='
     },
-    template: '\n      <li ng-repeat="G in vm.groups" Group="G">\n        {{G.username}}\n      </li>\n    ',
-    controller: 'GroupController as vm',
-    link: function link(scope, element, attrs) {
-      element.on('click', function () {
-        $state.go('root.group', { id: scope.G.group_id });
-      });
-    }
+    template: '\n      <li ng-repeat="G in vm.groups" Group="G">\n        {{G.name}}\n      </li>\n    ',
+    controller: 'UserController as vm'
+
   };
 };
 
@@ -773,19 +751,7 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var UserService = function UserService($http, FILESERVER, $cookies) {
-
-  // this.getUser = getUser;
-
-  // User Constructor
-  function User(userObj) {
-    this.user_id = userObj.user_id;
-    this.username = userObj.username;
-  }
-  // // getUser Function
-  // function getUser(id){
-  //   return $http.get(FILESERVER.SERVER.URL + 'users', FILESERVER.SERVER.CONFIG);
-  // }
+var UserService = function UserService($http, FILESERVER, $cookies, $stateParams) {
 
   // Group Constructor
   function Group(groupObj) {
@@ -793,13 +759,16 @@ var UserService = function UserService($http, FILESERVER, $cookies) {
     this.username = groupObj.username;
   }
 
-  // getGroups Function
-  this.getGroups = function () {
-    return $http.get(FILESERVER.SERVER.URL + 'users', FILESERVER.SERVER.CONFIG);
+  var userId = $cookies.get('UserID');
+  console.log(userId);
+
+  // getUserGroups Function
+  this.getUserGroups = function () {
+    return $http.get(FILESERVER.SERVER.URL + 'users/' + 'groups', FILESERVER.SERVER.CONFIG.headers);
   };
 };
 
-UserService.$inject = ['$http', 'FILESERVER', '$cookies'];
+UserService.$inject = ['$http', 'FILESERVER', '$cookies', '$stateParams'];
 
 exports['default'] = UserService;
 module.exports = exports['default'];
