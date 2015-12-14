@@ -1,4 +1,4 @@
-let LoginController = function(LoginService, $scope, $cookies, $state, FILESERVER, UserService) {
+let LoginController = function(LoginService, $scope, $cookies, $state, FILESERVER, UserService, AuthService) {
   
   console.log('I am using my login controller!');
 
@@ -20,7 +20,7 @@ let LoginController = function(LoginService, $scope, $cookies, $state, FILESERVE
 
 };
 
-LoginController.$inject = ['LoginService', '$scope', '$cookies', '$state', 'FILESERVER', 'UserService'];
+LoginController.$inject = ['LoginService', '$scope', '$cookies', '$state', 'FILESERVER', 'UserService', 'AuthService'];
 
 export default LoginController;
 

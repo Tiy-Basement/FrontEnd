@@ -1,6 +1,3 @@
-import _ from 'underscore';
-
-
 let UserController = function($scope, AuthService, $state, $cookies, $stateParams, FILESERVER, UserService) {
 
   let vm = this;
@@ -11,7 +8,8 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
   vm.user =[];
   vm.activate = activate;
 
- //getUserGroups Function
+
+  //getUserGroups Function
   activate();
   function activate(userObj){
     UserService.getUserGroups(userObj).then((res) =>{
@@ -38,6 +36,30 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
       }
     });
   }
+
+
+  // $scope.getGroups = function () {
+  //   UserService.getGroups().then( (res) => {
+  //     console.log(res);
+  //   });
+  // };
+
+  // // let vm = this;
+
+  // this.groups = [];
+
+  // this.activate = activate;
+
+  // // activate();
+
+  // function activate () {
+  //   UserService.getGroups().then( (res) => {
+  //     console.log(res);
+  //     // vm.groups = res.data.results;
+  //   });
+  // }
+
+
 
 
 
