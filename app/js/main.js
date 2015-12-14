@@ -290,8 +290,6 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
     var s = new Date(start).getTime() / 1000;
     var e = new Date(end).getTime() / 1000;
     var m = new Date(start).getMonth();
-    var events = [{ title: 'Feed Me ' + m, start: s + 50000, end: s + 100000, allDay: false, className: ['customFeed'] }];
-    callback(events);
   };
 
   /* alert on eventClick */
@@ -340,13 +338,6 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
     }
   };
 
-  /* Render Tooltip */
-  $scope.eventRender = function (event, element, view) {
-    element.attr({ 'tooltip': event.title,
-      'tooltip-append-to-body': true });
-    $compile(element)($scope);
-  };
-
   /* config object */
   $scope.uiConfig = {
     calendar: {
@@ -361,7 +352,8 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
       eventDrop: $scope.alertOnDrop,
       eventResize: $scope.alertOnResize,
       eventRender: $scope.eventRender,
-      lazyFetching: true
+      lazyFetching: true,
+      cache: true
     }
   };
 };
