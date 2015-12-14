@@ -19,11 +19,12 @@ let DeleteService = function($http, FILESERVER, $cookies, $state, $stateParams) 
   //Delete Group Function
   function deleteGroup () {
    $http.delete(url+'/group/'+$stateParams.id, FILESERVER.SERVER.CONFIG);
+   $state.go('root.home');
   }
   
   //Delete User Function 
   function deleteUser (){
-  $http.delete(url+'/user/'+$stateParams.id, FILESERVER.CONFIG);
+  $http.delete(url+'/user/'+$stateParams.id, FILESERVER.SERVER.CONFIG);
 
   }
 

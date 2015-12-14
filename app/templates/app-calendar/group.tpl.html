@@ -4,21 +4,28 @@
   </div>
   <aside class="sidebar">
     <form ng-submit="vm.deleteGroup()">
-      <button>the delete button</button>
+      <button>Delete this Group</button>
     </form>
+    <button ng-click="logmeout()">Logout</button>
     <div class="members">
       <h5>Members</h5>
-      <h7><a href="#/add-member">Add a Member</a></h7>
       <ul>
-        <li><a href="">A band</a></li>
-        <li><a href="">A band</a></li>
-        <li><a href="">A band</a></li>
-        <li><a href="">A band</a></li>
+        <li><a href="">A member</a></li>
+        <li><a href="">A member</a></li>
+        <li><a href="">A member</a></li>
+        <li><a href="">A member</a></li>
       </ul>
+      <button><h6>Leave Group</h6></button>
+      <button ng-click="vm.toGroupEdit()"><h6>Edit Group</h6></button>
+      <button ng-click="deleteGroup()"><h6>Delete Group</h6></button>
     </div>
     <div class="Notes">
       <h5>Upcoming Events</h5>
-      <h7><a href="#/add-event">Add an Event</a></h7>
+      <h6><a href="#/add-event">Add a Group Event</a></h6>
+      <h6><a href="#/delete-event">Delete a Group Event</a></h6>
+      <form ng-submit="vm.deleteGroup()">
+        <button><h6>Delete this Group</h6></button>
+      </form>
       <ul>
         <li><a href="">An event note</a></li>
         <li><a href="">An event note</a></li>
@@ -29,3 +36,5 @@
     </div>
   </aside>
 </div>
+
+<!-- <a href="#/edit-group/:id"> -->

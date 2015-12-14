@@ -8,7 +8,7 @@ let UserService = function($http, FILESERVER, $cookies) {
   }
 
   let userId = $cookies.get('UserID');
-  console.log(userId);
+  // console.log(userId);
 
   let token = $cookies.get('Access-Token');
 
