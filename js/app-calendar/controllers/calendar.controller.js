@@ -12,7 +12,7 @@ let CalendarController = function ($scope, $compile, uiCalendarConfig, $cookies,
     url: 'http://tiy-basement.herokuapp.com/user/'+ userId + '/events',
     headers: {
       'Access-Token': tkn
-    }
+    },
   };
   
   $scope.eventSources = [ $scope.eventSource ];
@@ -28,11 +28,13 @@ let CalendarController = function ($scope, $compile, uiCalendarConfig, $cookies,
   /* alert on eventClick */
   $scope.alertOnEventClick = function( date, jsEvent, view){
     $scope.alertMessage = (date.title + ' was clicked ');
+    console.log("john", date);
   };
 
   /* alert on Drop */
   $scope.alertOnDrop = function(event, delta, revertFunc, jsEvent, ui, view){
     $scope.alertMessage = ('Event Droped to make dayDelta ' + delta);
+    console.log(event);
   };
 
   /* alert on Resize */
@@ -86,6 +88,7 @@ let CalendarController = function ($scope, $compile, uiCalendarConfig, $cookies,
       eventDrop: $scope.alertOnDrop,
       eventResize: $scope.alertOnResize,
       eventRender: $scope.eventRender,
+      timezone: 'local',
       lazyFetching: true,
       cache: true,
     }
