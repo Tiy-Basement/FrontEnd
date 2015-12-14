@@ -8,41 +8,14 @@ let CalendarController = function ($scope, $compile, uiCalendarConfig, $cookies,
   let tkn = $cookies.get('Access-Token');
   let userId = $cookies.get('UserID');
 
-  $scope.events = [];
-
-  $scope.eventSources = [ $scope.events ];
-
-  
-  $http.get(
-    'http://tiy-basement.herokuapp.com/user/'+ userId + '/events',
-    {headers: {
+  $scope.eventSource = {
+    url: 'http://tiy-basement.herokuapp.com/user/'+ userId + '/events',
+    headers: {
       'Access-Token': tkn
-    }}
-  ).then( (res) => {
-    // trying to push the response into the event array 
-    // so the calendar can read it
-    angular.copy(res.data, $scope.events);
-
-    // console.log($scope.eventSources);
-    // angular.forEach(res.data, (event) => {
-    //   console.log(event);
-    //   $scope.events.push(event);
-    //   console.log($scope.events);
-    // });
-
-
-    // $scope.events.push({
-    //     title  : 'event1',
-    //     start  : '2015-12-01'
-    // });
-
-    // console.log($scope.events);
-
-
-    // console.log('jd', $scope.events);
-
-
-  });
+    }
+  };
+  
+  $scope.eventSources = [ $scope.eventSource ];
 
 
   /* event source that calls a function on every view switch */
@@ -122,12 +95,10 @@ let CalendarController = function ($scope, $compile, uiCalendarConfig, $cookies,
       eventDrop: $scope.alertOnDrop,
       eventResize: $scope.alertOnResize,
       eventRender: $scope.eventRender,
+      lazyFetching: true,
     }
   };
 
-  /* event sources array*/
-  // $scope.eventSources = [$scope.events];
-  // console.log($scope.eventSources)
 };
 
 
