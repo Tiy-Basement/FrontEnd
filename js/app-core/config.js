@@ -67,11 +67,11 @@ let config = function($stateProvider, $urlRouterProvider) {
       controller: 'GroupController as vm',
       templateUrl: 'templates/app-calendar/joinGroup.tpl.html'
     })
-    .state('root.addMember', {
-      url: '/add-member',
-      controller: 'AddMemberController as vm',
-      templateUrl: 'templates/app-calendar/addMember.tpl.html'
-    })
+    // .state('root.addMember', {
+    //   url: '/add-member',
+    //   controller: 'AddMemberController as vm',
+    //   templateUrl: 'templates/app-calendar/addMember.tpl.html'
+    // })
     //  .state('root.deleteGroup', {
     //   url: '/delete-group',
     //   controller: 'DeleteController as vm',

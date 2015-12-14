@@ -6,7 +6,7 @@ let EditService = function($http, $cookies) {
     let g = new Group(groupObj);
     let tkn = $cookies.get('Access-Token');
     return $http.put(
-      'http://tiy-basement.herokuapp.com/group',
+      'http://tiy-basement.herokuapp.com/group/:id',
       g,
       {headers: {
         'Access-Token': tkn

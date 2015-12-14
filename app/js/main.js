@@ -428,7 +428,7 @@ var GroupController = function GroupController(DeleteService, $stateParams, $sta
   };
 
   function editGroup(obj) {
-    console.log('editing the group');
+    // console.log('editing the group');
     EditService.editGroup(obj).then(function (res) {
       console.log(res);
     });
@@ -792,11 +792,12 @@ var DeleteService = function DeleteService($http, FILESERVER, $cookies, $state, 
   //Delete Group Function
   function deleteGroup() {
     $http['delete'](url + '/group/' + $stateParams.id, FILESERVER.SERVER.CONFIG);
+    $state.go('root.home');
   }
 
   //Delete User Function
   function deleteUser() {
-    $http['delete'](url + '/user/' + $stateParams.id, FILESERVER.CONFIG);
+    $http['delete'](url + '/user/' + $stateParams.id, FILESERVER.SERVER.CONFIG);
   }
 };
 
@@ -818,7 +819,7 @@ var EditService = function EditService($http, $cookies) {
   this.editGroup = function (groupObj) {
     var g = new Group(groupObj);
     var tkn = $cookies.get('Access-Token');
-    return $http.put('http://tiy-basement.herokuapp.com/group', g, { headers: {
+    return $http.put('http://tiy-basement.herokuapp.com/group/:id', g, { headers: {
         'Access-Token': tkn
       } });
   };
@@ -930,11 +931,12 @@ var config = function config($stateProvider, $urlRouterProvider) {
     url: '/join-group',
     controller: 'GroupController as vm',
     templateUrl: 'templates/app-calendar/joinGroup.tpl.html'
-  }).state('root.addMember', {
-    url: '/add-member',
-    controller: 'AddMemberController as vm',
-    templateUrl: 'templates/app-calendar/addMember.tpl.html'
   })
+  // .state('root.addMember', {
+  //   url: '/add-member',
+  //   controller: 'AddMemberController as vm',
+  //   templateUrl: 'templates/app-calendar/addMember.tpl.html'
+  // })
   //  .state('root.deleteGroup', {
   //   url: '/delete-group',
   //   controller: 'DeleteController as vm',

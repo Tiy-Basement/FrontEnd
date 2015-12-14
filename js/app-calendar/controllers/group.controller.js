@@ -11,7 +11,7 @@ let GroupController = function(DeleteService, $stateParams, $state, $cookies, Us
     };
 
   function editGroup(obj) {
-    console.log('editing the group');
+    // console.log('editing the group');
     EditService.editGroup(obj).then( (res) => {
       console.log(res);
     });
