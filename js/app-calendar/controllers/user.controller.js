@@ -6,22 +6,20 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
 
   $scope.eventSources = [];
   vm.groups = [];
+  vm.user =[];
+  vm.activate = activate;
 
-  UserService.getGroups().then((res) => console.log(res));
 
-  // let activateGroup = function (){
-  //   UserService.getGroups().then((res) => {
-  //     console.log(res);
-  //   });
-  // };
-  // activateGroup();
-
-  // activateUser();
-  // function activateUser(obj){
-  //   UserService.getUser($stateParams.user_id).then((res) => {
-  //   console.log($stateParams.user_id);
-  //   })
-  // }
+  //getUserGroups Function
+  activate();
+  function activate(userObj){
+    UserService.getUserGroups(userObj).then((res) =>{
+      vm.groups = res.data.groups;
+      vm.user = res.data.user;
+      console.log(vm.user);
+      console.log(res);
+    });
+  }
 
   $scope.logmeout = function() {
     AuthService.logout();

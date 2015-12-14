@@ -3,7 +3,6 @@ let DeleteController = function($cookies, DeleteService) {
   let vm = this;
 
   vm.deleteEvent = deleteEvent;
-  vm.deleteGroup = deleteGroup;
   vm.deleteUser = deleteUser;
 
   function deleteEvent(eventObj){
@@ -12,11 +11,6 @@ let DeleteController = function($cookies, DeleteService) {
     });
   }
 
-  function deleteGroup(blah) {
-    DeleteService.deleteGroup(blah).then((res) => {
-      console.log(res);
-    });
-  }
 
   function deleteUser(userObj) {
     DeleteService.deleteUser(userObj).then((res) => {

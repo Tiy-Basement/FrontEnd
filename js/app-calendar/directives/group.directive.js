@@ -1,5 +1,3 @@
-//I SUBSTITUTED THE USER ENDPOINT
-//BC THE GROUP ONE DOESN'T GIVE ME A RESPONSE
 let groupItem = function($state, UserService) {
 
   return {
@@ -10,15 +8,10 @@ let groupItem = function($state, UserService) {
     },
     template: `
       <li ng-repeat="G in vm.groups" Group="G">
-        {{G.username}}
+       <a href="#/group/{{G.id}}"> {{G.name}}</a>
       </li>
     `,
-    controller: 'GroupController as vm',
-    link: function (scope, element, attrs) {
-      element.on('click', function () {
-        $state.go('root.group', {id: scope.G.group_id});
-      });
-    }
+    controller: 'UserController as vm',
   };
 };
 
