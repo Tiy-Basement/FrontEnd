@@ -455,11 +455,16 @@ var UserController = function UserController($scope, AuthService, $state, $cooki
 
   $scope.eventSources = [];
   vm.groups = [];
+  vm.user = [];
+  vm.activate = activate;
 
   //getUserGroups Function
   activate();
   function activate(userObj) {
     UserService.getUserGroups(userObj).then(function (res) {
+      vm.groups = res.data.groups;
+      vm.user = res.data.user;
+      console.log(vm.user);
       console.log(res);
     });
   }
@@ -568,9 +573,8 @@ var groupItem = function groupItem($state, UserService) {
     scope: {
       Group: '='
     },
-    template: '\n      <li ng-repeat="G in vm.groups" Group="G">\n        {{G.name}}\n      </li>\n    ',
+    template: '\n      <li ng-repeat="G in vm.groups" Group="G">\n       <a href="#/group/{{G.id}}"> {{G.name}}</a>\n      </li>\n    ',
     controller: 'UserController as vm'
-
   };
 };
 
@@ -585,7 +589,7 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var userName = function userName(UserService) {
+var userName = function userName($state, UserService) {
   return {
 
     restrict: 'E',
@@ -594,13 +598,12 @@ var userName = function userName(UserService) {
       user: '='
     },
 
-    template: '\n        <div class="userText">\n          Welcome, {{user.username}}\n        </div>\n      '
-
+    template: '\n        <div class="userText">\n          Welcome, {{vm.user.username}}!\n        </div>\n      ',
+    controller: 'UserController as vm'
   };
 };
 
-// controller: 'UserController as vm',
-userName.$inject = ['UserService'];
+userName.$inject = ['$state', 'UserService'];
 exports['default'] = userName;
 module.exports = exports['default'];
 

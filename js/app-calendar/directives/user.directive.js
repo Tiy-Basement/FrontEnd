@@ -1,4 +1,4 @@
-let userName = function (UserService){
+let userName = function ($state, UserService){
     return {
 
       restrict: 'E',
@@ -9,13 +9,12 @@ let userName = function (UserService){
 
       template:`
         <div class="userText">
-          Welcome, {{user.username}}
+          Welcome, {{vm.user.username}}!
         </div>
       `,
-
-      // controller: 'UserController as vm',
+       controller: 'UserController as vm',
     }; 
   };
 
-userName.$inject = ['UserService'];
+userName.$inject = ['$state','UserService'];
 export default userName;
