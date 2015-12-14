@@ -266,7 +266,7 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var CalendarController = function CalendarController($scope, $compile, uiCalendarConfig, $cookies) {
+var CalendarController = function CalendarController($scope, $compile, uiCalendarConfig, $cookies, $http) {
 
   var date = new Date();
   var d = date.getDate();
@@ -275,17 +275,15 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
 
   var tkn = $cookies.get('Access-Token');
   var userId = $cookies.get('UserID');
-  // console.log(userId);
 
-  /* event source that pulls from google.com */
   $scope.eventSource = {
     url: 'http://tiy-basement.herokuapp.com/user/' + userId + '/events',
-    data: null,
     headers: {
       'Access-Token': tkn
-    },
-    currentTimezone: 'America/Atlanta'
+    }
   };
+
+  $scope.eventSources = [$scope.eventSource];
 
   /* event source that calls a function on every view switch */
   $scope.eventsF = function (start, end, timezone, callback) {
@@ -300,14 +298,17 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
   $scope.alertOnEventClick = function (date, jsEvent, view) {
     $scope.alertMessage = date.title + ' was clicked ';
   };
+
   /* alert on Drop */
   $scope.alertOnDrop = function (event, delta, revertFunc, jsEvent, ui, view) {
     $scope.alertMessage = 'Event Droped to make dayDelta ' + delta;
   };
+
   /* alert on Resize */
   $scope.alertOnResize = function (event, delta, revertFunc, jsEvent, ui, view) {
     $scope.alertMessage = 'Event Resized to make dayDelta ' + delta;
   };
+
   /* add and removes an event source of choice */
   $scope.addRemoveEventSource = function (sources, source) {
     var canAdd = 0;
@@ -356,19 +357,16 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
         right: 'today prev,next'
       },
       defaultView: 'agendaWeek',
-      slotDuration: '01:00:00',
       eventClick: $scope.alertOnEventClick,
       eventDrop: $scope.alertOnDrop,
       eventResize: $scope.alertOnResize,
-      eventRender: $scope.eventRender
+      eventRender: $scope.eventRender,
+      lazyFetching: true
     }
   };
-
-  /* event sources array*/
-  $scope.eventSources = [$scope.eventSource, $scope.eventsF];
 };
 
-CalendarController.$inject = ['$scope', '$compile', 'uiCalendarConfig', '$cookies'];
+CalendarController.$inject = ['$scope', '$compile', 'uiCalendarConfig', '$cookies', '$http'];
 
 exports['default'] = CalendarController;
 module.exports = exports['default'];
