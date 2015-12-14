@@ -749,7 +749,7 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var UserService = function UserService($http, FILESERVER, $cookies, $stateParams) {
+var UserService = function UserService($http, FILESERVER, $cookies) {
 
   // Group Constructor
   function Group(groupObj) {
@@ -760,13 +760,15 @@ var UserService = function UserService($http, FILESERVER, $cookies, $stateParams
   var userId = $cookies.get('UserID');
   console.log(userId);
 
+  var token = $cookies.get('Access-Token');
+
   // getUserGroups Function
   this.getUserGroups = function () {
-    return $http.get(FILESERVER.SERVER.URL + 'users/' + 'groups', FILESERVER.SERVER.CONFIG.headers);
+    return $http.get(FILESERVER.SERVER.URL + 'users/info', { headers: { 'Access-Token': token } });
   };
 };
 
-UserService.$inject = ['$http', 'FILESERVER', '$cookies', '$stateParams'];
+UserService.$inject = ['$http', 'FILESERVER', '$cookies'];
 
 exports['default'] = UserService;
 module.exports = exports['default'];

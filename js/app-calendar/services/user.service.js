@@ -1,4 +1,4 @@
-let UserService = function($http, FILESERVER, $cookies,$stateParams) {
+let UserService = function($http, FILESERVER, $cookies) {
 
 
   // Group Constructor
@@ -10,14 +10,16 @@ let UserService = function($http, FILESERVER, $cookies,$stateParams) {
   let userId = $cookies.get('UserID');
   console.log(userId);
 
+  let token = $cookies.get('Access-Token');
+
   // getUserGroups Function
   this.getUserGroups = function() {
-    return $http.get(FILESERVER.SERVER.URL + 'users/'+'groups', FILESERVER.SERVER.CONFIG.headers);
+    return $http.get(FILESERVER.SERVER.URL + 'users/info', {headers: {'Access-Token':token}});
   };
 
 
 };
 
-UserService.$inject = ['$http', 'FILESERVER','$cookies','$stateParams'];
+UserService.$inject = ['$http', 'FILESERVER','$cookies'];
 
 export default UserService;
