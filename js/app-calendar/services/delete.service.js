@@ -4,6 +4,7 @@ let DeleteService = function($http, FILESERVER, $cookies, $state, $stateParams) 
   
   this.deleteGroup = deleteGroup;
   this.deleteUser = deleteUser;
+  this.leaveGroup = leaveGroup;
 
    // Group Constructor
   function Group (groupObj) {
@@ -24,9 +25,15 @@ let DeleteService = function($http, FILESERVER, $cookies, $state, $stateParams) 
   
   //Delete User Function 
   function deleteUser (){
-  $http.delete(url+'/user/'+$stateParams.id, FILESERVER.SERVER.CONFIG);
+    $http.delete(url+'/user/'+$stateParams.id, FILESERVER.SERVER.CONFIG);
 
   }
+
+  // Leave a group (destroy membership)
+  function leaveGroup () {
+    $http.delete(SOME_URL, FILESERVER.SERVER.CONFIG);
+  }
+
 
 };
 
