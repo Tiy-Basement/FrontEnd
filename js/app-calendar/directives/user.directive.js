@@ -9,11 +9,10 @@ let userName = function (UserService){
 
       template:`
         <div class="userText">
-          Welcome, {{user.username}}
+          Welcome, {{vm.user.username}}!
         </div>
       `,
-
-      // controller: 'UserController as vm',
+       controller: 'UserController as vm',
     }; 
   };
 

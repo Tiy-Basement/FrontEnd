@@ -433,6 +433,7 @@ var UserController = function UserController($scope, AuthService, $state, $cooki
 
   $scope.eventSources = [];
   vm.groups = [];
+  vm.user = [];
   vm.activate = activate;
 
   //getUserGroups Function
@@ -440,6 +441,8 @@ var UserController = function UserController($scope, AuthService, $state, $cooki
   function activate(userObj) {
     UserService.getUserGroups(userObj).then(function (res) {
       vm.groups = res.data.groups;
+      vm.user = res.data.user;
+      console.log(vm.user);
       console.log(res);
     });
   }
@@ -551,12 +554,11 @@ var userName = function userName(UserService) {
       user: '='
     },
 
-    template: '\n        <div class="userText">\n          Welcome, {{user.username}}\n        </div>\n      '
-
+    template: '\n        <div class="userText">\n          Welcome, {{vm.user.username}}!\n        </div>\n      ',
+    controller: 'UserController as vm'
   };
 };
 
-// controller: 'UserController as vm',
 userName.$inject = ['UserService'];
 exports['default'] = userName;
 module.exports = exports['default'];
