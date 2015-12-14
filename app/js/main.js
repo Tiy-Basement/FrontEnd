@@ -530,7 +530,8 @@ var groupItem = function groupItem($state, UserService) {
     scope: {
       Group: '='
     },
-    template: '\n      <li ng-repeat="G in vm.groups" Group="G">\n        {{G.name}}\n      </li>\n    '
+    template: '\n      <li ng-repeat="G in vm.groups" Group="G">\n       <a href="#/group/{{G.id}}"> {{G.name}}</a>\n      </li>\n    ',
+    controller: 'UserController as vm'
   };
 };
 
@@ -545,7 +546,7 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var userName = function userName(UserService) {
+var userName = function userName($state, UserService) {
   return {
 
     restrict: 'E',
@@ -559,7 +560,7 @@ var userName = function userName(UserService) {
   };
 };
 
-userName.$inject = ['UserService'];
+userName.$inject = ['$state', 'UserService'];
 exports['default'] = userName;
 module.exports = exports['default'];
 

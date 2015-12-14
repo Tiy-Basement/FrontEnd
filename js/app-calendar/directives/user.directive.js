@@ -1,4 +1,4 @@
-let userName = function (UserService){
+let userName = function ($state, UserService){
     return {
 
       restrict: 'E',
@@ -16,5 +16,5 @@ let userName = function (UserService){
     }; 
   };
 
-userName.$inject = ['UserService'];
+userName.$inject = ['$state','UserService'];
 export default userName;

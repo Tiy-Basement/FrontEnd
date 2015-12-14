@@ -8,9 +8,10 @@ let groupItem = function($state, UserService) {
     },
     template: `
       <li ng-repeat="G in vm.groups" Group="G">
-        {{G.name}}
+       <a href="#/group/{{G.id}}"> {{G.name}}</a>
       </li>
     `,
+    controller: 'UserController as vm',
   };
 };
 
