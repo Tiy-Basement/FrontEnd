@@ -290,18 +290,18 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
     var s = new Date(start).getTime() / 1000;
     var e = new Date(end).getTime() / 1000;
     var m = new Date(start).getMonth();
-    var events = [{ title: 'Feed Me ' + m, start: s + 50000, end: s + 100000, allDay: false, className: ['customFeed'] }];
-    callback(events);
   };
 
   /* alert on eventClick */
   $scope.alertOnEventClick = function (date, jsEvent, view) {
     $scope.alertMessage = date.title + ' was clicked ';
+    console.log("john", date);
   };
 
   /* alert on Drop */
   $scope.alertOnDrop = function (event, delta, revertFunc, jsEvent, ui, view) {
     $scope.alertMessage = 'Event Droped to make dayDelta ' + delta;
+    console.log(event);
   };
 
   /* alert on Resize */
@@ -340,13 +340,6 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
     }
   };
 
-  /* Render Tooltip */
-  $scope.eventRender = function (event, element, view) {
-    element.attr({ 'tooltip': event.title,
-      'tooltip-append-to-body': true });
-    $compile(element)($scope);
-  };
-
   /* config object */
   $scope.uiConfig = {
     calendar: {
@@ -361,7 +354,9 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
       eventDrop: $scope.alertOnDrop,
       eventResize: $scope.alertOnResize,
       eventRender: $scope.eventRender,
-      lazyFetching: true
+      timezone: 'local',
+      lazyFetching: true,
+      cache: true
     }
   };
 };
@@ -382,17 +377,10 @@ var DeleteController = function DeleteController($cookies, DeleteService) {
   var vm = this;
 
   vm.deleteEvent = deleteEvent;
-  vm.deleteGroup = deleteGroup;
   vm.deleteUser = deleteUser;
 
   function deleteEvent(eventObj) {
     DeleteService.deleteEvent(eventObj).then(function (res) {
-      console.log(res);
-    });
-  }
-
-  function deleteGroup(blah) {
-    DeleteService.deleteGroup(blah).then(function (res) {
       console.log(res);
     });
   }
@@ -420,30 +408,31 @@ var GroupController = function GroupController(DeleteService, $stateParams, $sta
   var vm = this;
 
   vm.deleteGroup = deleteGroup;
-  vm.editGroup = editGroup;
+  // vm.editGroup = editGroup;
 
+  //deleteGroup Function
   function deleteGroup(obj) {
     DeleteService.deleteGroup(obj);
     $state.go('root.home');
   };
 
-  function editGroup(obj) {
-    // console.log('editing the group');
-    EditService.editGroup(obj).then(function (res) {
-      console.log(res);
-    });
-    // $state.go('root.group', )
-  }
+  // function editGroup(obj) {
+  //   // console.log('editing the group');
+  //   EditService.editGroup(obj).then( (res) => {
+  //     console.log(res);
+  //   });
+  //   // $state.go('root.group', )
+  // }
 
-  vm.groups = [];
+  // vm.groups = [];
 
-  activate();
+  // activate();
 
-  function activate() {
-    UserService.getGroups().then(function (res) {
-      vm.groups = res.data.results;
-    });
-  }
+  // function activate () {
+  //   UserService.getGroups().then( (res) => {
+  //     vm.groups = res.data.results;
+  //   });
+  // }
 };
 
 GroupController.$inject = ['DeleteService', '$stateParams', '$state', '$cookies', 'UserService', 'EditService'];
@@ -465,21 +454,13 @@ var UserController = function UserController($scope, AuthService, $state, $cooki
   $scope.eventSources = [];
   vm.groups = [];
 
-  // UserService.getGroups().then((res) => console.log(res));
-
-  // let activateGroup = function (){
-  //   UserService.getGroups().then((res) => {
-  //     console.log(res);
-  //   });
-  // };
-  // activateGroup();
-
-  // activateUser();
-  // function activateUser(obj){
-  //   UserService.getUser($stateParams.user_id).then((res) => {
-  //   console.log($stateParams.user_id);
-  //   })
-  // }
+  //getUserGroups Function
+  activate();
+  function activate(userObj) {
+    UserService.getUserGroups(userObj).then(function (res) {
+      console.log(res);
+    });
+  }
 
   $scope.logmeout = function () {
     AuthService.logout();
@@ -572,8 +553,6 @@ exports['default'] = modalform;
 module.exports = exports['default'];
 
 },{}],15:[function(require,module,exports){
-//I SUBSTITUTED THE USER ENDPOINT
-//BC THE GROUP ONE DOESN'T GIVE ME A RESPONSE
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -587,13 +566,9 @@ var groupItem = function groupItem($state, UserService) {
     scope: {
       Group: '='
     },
-    template: '\n      <li ng-repeat="G in vm.groups" Group="G">\n        {{G.username}}\n      </li>\n    ',
-    controller: 'GroupController as vm',
-    link: function link(scope, element, attrs) {
-      element.on('click', function () {
-        $state.go('root.group', { id: scope.G.group_id });
-      });
-    }
+    template: '\n      <li ng-repeat="G in vm.groups" Group="G">\n        {{G.name}}\n      </li>\n    ',
+    controller: 'UserController as vm'
+
   };
 };
 
@@ -838,28 +813,20 @@ Object.defineProperty(exports, '__esModule', {
 });
 var UserService = function UserService($http, FILESERVER, $cookies) {
 
-  // this.getUser = getUser;
-
-  // User Constructor
-  function User(userObj) {
-    this.user_id = userObj.user_id;
-    this.username = userObj.username;
-  }
-  // // getUser Function
-  // function getUser(id){
-  //   return $http.get(FILESERVER.SERVER.URL + 'users', FILESERVER.SERVER.CONFIG);
-  // }
-
   // Group Constructor
   function Group(groupObj) {
     this.id = groupObj.id;
     this.username = groupObj.username;
   }
 
-  // getGroups Function
+  var userId = $cookies.get('UserID');
+  console.log(userId);
 
-  this.getGroups = function () {
-    return $http.get(FILESERVER.SERVER.URL + 'users', FILESERVER.SERVER.CONFIG);
+  var token = $cookies.get('Access-Token');
+
+  // getUserGroups Function
+  this.getUserGroups = function () {
+    return $http.get(FILESERVER.SERVER.URL + 'users/info', { headers: { 'Access-Token': token } });
   };
 };
 
