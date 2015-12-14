@@ -403,24 +403,21 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var GroupController = function GroupController(DeleteService, $stateParams, $state, $cookies, UserService, EditService) {
+var GroupController = function GroupController(DeleteService, $stateParams, $state, $cookies, UserService, EditService, AddService) {
 
   // console.log($stateParams);
 
   var vm = this;
 
-  vm.deleteGroup = deleteGroup;
-  vm.toGroupEdit = toGroupEdit;
   vm.editGroup = editGroup;
+  vm.deleteGroup = deleteGroup;
+  vm.joinGroup = joinGroup;
+  vm.leaveGroup = leaveGroup;
+  vm.toGroupEdit = toGroupEdit;
 
   var id = $stateParams.id;
 
-  //deleteGroup Function
-  function deleteGroup(obj) {
-    DeleteService.deleteGroup(obj);
-    $state.go('root.home');
-  };
-
+  // edit group
   function editGroup(groupObj) {
     console.log('editing the group');
     EditService.editGroup(groupObj).then(function (res) {
@@ -429,6 +426,30 @@ var GroupController = function GroupController(DeleteService, $stateParams, $sta
     });
   };
 
+  //deleteGroup Function
+  function deleteGroup(obj) {
+    DeleteService.deleteGroup(obj);
+    $state.go('root.home');
+  };
+
+  // join an existing group
+  function joinGroup(obj) {
+    AddService.joinGroup(obj).then(function (res) {
+      console.log(res);
+      console.log('join group function is working');
+      // $state.go('root.group', {id: res.data.group.id});
+    });
+  }
+
+  //leave an existing group
+  function leaveGroup() {
+    DeleteService.leaveGroup().then(function (res) {
+      console.log('group deleted');
+      // $state.go('root.home', {the users ID});
+    });
+  }
+
+  // reroute to the group edit page
   function toGroupEdit() {
     console.log('things');
     $state.go('root.editGroup', { id: $stateParams.id });
@@ -445,7 +466,7 @@ var GroupController = function GroupController(DeleteService, $stateParams, $sta
   // }
 };
 
-GroupController.$inject = ['DeleteService', '$stateParams', '$state', '$cookies', 'UserService', 'EditService'];
+GroupController.$inject = ['DeleteService', '$stateParams', '$state', '$cookies', 'UserService', 'EditService', 'AddService'];
 
 exports['default'] = GroupController;
 module.exports = exports['default'];
@@ -698,7 +719,11 @@ _angular2['default'].module('app.calendar', ['ui.calendar']).controller('Calenda
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var AddService = function AddService($http, $cookies) {
+var AddService = function AddService($http, $cookies, FILESERVER, $stateParams) {
+
+  // let this = vm;
+
+  this.joinGroup = joinGroup;
 
   //group constructor
   function Group(groupObj) {
@@ -709,6 +734,7 @@ var AddService = function AddService($http, $cookies) {
       return this.join_password = null;
     }
   }
+
   //post group to server
   this.addGroup = function (groupObj) {
     var g = new Group(groupObj);
@@ -717,6 +743,17 @@ var AddService = function AddService($http, $cookies) {
         'Access-Token': tkn
       } });
   };
+
+  var joinUrl = FILESERVER.SERVER.URL + 'group/member';
+
+  function joinGroup(groupObj) {
+    console.log('things are happening');
+    var g = new Group(groupObj);
+    var tkn = $cookies.get('Access-Token');
+    return $http.post(joinUrl, g, { headers: {
+        'Access-Token': tkn
+      } });
+  }
 
   //event constructor
   function Event(eventObj) {
@@ -749,7 +786,7 @@ var AddService = function AddService($http, $cookies) {
   };
 };
 
-AddService.$inject = ['$http', '$cookies'];
+AddService.$inject = ['$http', '$cookies', 'FILESERVER', '$stateParams'];
 
 exports['default'] = AddService;
 module.exports = exports['default'];
@@ -766,6 +803,7 @@ var DeleteService = function DeleteService($http, FILESERVER, $cookies, $state, 
 
   this.deleteGroup = deleteGroup;
   this.deleteUser = deleteUser;
+  this.leaveGroup = leaveGroup;
 
   // Group Constructor
   function Group(groupObj) {
@@ -786,6 +824,11 @@ var DeleteService = function DeleteService($http, FILESERVER, $cookies, $state, 
   //Delete User Function
   function deleteUser() {
     $http['delete'](url + '/user/' + $stateParams.id, FILESERVER.SERVER.CONFIG);
+  }
+
+  // Leave a group (destroy membership)
+  function leaveGroup() {
+    $http['delete'](SOME_URL, FILESERVER.SERVER.CONFIG);
   }
 };
 
