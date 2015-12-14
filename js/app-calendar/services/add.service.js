@@ -1,4 +1,4 @@
-let AddService = function($http, $cookies) {
+let AddService = function($http, $cookies, $stateParams) {
   
   //group constructor
   function Group (groupObj) {
@@ -9,6 +9,7 @@ let AddService = function($http, $cookies) {
       return  (this.join_password = null);
     }
   }
+
   //post group to server
   this.addGroup = function (groupObj) {
     let g = new Group(groupObj);
@@ -30,6 +31,7 @@ let AddService = function($http, $cookies) {
     this.location = eventObj.location;
     this.note = eventObj.note;
   }
+
   //post request to server
   this.addEvent = function (eventObj) {
     let e = new Event(eventObj);
@@ -42,6 +44,17 @@ let AddService = function($http, $cookies) {
       }} 
     );
   };
+
+  this.addGroupEvent = function(eventObj){
+    let e = new Event(eventObj);
+    let tkn = $cookies.get('Access-Token');
+    return $http.post(
+      'http://tiy-basement.herokuapp.com/group/' + $stateParams.id + '/events',
+      e,
+      {headers:{'Access-Token': tkn}}
+    );
+  };
+
   //member constructor
   function Member(mem) {
     this.username = mem.username;
@@ -61,6 +74,6 @@ let AddService = function($http, $cookies) {
 
 };
 
-AddService.$inject = ['$http', '$cookies'];
+AddService.$inject = ['$http', '$cookies', '$stateParams'];
 
 export default AddService;
