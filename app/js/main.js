@@ -276,14 +276,26 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
   var tkn = $cookies.get('Access-Token');
   var userId = $cookies.get('UserID');
 
-  $scope.eventSource = {
+  // gets user events for home calendar
+  $scope.myEvents = {
     url: 'http://tiy-basement.herokuapp.com/user/' + userId + '/events',
+    headers: {
+      'Access-Token': tkn
+    },
+    color: '#7D90C3'
+  };
+
+  //gets events for the group calendar
+  $scope.groupEvents = {
+    // url: 'http://tiy-basement.herokuapp.com/', add endpoint later or some shit
     headers: {
       'Access-Token': tkn
     }
   };
 
-  $scope.eventSources = [$scope.eventSource];
+  $scope.eventSources = [$scope.myEvents];
+
+  $scope.groupSource = [$scope.groupEvents];
 
   /* event source that calls a function on every view switch */
   $scope.eventsF = function (start, end, timezone, callback) {
