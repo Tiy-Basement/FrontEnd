@@ -4,7 +4,7 @@
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var LoginController = function LoginController(LoginService, $scope, $cookies, $state, FILESERVER, UserService) {
+var LoginController = function LoginController(LoginService, $scope, $cookies, $state, FILESERVER, UserService, AuthService) {
 
   console.log('I am using my login controller!');
 
@@ -25,7 +25,7 @@ var LoginController = function LoginController(LoginService, $scope, $cookies, $
   };
 };
 
-LoginController.$inject = ['LoginService', '$scope', '$cookies', '$state', 'FILESERVER', 'UserService'];
+LoginController.$inject = ['LoginService', '$scope', '$cookies', '$state', 'FILESERVER', 'UserService', 'AuthService'];
 
 exports['default'] = LoginController;
 
