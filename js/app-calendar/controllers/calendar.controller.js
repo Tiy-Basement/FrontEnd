@@ -9,6 +9,7 @@ let CalendarController = function ($scope, $compile, uiCalendarConfig, $cookies,
   let userId = $cookies.get('UserID');
 
 
+
   // gets user events for home calendar
   $scope.myEvents = {
     url: 'http://tiy-basement.herokuapp.com/user/'+ userId + '/events',

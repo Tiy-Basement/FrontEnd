@@ -6,7 +6,6 @@ import 'angular-ui-bootstrap';
 import config from './config';
 import FILESERVER from './constants/fileserver.constant';
 
-
 angular
   .module('app.core', ['ui.router', 'ngCookies', 'ui.bootstrap'])
   .config(config)

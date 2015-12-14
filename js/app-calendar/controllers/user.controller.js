@@ -10,14 +10,15 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
   vm.activate = activate;
 
 
+
   //getUserGroups Function
   activate();
   function activate(userObj){
     UserService.getUserGroups(userObj).then((res) =>{
       vm.groups = res.data.groups;
       vm.user = res.data.user;
-      console.log(vm.user);
-      console.log(res);
+      // console.log(vm.user);
+      // console.log(res);
     });
   }
 
@@ -38,6 +39,30 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
       }
     });
   }
+
+
+  // $scope.getGroups = function () {
+  //   UserService.getGroups().then( (res) => {
+  //     console.log(res);
+  //   });
+  // };
+
+  // // let vm = this;
+
+  // this.groups = [];
+
+  // this.activate = activate;
+
+  // // activate();
+
+  // function activate () {
+  //   UserService.getGroups().then( (res) => {
+  //     console.log(res);
+  //     // vm.groups = res.data.results;
+  //   });
+  // }
+
+
 
 
 

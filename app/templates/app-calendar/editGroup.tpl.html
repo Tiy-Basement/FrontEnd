@@ -1,6 +1,7 @@
-<form ng-submit="vm.joinGroup(groupObj)">
+<form id="tempf" ng-submit="vm.editGroup(groupObj)">
   <label>Name<input type="text" ng-model="groupObj.name"></label>
   <label>Password*<input type="password" ng-model="groupObj.password"></label>
   <button>submit</button>
 </form>
-<span>*If the group is private, the password is required and determined by the group leader.</span>
+
+<span>*In order for other users to join your group, they must know your group's password.</span>

@@ -1,6 +1,3 @@
-// require('fullcalendar');
-// require('angular-ui-calendar');
-
 import angular from 'angular';
 import moment from 'moment';
 window.$ = require('jquery');
@@ -17,9 +14,9 @@ import DeleteController from './controllers/delete.controller';
 import GroupEventController from './controllers/add-controllers/addGroupEvent.controller.js';
 
 import AddService from './services/add.service';
-import UserService from './services/user.service';
 import DeleteService from './services/delete.service';
-
+import EditService from './services/edit.service';
+import UserService from './services/user.service';
 
 import userName from './directives/user.directive';
 import groupItem from './directives/group.directive';
@@ -39,6 +36,7 @@ angular
   .controller('DeleteController', DeleteController)
   .service('AddService', AddService)
   .service('DeleteService', DeleteService)
+  .service('EditService', EditService)
   .service('UserService', UserService)
   .directive('modalform', modalform)
   .directive('userName', userName)

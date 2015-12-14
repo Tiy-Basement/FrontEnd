@@ -5,7 +5,7 @@ let config = function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('root', {
       abstract: true,
-      // controller: 'LogoutController as vm',
+      // controller: 'NavController as vm',
       templateUrl: 'templates/app-layout/layout.tpl.html'
     })
     .state('root2', {
@@ -52,6 +52,11 @@ let config = function($stateProvider, $urlRouterProvider) {
       controller: 'AddGroupController as vm',
       templateUrl: 'templates/app-calendar/addGroup.tpl.html'
     })
+    .state('root.editGroup', {
+      url: '/edit-group/:id',
+      controller: 'GroupController as vm',
+      templateUrl: 'templates/app-calendar/editGroup.tpl.html'
+    })
     .state('root.addEvent', {
       url: '/add-event',
       controller: 'AddEventController as vm',
@@ -62,16 +67,16 @@ let config = function($stateProvider, $urlRouterProvider) {
       controller: 'GroupController as vm',
       templateUrl: 'templates/app-calendar/joinGroup.tpl.html'
     })
-    .state('root.addMember', {
-      url: '/add-member',
-      controller: 'AddMemberController as vm',
-      templateUrl: 'templates/app-calendar/addMember.tpl.html'
-    })
-     .state('root.deleteGroup', {
-      url: '/delete-group',
-      controller: 'DeleteController as vm',
-      templateUrl: 'templates/app-calendar/deleteGroup.tpl.html'
-    })
+    // .state('root.addMember', {
+    //   url: '/add-member',
+    //   controller: 'AddMemberController as vm',
+    //   templateUrl: 'templates/app-calendar/addMember.tpl.html'
+    // })
+    //  .state('root.deleteGroup', {
+    //   url: '/delete-group',
+    //   controller: 'DeleteController as vm',
+    //   templateUrl: 'templates/app-calendar/deleteGroup.tpl.html'
+    // })
      .state('root.deleteUser', {
       url: '/delete-user',
       controller: 'DeleteController as vm',

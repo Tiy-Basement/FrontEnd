@@ -1,5 +1,10 @@
-let AddService = function($http, $cookies, $stateParams) {
-  
+
+let AddService = function($http, $cookies, FILESERVER, $stateParams) {
+
+  // let this = vm;
+
+  this.joinGroup = joinGroup;
+
   //group constructor
   function Group (groupObj) {
     this.name = groupObj.name;
@@ -22,6 +27,21 @@ let AddService = function($http, $cookies, $stateParams) {
       }}
     );
   };
+
+  let joinUrl = FILESERVER.SERVER.URL + 'group/member';
+
+  function joinGroup(groupObj) {
+    console.log('things are happening');
+    let g = new Group(groupObj);
+    let tkn = $cookies.get('Access-Token');
+    return $http.post(
+      joinUrl,
+      g,
+      {headers: {
+        'Access-Token': tkn
+      }}
+    );
+  }
 
   //event constructor
   function Event (eventObj) {
@@ -74,6 +94,6 @@ let AddService = function($http, $cookies, $stateParams) {
 
 };
 
-AddService.$inject = ['$http', '$cookies', '$stateParams'];
+AddService.$inject = ['$http', '$cookies', 'FILESERVER', '$stateParams'];
 
 export default AddService;
