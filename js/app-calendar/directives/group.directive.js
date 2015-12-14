@@ -11,8 +11,6 @@ let groupItem = function($state, UserService) {
         {{G.name}}
       </li>
     `,
-    controller: 'UserController as vm',
-  
   };
 };
 

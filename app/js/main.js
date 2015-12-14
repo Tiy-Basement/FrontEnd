@@ -433,11 +433,13 @@ var UserController = function UserController($scope, AuthService, $state, $cooki
 
   $scope.eventSources = [];
   vm.groups = [];
+  vm.activate = activate;
 
   //getUserGroups Function
   activate();
   function activate(userObj) {
     UserService.getUserGroups(userObj).then(function (res) {
+      vm.groups = res.data.groups;
       console.log(res);
     });
   }
@@ -525,9 +527,7 @@ var groupItem = function groupItem($state, UserService) {
     scope: {
       Group: '='
     },
-    template: '\n      <li ng-repeat="G in vm.groups" Group="G">\n        {{G.name}}\n      </li>\n    ',
-    controller: 'UserController as vm'
-
+    template: '\n      <li ng-repeat="G in vm.groups" Group="G">\n        {{G.name}}\n      </li>\n    '
   };
 };
 

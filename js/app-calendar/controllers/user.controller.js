@@ -6,12 +6,14 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
 
   $scope.eventSources = [];
   vm.groups = [];
+  vm.activate = activate;
 
 
   //getUserGroups Function
   activate();
   function activate(userObj){
     UserService.getUserGroups(userObj).then((res) =>{
+      vm.groups = res.data.groups;
       console.log(res);
     });
   }
