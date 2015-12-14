@@ -410,7 +410,10 @@ var GroupController = function GroupController(DeleteService, $stateParams, $sta
   var vm = this;
 
   vm.deleteGroup = deleteGroup;
+  vm.toGroupEdit = toGroupEdit;
   vm.editGroup = editGroup;
+
+  var id = $stateParams.id;
 
   //deleteGroup Function
   function deleteGroup(obj) {
@@ -419,11 +422,16 @@ var GroupController = function GroupController(DeleteService, $stateParams, $sta
   };
 
   function editGroup(groupObj) {
-    // console.log('editing the group');
+    console.log('editing the group');
     EditService.editGroup(groupObj).then(function (res) {
       console.log(res);
-      // $state.go('root.group', { id: res.data.id});
+      $state.go('root.group', { id: res.data.group.id });
     });
+  };
+
+  function toGroupEdit() {
+    console.log('things');
+    $state.go('root.editGroup', { id: $stateParams.id });
   }
 
   // vm.groups = [];
@@ -802,7 +810,7 @@ var EditService = function EditService($http, $cookies, $stateParams, FILESERVER
   // console.log(tkn);
 
   var url = FILESERVER.SERVER.URL + 'group/' + $stateParams.id;
-  // console.log(url);
+  console.log(url);
 
   //group constructor
   function Group(groupObj) {
@@ -811,7 +819,9 @@ var EditService = function EditService($http, $cookies, $stateParams, FILESERVER
   }
 
   var id = $stateParams.id;
-  console.log(id);
+  // console.log(id);
+
+  this.editGroup = editGroup;
 
   function editGroup(groupObj) {
     var g = new Group(groupObj);

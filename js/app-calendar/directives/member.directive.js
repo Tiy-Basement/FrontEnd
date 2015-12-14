@@ -13,8 +13,8 @@ let memberItem = function($state, SOMESERVICE) {
     `,
     controller: 'HomeController as vm',
     link: function (scope, element, attrs) {
-      element.on('click', function () {
-        $state.go('root.user', {id: member.id});
+      // element.on('click', function () {
+        // $state.go('root.user', {id: {{member.id}} });
       });
     }
   };

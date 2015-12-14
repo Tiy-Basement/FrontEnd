@@ -8,7 +8,7 @@ let EditService = function($http, $cookies, $stateParams, FILESERVER) {
   // console.log(tkn);
 
   let url = FILESERVER.SERVER.URL + 'group/' + $stateParams.id;
-  // console.log(url);
+  console.log(url);
 
 
   //group constructor
@@ -18,7 +18,9 @@ let EditService = function($http, $cookies, $stateParams, FILESERVER) {
   }
 
   let id = $stateParams.id;
-  console.log(id);
+  // console.log(id);
+
+  this.editGroup = editGroup;
 
   function editGroup(groupObj) {
     let g = new Group(groupObj);
