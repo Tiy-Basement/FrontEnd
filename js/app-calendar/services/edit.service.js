@@ -10,14 +10,11 @@ let EditService = function($http, $cookies, $stateParams, FILESERVER) {
   let url = FILESERVER.SERVER.URL + 'group/' + $stateParams.id;
   // console.log(url);
 
-  // let url2 = FILESERVER.SERVER.URL + 'users/info';
-  // $http.get(url2, {headers: {'Access-Token': tkn}});
 
   //group constructor
   function Group (groupObj) {
     this.name = groupObj.name;
     this.password = groupObj.password;
-    this.id = groupObj.id;
   }
 
   let id = $stateParams.id;

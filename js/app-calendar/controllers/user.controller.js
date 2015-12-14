@@ -17,8 +17,8 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
     UserService.getUserGroups(userObj).then((res) =>{
       vm.groups = res.data.groups;
       vm.user = res.data.user;
-      console.log(vm.user);
-      console.log(res);
+      // console.log(vm.user);
+      // console.log(res);
     });
   }
 

@@ -4,7 +4,7 @@ let noteItem = function($state, SOMESERVICE) {
     restrict: 'E',
     replace: true,
     scope: {
-      member: '='
+      event: '='
     },
     template: `
       <div class="sideNote">
@@ -16,8 +16,8 @@ let noteItem = function($state, SOMESERVICE) {
     `,
     controller: 'HomeController as vm',
     link: function (scope, element, attrs) {
-      element.on('click', function () {
-        $state.go('root.user', {id: scope.somethingsomethingId});
+      // element.on('click', function () {
+        // $state.go('root.user', {id: scope.somethingsomethingId});
       });
     }
   };

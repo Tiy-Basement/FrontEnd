@@ -464,8 +464,8 @@ var UserController = function UserController($scope, AuthService, $state, $cooki
     UserService.getUserGroups(userObj).then(function (res) {
       vm.groups = res.data.groups;
       vm.user = res.data.user;
-      console.log(vm.user);
-      console.log(res);
+      // console.log(vm.user);
+      // console.log(res);
     });
   }
 
@@ -804,14 +804,10 @@ var EditService = function EditService($http, $cookies, $stateParams, FILESERVER
   var url = FILESERVER.SERVER.URL + 'group/' + $stateParams.id;
   // console.log(url);
 
-  // let url2 = FILESERVER.SERVER.URL + 'users/info';
-  // $http.get(url2, {headers: {'Access-Token': tkn}});
-
   //group constructor
   function Group(groupObj) {
     this.name = groupObj.name;
     this.password = groupObj.password;
-    this.id = groupObj.id;
   }
 
   var id = $stateParams.id;
