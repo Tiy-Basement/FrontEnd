@@ -1,3 +1,5 @@
+import _ from 'underscore';
+
 
 let UserController = function($scope, AuthService, $state, $cookies, $stateParams, FILESERVER, UserService) {
 
@@ -9,18 +11,16 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
   vm.user =[];
   vm.activate = activate;
 
-
-  //getUserGroups Function
+ //getUserGroups Function
   activate();
   function activate(userObj){
     UserService.getUserGroups(userObj).then((res) =>{
       vm.groups = res.data.groups;
       vm.user = res.data.user;
-      console.log(vm.user);
-      console.log(res);
     });
   }
 
+//Log Out function 
   $scope.logmeout = function() {
     AuthService.logout();
   };

@@ -1,21 +1,22 @@
-<div class="homeContainer">
+<div class="groupContainer">
+
   <div class="calendar" ng-controller="CalendarController">
     <div  class="span8 calendar" ui-calendar=uiConfig.calendar ng-model="eventSources"></div>
   </div>
+
+
   <aside class="sidebar">
     <form ng-submit="vm.deleteGroup()">
-      <button>the delete button</button>
+      <button>delete this group</button>
     </form>
     <div class="members">
       <h5>Members</h5>
-      <h7><a href="#/add-member">Add a Member</a></h7>
       <ul>
-        <li><a href="">A band</a></li>
-        <li><a href="">A band</a></li>
-        <li><a href="">A band</a></li>
-        <li><a href="">A band</a></li>
+        <li><a href=""></a></li>
       </ul>
+      <h7><a href="#/add-member">Add a Member</a></h7>
     </div>
+
     <div class="Notes">
       <h5>Upcoming Events</h5>
       <h7><a href="#/add-event">Add an Event</a></h7>

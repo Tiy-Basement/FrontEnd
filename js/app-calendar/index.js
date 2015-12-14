@@ -18,7 +18,7 @@ import DeleteController from './controllers/delete.controller';
 import AddService from './services/add.service';
 import UserService from './services/user.service';
 import DeleteService from './services/delete.service';
-
+import GroupService from './services/group.service';
 
 import userName from './directives/user.directive';
 import groupItem from './directives/group.directive';
@@ -38,6 +38,7 @@ angular
   .service('AddService', AddService)
   .service('DeleteService', DeleteService)
   .service('UserService', UserService)
+  .service('GroupService', GroupService)
   .directive('modalform', modalform)
   .directive('userName', userName)
   .directive('groupItem', groupItem)

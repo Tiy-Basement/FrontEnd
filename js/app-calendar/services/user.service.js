@@ -1,6 +1,5 @@
 let UserService = function($http, FILESERVER, $cookies) {
 
-
   // Group Constructor
   function Group (groupObj) {
     this.id       = groupObj.id;
@@ -11,6 +10,7 @@ let UserService = function($http, FILESERVER, $cookies) {
   console.log(userId);
 
   let token = $cookies.get('Access-Token');
+
 
   // getUserGroups Function
   this.getUserGroups = function() {

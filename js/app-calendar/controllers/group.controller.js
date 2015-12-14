@@ -1,8 +1,8 @@
-let GroupController = function(DeleteService, $stateParams, $state, $cookies) {
+let GroupController = function(GroupService, DeleteService, $stateParams, $state, $cookies) {
 
   let vm = this;
   vm.deleteGroup = deleteGroup;
-  
+  vm.members = [];
   
   //deleteGroup Function
   function deleteGroup(obj) {
@@ -10,8 +10,16 @@ let GroupController = function(DeleteService, $stateParams, $state, $cookies) {
       $state.go('root.home');
     };
 
+  //getMembers
+  function getMembers(obj){
+    GroupService.getMembers(obj).then((res) => {
+      console.log(res); 
+    })
+  }
+
+
 };
 
-GroupController.$inject = ['DeleteService','$stateParams','$state', '$cookies'];
+GroupController.$inject = ['GroupService','DeleteService','$stateParams','$state', '$cookies'];
 
 export default GroupController;

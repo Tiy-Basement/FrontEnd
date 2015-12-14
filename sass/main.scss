@@ -61,7 +61,23 @@ body{
 }
 // End of User Page
 
-
+//GroupCalendar Page
+.groupContainer{
+  .calendar{
+    width: 79%;
+    display: inline-block;
+    vertical-align: top;
+    padding: 0;
+    margin: 0;
+  } 
+  .sidebar {
+    width: 19%;
+    padding: 0;
+    margin:0;
+    display: inline-block;
+    text-align: left;
+  }
+}
 // Footer
   footer{
     height: 200px;

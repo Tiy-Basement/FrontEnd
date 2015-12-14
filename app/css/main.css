@@ -7927,6 +7927,20 @@ button.close {
   display: inline-block;
   text-align: left; }
 
+.groupContainer .calendar {
+  width: 79%;
+  display: inline-block;
+  vertical-align: top;
+  padding: 0;
+  margin: 0; }
+
+.groupContainer .sidebar {
+  width: 19%;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  text-align: left; }
+
 footer {
   height: 200px;
   width: 100%;
