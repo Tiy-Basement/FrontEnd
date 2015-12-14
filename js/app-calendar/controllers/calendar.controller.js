@@ -12,7 +12,7 @@ let CalendarController = function ($scope, $compile, uiCalendarConfig, $cookies,
     url: 'http://tiy-basement.herokuapp.com/user/'+ userId + '/events',
     headers: {
       'Access-Token': tkn
-    }
+    },
   };
   
   $scope.eventSources = [ $scope.eventSource ];
@@ -23,18 +23,18 @@ let CalendarController = function ($scope, $compile, uiCalendarConfig, $cookies,
     var s = new Date(start).getTime() / 1000;
     var e = new Date(end).getTime() / 1000;
     var m = new Date(start).getMonth();
-    var events = [{title: 'Feed Me ' + m,start: s + (50000),end: s + (100000),allDay: false, className: ['customFeed']}];
-    callback(events);
   };
 
   /* alert on eventClick */
   $scope.alertOnEventClick = function( date, jsEvent, view){
     $scope.alertMessage = (date.title + ' was clicked ');
+    console.log("john", date);
   };
 
   /* alert on Drop */
   $scope.alertOnDrop = function(event, delta, revertFunc, jsEvent, ui, view){
     $scope.alertMessage = ('Event Droped to make dayDelta ' + delta);
+    console.log(event);
   };
 
   /* alert on Resize */
@@ -74,13 +74,6 @@ let CalendarController = function ($scope, $compile, uiCalendarConfig, $cookies,
     }
   };
 
-  /* Render Tooltip */
-  $scope.eventRender = function( event, element, view ) { 
-    element.attr({'tooltip': event.title,
-                   'tooltip-append-to-body': true});
-    $compile(element)($scope);
-  };
-
   /* config object */
   $scope.uiConfig = {
     calendar:{
@@ -95,7 +88,9 @@ let CalendarController = function ($scope, $compile, uiCalendarConfig, $cookies,
       eventDrop: $scope.alertOnDrop,
       eventResize: $scope.alertOnResize,
       eventRender: $scope.eventRender,
+      timezone: 'local',
       lazyFetching: true,
+      cache: true,
     }
   };
 
