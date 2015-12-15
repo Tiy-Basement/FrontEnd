@@ -30,10 +30,21 @@ let CalendarController = function ($scope, $compile, uiCalendarConfig, $cookies,
     cache: true,
     lazyFetching: true,
   };
+
+  $scope.mergeEvents = {
+    url: 'http://tiy-basement.herokuapp.com/group/' + $stateParams.id + '/members/events',
+    headers: {
+      'Access-Token': tkn,
+    },
+    lazyFetching: true,
+    cache: true,
+    rendering: 'background',
+    backgroundColor: 'red',
+  }
   
   $scope.eventSources = [ $scope.myEvents ];
 
-  $scope.groupSource = [ $scope.groupEvents ];
+  $scope.groupSource = [ $scope.groupEvents, $scope.mergeEvents ];
 
 
   /* event source that calls a function on every view switch */
