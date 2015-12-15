@@ -28,6 +28,14 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
     })
   }
 
+  $scope.routeToJoinGroup = function () {
+    $state.go('root.joinGroup');
+  }
+
+  $scope.routeToCreateGroup = function () {
+    $state.go('root.addGroup');
+  }
+
 //Log Out function 
   $scope.logmeout = function() {
     AuthService.logout();
