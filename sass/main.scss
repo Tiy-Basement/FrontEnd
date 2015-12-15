@@ -52,6 +52,10 @@ ul {
   padding-left: 0;
 }
 
+hr {
+  border-top: 1px solid $purpleA;
+}
+
 // All buttons
 button {
   @include borders();
@@ -233,8 +237,8 @@ a {
     width: 20%;
     display: flex;
     justify-content: space-between;
-    margin: 600px auto;
-
+    margin: 0 auto;
+    padding-top: 600px;
   }
 
 }

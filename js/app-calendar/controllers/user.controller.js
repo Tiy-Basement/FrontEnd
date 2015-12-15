@@ -47,40 +47,6 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
     });
   }
 
-
-  // $scope.getGroups = function () {
-  //   UserService.getGroups().then( (res) => {
-  //     console.log(res);
-  //   });
-  // };
-
-  // // let vm = this;
-
-  // this.groups = [];
-
-  // this.activate = activate;
-
-  // // activate();
-
-  // function activate () {
-  //   UserService.getGroups().then( (res) => {
-  //     console.log(res);
-  //     // vm.groups = res.data.results;
-  //   });
-  // }
-
-
-
-
-
-  // HELP FROM TIM -- getting calendar data
-
-  if ($stateParams) {
-    // use $stateParams.id to access data from back end
-  } else {
-    // use $cookies.get(user_id) to access data from back end
-  }
-
 };
 
 UserController.$inject = ['$scope','AuthService', '$state', '$cookies', '$stateParams','FILESERVER','UserService'];
