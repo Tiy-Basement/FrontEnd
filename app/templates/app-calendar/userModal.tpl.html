@@ -1,0 +1,35 @@
+<div ng-controller="UserEventController">
+  <form ng-submit="addEvent(myEvent)" ng-controller="AddEventController">
+    <div class="modal-header">
+      <h3 class="modal-title">Create an Event</h3>
+    </div>
+    <div class="modal-body">
+      <div>  
+
+        <div>  
+          <label>Title: <input type="text" class="form-control" ng-model="myEvent.title"></label>
+        </div>
+
+        <div>
+          <label>Location: <input type="text" class="form-control" ng-model="myEvent.location"></label>
+        </div>
+
+        <div>  
+        <label>Begins at: <input type="datetime-local" class="form-control" ng-model="myEvent.start"></label>
+        </div>
+
+        <div>
+          <label>Ends at: <input type="datetime-local" class="form-control" ng-model="myEvent.end"></label>
+        </div>
+
+        <div> 
+          <label>Note: <input maxlength=140 class="form-control" ng-model="myEvent.note"></input></label>
+        </div>
+
+      </div>
+    </div>
+    <div class="modal-footer"> 
+      <button class="btn btn-primary" ng-click="ok()">Add Event</button>
+    </div>
+  </form>
+</div>
