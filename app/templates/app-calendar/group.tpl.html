@@ -23,10 +23,12 @@
         <h5>Upcoming Events</h5>
 
         <ul>
-          <li ng-repeat ='event in vm.groupEvents'><a href="">{{event.title}}:
-          {{event.note}}
-
-          </a></li>
+          <li ng-repeat ='event in vm.groupEvents'>
+            <a href="">{{event.title}}: {{event.note}}</a>
+            <button class="btn btn-xs">
+              <span class="glyphicon glyphicon-remove"></span>
+            </button>
+          </li>
         </ul>
 
        <button class="btn btn-default" ng-controller="GroupModalEventController" ng-click="open()">Add Group Event</button>
