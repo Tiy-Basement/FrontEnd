@@ -75,12 +75,12 @@ a {
 }
 
 
-// All the forms
+// All the forms on new Pages
 .heading {
   text-align: center;
 }
 
-form {
+.newPage {
   @include borders();
   text-align: center;
   padding: 30px 0;
