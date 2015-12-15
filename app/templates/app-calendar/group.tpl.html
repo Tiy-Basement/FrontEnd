@@ -27,11 +27,13 @@
           <li><a href="">An event note</a></li>
           <li><a href="">An event note</a></li>
         </ul>
+        <button ng-controller="GroupController" ng-click="routeToAdd()">Add Group Event</button>
+       <button class="btn btn-default" ng-controller="GroupModalEventController" ng-click="open()">Add Event (M)</button>
       </div>
 
       <!-- Edit Membership -->
       <div class="membership">
-        <button class="btn-small btn btn-secondary btn-sm">Leave Group</button>
+        <button class="btn-small btn btn-secondary btn-sm" ng-click="vm.leaveGroup()">Leave Group</button>
         <br>
         <button class="btn-small btn btn-secondary btn-sm" ng-click="vm.toGroupEdit()">Edit Group</button>
         <br>

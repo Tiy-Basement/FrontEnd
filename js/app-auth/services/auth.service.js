@@ -25,6 +25,7 @@ let AuthService = function($http, FILESERVER, $cookies, $state) {
 
   this.logout = function () {
     $cookies.remove('Access-Token');
+    $cookies.remove('UserID');
     FILESERVER.SERVER.CONFIG.headers['Access-Token'] = null;
     $state.go('root2.splash');
   };

@@ -31,7 +31,8 @@ let DeleteService = function($http, FILESERVER, $cookies, $state, $stateParams) 
 
   // Leave a group (destroy membership)
   function leaveGroup () {
-    $http.delete(SOME_URL, FILESERVER.SERVER.CONFIG);
+    let user_id = $cookies.get('UserID');
+    $http.delete(url + '/group/' + $stateParams.id + '/member/' + user_id, FILESERVER.SERVER.CONFIG);
   }
 
 
