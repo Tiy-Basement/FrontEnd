@@ -23,13 +23,20 @@
         <h5>Upcoming Events</h5>
 
         <ul>
-          <li ng-repeat ='event in vm.groupEvents'><a href="">{{event.title}}:
-          {{event.note}}
-
-          </a></li>
+          <li ng-repeat ='event in vm.groupEvents'>
+            <a href="">{{event.title}}: {{event.note}}</a>
+            <div 
+              class="delete-div" 
+              ng-click="vm.deleteEvent(event.id)"
+              uib-popover="Delete this Event"
+              popover-trigger="mouseenter"
+              >
+              <i class="fa fa-times"></i>
+            </div>
+          </li>
         </ul>
 
-       <button class="btn btn-default" ng-controller="GroupModalEventController" ng-click="open()">Add Group Event</button>
+        <button class="btn btn-default" ng-controller="GroupModalEventController" ng-click="open()">Add Group Event</button>
 
       </div>
       

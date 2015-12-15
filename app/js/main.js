@@ -304,7 +304,9 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
     headers: {
       'Access-Token': tkn
     },
-    color: '#7D90C3'
+    color: '#7D90C3',
+    cache: true,
+    lazyFetching: true
   };
 
   //gets events for the group calendar
@@ -312,12 +314,25 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
     url: 'http://tiy-basement.herokuapp.com/group/' + $stateParams.id + '/events',
     headers: {
       'Access-Token': tkn
-    }
+    },
+    cache: true,
+    lazyFetching: true
+  };
+
+  $scope.mergeEvents = {
+    url: 'http://tiy-basement.herokuapp.com/group/' + $stateParams.id + '/members/events',
+    headers: {
+      'Access-Token': tkn
+    },
+    lazyFetching: true,
+    cache: true,
+    rendering: 'background',
+    backgroundColor: 'red'
   };
 
   $scope.eventSources = [$scope.myEvents];
 
-  $scope.groupSource = [$scope.groupEvents];
+  $scope.groupSource = [$scope.groupEvents, $scope.mergeEvents];
 
   /* event source that calls a function on every view switch */
   $scope.eventsF = function (start, end, timezone, callback) {
@@ -343,25 +358,6 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
     $scope.alertMessage = 'Event Resized to make dayDelta ' + delta;
   };
 
-  /* add and removes an event source of choice */
-  $scope.addRemoveEventSource = function (sources, source) {
-    var canAdd = 0;
-    angular.forEach(sources, function (value, key) {
-      if (sources[key] === source) {
-        sources.splice(key, 1);
-        canAdd = 1;
-      }
-    });
-    if (canAdd === 0) {
-      sources.push(source);
-    }
-  };
-
-  /* remove event */
-  $scope.remove = function (index) {
-    $scope.events.splice(index, 1);
-  };
-
   /* Change View */
   $scope.changeView = function (view, calendar) {
     uiCalendarConfig.calendars[calendar].fullCalendar('changeView', view);
@@ -377,7 +373,7 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
   /* config object */
   $scope.uiConfig = {
     calendar: {
-      editable: true,
+      editable: false,
       header: {
         left: 'month agendaWeek',
         center: 'title',
@@ -388,9 +384,7 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
       eventDrop: $scope.alertOnDrop,
       eventResize: $scope.alertOnResize,
       eventRender: $scope.eventRender,
-      timezone: 'local',
-      lazyFetching: true,
-      cache: true
+      timezone: 'local'
     }
   };
 };
@@ -450,6 +444,7 @@ var GroupController = function GroupController(GroupService, DeleteService, $sta
   vm.joinGroup = joinGroup;
   vm.leaveGroup = leaveGroup;
   vm.toGroupEdit = toGroupEdit;
+  vm.deleteEvent = deleteEvent;
 
   var id = $stateParams.id;
 
@@ -462,7 +457,7 @@ var GroupController = function GroupController(GroupService, DeleteService, $sta
   function editGroup(groupObj) {
     console.log('editing the group');
     EditService.editGroup(groupObj).then(function (res) {
-      console.log(res);
+      //console.log(res);
       $state.go('root.group', { id: res.data.group.id });
     });
   };
@@ -487,15 +482,20 @@ var GroupController = function GroupController(GroupService, DeleteService, $sta
     var user_id = $cookies.get('UserID');
     // console.log(user_id);
     DeleteService.leaveGroup().then(function (res) {
-      console.log('group deleted');
       $state.go('root.home', { id: user_id });
     });
   }
 
   // reroute to the group edit page
   function toGroupEdit() {
-    console.log('things');
     $state.go('root.editGroup', { id: $stateParams.id });
+  }
+
+  //Delete an event from the sidebar
+  function deleteEvent(eventId) {
+    DeleteService.deleteEvent(eventId).then(function (res) {
+      $state.go('root.current', {}, { reload: true });
+    });
   }
 
   //getSingleGroup Function-- Waiting on route
@@ -503,7 +503,7 @@ var GroupController = function GroupController(GroupService, DeleteService, $sta
   function getSingleGroup(obj) {
     GroupService.getSingleGroup(obj).then(function (res) {
       vm.groupName = res.data.group.name;
-      console.log(vm.groupName);
+      //console.log(vm.groupName);
     });
   }
 
@@ -512,7 +512,7 @@ var GroupController = function GroupController(GroupService, DeleteService, $sta
   function getMembers(obj) {
     GroupService.getMembers(obj).then(function (res) {
       vm.members = res.data.members;
-      console.log(vm.members);
+      //console.log(vm.members);
     });
   }
 
@@ -521,7 +521,7 @@ var GroupController = function GroupController(GroupService, DeleteService, $sta
   function getGroupEvents(obj) {
     GroupService.getGroupEvents(obj).then(function (res) {
       vm.groupEvents = res.data;
-      console.log(vm.groupEvents);
+      //console.log(vm.groupEvents);
     });
   }
 };
@@ -950,6 +950,7 @@ var DeleteService = function DeleteService($http, FILESERVER, $cookies, $state, 
   this.deleteGroup = deleteGroup;
   this.deleteUser = deleteUser;
   this.leaveGroup = leaveGroup;
+  this.deleteEvent = deleteEvent;
 
   // Group Constructor
   function Group(groupObj) {
@@ -959,6 +960,10 @@ var DeleteService = function DeleteService($http, FILESERVER, $cookies, $state, 
   // Group Constructor
   function User(userObj) {
     this.id = userObj.id;
+  }
+
+  function deleteEvent(eventId) {
+    $http['delete'](url + '/events/' + eventId, FILESERVER.SERVER.CONFIG);
   }
 
   //Delete Group Function
