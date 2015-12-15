@@ -72,7 +72,7 @@ let GroupController = function(GroupService, DeleteService, $stateParams, $state
   getMembers();
   function getMembers(obj){
     GroupService.getMembers(obj).then((res) => {
-      console.log(res); 
+      console.log(vm.members); 
       vm.members = res;
     })
   }
