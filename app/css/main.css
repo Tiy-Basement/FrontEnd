@@ -7924,7 +7924,7 @@ a {
 .heading {
   text-align: center; }
 
-form {
+.newPage {
   border: 1px solid #D7D7D7;
   border-radius: 5px;
   text-align: center;
@@ -7932,12 +7932,12 @@ form {
   width: 40%;
   margin: 20px auto;
   background-color: #EFEFFF; }
-  form label {
+  .newPage label {
     font-size: 15px; }
-  form input {
+  .newPage input {
     border: 1px solid #D7D7D7;
     border-radius: 5px; }
-  form textarea {
+  .newPage textarea {
     border: 1px solid #D7D7D7;
     border-radius: 5px; }
 
