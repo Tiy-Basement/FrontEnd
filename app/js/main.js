@@ -445,6 +445,7 @@ var GroupController = function GroupController(GroupService, DeleteService, $sta
   vm.deleteGroup = deleteGroup;
 
   vm.members = [];
+  vm.groupEvents = [];
   vm.joinGroup = joinGroup;
   vm.leaveGroup = leaveGroup;
   vm.toGroupEdit = toGroupEdit;
@@ -508,8 +509,17 @@ var GroupController = function GroupController(GroupService, DeleteService, $sta
   getMembers();
   function getMembers(obj) {
     GroupService.getMembers(obj).then(function (res) {
-      console.log(vm.members);
       vm.members = res;
+      console.log(vm.members);
+    });
+  }
+
+  //get Group Events Function--- Waiting on route
+  getGroupEvents();
+  function getGroupEvents(obj) {
+    GroupService.getGroupEvents(obj).then(function (res) {
+      vm.groupEvents = res.data;
+      console.log(vm.groupEvents);
     });
   }
 };
@@ -1027,11 +1037,16 @@ var GroupService = function GroupService($http, FILESERVER, $cookies, $statePara
   var token = $cookies.get('Access-Token');
   console.log($stateParams.id);
 
-  //route doesn't work
-  this.getMembers = function () {
-    return $http.get(FILESERVER.SERVER.URL + 'group/' + $stateParams.id + '/members', { headers: { 'Access-Token': token } });
+  //get group events function
+  this.getGroupEvents = function () {
+    return $http.get(FILESERVER.SERVER.URL + 'group/' + $stateParams.id + '/events', { headers: { 'Access-Token': token } });
   };
-  //route doesn't work
+
+  // get group members--- route doesn't work
+  this.getMembers = function () {
+    return $http.get(FILESERVER.SERVER.URL + 'group/' + $stateParams.id + '/info', { headers: { 'Access-Token': token } });
+  };
+  //get single group--- route doesn't work
   this.getSingleGroup = function () {
     return $http.get(FILESERVER.SERVER.URL + 'group/' + $stateParams.id, { headers: { 'Access-Token': token } });
   };

@@ -19,15 +19,12 @@
       <!-- Event notes -->
       <div class="notes">
         <h5>Upcoming Events</h5>
-        <button class="btn btn-secondary btn-sm" ng-controller="GroupController" ng-click="routeToAdd()">Add Group Event</button>
-        <!-- <h6><a href="#/add-event">Add a Group Event</a></h6> -->
-        <!-- <h6><a href="#/delete-event">Delete a Group Event</a></h6> -->
         <ul>
-          <li><a href="">An event note</a></li>
-          <li><a href="">An event note</a></li>
-          <li><a href="">An event note</a></li>
+          <li ng-repeat ='event in vm.groupEvents'><a href="">{{event.title}}:
+          {{event.note}}
+
+          </a></li>
         </ul>
-        <button ng-controller="GroupController" ng-click="routeToAdd()">Add Group Event</button>
        <button class="btn btn-default" ng-controller="GroupModalEventController" ng-click="open()">Add Event (M)</button>
       </div>
 

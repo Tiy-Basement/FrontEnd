@@ -6,6 +6,7 @@ let GroupController = function(GroupService, DeleteService, $stateParams, $state
   vm.deleteGroup = deleteGroup;
 
   vm.members = [];
+  vm.groupEvents = [];
   vm.joinGroup = joinGroup;
   vm.leaveGroup = leaveGroup;
   vm.toGroupEdit = toGroupEdit;
@@ -74,8 +75,17 @@ let GroupController = function(GroupService, DeleteService, $stateParams, $state
   getMembers();
   function getMembers(obj){
     GroupService.getMembers(obj).then((res) => {
-      console.log(vm.members); 
       vm.members = res;
+      console.log(vm.members); 
+    })
+  }
+
+  //get Group Events Function--- Waiting on route 
+  getGroupEvents();
+  function getGroupEvents(obj){
+    GroupService.getGroupEvents(obj).then((res) => {
+      vm.groupEvents = res.data;
+      console.log(vm.groupEvents);
     })
   }
 
