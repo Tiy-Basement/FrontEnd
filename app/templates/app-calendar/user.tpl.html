@@ -6,18 +6,17 @@
   </div>
 
   <aside class="sidebar">
+      <div class="userText">
+        Welcome, {{vm.user.username}}!
+      </div>
     <div class="myGroups">
-
-    <!-- USERNAME DIRECTIVE -->
-      <user-name></user-name>
-      <br>
-
       <button ng-click="logmeout()">Logout</button>
 
       <h5>My Groups</h5>
       <ul>
-       <!--  GROUP DIRECTIVE -->
-        <group-item> </group-item>
+        <li ng-repeat="G in vm.groups" Group="G">
+          <a href="#/group/{{G.id}}"> {{G.name}}</a>
+        </li>
       </ul>
 
       <h7><a href="#/add-group">Create a Group</a></h7>
