@@ -7973,6 +7973,10 @@ a {
     padding: 0 10px; }
   .userContainer .sidebar .groupList {
     padding-left: 15px; }
+  .userContainer .sidebar .route-buttons {
+    display: flex;
+    justify-content: center;
+    padding: 5px 0; }
   .userContainer .sidebar .myNotes {
     border: 1px solid #D7D7D7;
     border-radius: 5px;
