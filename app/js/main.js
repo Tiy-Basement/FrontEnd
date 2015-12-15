@@ -509,7 +509,7 @@ var GroupController = function GroupController(GroupService, DeleteService, $sta
   getMembers();
   function getMembers(obj) {
     GroupService.getMembers(obj).then(function (res) {
-      vm.members = res;
+      vm.members = res.data.members;
       console.log(vm.members);
     });
   }
