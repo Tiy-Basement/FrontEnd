@@ -2,14 +2,15 @@
 
   <div class="backgroundPic"></div>
 
-    <footer>
-      <ul class="buttonBox">
-        <li><button class="login" ng-click="vm.gotoLogin()">login</button></li>
-        <li><button class="signUp" ng-click="vm.gotoSignUp()">sign up</button></li>
-      </ul>
-      <ul>
-        <li class="footText" ng-click="vm.gotoHome()"><i class="fa fa-calendar"></i><span> user calendar</span></li>
-      </ul>
-    </footer>
+  <div class="buttonBox">
+    <button class="btn btn-default btn-lg" ng-click="vm.gotoLogin()">Login</button>
+    <button class="btn btn-default btn-lg" ng-click="vm.gotoSignUp()">Sign Up</button>
+  </div>
+  
+  <footer>
+    <ul>
+      <li class="footText" ng-click="vm.gotoHome()"><i class="fa fa-calendar"></i><span> user calendar</span></li>
+    </ul>
+  </footer>
 
 </div>

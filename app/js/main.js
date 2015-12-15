@@ -304,7 +304,9 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
     headers: {
       'Access-Token': tkn
     },
-    color: '#7D90C3'
+    color: '#7D90C3',
+    cache: true,
+    lazyFetching: true
   };
 
   //gets events for the group calendar
@@ -312,7 +314,9 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
     url: 'http://tiy-basement.herokuapp.com/group/' + $stateParams.id + '/events',
     headers: {
       'Access-Token': tkn
-    }
+    },
+    cache: true,
+    lazyFetching: true
   };
 
   $scope.eventSources = [$scope.myEvents];
@@ -343,25 +347,6 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
     $scope.alertMessage = 'Event Resized to make dayDelta ' + delta;
   };
 
-  /* add and removes an event source of choice */
-  $scope.addRemoveEventSource = function (sources, source) {
-    var canAdd = 0;
-    angular.forEach(sources, function (value, key) {
-      if (sources[key] === source) {
-        sources.splice(key, 1);
-        canAdd = 1;
-      }
-    });
-    if (canAdd === 0) {
-      sources.push(source);
-    }
-  };
-
-  /* remove event */
-  $scope.remove = function (index) {
-    $scope.events.splice(index, 1);
-  };
-
   /* Change View */
   $scope.changeView = function (view, calendar) {
     uiCalendarConfig.calendars[calendar].fullCalendar('changeView', view);
@@ -377,7 +362,7 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
   /* config object */
   $scope.uiConfig = {
     calendar: {
-      editable: true,
+      editable: false,
       header: {
         left: 'month agendaWeek',
         center: 'title',
@@ -388,9 +373,7 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
       eventDrop: $scope.alertOnDrop,
       eventResize: $scope.alertOnResize,
       eventRender: $scope.eventRender,
-      timezone: 'local',
-      lazyFetching: true,
-      cache: true
+      timezone: 'local'
     }
   };
 };
