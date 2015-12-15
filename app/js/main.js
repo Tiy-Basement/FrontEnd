@@ -445,6 +445,7 @@ var GroupController = function GroupController(GroupService, DeleteService, $sta
   vm.deleteGroup = deleteGroup;
 
   vm.members = [];
+  vm.groupName = [];
   vm.groupEvents = [];
   vm.joinGroup = joinGroup;
   vm.leaveGroup = leaveGroup;
@@ -501,7 +502,8 @@ var GroupController = function GroupController(GroupService, DeleteService, $sta
   getSingleGroup();
   function getSingleGroup(obj) {
     GroupService.getSingleGroup(obj).then(function (res) {
-      console.log(res);
+      vm.groupName = res.data.group.name;
+      console.log(vm.groupName);
     });
   }
 
@@ -1048,7 +1050,7 @@ var GroupService = function GroupService($http, FILESERVER, $cookies, $statePara
   };
   //get single group--- route doesn't work
   this.getSingleGroup = function () {
-    return $http.get(FILESERVER.SERVER.URL + 'group/' + $stateParams.id, { headers: { 'Access-Token': token } });
+    return $http.get(FILESERVER.SERVER.URL + 'group/' + $stateParams.id + '/info', { headers: { 'Access-Token': token } });
   };
 };
 

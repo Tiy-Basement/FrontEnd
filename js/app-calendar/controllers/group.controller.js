@@ -6,6 +6,7 @@ let GroupController = function(GroupService, DeleteService, $stateParams, $state
   vm.deleteGroup = deleteGroup;
 
   vm.members = [];
+  vm.groupName = [];
   vm.groupEvents = [];
   vm.joinGroup = joinGroup;
   vm.leaveGroup = leaveGroup;
@@ -67,7 +68,8 @@ let GroupController = function(GroupService, DeleteService, $stateParams, $state
   getSingleGroup();
   function getSingleGroup(obj){
     GroupService.getSingleGroup(obj).then((res) =>{
-      console.log(res);
+      vm.groupName = res.data.group.name;
+      console.log(vm.groupName);
     })
   } 
 

@@ -24,7 +24,7 @@ let GroupService = function($http, FILESERVER, $cookies, $stateParams) {
   }
   //get single group--- route doesn't work
   this.getSingleGroup = function (){
-    return $http.get(FILESERVER.SERVER.URL+'group/'+$stateParams.id, {headers: {'Access-Token': token}})
+    return $http.get(FILESERVER.SERVER.URL+'group/'+$stateParams.id+'/info', {headers: {'Access-Token': token}})
   }
 };
 
