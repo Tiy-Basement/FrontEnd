@@ -160,7 +160,13 @@ a {
 // }
 
 
-
+//Delete 'Button'
+.delete-div{
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  float: right;
+}
 
 
 
@@ -172,7 +178,7 @@ a {
 
     .backgroundPic{
     width: 100%;
-    height: 900px;
+    height: 100%;
     background-image:url(http://40.media.tumblr.com/cfb040c4a856fb09eb26993ceb35c68d/tumblr_nqnuyep1Hs1tccw0fo4_500.png);
     background-repeat: no-repeat;
     background-position: center top;
@@ -180,6 +186,14 @@ a {
     position: fixed;
     top: 0px;
     z-index: -1;
+  }
+
+  .buttonBox {
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+    margin: 600px auto;
+
   }
 
 }

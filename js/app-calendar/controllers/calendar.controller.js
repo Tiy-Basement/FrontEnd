@@ -17,6 +17,8 @@ let CalendarController = function ($scope, $compile, uiCalendarConfig, $cookies,
       'Access-Token': tkn
     },
     color: '#7D90C3',
+    cache: true,
+    lazyFetching: true,
   };
 
   //gets events for the group calendar
@@ -25,11 +27,24 @@ let CalendarController = function ($scope, $compile, uiCalendarConfig, $cookies,
     headers: {
       'Access-Token': tkn
     },
+    cache: true,
+    lazyFetching: true,
   };
+
+  $scope.mergeEvents = {
+    url: 'http://tiy-basement.herokuapp.com/group/' + $stateParams.id + '/members/events',
+    headers: {
+      'Access-Token': tkn,
+    },
+    lazyFetching: true,
+    cache: true,
+    rendering: 'background',
+    backgroundColor: 'red',
+  }
   
   $scope.eventSources = [ $scope.myEvents ];
 
-  $scope.groupSource = [ $scope.groupEvents ];
+  $scope.groupSource = [ $scope.groupEvents, $scope.mergeEvents ];
 
 
   /* event source that calls a function on every view switch */
@@ -56,26 +71,6 @@ let CalendarController = function ($scope, $compile, uiCalendarConfig, $cookies,
     $scope.alertMessage = ('Event Resized to make dayDelta ' + delta);
   };
 
-  /* add and removes an event source of choice */
-  $scope.addRemoveEventSource = function(sources,source) {
-    var canAdd = 0;
-    angular.forEach(sources,function(value, key){
-      if(sources[key] === source){
-        sources.splice(key,1);
-        canAdd = 1;
-      }
-    });
-    if(canAdd === 0){
-      sources.push(source);
-    }
-  };
-
-
-  /* remove event */
-  $scope.remove = function(index) {
-    $scope.events.splice(index,1);
-  };
-
   /* Change View */
   $scope.changeView = function(view,calendar) {
     uiCalendarConfig.calendars[calendar].fullCalendar('changeView',view);
@@ -91,7 +86,7 @@ let CalendarController = function ($scope, $compile, uiCalendarConfig, $cookies,
   /* config object */
   $scope.uiConfig = {
     calendar:{
-      editable: true,
+      editable: false,
       header:{
         left: 'month agendaWeek',
         center: 'title',
@@ -103,8 +98,6 @@ let CalendarController = function ($scope, $compile, uiCalendarConfig, $cookies,
       eventResize: $scope.alertOnResize,
       eventRender: $scope.eventRender,
       timezone: 'local',
-      lazyFetching: true,
-      cache: true,
     }
   };
 
