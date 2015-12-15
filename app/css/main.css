@@ -7974,9 +7974,6 @@ a {
     padding: 0 10px;
     background-color: white;
     max-height: auto; }
-  .userContainer .sidebar .eventBtn {
-    position: absolute;
-    bottom: 30px; }
 
 .uEventNote {
   border: 1px solid #D7D7D7;
@@ -8000,13 +7997,20 @@ a {
   float: right;
   text-align: left;
   max-height: 650px;
-  background-color: #EFEFFF;
-  overflow: scroll; }
+  background-color: #C7BDE0; }
+  .groupContainer .sidebar .groupNotes {
+    border: 1px solid #D7D7D7;
+    border-radius: 5px;
+    max-height: 300px;
+    overflow: scroll;
+    padding: 0 10px;
+    background-color: white;
+    max-height: auto; }
 
 .gEventNote {
   border: 1px solid #D7D7D7;
   border-radius: 5px;
-  background-color: white;
+  background-color: #EFEFFF;
   padding: 3px 10px 10px 10px;
   margin-bottom: 8px; }
 
