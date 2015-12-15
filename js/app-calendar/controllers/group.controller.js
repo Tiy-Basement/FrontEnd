@@ -11,6 +11,7 @@ let GroupController = function(GroupService, DeleteService, $stateParams, $state
   vm.joinGroup = joinGroup;
   vm.leaveGroup = leaveGroup;
   vm.toGroupEdit = toGroupEdit;
+  vm.deleteEvent = deleteEvent;
 
   let id = $stateParams.id;
 
@@ -23,7 +24,7 @@ let GroupController = function(GroupService, DeleteService, $stateParams, $state
   function editGroup (groupObj) {
     console.log('editing the group');
     EditService.editGroup(groupObj).then( (res) => {
-      console.log(res);
+      //console.log(res);
       $state.go('root.group', { id: res.data.group.id});
     });
   }; 
@@ -51,7 +52,6 @@ let GroupController = function(GroupService, DeleteService, $stateParams, $state
     let user_id = $cookies.get('UserID');
     // console.log(user_id);
     DeleteService.leaveGroup().then( (res) => {
-      console.log('group deleted');
       $state.go('root.home', {id: user_id});
     })
   }
@@ -59,17 +59,23 @@ let GroupController = function(GroupService, DeleteService, $stateParams, $state
 
   // reroute to the group edit page
   function toGroupEdit () {
-    console.log('things');
     $state.go('root.editGroup', { id: $stateParams.id })
   }
 
+  //Delete an event from the sidebar
+  function deleteEvent(eventId) {
+    DeleteService.deleteEvent(eventId).then((res) => {
+      $state.go('root.current', {}, {reload: true})
+
+    })
+  }
 
   //getSingleGroup Function-- Waiting on route
   getSingleGroup();
   function getSingleGroup(obj){
     GroupService.getSingleGroup(obj).then((res) =>{
       vm.groupName = res.data.group.name;
-      console.log(vm.groupName);
+      //console.log(vm.groupName);
     })
   } 
 
@@ -78,7 +84,7 @@ let GroupController = function(GroupService, DeleteService, $stateParams, $state
   function getMembers(obj){
     GroupService.getMembers(obj).then((res) => {
       vm.members = res.data.members;
-      console.log(vm.members); 
+      //console.log(vm.members); 
     })
   }
 
@@ -87,10 +93,9 @@ let GroupController = function(GroupService, DeleteService, $stateParams, $state
   function getGroupEvents(obj){
     GroupService.getGroupEvents(obj).then((res) => {
       vm.groupEvents = res.data;
-      console.log(vm.groupEvents);
+      //console.log(vm.groupEvents);
     })
   }
-
 
 };
 

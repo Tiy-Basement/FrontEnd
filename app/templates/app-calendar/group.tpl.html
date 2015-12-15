@@ -25,13 +25,18 @@
         <ul>
           <li ng-repeat ='event in vm.groupEvents'>
             <a href="">{{event.title}}: {{event.note}}</a>
-            <button class="btn btn-xs">
-              <span class="glyphicon glyphicon-remove"></span>
-            </button>
+            <div 
+              class="delete-div" 
+              ng-click="vm.deleteEvent(event.id)"
+              uib-popover="Delete this Event"
+              popover-trigger="mouseenter"
+              >
+              <i class="fa fa-times"></i>
+            </div>
           </li>
         </ul>
 
-       <button class="btn btn-default" ng-controller="GroupModalEventController" ng-click="open()">Add Group Event</button>
+        <button class="btn btn-default" ng-controller="GroupModalEventController" ng-click="open()">Add Group Event</button>
 
       </div>
       

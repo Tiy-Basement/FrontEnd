@@ -444,6 +444,7 @@ var GroupController = function GroupController(GroupService, DeleteService, $sta
   vm.joinGroup = joinGroup;
   vm.leaveGroup = leaveGroup;
   vm.toGroupEdit = toGroupEdit;
+  vm.deleteEvent = deleteEvent;
 
   var id = $stateParams.id;
 
@@ -456,7 +457,7 @@ var GroupController = function GroupController(GroupService, DeleteService, $sta
   function editGroup(groupObj) {
     console.log('editing the group');
     EditService.editGroup(groupObj).then(function (res) {
-      console.log(res);
+      //console.log(res);
       $state.go('root.group', { id: res.data.group.id });
     });
   };
@@ -481,15 +482,20 @@ var GroupController = function GroupController(GroupService, DeleteService, $sta
     var user_id = $cookies.get('UserID');
     // console.log(user_id);
     DeleteService.leaveGroup().then(function (res) {
-      console.log('group deleted');
       $state.go('root.home', { id: user_id });
     });
   }
 
   // reroute to the group edit page
   function toGroupEdit() {
-    console.log('things');
     $state.go('root.editGroup', { id: $stateParams.id });
+  }
+
+  //Delete an event from the sidebar
+  function deleteEvent(eventId) {
+    DeleteService.deleteEvent(eventId).then(function (res) {
+      $state.go('root.current', {}, { reload: true });
+    });
   }
 
   //getSingleGroup Function-- Waiting on route
@@ -497,7 +503,7 @@ var GroupController = function GroupController(GroupService, DeleteService, $sta
   function getSingleGroup(obj) {
     GroupService.getSingleGroup(obj).then(function (res) {
       vm.groupName = res.data.group.name;
-      console.log(vm.groupName);
+      //console.log(vm.groupName);
     });
   }
 
@@ -506,7 +512,7 @@ var GroupController = function GroupController(GroupService, DeleteService, $sta
   function getMembers(obj) {
     GroupService.getMembers(obj).then(function (res) {
       vm.members = res.data.members;
-      console.log(vm.members);
+      //console.log(vm.members);
     });
   }
 
@@ -515,7 +521,7 @@ var GroupController = function GroupController(GroupService, DeleteService, $sta
   function getGroupEvents(obj) {
     GroupService.getGroupEvents(obj).then(function (res) {
       vm.groupEvents = res.data;
-      console.log(vm.groupEvents);
+      //console.log(vm.groupEvents);
     });
   }
 };
@@ -935,6 +941,7 @@ var DeleteService = function DeleteService($http, FILESERVER, $cookies, $state, 
   this.deleteGroup = deleteGroup;
   this.deleteUser = deleteUser;
   this.leaveGroup = leaveGroup;
+  this.deleteEvent = deleteEvent;
 
   // Group Constructor
   function Group(groupObj) {
@@ -944,6 +951,10 @@ var DeleteService = function DeleteService($http, FILESERVER, $cookies, $state, 
   // Group Constructor
   function User(userObj) {
     this.id = userObj.id;
+  }
+
+  function deleteEvent(eventId) {
+    $http['delete'](url + '/events/' + eventId, FILESERVER.SERVER.CONFIG);
   }
 
   //Delete Group Function

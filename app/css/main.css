@@ -7982,6 +7982,12 @@ a {
   background-color: #EFEFFF;
   overflow: scroll; }
 
+.delete-div {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  float: right; }
+
 .splashContainer {
   width: 100%; }
   .splashContainer .backgroundPic {
