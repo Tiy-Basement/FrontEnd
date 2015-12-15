@@ -493,12 +493,20 @@ var GroupController = function GroupController(GroupService, DeleteService, $sta
     $state.go('root.editGroup', { id: $stateParams.id });
   }
 
-  //getMembers Function
+  //getSingleGroup Function-- Waiting on route
+  getSingleGroup();
+  function getSingleGroup(obj) {
+    GroupService.getSingleGroup(obj).then(function (res) {
+      console.log(res);
+    });
+  }
+
+  //getMembers Function--- Waiting on route to work
   getMembers();
   function getMembers(obj) {
     GroupService.getMembers(obj).then(function (res) {
       console.log(res);
-      vm.members = [];
+      vm.members = res;
     });
   }
 };
@@ -888,7 +896,7 @@ var GroupService = function GroupService($http, FILESERVER, $cookies, $statePara
   // Group Constructor
   function Group(groupObj) {
     this.id = groupObj.id;
-    this.username = groupObj.username;
+    this.name = groupObj.name;
   }
 
   var userId = $cookies.get('UserID');
@@ -897,8 +905,13 @@ var GroupService = function GroupService($http, FILESERVER, $cookies, $statePara
   var token = $cookies.get('Access-Token');
   console.log($stateParams.id);
 
+  //route doesn't work
   this.getMembers = function () {
     return $http.get(FILESERVER.SERVER.URL + 'group/' + $stateParams.id + '/members', { headers: { 'Access-Token': token } });
+  };
+  //route doesn't work
+  this.getSingleGroup = function () {
+    return $http.get(FILESERVER.SERVER.URL + 'group/' + $stateParams.id, { headers: { 'Access-Token': token } });
   };
 };
 

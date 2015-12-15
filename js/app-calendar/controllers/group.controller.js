@@ -59,12 +59,21 @@ let GroupController = function(GroupService, DeleteService, $stateParams, $state
     $state.go('root.editGroup', { id: $stateParams.id })
   }
 
-  //getMembers Function 
+
+  //getSingleGroup Function-- Waiting on route
+  getSingleGroup();
+  function getSingleGroup(obj){
+    GroupService.getSingleGroup(obj).then((res) =>{
+      console.log(res);
+    })
+  } 
+
+  //getMembers Function--- Waiting on route to work
   getMembers();
   function getMembers(obj){
     GroupService.getMembers(obj).then((res) => {
       console.log(res); 
-      vm.members = [];
+      vm.members = res;
     })
   }
 
