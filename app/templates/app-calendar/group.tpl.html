@@ -8,13 +8,13 @@
 
     <aside class="sidebar">
       <!-- group name -->
-      <h1>{{vm.groupName}}</h1>
+      <h3>{{vm.groupName}}</h3>
 
       <!-- Member section -->
       <div class="members">
         <h5>Members</h5>
           <ul>
-            <li ng-repeat='member in vm.members'><a href="">{{member.username}}</a></li>
+            <li ng-repeat='member in vm.members'><a href="/#/users/{{member.id}}">{{member.username}}</a></li>
           </ul>
       </div>
 
@@ -23,10 +23,10 @@
         <h5>Upcoming Events</h5>
 
         <ul>
-          <li ng-repeat ='event in vm.groupEvents'><a href="">{{event.title}}:
+          <li ng-repeat ='event in vm.groupEvents'>{{event.title}}:
           {{event.note}}
 
-          </a></li>
+          </li>
         </ul>
 
        <button class="btn btn-default" ng-controller="GroupModalEventController" ng-click="open()">Add Group Event</button>
