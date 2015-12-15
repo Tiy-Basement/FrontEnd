@@ -86,6 +86,7 @@ let GroupController = function(GroupService, DeleteService, $stateParams, $state
   function getGroupEvents(obj){
     GroupService.getGroupEvents(obj).then((res) => {
       vm.groupEvents = res.data;
+      // console.log(vm.groupEvents);
     })
   }
 

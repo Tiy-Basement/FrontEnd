@@ -24,6 +24,7 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
   function getUserEvents(obj){
     UserService.getUserEvents(obj).then((res) =>{
       vm.userEvents = res.data;
+      console.log(vm.userEvents);
     })
   }
 
