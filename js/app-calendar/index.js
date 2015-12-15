@@ -12,6 +12,8 @@ import AddMemberController from './controllers/add-controllers/addMember.control
 import AddEventController from './controllers/add-controllers/addEvent.controller';
 import DeleteController from './controllers/delete.controller';
 import GroupEventController from './controllers/add-controllers/addGroupEvent.controller.js';
+import UserEventController from './controllers/modal/modalEvent.controller.js';
+import UserModalController from './controllers/modal/userModal.controller.js';
 
 import AddService from './services/add.service';
 import DeleteService from './services/delete.service';
@@ -35,6 +37,8 @@ angular
   .controller('AddEventController', AddEventController)
   .controller('GroupEventController', GroupEventController)
   .controller('DeleteController', DeleteController)
+  .controller('UserEventController', UserEventController)
+  .controller('UserModalController', UserModalController)
   .service('AddService', AddService)
   .service('DeleteService', DeleteService)
   .service('EditService', EditService)
