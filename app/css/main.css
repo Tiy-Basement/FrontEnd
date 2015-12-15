@@ -7908,6 +7908,9 @@ ul {
   list-style: none;
   padding-left: 10px; }
 
+hr {
+  border-top: 1px solid #272255; }
+
 button {
   border: 1px solid #D7D7D7;
   border-radius: 5px;
@@ -8006,7 +8009,8 @@ a {
     width: 20%;
     display: flex;
     justify-content: space-between;
-    margin: 600px auto; }
+    margin: 0 auto;
+    padding-top: 600px; }
 
 footer {
   height: 200px;

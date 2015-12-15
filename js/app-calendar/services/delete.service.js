@@ -18,7 +18,7 @@ let DeleteService = function($http, FILESERVER, $cookies, $state, $stateParams) 
   }
 
   function deleteEvent (eventId) {
-    $http.delete(
+    return $http.delete(
       url + '/events/' + eventId,
       FILESERVER.SERVER.CONFIG
     );

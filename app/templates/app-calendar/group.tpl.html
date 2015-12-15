@@ -14,7 +14,7 @@
       <div class="members">
         <h5>Members</h5>
           <ul>
-            <li ng-repeat='member in vm.members'><a href="">{{member.username}}</a></li>
+            <li ng-repeat='member in vm.members'><span>{{member.username}}</span></li>
           </ul>
       </div>
 
@@ -43,11 +43,11 @@
       <hr>
       <!-- Edit Membership -->
       <div class="membership">
-        <button class="btn-small btn btn-secondary btn-sm" ng-click="vm.leaveGroup()">Leave Group</button>
+        <button class="btn btn-default btn-sm" ng-click="vm.leaveGroup()">Leave Group</button>
 
-        <button class="btn-small btn btn-secondary btn-sm" ng-click="vm.toGroupEdit()">Edit Group</button>
+        <button class="btn btn-default btn-sm" ng-click="vm.toGroupEdit()">Edit Group</button>
 
-        <button class="btn-small btn btn-secondary btn-sm" ng-click="vm.deleteGroup()">Delete Group</button>
+        <button class="btn btn-default btn-sm" ng-click="vm.deleteGroup()">Delete Group</button>
       </div>
     </aside>
   </div>
