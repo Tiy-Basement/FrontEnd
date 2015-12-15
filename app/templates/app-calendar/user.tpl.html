@@ -1,11 +1,14 @@
-<div class="userContainer">
-  <br>
-  <br>
-  <div class="calendar" ng-controller="CalendarController">
-    <div  class="span8 calendar" ui-calendar=uiConfig.calendar ng-model="eventSources"></div>
-  </div>
+<div class="wrapper">
+  <div class="userContainer">
+    <br>
+    <br>
+    <div class="calendar" ng-controller="CalendarController">
+      <div  class="span8 calendar" ui-calendar=uiConfig.calendar ng-model="eventSources"></div>
+    </div>
+
 
   <aside class="sidebar">
+    <!-- welcome username -->
       <div class="userText">
         Welcome, {{vm.user.username}}!
       </div>
@@ -14,31 +17,33 @@
 
       <h5>My Groups</h5>
       <ul>
+      <!-- user groups display -->
         <li ng-repeat="G in vm.groups" Group="G">
           <a href="#/group/{{G.id}}"> {{G.name}}</a>
         </li>
       </ul>
 
-      <h7><a href="#/add-group">Create a Group</a></h7>
-      <br>
-      <h7><a href="#/join-group">Join an Existing Group</a></h7>
-      <br>
-    </div>
-    <hr>
-    <div class="myNotes">
-      <h5>Upcoming Events</h5>
+        <h7><a href="#/add-group">Create a Group</a></h7>
+        <br>
+        <h7><a href="#/join-group">Join an Existing Group</a></h7>
+        <br>
+      </div>
+      <hr>
+      <div class="myNotes">
+        <h5>Upcoming Events</h5>
 
-      <h7><a href="#/add-event">Add a Personal Event</a></h7>
-      <!-- <br> -->
-      <!-- <h7><a href="#/delete-event">Delete a Personal Event</a></h7>  -->
+        <h7><a href="#/add-event">Add a Personal Event</a></h7>
+        <!-- <br> -->
+        <!-- <h7><a href="#/delete-event">Delete a Personal Event</a></h7>  -->
 
-      <ul>
-        <li><a href="">An event note</a></li>
-        <li><a href="">An event note</a></li>
-        <li><a href="">An event note</a></li>
-        <li><a href="">An event note</a></li>
-        <li><a href="">An event note</a></li>
-      </ul>
-    </div>
-  </aside>
+        <ul>
+          <li><a href="">An event note</a></li>
+          <li><a href="">An event note</a></li>
+          <li><a href="">An event note</a></li>
+          <li><a href="">An event note</a></li>
+          <li><a href="">An event note</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
 </div>

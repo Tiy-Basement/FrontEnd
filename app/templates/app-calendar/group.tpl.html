@@ -1,51 +1,43 @@
-<div class="groupContainer">
+<div class="wrapper">
+  <div class="groupContainer">
 
-  <div class="calendar" ng-controller="CalendarController">
-    <div  class="span8 calendar" ui-calendar='uiConfig.calendar' ng-model="groupSource"></div>
+    <div class="calendar" ng-controller="CalendarController">
+      <div  class="span8 calendar" ui-calendar='uiConfig.calendar' ng-model="groupSource"></div>
+    </div>
+
+
+    <aside class="sidebar">
+      
+      <!-- Member section -->
+      <div class="members">
+        <h5>Members</h5>
+          <ul>
+            <li ng-repeat='member in vm.members'><a href="">{{member.name}}</a></li>
+          </ul>
+      </div>
+
+      <!-- Event notes -->
+      <div class="notes">
+        <h5>Upcoming Events</h5>
+        <button class="btn btn-secondary btn-sm" ng-controller="GroupController" ng-click="routeToAdd()">Add Group Event</button>
+        <!-- <h6><a href="#/add-event">Add a Group Event</a></h6> -->
+        <!-- <h6><a href="#/delete-event">Delete a Group Event</a></h6> -->
+        <ul>
+          <li><a href="">An event note</a></li>
+          <li><a href="">An event note</a></li>
+          <li><a href="">An event note</a></li>
+        </ul>
+      </div>
+
+      <!-- Edit Membership -->
+      <div class="membership">
+        <button class="btn-small btn btn-secondary btn-sm">Leave Group</button>
+        <br>
+        <button class="btn-small btn btn-secondary btn-sm" ng-click="vm.toGroupEdit()">Edit Group</button>
+        <br>
+        <button class="btn-small btn btn-secondary btn-sm" ng-click="vm.deleteGroup()">Delete Group</button>
+      </div>
+    </aside>
   </div>
-
-
-  <aside class="sidebar">
-    
-  
-    <form ng-submit="vm.deleteGroup()">
-
-      <button>Delete this Group</button>
-    </form>
-    <button ng-click="logmeout()">Logout</button>
-    <div class="members">
-      <h5>Members</h5>
-      <ul>
-        <li ng-repeat='member in vm.members'><a href="">{{member.name}}</a></li>
-      </ul>
-      <h7><a href="#/add-member">Add a Member</a></h7>
-        <li><a href="">A member</a></li>
-        <li><a href="">A member</a></li>
-        <li><a href="">A member</a></li>
-        <li><a href="">A member</a></li>
-      </ul>
-      <button><h6>Leave Group</h6></button>
-      <button ng-click="vm.toGroupEdit()"><h6>Edit Group</h6></button>
-      <button ng-click="deleteGroup()"><h6>Delete Group</h6></button>
-    </div>
-
-    <div class="Notes">
-      <button ng-controller="GroupController" ng-click="routeToAdd()">Add Group Event</button>
-      <h5>Upcoming Events</h5>
-      <h6><a href="#/add-event">Add a Group Event</a></h6>
-      <h6><a href="#/delete-event">Delete a Group Event</a></h6>
-      <form ng-submit="vm.deleteGroup()">
-        <button><h6>Delete this Group</h6></button>
-      </form>
-      <ul>
-        <li><a href="">An event note</a></li>
-        <li><a href="">An event note</a></li>
-        <li><a href="">An event note</a></li>
-        <li><a href="">An event note</a></li>
-        <li><a href="">An event note</a></li>
-      </ul>
-    </div>
-  </aside>
 </div>
-
 <!-- <a href="#/edit-group/:id"> -->
