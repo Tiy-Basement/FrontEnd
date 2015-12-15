@@ -3,9 +3,28 @@
 @import 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
 @import 'font-awesome';
 
-body{
+// Variables
+  // purple
+  $purple0: #EFEFFF;
+  $purple1: #C7BDE0;
+  $purple2: #C0B4DE;
+  $purple3: #CFC9E6;
+  $purple4: #9583BF;
+  $purple5: #8572AD;
+  $purple6: #5B2084;
+  $purple7: #603C94;
+  $purple8: #463892;
+  $purple9: #92589F;
+  $purpleA: #272255;
 
-}
+  // browns
+  // $tan: #E3D4CB;
+
+// Mixins
+  @mixin borders() {
+    border: 1px solid #D7D7D7;
+    border-radius: 5px;
+  }
 
 //calendar
 // .container {
@@ -15,10 +34,135 @@ body{
 // }
 
 // the container angular puts everything in
- .container{
-    padding: 0;
-    width: 100%;
+.container {
+  padding: 0;
+  width: 100%;
+  color: $purpleA;
+}
+
+.wrapper {
+  padding: 0 75px;
+  // background-color: $purple0;
+}
+
+
+// All sidebar lists
+ul {
+  list-style: none;
+  padding-left: 10px;
+}
+
+// All buttons
+button {
+  @include borders();
+  background-color: white;
+  margin: 5px;
+  text-align: center;
+
+  // WHY DOESN'T IT AFFECT THE WHOLE BACKGROUND??
+  :hover {
+    // background: #9583BF;
+    // background-color: #B4A7D3;
+    padding: 5px;
+    color: white;
   }
+}
+
+//All links
+a {
+  color: $purpleA;
+  // font-weight: bold;
+}
+
+
+// All the forms
+.heading {
+  text-align: center;
+}
+
+form {
+  @include borders();
+  text-align: center;
+  padding: 30px 0;
+  width: 40%;
+  margin: 20px auto;
+  background-color: $purple0;
+
+  label {
+    font-size: 15px;
+  }
+
+  input {
+    @include borders();
+  }
+
+  textarea {
+    @include borders();
+  }
+}
+
+.footnote {
+  text-align: center;
+  margin: 20px;
+  a {
+    font-weight: bold;
+  }
+}
+
+
+// User page
+.userContainer {
+  .calendar {
+    width: 79%;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 -150px 0 0;
+  }
+  .sidebar {
+    @include borders();
+    width: 25%;
+    padding: 20px;
+    margin: 0 auto;
+    float: right;
+    text-align: left;
+    // height: 462px;
+    background-color: $purple0;
+    overflow: scroll;
+  }
+}
+// End of User Page
+
+//GroupCalendar Page
+.groupContainer{
+  .calendar{
+    width: 79%;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 -150px 0 0;
+  } 
+  .sidebar {
+    @include borders();
+    width: 25%;
+    padding: 20px;
+    margin:0;
+    float: right;
+    text-align: left;
+    height: auto;
+    background-color: $purple0;
+    overflow: scroll;
+  }
+}
+
+// Login page
+// .loginContainer {
+//   margin: 50px;
+//   width: 50%;
+// }
+
+
+
+
+
 
 //  welcome to da sPlAsH pAgE 
 // {o_o} I will be your guide~
@@ -41,46 +185,9 @@ body{
 }
 //{o_0} End of Splash PaGe!
 
-
-// User page
-.userContainer {
-  .calendar {
-    width: 79%;
-    display: inline-block;
-    vertical-align: top;
-    padding: 0;
-    margin: 0;
-  }
-  .sidebar {
-    width: 19%;
-    padding: 0;
-    margin:0;
-    display: inline-block;
-    text-align: left;
-  }
-}
-// End of User Page
-
-//GroupCalendar Page
-.groupContainer{
-  .calendar{
-    width: 79%;
-    display: inline-block;
-    vertical-align: top;
-    padding: 0;
-    margin: 0;
-  } 
-  .sidebar {
-    width: 19%;
-    padding: 0;
-    margin:0;
-    display: inline-block;
-    text-align: left;
-  }
-}
 // Footer
   footer{
-    height: 200px;
+    // height: 200px;
     width: 100%;
     bottom: 0;
     text-align: center;
@@ -106,8 +213,6 @@ body{
         }
       }
     }
-// Login page
-// .loginContainer {
-//   margin: 50px;
-//   width: 50%;
-// }
+
+
+

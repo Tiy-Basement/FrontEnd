@@ -1,7 +1,14 @@
-<form id="tempf" ng-submit="vm.editGroup(groupObj)">
-  <label>Name<input type="text" ng-model="groupObj.name"></label>
-  <label>Password*<input type="password" ng-model="groupObj.password"></label>
-  <button>submit</button>
-</form>
+<div class="wrapper">
+  <h4 class="heading">Edit this Group</h4>
+  <form id="tempf" ng-submit="vm.editGroup(groupObj)">
+    <label>Name: <br> <input type="text" ng-model="groupObj.name"></label>
+    <br>
+    <br>
+    <label>Password*: <br> <input type="password" ng-model="groupObj.password"></label>
+    <br>
+    <br>
+    <button>Submit</button>
+  </form>
 
-<span>*In order for other users to join your group, they must know your group's password.</span>
+  <div>*In order for other users to join your group, they must know your group's password.</div>
+</div>
