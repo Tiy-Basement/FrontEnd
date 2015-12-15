@@ -23,9 +23,6 @@ import GroupService from './services/group.service';
 import EditService from './services/edit.service';
 import UserService from './services/user.service';
 
-import userName from './directives/user.directive';
-import groupItem from './directives/group.directive';
-
 import modalform from './directives/event.directive';
 
 
@@ -49,6 +46,4 @@ angular
   .service('UserService', UserService)
   .service('GroupService', GroupService)
   .directive('modalform', modalform)
-  .directive('userName', userName)
-  .directive('groupItem', groupItem)
 ;
