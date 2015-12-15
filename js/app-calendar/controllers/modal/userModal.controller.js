@@ -1,9 +1,8 @@
-let UserModalController = function($scope, $uibModalInstance, myEvent) {
+let UserModalController = function($scope, $uibModalInstance) {
   
-  $scope.myEvent = myEvent;
 
   $scope.ok = function () {
-    $uibModalInstance.close(console.log(myEvent));
+    $uibModalInstance.close();
   };
 
   $scope.cancel = function () {
@@ -12,6 +11,6 @@ let UserModalController = function($scope, $uibModalInstance, myEvent) {
 
 };
 
-UserModalController.$inject = ['$scope', '$uibModalInstance', 'myEvent'];
+UserModalController.$inject = ['$scope', '$uibModalInstance'];
 
 export default UserModalController;
