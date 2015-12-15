@@ -7960,12 +7960,19 @@ a {
   border: 1px solid #D7D7D7;
   border-radius: 5px;
   width: 25%;
-  padding: 10px 20px;
+  padding: 0 20px 20px 20px;
   margin: 0 auto;
   height: 650px;
   float: right;
   text-align: left;
   background-color: #C7BDE0; }
+  .userContainer .sidebar .groupDiv {
+    border: 1px solid #D7D7D7;
+    border-radius: 5px;
+    background-color: white;
+    padding: 0 10px; }
+  .userContainer .sidebar .groupList {
+    padding-left: 15px; }
   .userContainer .sidebar .myNotes {
     border: 1px solid #D7D7D7;
     border-radius: 5px;
@@ -7974,9 +7981,6 @@ a {
     padding: 0 10px;
     background-color: white;
     max-height: auto; }
-  .userContainer .sidebar .eventBtn {
-    position: absolute;
-    bottom: 30px; }
 
 .uEventNote {
   border: 1px solid #D7D7D7;
@@ -7995,18 +7999,32 @@ a {
   border: 1px solid #D7D7D7;
   border-radius: 5px;
   width: 25%;
-  padding: 20px;
+  padding: 0 20px 20px 20px;
   margin: 0;
   float: right;
   text-align: left;
   max-height: 650px;
-  background-color: #EFEFFF;
-  overflow: scroll; }
+  background-color: #C7BDE0; }
+  .groupContainer .sidebar .members {
+    border: 1px solid #D7D7D7;
+    border-radius: 5px;
+    background-color: white;
+    padding: 0 10px; }
+  .groupContainer .sidebar .memList {
+    padding-left: 15px; }
+  .groupContainer .sidebar .groupNotes {
+    border: 1px solid #D7D7D7;
+    border-radius: 5px;
+    max-height: 300px;
+    overflow: scroll;
+    padding: 0 10px;
+    background-color: white;
+    max-height: auto; }
 
 .gEventNote {
   border: 1px solid #D7D7D7;
   border-radius: 5px;
-  background-color: white;
+  background-color: #EFEFFF;
   padding: 3px 10px 10px 10px;
   margin-bottom: 8px; }
 

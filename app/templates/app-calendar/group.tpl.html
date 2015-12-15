@@ -13,13 +13,15 @@
       <!-- Member section -->
       <div class="members">
         <h5>Members</h5>
-          <ul>
-            <li ng-repeat='member in vm.members'><a href="/#/users/{{member.id}}">{{member.username}}</a></li>
+          <ul class="memList">
+            <li ng-repeat='member in vm.members'>{{member.username}}</li>
           </ul>
       </div>
 
+      <br>
+
       <!-- Event notes -->
-      <div class="notes">
+      <div class="groupNotes">
         <h5>Upcoming Events</h5>
 
         <ul>
@@ -40,11 +42,11 @@
             </div>
           </li>
         </ul>
-
-        <button class="btn btn-default" ng-controller="GroupModalEventController" ng-click="open()">Add Group Event</button>
-
       </div>
 
+      <button class="btn btn-default" ng-controller="GroupModalEventController" ng-click="open()">Add Group Event</button>
+
+      <br>
       <br>
       
       <!-- <hr> -->
