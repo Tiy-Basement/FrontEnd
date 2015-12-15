@@ -7,7 +7,9 @@
 
 
     <aside class="sidebar">
+      <!-- group name -->
       <h1>{{vm.groupName}}</h1>
+
       <!-- Member section -->
       <div class="members">
         <h5>Members</h5>
@@ -19,21 +21,25 @@
       <!-- Event notes -->
       <div class="notes">
         <h5>Upcoming Events</h5>
+
         <ul>
           <li ng-repeat ='event in vm.groupEvents'><a href="">{{event.title}}:
           {{event.note}}
 
           </a></li>
         </ul>
-       <button class="btn btn-default" ng-controller="GroupModalEventController" ng-click="open()">Add Event (M)</button>
-      </div>
 
+       <button class="btn btn-default" ng-controller="GroupModalEventController" ng-click="open()">Add Group Event</button>
+
+      </div>
+      
+      <hr>
       <!-- Edit Membership -->
       <div class="membership">
         <button class="btn-small btn btn-secondary btn-sm" ng-click="vm.leaveGroup()">Leave Group</button>
-        <br>
+
         <button class="btn-small btn btn-secondary btn-sm" ng-click="vm.toGroupEdit()">Edit Group</button>
-        <br>
+
         <button class="btn-small btn btn-secondary btn-sm" ng-click="vm.deleteGroup()">Delete Group</button>
       </div>
     </aside>
