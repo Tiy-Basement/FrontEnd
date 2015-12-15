@@ -1,8 +1,23 @@
-<form ng-submit="addEvent(e)" ng-controller="AddEventController">
-  <label>Title: <input type="text" ng-model="e.title"></label>
-  <label>Location: <input type="text" ng-model="e.location"></label>
-  <label>Begins at: <input type="datetime-local" ng-model="e.start"></label>
-  <label>Ends at: <input type="datetime-local" ng-model="e.end"></label>
-  <label>Note: <textarea maxlength=140 ng-model="e.note"></textarea></label>
-  <button>Add Event</button>
-</form>
+<!-- Can't put each thing on its own line? -->
+
+<div class="wrapper">
+  <h4 class="heading">Create a New Personal Event</h4>
+  <form ng-submit="addEvent(e)" ng-controller="AddEventController">
+    <label>Title: <br> <input type="text" ng-model="e.title"></label>
+    <br> 
+    <br> 
+    <label>Location: <br> <input type="text" ng-model="e.location"></label>
+    <br> 
+    <br> 
+    <label>Begins at: <br> <input type="datetime-local" ng-model="e.start"></label>
+    <br> 
+    <br> 
+    <label>Ends at: <br> <input type="datetime-local" ng-model="e.end"></label>
+    <br> 
+    <br> 
+    <label>Note: <br> <textarea maxlength=140 ng-model="e.note"></textarea></label>
+    <br> 
+    <br> 
+    <button>Add Event</button>
+  </form>
+</div>

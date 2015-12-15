@@ -7898,7 +7898,89 @@ button.close {
 
 .container {
   padding: 0;
-  width: 100%; }
+  width: 100%;
+  color: #272255; }
+
+.wrapper {
+  padding: 0 75px; }
+
+ul {
+  list-style: none;
+  padding-left: 10px; }
+
+button {
+  border: 1px solid #D7D7D7;
+  border-radius: 5px;
+  background-color: white;
+  margin: 5px;
+  text-align: center; }
+  button :hover {
+    padding: 5px;
+    color: white; }
+
+a {
+  color: #272255; }
+
+.heading {
+  text-align: center; }
+
+form {
+  border: 1px solid #D7D7D7;
+  border-radius: 5px;
+  text-align: center;
+  padding: 30px 0;
+  width: 40%;
+  margin: 20px auto;
+  background-color: #EFEFFF; }
+  form label {
+    font-size: 15px; }
+  form input {
+    border: 1px solid #D7D7D7;
+    border-radius: 5px; }
+  form textarea {
+    border: 1px solid #D7D7D7;
+    border-radius: 5px; }
+
+.footnote {
+  text-align: center;
+  margin: 20px; }
+  .footnote a {
+    font-weight: bold; }
+
+.userContainer .calendar {
+  width: 79%;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 -150px 0 0; }
+
+.userContainer .sidebar {
+  border: 1px solid #D7D7D7;
+  border-radius: 5px;
+  width: 25%;
+  padding: 20px;
+  margin: 0 auto;
+  float: right;
+  text-align: left;
+  background-color: #EFEFFF;
+  overflow: scroll; }
+
+.groupContainer .calendar {
+  width: 79%;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 -150px 0 0; }
+
+.groupContainer .sidebar {
+  border: 1px solid #D7D7D7;
+  border-radius: 5px;
+  width: 25%;
+  padding: 20px;
+  margin: 0;
+  float: right;
+  text-align: left;
+  height: auto;
+  background-color: #EFEFFF;
+  overflow: scroll; }
 
 .splashContainer {
   width: 100%; }
@@ -7913,36 +7995,7 @@ button.close {
     top: 0px;
     z-index: -1; }
 
-.userContainer .calendar {
-  width: 79%;
-  display: inline-block;
-  vertical-align: top;
-  padding: 0;
-  margin: 0; }
-
-.userContainer .sidebar {
-  width: 19%;
-  padding: 0;
-  margin: 0;
-  display: inline-block;
-  text-align: left; }
-
-.groupContainer .calendar {
-  width: 79%;
-  display: inline-block;
-  vertical-align: top;
-  padding: 0;
-  margin: 0; }
-
-.groupContainer .sidebar {
-  width: 19%;
-  padding: 0;
-  margin: 0;
-  display: inline-block;
-  text-align: left; }
-
 footer {
-  height: 200px;
   width: 100%;
   bottom: 0;
   text-align: center;

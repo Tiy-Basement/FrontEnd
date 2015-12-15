@@ -1,8 +1,13 @@
 <div class="loginContainer">
+  <h4 class="heading">Login!</h4>
   <form ng-submit="login(user)">
-    <label>Username<input type="text" ng-model="user.username"></label>
-    <label>Password<input type="password" ng-model="user.password"></label>
-    <button>Log in</button>
+    <label>Username: <br> <input type="text" ng-model="user.username"></label>
+    <br>
+    <br>
+    <label>Password: <br> <input type="password" ng-model="user.password"></label>
+    <br>
+    <br>
+    <button>Login</button>
   </form>
-  <span>Not registered yet? <a href="/#/signup">Sign up now!</a></span>
+  <div class="footnote">Not registered yet? <a href="/#/signup">Sign up now!</a></div>
 </div>
