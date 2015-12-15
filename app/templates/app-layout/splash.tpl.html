@@ -1,19 +1,13 @@
 <div class="splashContainer">
 
   <div class="backgroundPic">
-    <img src="https://waspnx.files.wordpress.com/2015/12/basement_4.png">
   </div>
 
+<img src="https://waspnx.files.wordpress.com/2015/12/basement_5.png" ng-click="vm.gotoHome()">
 
   <div class="buttonBox">
-    <button class="btn btn-default btn-lg" ng-click="vm.gotoLogin()">Login</button>
-    <button class="btn btn-default btn-lg" ng-click="vm.gotoSignUp()">Sign Up</button>
+    <button class="loginBtn btn-default btn-lg" ng-click="vm.gotoLogin()">Login</button>
+    <button class="signUpBtn btn-default btn-lg" ng-click="vm.gotoSignUp()">Sign Up</button>
   </div>
   
-  <footer>
-    <ul>
-      <li class="footText" ng-click="vm.gotoHome()"><i class="fa fa-calendar"></i><span> user calendar</span></li>
-    </ul>
-  </footer>
-
 </div>

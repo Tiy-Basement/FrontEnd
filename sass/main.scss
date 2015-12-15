@@ -26,13 +26,6 @@
     border-radius: 5px;
   }
 
-//calendar
-// .container {
-//   margin: 50px auto;
-//   width: 100%;
-//   text-align: center;
-// }
-
 // the container angular puts everything in
 .container {
   padding: 0;
@@ -176,11 +169,13 @@ a {
 
 //  welcome to da sPlAsH pAgE 
 // {o_o} I will be your guide~
-
 .splashContainer {
   width: 100%;
   img{
-    width: 20%;
+    width: 40%;
+    margin: 25% 30% 0% 31%;
+    position: fixed;
+    z-index: 1;
   }
     .backgroundPic{
     width: 100%;
@@ -199,7 +194,15 @@ a {
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
-    padding-top: 600px;
+    position: fixed;
+    bottom: 150px;
+    margin: 0 40%;
+    text-align: center;
+    z-index: 1;
+      .loginBtn, .signUpBtn{
+        width: 150px;
+        box-shadow: 1px 1px 5px black;
+      }
   }
 
 }
