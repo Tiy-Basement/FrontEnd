@@ -6,6 +6,7 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
   $scope.eventSources = [];
   vm.groups = [];
   vm.user =[];
+  vm.userEvents = [];
   vm.activate = activate;
 
 
@@ -16,6 +17,14 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
       vm.groups = res.data.groups;
       vm.user = res.data.user;
     });
+  }
+
+  //getUserEvents function 
+  getUserEvents();
+  function getUserEvents(obj){
+    UserService.getUserEvents(obj).then((res) =>{
+      vm.userEvents = res.data;
+    })
   }
 
 //Log Out function 
