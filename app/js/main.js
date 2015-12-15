@@ -646,6 +646,7 @@ var UserController = function UserController($scope, AuthService, $state, $cooki
   $scope.eventSources = [];
   vm.groups = [];
   vm.user = [];
+  vm.userEvents = [];
   vm.activate = activate;
 
   //getUserGroups Function
@@ -654,6 +655,14 @@ var UserController = function UserController($scope, AuthService, $state, $cooki
     UserService.getUserGroups(userObj).then(function (res) {
       vm.groups = res.data.groups;
       vm.user = res.data.user;
+    });
+  }
+
+  //getUserEvents function
+  getUserEvents();
+  function getUserEvents(obj) {
+    UserService.getUserEvents(obj).then(function (res) {
+      vm.userEvents = res.data;
     });
   }
 
@@ -1086,6 +1095,11 @@ var UserService = function UserService($http, FILESERVER, $cookies) {
   // getUserGroups Function
   this.getUserGroups = function () {
     return $http.get(FILESERVER.SERVER.URL + 'users/info', { headers: { 'Access-Token': token } });
+  };
+
+  //getUserEvents
+  this.getUserEvents = function () {
+    return $http.get(FILESERVER.SERVER.URL + 'user/' + userId + '/events', { headers: { 'Access-Token': token } });
   };
 };
 
