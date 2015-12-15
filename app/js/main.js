@@ -207,7 +207,7 @@ var AddEventController = function AddEventController($scope, AddService, $state)
   $scope.addEvent = function (eventObj) {
     AddService.addEvent(eventObj).then(function (res) {
       console.log(res);
-      $state.go('root.home', { id: res.data.event.user_id });
+      $state.reload($state.current);
     });
   };
 };
@@ -231,7 +231,7 @@ var AddGroupController = function AddGroupController($scope, AddService, $state)
   $scope.addGroup = function (groupObj) {
     AddService.addGroup(groupObj).then(function (res) {
       // console.log(res);
-      $state.go('root.group', { id: res.data.group.id });
+      $state.go('root.home');
     });
   };
 };
@@ -251,8 +251,7 @@ var GroupEventController = function GroupEventController($scope, AddService, $st
 
   $scope.addGroupEvent = function (eventObj) {
     AddService.addGroupEvent(eventObj).then(function (res) {
-      console.log(res);
-      $state.go('root.group', { id: $stateParams.id });
+      $state.reload($state.current);
     });
   };
 };
@@ -384,7 +383,11 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
       eventDrop: $scope.alertOnDrop,
       eventResize: $scope.alertOnResize,
       eventRender: $scope.eventRender,
-      timezone: 'local'
+      timezone: 'local',
+      allDaySlot: false,
+      minTime: '06:00:00',
+      maxTime: '30:00:00',
+      firstDay: 1
     }
   };
 };
@@ -494,7 +497,7 @@ var GroupController = function GroupController(GroupService, DeleteService, $sta
   //Delete an event from the sidebar
   function deleteEvent(eventId) {
     DeleteService.deleteEvent(eventId).then(function (res) {
-      $state.go('root.current', {}, { reload: true });
+      $state.reload($state.current);
     });
   }
 
@@ -848,7 +851,7 @@ Object.defineProperty(exports, '__esModule', {
   value: true
 });
 
-var AddService = function AddService($http, $cookies, FILESERVER, $stateParams) {
+var AddService = function AddService($http, $cookies, FILESERVER, $stateParams, $state) {
 
   // let this = vm;
 
@@ -870,7 +873,7 @@ var AddService = function AddService($http, $cookies, FILESERVER, $stateParams) 
     var tkn = $cookies.get('Access-Token');
     return $http.post('http://tiy-basement.herokuapp.com/group', g, { headers: {
         'Access-Token': tkn
-      } });
+      } }).then($state.go('root.home'));
   };
 
   var joinUrl = FILESERVER.SERVER.URL + 'group/member';
@@ -881,7 +884,7 @@ var AddService = function AddService($http, $cookies, FILESERVER, $stateParams) 
     var tkn = $cookies.get('Access-Token');
     return $http.post(joinUrl, g, { headers: {
         'Access-Token': tkn
-      } });
+      } }).then($state.go('root.home'));
   }
 
   //event constructor
@@ -892,14 +895,13 @@ var AddService = function AddService($http, $cookies, FILESERVER, $stateParams) 
     this.location = eventObj.location;
     this.note = eventObj.note;
   }
-
   //post request to server
   this.addEvent = function (eventObj) {
     var e = new Event(eventObj);
     var tkn = $cookies.get('Access-Token');
     return $http.post('http://tiy-basement.herokuapp.com/events', e, { headers: {
         'Access-Token': tkn
-      } });
+      } }).then($state.reload($state.current));
   };
 
   this.addGroupEvent = function (eventObj) {
@@ -923,7 +925,7 @@ var AddService = function AddService($http, $cookies, FILESERVER, $stateParams) 
   };
 };
 
-AddService.$inject = ['$http', '$cookies', 'FILESERVER', '$stateParams'];
+AddService.$inject = ['$http', '$cookies', 'FILESERVER', '$stateParams', '$state'];
 
 exports['default'] = AddService;
 module.exports = exports['default'];
@@ -954,7 +956,7 @@ var DeleteService = function DeleteService($http, FILESERVER, $cookies, $state, 
   }
 
   function deleteEvent(eventId) {
-    $http['delete'](url + '/events/' + eventId, FILESERVER.SERVER.CONFIG);
+    return $http['delete'](url + '/events/' + eventId, FILESERVER.SERVER.CONFIG);
   }
 
   //Delete Group Function

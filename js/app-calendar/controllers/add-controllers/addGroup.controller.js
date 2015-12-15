@@ -6,7 +6,7 @@ let AddGroupController = function($scope, AddService, $state) {
   $scope.addGroup = function (groupObj) {
     AddService.addGroup(groupObj).then( (res) => {
       // console.log(res);
-      $state.go('root.group', { id: res.data.group.id });
+      $state.go('root.home');
     });
   };
   

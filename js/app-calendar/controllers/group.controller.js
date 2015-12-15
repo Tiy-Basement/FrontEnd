@@ -65,8 +65,7 @@ let GroupController = function(GroupService, DeleteService, $stateParams, $state
   //Delete an event from the sidebar
   function deleteEvent(eventId) {
     DeleteService.deleteEvent(eventId).then((res) => {
-      $state.go('root.current', {}, {reload: true})
-
+      $state.reload($state.current);
     })
   }
 
