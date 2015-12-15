@@ -226,11 +226,8 @@ Object.defineProperty(exports, '__esModule', {
 
 var AddGroupController = function AddGroupController($scope, AddService, $state) {
 
-  // console.log(AddService.addGroup);
-
   $scope.addGroup = function (groupObj) {
     AddService.addGroup(groupObj).then(function (res) {
-      // console.log(res);
       $state.go('root.home');
     });
   };
@@ -333,30 +330,6 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
 
   $scope.groupSource = [$scope.groupEvents, $scope.mergeEvents];
 
-  /* event source that calls a function on every view switch */
-  $scope.eventsF = function (start, end, timezone, callback) {
-    var s = new Date(start).getTime() / 1000;
-    var e = new Date(end).getTime() / 1000;
-    var m = new Date(start).getMonth();
-  };
-
-  /* alert on eventClick */
-  $scope.alertOnEventClick = function (date, jsEvent, view) {
-    $scope.alertMessage = date.title + ' was clicked ';
-    console.log("john", date);
-  };
-
-  /* alert on Drop */
-  $scope.alertOnDrop = function (event, delta, revertFunc, jsEvent, ui, view) {
-    $scope.alertMessage = 'Event Droped to make dayDelta ' + delta;
-    console.log(event);
-  };
-
-  /* alert on Resize */
-  $scope.alertOnResize = function (event, delta, revertFunc, jsEvent, ui, view) {
-    $scope.alertMessage = 'Event Resized to make dayDelta ' + delta;
-  };
-
   /* Change View */
   $scope.changeView = function (view, calendar) {
     uiCalendarConfig.calendars[calendar].fullCalendar('changeView', view);
@@ -379,8 +352,6 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
         right: 'today prev,next'
       },
       defaultView: 'agendaWeek',
-      eventClick: $scope.alertOnEventClick,
-      eventDrop: $scope.alertOnDrop,
       eventResize: $scope.alertOnResize,
       eventRender: $scope.eventRender,
       timezone: 'local',
@@ -460,7 +431,6 @@ var GroupController = function GroupController(GroupService, DeleteService, $sta
   function editGroup(groupObj) {
     console.log('editing the group');
     EditService.editGroup(groupObj).then(function (res) {
-      //console.log(res);
       $state.go('root.group', { id: res.data.group.id });
     });
   };
@@ -474,8 +444,6 @@ var GroupController = function GroupController(GroupService, DeleteService, $sta
   // join an existing group
   function joinGroup(obj) {
     AddService.joinGroup(obj).then(function (res) {
-      // console.log(res);
-      // console.log(res.data.member.group_id);
       $state.go('root.group', { id: res.data.member.group_id });
     });
   }
@@ -483,7 +451,6 @@ var GroupController = function GroupController(GroupService, DeleteService, $sta
   //leave an existing group
   function leaveGroup() {
     var user_id = $cookies.get('UserID');
-    // console.log(user_id);
     DeleteService.leaveGroup().then(function (res) {
       $state.go('root.home', { id: user_id });
     });
@@ -506,7 +473,6 @@ var GroupController = function GroupController(GroupService, DeleteService, $sta
   function getSingleGroup(obj) {
     GroupService.getSingleGroup(obj).then(function (res) {
       vm.groupName = res.data.group.name;
-      //console.log(vm.groupName);
     });
   }
 
@@ -515,7 +481,6 @@ var GroupController = function GroupController(GroupService, DeleteService, $sta
   function getMembers(obj) {
     GroupService.getMembers(obj).then(function (res) {
       vm.members = res.data.members;
-      //console.log(vm.members);
     });
   }
 
@@ -524,7 +489,6 @@ var GroupController = function GroupController(GroupService, DeleteService, $sta
   function getGroupEvents(obj) {
     GroupService.getGroupEvents(obj).then(function (res) {
       vm.groupEvents = res.data;
-      //console.log(vm.groupEvents);
     });
   }
 };
@@ -687,35 +651,6 @@ var UserController = function UserController($scope, AuthService, $state, $cooki
       }
     });
   }
-
-  // $scope.getGroups = function () {
-  //   UserService.getGroups().then( (res) => {
-  //     console.log(res);
-  //   });
-  // };
-
-  // // let vm = this;
-
-  // this.groups = [];
-
-  // this.activate = activate;
-
-  // // activate();
-
-  // function activate () {
-  //   UserService.getGroups().then( (res) => {
-  //     console.log(res);
-  //     // vm.groups = res.data.results;
-  //   });
-  // }
-
-  // HELP FROM TIM -- getting calendar data
-
-  if ($stateParams) {
-    // use $stateParams.id to access data from back end
-  } else {
-      // use $cookies.get(user_id) to access data from back end
-    }
 };
 
 UserController.$inject = ['$scope', 'AuthService', '$state', '$cookies', '$stateParams', 'FILESERVER', 'UserService'];
@@ -1135,13 +1070,7 @@ var config = function config($stateProvider, $urlRouterProvider) {
     url: '/login',
     controller: 'LoginController as vm',
     templateUrl: 'templates/app-auth/login.tpl.html'
-  })
-  // .state('root.logout', {
-  //   url: '/logout',
-  //   controller: 'LoginController as vm',
-  //   templateUrl: 'templates/app-auth/logout.tpl.html'
-  // })
-  .state('root.signup', {
+  }).state('root.signup', {
     url: '/signup',
     controller: 'SignupController as vm',
     templateUrl: 'templates/app-auth/signup.tpl.html'
@@ -1173,18 +1102,7 @@ var config = function config($stateProvider, $urlRouterProvider) {
     url: '/join-group',
     controller: 'GroupController as vm',
     templateUrl: 'templates/app-calendar/joinGroup.tpl.html'
-  })
-  // .state('root.addMember', {
-  //   url: '/add-member',
-  //   controller: 'AddMemberController as vm',
-  //   templateUrl: 'templates/app-calendar/addMember.tpl.html'
-  // })
-  //  .state('root.deleteGroup', {
-  //   url: '/delete-group',
-  //   controller: 'DeleteController as vm',
-  //   templateUrl: 'templates/app-calendar/deleteGroup.tpl.html'
-  // })
-  .state('root.deleteUser', {
+  }).state('root.deleteUser', {
     url: '/delete-user',
     controller: 'DeleteController as vm',
     templateUrl: 'templates/app-calendar/deleteUser.tpl.html'
