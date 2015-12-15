@@ -22,11 +22,6 @@ let config = function($stateProvider, $urlRouterProvider) {
       controller: 'LoginController as vm',
       templateUrl: 'templates/app-auth/login.tpl.html'
     })
-    // .state('root.logout', {
-    //   url: '/logout',
-    //   controller: 'LoginController as vm',
-    //   templateUrl: 'templates/app-auth/logout.tpl.html'
-    // })
     .state('root.signup', {
       url: '/signup',
       controller: 'SignupController as vm',
@@ -67,16 +62,6 @@ let config = function($stateProvider, $urlRouterProvider) {
       controller: 'GroupController as vm',
       templateUrl: 'templates/app-calendar/joinGroup.tpl.html'
     })
-    // .state('root.addMember', {
-    //   url: '/add-member',
-    //   controller: 'AddMemberController as vm',
-    //   templateUrl: 'templates/app-calendar/addMember.tpl.html'
-    // })
-    //  .state('root.deleteGroup', {
-    //   url: '/delete-group',
-    //   controller: 'DeleteController as vm',
-    //   templateUrl: 'templates/app-calendar/deleteGroup.tpl.html'
-    // })
      .state('root.deleteUser', {
       url: '/delete-user',
       controller: 'DeleteController as vm',

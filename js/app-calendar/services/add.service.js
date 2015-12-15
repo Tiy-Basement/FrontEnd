@@ -1,5 +1,5 @@
 
-let AddService = function($http, $cookies, FILESERVER, $stateParams) {
+let AddService = function($http, $cookies, FILESERVER, $stateParams, $state) {
 
   // let this = vm;
 
@@ -25,7 +25,7 @@ let AddService = function($http, $cookies, FILESERVER, $stateParams) {
       {headers: {
         'Access-Token': tkn
       }}
-    );
+    ).then($state.go('root.home'));
   };
 
   let joinUrl = FILESERVER.SERVER.URL + 'group/member';
@@ -40,7 +40,7 @@ let AddService = function($http, $cookies, FILESERVER, $stateParams) {
       {headers: {
         'Access-Token': tkn
       }}
-    );
+    ).then($state.go('root.home'));
   }
 
   //event constructor
@@ -51,7 +51,6 @@ let AddService = function($http, $cookies, FILESERVER, $stateParams) {
     this.location = eventObj.location;
     this.note = eventObj.note;
   }
-
   //post request to server
   this.addEvent = function (eventObj) {
     let e = new Event(eventObj);
@@ -62,7 +61,7 @@ let AddService = function($http, $cookies, FILESERVER, $stateParams) {
       {headers: {
         'Access-Token' : tkn
       }} 
-    );
+    ).then($state.reload($state.current));
   };
 
   this.addGroupEvent = function(eventObj){
@@ -94,6 +93,6 @@ let AddService = function($http, $cookies, FILESERVER, $stateParams) {
 
 };
 
-AddService.$inject = ['$http', '$cookies', 'FILESERVER', '$stateParams'];
+AddService.$inject = ['$http', '$cookies', 'FILESERVER', '$stateParams', '$state'];
 
 export default AddService;
