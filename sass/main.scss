@@ -119,7 +119,7 @@ a {
   .sidebar {
     @include borders();
     width: 25%;
-    padding: 10px 20px;
+    padding: 0 20px 20px 20px;
     margin: 0 auto;
     height: 650px;
     float: right;
@@ -132,6 +132,16 @@ a {
     //   max-height: 583px;
     //   overflow: scroll;
     // }
+
+    .groupDiv {
+      @include borders();
+      background-color: white;
+      padding: 0 10px;
+    }
+
+    .groupList {
+      padding-left: 15px;
+    }
 
     .myNotes {
       @include borders();
@@ -173,13 +183,23 @@ a {
   .sidebar {
     @include borders();
     width: 25%;
-    padding: 20px;
+    padding: 0 20px 20px 20px;
     margin:0;
     float: right;
     text-align: left;
     max-height: 650px;
     background-color: $purple1;
     // overflow: scroll;
+
+    .members {
+      @include borders();
+      background-color: white;
+      padding: 0 10px;
+    }
+
+    .memList {
+      padding-left: 15px;
+    }
 
     .groupNotes {
       @include borders();
