@@ -1,4 +1,4 @@
-let UserController = function($scope, AuthService, $state, $cookies, $stateParams, FILESERVER, UserService) {
+let UserController = function($scope, AuthService, $state, $cookies, $stateParams, FILESERVER, UserService, DeleteService) {
 
   let vm = this;
 
@@ -8,6 +8,7 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
   vm.user =[];
   vm.userEvents = [];
   vm.activate = activate;
+  vm.deleteEvent = deleteEvent;
 
 
   //getUserGroups Function
@@ -25,6 +26,12 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
     UserService.getUserEvents(obj).then((res) =>{
       vm.userEvents = res.data;
       console.log(vm.userEvents);
+    })
+  }
+
+  function deleteEvent(eventId) {
+    DeleteService.deleteEvent(eventId).then((res) => {
+      $state.reload($state.current);
     })
   }
 
@@ -57,6 +64,6 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
 
 };
 
-UserController.$inject = ['$scope','AuthService', '$state', '$cookies', '$stateParams','FILESERVER','UserService'];
+UserController.$inject = ['$scope','AuthService', '$state', '$cookies', '$stateParams','FILESERVER','UserService', 'DeleteService'];
 
 export default UserController;
