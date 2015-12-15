@@ -130,6 +130,7 @@ var AuthService = function AuthService($http, FILESERVER, $cookies, $state) {
 
   this.logout = function () {
     $cookies.remove('Access-Token');
+    $cookies.remove('UserID');
     FILESERVER.SERVER.CONFIG.headers['Access-Token'] = null;
     $state.go('root2.splash');
   };
@@ -473,17 +474,19 @@ var GroupController = function GroupController(GroupService, DeleteService, $sta
   // join an existing group
   function joinGroup(obj) {
     AddService.joinGroup(obj).then(function (res) {
-      console.log(res);
-      console.log('join group function is working');
-      // $state.go('root.group', {id: res.data.group.id});
+      // console.log(res);
+      // console.log(res.data.member.group_id);
+      $state.go('root.group', { id: res.data.member.group_id });
     });
   }
 
   //leave an existing group
   function leaveGroup() {
+    var user_id = $cookies.get('UserID');
+    // console.log(user_id);
     DeleteService.leaveGroup().then(function (res) {
       console.log('group deleted');
-      // $state.go('root.home', {the users ID});
+      $state.go('root.home', { id: user_id });
     });
   }
 
@@ -880,7 +883,8 @@ var DeleteService = function DeleteService($http, FILESERVER, $cookies, $state, 
 
   // Leave a group (destroy membership)
   function leaveGroup() {
-    $http['delete'](SOME_URL, FILESERVER.SERVER.CONFIG);
+    var user_id = $cookies.get('UserID');
+    $http['delete'](url + '/group/' + $stateParams.id + '/member/' + user_id, FILESERVER.SERVER.CONFIG);
   }
 };
 

@@ -37,18 +37,20 @@ let GroupController = function(GroupService, DeleteService, $stateParams, $state
   // join an existing group
   function joinGroup(obj) {
     AddService.joinGroup(obj).then( (res) => {
-      console.log(res);
-      console.log('join group function is working');
-      // $state.go('root.group', {id: res.data.group.id});
+      // console.log(res);
+      // console.log(res.data.member.group_id);
+      $state.go('root.group', {id: res.data.member.group_id});
     })
   }
 
 
   //leave an existing group
   function leaveGroup() {
+    let user_id = $cookies.get('UserID');
+    // console.log(user_id);
     DeleteService.leaveGroup().then( (res) => {
       console.log('group deleted');
-      // $state.go('root.home', {the users ID});
+      $state.go('root.home', {id: user_id});
     })
   }
 
