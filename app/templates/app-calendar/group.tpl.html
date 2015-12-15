@@ -25,14 +25,18 @@
         <ul>
 
           <li ng-repeat ='event in vm.groupEvents'>
-            <a href="">{{event.title}}: {{event.note}}</a>
-            <div 
-              class="delete-div" 
-              ng-click="vm.deleteEvent(event.id)"
-              uib-popover="Delete this Event"
-              popover-trigger="mouseenter"
-              >
-              <i class="fa fa-times"></i>
+            <div class="gEventNote">
+              <h5 class="noteTitle">{{event.title}}
+                <div 
+                  class="delete-div" 
+                  ng-click="vm.deleteEvent(event.id)"
+                  uib-popover="Delete this Event"
+                  popover-trigger="mouseenter"
+                  >
+                  <i class="fa fa-times"></i>
+                </div>
+              </h5>
+              <div class="noteCont">{{event.note}}</div>
             </div>
           </li>
         </ul>

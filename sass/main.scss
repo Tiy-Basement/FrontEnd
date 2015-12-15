@@ -35,7 +35,7 @@
 
 // the container angular puts everything in
 .container {
-  padding: 0;
+  padding: 0 0 20px 0;
   width: 100%;
   color: $purpleA;
 }
@@ -49,7 +49,7 @@
 // All sidebar lists
 ul {
   list-style: none;
-  padding-left: 10px;
+  padding-left: 0;
 }
 
 // All buttons
@@ -125,7 +125,7 @@ a {
     margin: 0 auto;
     float: right;
     text-align: left;
-    // height: 462px;
+    // max-height: 462px;
     background-color: $purple0;
     overflow: scroll;
   }
@@ -147,17 +147,21 @@ a {
     margin:0;
     float: right;
     text-align: left;
-    height: auto;
+    max-height: 650px;
     background-color: $purple0;
     overflow: scroll;
   }
 }
 
-// Login page
-// .loginContainer {
-//   margin: 50px;
-//   width: 50%;
-// }
+// Group event notes
+.gEventNote {
+  @include borders();
+  background-color: white;
+  padding: 3px 10px 10px 10px;
+  margin-bottom: 8px;
+}
+
+
 
 
 //Delete 'Button'

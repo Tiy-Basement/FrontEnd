@@ -521,7 +521,7 @@ var GroupController = function GroupController(GroupService, DeleteService, $sta
   function getGroupEvents(obj) {
     GroupService.getGroupEvents(obj).then(function (res) {
       vm.groupEvents = res.data;
-      //console.log(vm.groupEvents);
+      console.log(vm.groupEvents);
     });
   }
 };
