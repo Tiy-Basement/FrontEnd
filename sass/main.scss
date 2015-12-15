@@ -35,7 +35,7 @@
 
 // the container angular puts everything in
 .container {
-  padding: 0 0 20px 0;
+  padding: 0;
   width: 100%;
   color: $purpleA;
 }
@@ -117,20 +117,57 @@ a {
     display: inline-block;
     vertical-align: top;
     margin: 0 -150px 0 0;
+    // position: relative;
   }
   .sidebar {
     @include borders();
     width: 25%;
-    padding: 20px;
+    padding: 10px 20px;
     margin: 0 auto;
+    height: 650px;
     float: right;
     text-align: left;
-    // max-height: 462px;
-    background-color: $purple0;
-    overflow: scroll;
+    background-color: $purple1;
+    // overflow: scroll;
+
+    // .sideTop {
+    //   border-radius: 5px;
+    //   max-height: 583px;
+    //   overflow: scroll;
+    // }
+
+    .myNotes {
+      @include borders();
+      max-height: 358px;
+      overflow: scroll;
+      padding: 0 10px;
+      background-color: white;
+      max-height: auto;
+    }
+
+    .eventBtn {
+      position: absolute;
+      bottom: 30px;
+    }
   }
 }
+
+// User event notes
+.uEventNote {
+  @include borders();
+  background-color: $purple0;
+  padding: 3px 10px 10px 10px;
+  margin-bottom: 8px;
+}
+
+
 // End of User Page
+
+
+
+
+
+
 
 //GroupCalendar Page
 .groupContainer{

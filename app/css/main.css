@@ -7897,7 +7897,7 @@ button.close {
   content: ""; }
 
 .container {
-  padding: 0 0 20px 0;
+  padding: 0;
   width: 100%;
   color: #272255; }
 
@@ -7957,12 +7957,30 @@ a {
   border: 1px solid #D7D7D7;
   border-radius: 5px;
   width: 25%;
-  padding: 20px;
+  padding: 10px 20px;
   margin: 0 auto;
+  height: 650px;
   float: right;
   text-align: left;
+  background-color: #C7BDE0; }
+  .userContainer .sidebar .myNotes {
+    border: 1px solid #D7D7D7;
+    border-radius: 5px;
+    max-height: 358px;
+    overflow: scroll;
+    padding: 0 10px;
+    background-color: white;
+    max-height: auto; }
+  .userContainer .sidebar .eventBtn {
+    position: absolute;
+    bottom: 30px; }
+
+.uEventNote {
+  border: 1px solid #D7D7D7;
+  border-radius: 5px;
   background-color: #EFEFFF;
-  overflow: scroll; }
+  padding: 3px 10px 10px 10px;
+  margin-bottom: 8px; }
 
 .groupContainer .calendar {
   width: 79%;
