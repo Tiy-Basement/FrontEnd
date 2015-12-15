@@ -17,6 +17,10 @@ let UserService = function($http, FILESERVER, $cookies) {
     return $http.get(FILESERVER.SERVER.URL + 'users/info', {headers: {'Access-Token':token}});
   };
 
+  //getUserEvents
+  this.getUserEvents = function (){
+    return $http.get(FILESERVER.SERVER.URL +'user/'+userId+'/events', {headers: {'Access-Token':token}});
+  }
 
 };
 
