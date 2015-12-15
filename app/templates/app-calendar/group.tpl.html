@@ -8,46 +8,56 @@
 
     <aside class="sidebar">
       <!-- group name -->
-      <h1>{{vm.groupName}}</h1>
+      <h3>{{vm.groupName}}</h3>
 
       <!-- Member section -->
       <div class="members">
         <h5>Members</h5>
           <ul>
-            <li ng-repeat='member in vm.members'><span>{{member.username}}</span></li>
+            <li ng-repeat='member in vm.members'><a href="/#/users/{{member.id}}">{{member.username}}</a></li>
           </ul>
       </div>
 
       <!-- Event notes -->
-      <div class="notes">
+      <div class="groupNotes">
         <h5>Upcoming Events</h5>
 
         <ul>
+
           <li ng-repeat ='event in vm.groupEvents'>
-            <a href="">{{event.title}}: {{event.note}}</a>
-            <div 
-              class="delete-div" 
-              ng-click="vm.deleteEvent(event.id)"
-              uib-popover="Delete this Event"
-              popover-trigger="mouseenter"
-              >
-              <i class="fa fa-times"></i>
+            <div class="gEventNote">
+              <h5 class="noteTitle">{{event.title}}
+                <div 
+                  class="delete-div" 
+                  ng-click="vm.deleteEvent(event.id)"
+                  uib-popover="Delete this Event"
+                  popover-trigger="mouseenter"
+                  >
+                  <i class="fa fa-times"></i>
+                </div>
+              </h5>
+              <div class="noteCont">{{event.note}}</div>
             </div>
           </li>
         </ul>
-
-        <button class="btn btn-default" ng-controller="GroupModalEventController" ng-click="open()">Add Group Event</button>
-
       </div>
+
+      <button class="btn btn-default" ng-controller="GroupModalEventController" ng-click="open()">Add Group Event</button>
+
+      <br>
       
-      <hr>
+      <!-- <hr> -->
       <!-- Edit Membership -->
       <div class="membership">
-        <button class="btn btn-default btn-sm" ng-click="vm.leaveGroup()">Leave Group</button>
+        <button class="btn btn-default" ng-click="vm.leaveGroup()">Leave Group</button>
 
-        <button class="btn btn-default btn-sm" ng-click="vm.toGroupEdit()">Edit Group</button>
+        <br>
 
-        <button class="btn btn-default btn-sm" ng-click="vm.deleteGroup()">Delete Group</button>
+        <button class="btn btn-default" ng-click="vm.toGroupEdit()">Edit Group</button>
+
+        <br>
+
+        <button class="btn btn-default" ng-click="vm.deleteGroup()">Delete Group</button>
       </div>
     </aside>
   </div>
