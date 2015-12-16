@@ -207,7 +207,6 @@ var AddEventController = function AddEventController($scope, AddService, $state)
 
   $scope.addEvent = function (eventObj) {
     AddService.addEvent(eventObj).then(function (res) {
-      console.log(res);
       $state.reload($state.current);
     });
   };
@@ -297,7 +296,7 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
 
   // gets user events for home calendar
   $scope.myEvents = {
-    url: 'http://tiy-basement.herokuapp.com/user/' + userId + '/events',
+    url: 'https://tiy-basement.herokuapp.com/user/' + userId + '/events',
     headers: {
       'Access-Token': tkn
     },
@@ -306,9 +305,18 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
     lazyFetching: true
   };
 
+  $scope.myGroupEvents = {
+    url: 'https://tiy-basement.herokuapp.com/user/' + userId + '/groups/events',
+    headers: {
+      'Access-Token': tkn
+    },
+    cache: true,
+    lazyFetching: true
+  };
+
   //gets events for the group calendar
   $scope.groupEvents = {
-    url: 'http://tiy-basement.herokuapp.com/group/' + $stateParams.id + '/events',
+    url: 'https://tiy-basement.herokuapp.com/group/' + $stateParams.id + '/events',
     headers: {
       'Access-Token': tkn
     },
@@ -317,7 +325,7 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
   };
 
   $scope.mergeEvents = {
-    url: 'http://tiy-basement.herokuapp.com/group/' + $stateParams.id + '/members/events',
+    url: 'https://tiy-basement.herokuapp.com/group/' + $stateParams.id + '/members/events',
     headers: {
       'Access-Token': tkn
     },
@@ -326,7 +334,7 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
     color: '#1A1B41'
   };
 
-  $scope.eventSources = [$scope.myEvents];
+  $scope.eventSources = [$scope.myEvents, $scope.myGroupEvents];
 
   $scope.groupSource = [$scope.groupEvents, $scope.mergeEvents];
 
@@ -639,6 +647,7 @@ var UserController = function UserController($scope, AuthService, $state, $cooki
   getUserEvents();
   function getUserEvents(obj) {
     UserService.getUserEvents(obj).then(function (res) {
+
       vm.userEvents = res.data.map(function (event) {
         var s = moment(event.start).format('llll');
         var e = moment(event.end).format('llll');
@@ -674,7 +683,6 @@ var UserController = function UserController($scope, AuthService, $state, $cooki
     promise.then(function (res) {
       console.log(res);
       if (res.data.status === 'Authentication failed.') {
-        console.log('auth failed');
         $state.go('root2.splash');
       } else {
         console.log('logged in');

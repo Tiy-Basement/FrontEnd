@@ -12,7 +12,7 @@ let CalendarController = function ($scope, $compile, uiCalendarConfig, $cookies,
 
   // gets user events for home calendar
   $scope.myEvents = {
-    url: 'http://tiy-basement.herokuapp.com/user/'+ userId + '/events',
+    url: 'https://tiy-basement.herokuapp.com/user/'+ userId + '/events',
     headers: {
       'Access-Token': tkn
     },
@@ -21,9 +21,18 @@ let CalendarController = function ($scope, $compile, uiCalendarConfig, $cookies,
     lazyFetching: true,
   };
 
+  $scope.myGroupEvents = {
+    url: 'https://tiy-basement.herokuapp.com/user/' + userId + '/groups/events',
+    headers: {
+      'Access-Token': tkn
+    },
+    cache: true,
+    lazyFetching: true,
+  }
+
   //gets events for the group calendar
   $scope.groupEvents = {
-    url: 'http://tiy-basement.herokuapp.com/group/' + $stateParams.id + '/events',  
+    url: 'https://tiy-basement.herokuapp.com/group/' + $stateParams.id + '/events',  
     headers: {
       'Access-Token': tkn
     },
@@ -32,7 +41,7 @@ let CalendarController = function ($scope, $compile, uiCalendarConfig, $cookies,
   };
 
   $scope.mergeEvents = {
-    url: 'http://tiy-basement.herokuapp.com/group/' + $stateParams.id + '/members/events',
+    url: 'https://tiy-basement.herokuapp.com/group/' + $stateParams.id + '/members/events',
     headers: {
       'Access-Token': tkn,
     },
@@ -41,7 +50,7 @@ let CalendarController = function ($scope, $compile, uiCalendarConfig, $cookies,
     color: '#1A1B41',
   }
   
-  $scope.eventSources = [ $scope.myEvents ];
+  $scope.eventSources = [ $scope.myEvents, $scope.myGroupEvents ];
 
   $scope.groupSource = [ $scope.groupEvents, $scope.mergeEvents ];
 

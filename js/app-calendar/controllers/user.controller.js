@@ -28,6 +28,7 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
   getUserEvents();
   function getUserEvents(obj){
     UserService.getUserEvents(obj).then((res) =>{
+
       vm.userEvents = res.data.map( function (event) {
         let s = moment(event.start).format('llll');
         let e = moment(event.end).format('llll');
@@ -63,7 +64,6 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
     promise.then( (res) => {
       console.log(res);
       if (res.data.status === 'Authentication failed.') {
-        console.log('auth failed');
         $state.go('root2.splash');
       } else {
         console.log('logged in');

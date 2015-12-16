@@ -240,7 +240,21 @@ a {
       max-height: auto;
     }
 
+    .membership {
+      display: flex;
+      flex-direction: row;
+      .btn{
+        background-color: $purple0;
+      }
+    }
+
+
   }
+}
+
+.event-btn {
+  display: flex;
+  justify-content: center;
 }
 
 // Group event notes
