@@ -8039,9 +8039,13 @@ a {
   float: right; }
 
 .splashContainer {
-  width: 100%;
-  background-color: #7684A5;
-  position: fixed; }
+  width: 100%; }
+  .splashContainer .background {
+    height: 100%;
+    width: 100%;
+    background-color: #637094;
+    position: fixed;
+    z-index: -1; }
   .splashContainer .box-a {
     width: 50%;
     margin: 0 25%;
@@ -8059,28 +8063,5 @@ a {
         display: inline-block;
         width: 100px;
         box-shadow: 1px 1px 5px black; }
-
-footer {
-  height: 200px;
-  width: 100%;
-  bottom: 0;
-  text-align: center;
-  position: fixed;
-  color: #2B3C4A;
-  z-index: 9999;
-  background: -webkit-linear-gradient(top, transparent -1%, transparent 0%, rgba(0, 0, 0, 0.23) 100%); }
-  footer ul {
-    margin: 0;
-    padding-bottom: 10px;
-    text-align: center;
-    display: inline-block; }
-    footer ul li {
-      font-family: 'Fjalla One';
-      opacity: .8;
-      display: inline-block; }
-      footer ul li .fa, footer ul li span, footer ul li button {
-        transition: .3s all ease; }
-      footer ul li span:hover, footer ul li .fa:hover, footer ul li button:hover {
-        text-shadow: 1px 1px 1px white; }
 
 /*# sourceMappingURL=main.css.map */
