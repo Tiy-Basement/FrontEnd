@@ -8064,29 +8064,40 @@ a {
   background-color: #F1F1F1; }
 
 .splashContainer {
-  width: 100%; }
+  width: 100%;
+  height: 100%; }
   .splashContainer .background {
     height: 100%;
     width: 100%;
-    background-color: #637094;
+    background: -webkit-linear-gradient(top, #05081e 0%, #5a5a94 58%, rgba(152, 150, 234, 0) 100%);
+    background-color: black;
     position: fixed;
-    z-index: -1; }
-  .splashContainer .box-a {
-    width: 50%;
-    margin: 0 25%;
+    z-index: -1;
+    opacity: 1; }
+  .splashContainer .title:hover {
+    cursor: pointer; }
+  .splashContainer .box {
+    width: 100%;
     display: inline-block;
-    text-align: center;
-    padding-bottom: 100px;
-    position: fixed;
-    top: 0; }
-    .splashContainer .box-a .buttonBox {
-      width: 50%;
+    margin: 0 auto;
+    padding-top: 2%;
+    text-align: center; }
+    .splashContainer .box .gorilla {
+      width: 25%;
+      margin: 0 25%;
       display: inline-block;
-      margin: 0 auto;
       text-align: center; }
-      .splashContainer .box-a .buttonBox .loginBtn, .splashContainer .box-a .buttonBox .signUpBtn {
-        display: inline-block;
-        width: 100px;
-        box-shadow: 1px 1px 5px black; }
+    .splashContainer .box .title {
+      width: 35%;
+      text-align: center;
+      margin-left: 2%; }
+    .splashContainer .box .loginBtn, .splashContainer .box .signUpBtn {
+      transition: all .5s ease;
+      background-color: #F7C943;
+      display: inline-block;
+      width: 150px;
+      box-shadow: 1px 1px 5px black; }
+    .splashContainer .box .loginBtn:hover, .splashContainer .box .signUpBtn:hover {
+      background-color: white; }
 
 /*# sourceMappingURL=main.css.map */
