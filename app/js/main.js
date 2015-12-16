@@ -207,7 +207,6 @@ var AddEventController = function AddEventController($scope, AddService, $state)
 
   $scope.addEvent = function (eventObj) {
     AddService.addEvent(eventObj).then(function (res) {
-      console.log(res);
       $state.reload($state.current);
     });
   };
@@ -651,7 +650,6 @@ var UserController = function UserController($scope, AuthService, $state, $cooki
   function getUserEvents(obj) {
     UserService.getUserEvents(obj).then(function (res) {
       vm.userEvents = res.data;
-      console.log(vm.userEvents);
       // let evNoObj = new EventNote(res.data[0]);
       // console.log(evNoObj); 
 
@@ -693,7 +691,6 @@ var UserController = function UserController($scope, AuthService, $state, $cooki
     promise.then(function (res) {
       console.log(res);
       if (res.data.status === 'Authentication failed.') {
-        console.log('auth failed');
         $state.go('root2.splash');
       } else {
         console.log('logged in');
