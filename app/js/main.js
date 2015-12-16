@@ -129,6 +129,7 @@ var AuthService = function AuthService($http, FILESERVER, $cookies, $state) {
   // };
 
   this.logout = function () {
+    console.log('logout');
     $cookies.remove('Access-Token');
     $cookies.remove('UserID');
     FILESERVER.SERVER.CONFIG.headers['Access-Token'] = null;
@@ -422,6 +423,10 @@ var GroupController = function GroupController(GroupService, DeleteService, $sta
 
   var id = $stateParams.id;
 
+  // limit the number of event notes displayed
+  // in html use <li ng-repeat ='event in vm.groupEvents | limitTo:quantity'>
+  $scope.quantity = 5;
+
   //routes to add group event page
   $scope.routeToAdd = function () {
     $state.go('root.addGroupEvent', { id: $stateParams.id });
@@ -618,6 +623,10 @@ var UserController = function UserController($scope, AuthService, $state, $cooki
   vm.activate = activate;
   vm.deleteEvent = deleteEvent;
 
+  // limit the number of event notes displayed
+  // in html use <li ng-repeat ='event in vm.userEvents | limitTo:quantity'>
+  $scope.quantity = 5;
+
   //getUserGroups Function
   activate();
   function activate(userObj) {
@@ -627,12 +636,36 @@ var UserController = function UserController($scope, AuthService, $state, $cooki
     });
   }
 
+  // event note constructor
+  // function EventNote (eventObj) {
+  //   vm.endTime = moment(eventObj.end).format('llll');
+  //   vm.id = eventObj.id;
+  //   vm.location = eventObj.location;
+  //   vm.note = eventObj.note;
+  //   vm.startTime = moment(eventObj.start).format('llll');
+  //   vm.title = eventObj.title;
+  //   vm.user_id = eventObj.user_id;
+  // }
+
   //getUserEvents function
   getUserEvents();
   function getUserEvents(obj) {
     UserService.getUserEvents(obj).then(function (res) {
       vm.userEvents = res.data;
       console.log(vm.userEvents);
+      // let evNoObj = new EventNote(res.data[0]);
+      // console.log(evNoObj); 
+
+      // 2015-12-17T01:00:00.000Z
+      // console.log(moment(res.data[0].start).format('llll'));
+
+      // vm.userEvents.endTime = moment(res.data.end).format('llll');
+      // vm.userEvents.id = res.data.id;
+      // vm.userEvents.location = res.data.location;
+      // vm.userEvents.note = res.data.note;
+      // vm.userEvents.startTime = moment(res.data.start).format('llll');
+      // vm.userEvents.user_id = res.data.user_id;
+      // console.log(vm.userEvents[0]);
     });
   }
 
