@@ -27,6 +27,7 @@
   $yellow: #f3b717;
 
 
+
 // Mixins
   @mixin borders() {
     border: 1px solid $border;
@@ -34,7 +35,7 @@
   }
 
 body {
-  // background-color: #FAFAFA;
+  background-color: #FAFAFA;
 }
 
 // the container angular puts everything in
@@ -287,39 +288,56 @@ a {
   float: right;
 }
 
+.fc-unthemed .fc-today {
+  background-color: #F1F1F1;
+}
 
 
 //  welcome to da sPlAsH pAgE 
 // {o_o} I will be your guide~
 .splashContainer {
   width: 100%;
+  height: 100%;
   .background{
     height: 100%;
     width: 100%;
-    background-color: #637094;
+background: -webkit-linear-gradient(top, rgba(5,8,30,1) 0%,rgba(90,90,148,1) 58%,rgba(152,150,234,0) 100%);
+    background-color: black;
     position: fixed;
     z-index: -1;
+    opacity: 1;
   }
-  .box-a{
-    width: 50%;
-    margin: 0 25%;
-    display: inline-block;
-    text-align: center;
-    padding-bottom: 100px;
-    position: fixed;
-    top: 0;
-    .buttonBox {
-      width: 50%;
+    .title:hover{
+      cursor:pointer;
+    }
+    .box {
+      width: 100%;
       display: inline-block;
       margin: 0 auto;
+      padding-top: 2%;
       text-align: center;
-        .loginBtn, .signUpBtn{
+        .gorilla{
+          width: 25%;
+          margin: 0 25%;
           display: inline-block;
-          width: 100px;
+          text-align: center;
+        }
+        .title{
+          width: 35%;
+          text-align: center;
+          margin-left: 2%;
+        }
+        .loginBtn, .signUpBtn{
+          transition: all .5s ease;
+          background-color: #F7C943;
+          display: inline-block;
+          width: 150px;
           box-shadow: 1px 1px 5px black;
       }
+        .loginBtn:hover, .signUpBtn:hover{
+          background-color: white;
+        }
     }
   }  
-}
 //{o_0} End of Splash PaGe!
 
