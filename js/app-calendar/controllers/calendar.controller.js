@@ -29,7 +29,7 @@ let CalendarController = function ($scope, $compile, uiCalendarConfig, $cookies,
     cache: true,
     lazyFetching: true,
     color: '#f3b717',
-    textColor: '#1A1B41'
+    textColor: '#1A1B41',
   }
 
   //gets events for the group calendar
