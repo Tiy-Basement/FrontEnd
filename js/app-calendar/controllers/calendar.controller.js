@@ -16,7 +16,7 @@ let CalendarController = function ($scope, $compile, uiCalendarConfig, $cookies,
     headers: {
       'Access-Token': tkn
     },
-    color: '#272255',
+    backgroundColor: '#2A2B44',
     cache: true,
     lazyFetching: true,
   };
@@ -47,7 +47,8 @@ let CalendarController = function ($scope, $compile, uiCalendarConfig, $cookies,
     },
     lazyFetching: true,
     cache: true,
-    color: '#1A1B41',
+    rendering: 'background',
+    backgroundColor: '#2A2B44',
   }
   
   $scope.eventSources = [ $scope.myEvents, $scope.myGroupEvents ];
