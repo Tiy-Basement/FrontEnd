@@ -28,7 +28,10 @@
   // $background: #D1C8B6;
   // light green #F0F9D9
 
-
+  $dark: #2A2B44;
+  $grey: #677077;
+  $light: #b5b5b7;
+  $yellow: #f3b717;
 
 // Mixins
   @mixin borders() {
@@ -37,7 +40,7 @@
   }
 
 body {
-  background-color: #F0F0F5;
+  // background-color: #FAFAFA;
 }
 
 // the container angular puts everything in
@@ -120,6 +123,11 @@ a {
   }
 }
 
+  // $dark: #2A2B44;
+  // $grey: #677077;
+  // $light: #b5b5b7;
+  // $yellow: #f2a632;
+
 
 // User page
 .userContainer {
@@ -141,24 +149,20 @@ a {
     background-color: $purpleA;
 
     .userText {
-      color: white;
+      color: $yellow;
     }
-    // overflow: scroll;
-
-    // .sideTop {
-    //   border-radius: 5px;
-    //   max-height: 583px;
-    //   overflow: scroll;
-    // }
 
     .groupDiv {
       @include borders();
-      background-color: $background;
+      background-color: white;
       padding: 0 10px;
+      margin: 10px 0;
     }
 
     .groupList {
       padding-left: 15px;
+      height: 70px;
+      overflow: scroll;
     }
 
     .route-buttons {
@@ -169,10 +173,11 @@ a {
 
     .myNotes {
       @include borders();
-      max-height: 358px;
+      margin: 10px 0;
+      height: 340px;
       overflow: scroll;
       padding: 0 10px;
-      background-color: $background;
+      background-color: white;
       max-height: auto;
     }
 
@@ -182,7 +187,7 @@ a {
 // User event notes
 .uEventNote {
   @include borders();
-  background-color: $notes;
+  background-color: #C7C7E7;
   padding: 3px 10px 10px 10px;
   margin-bottom: 8px;
 }
