@@ -7896,6 +7896,9 @@ button.close {
 .fa-percent:before {
   content: ""; }
 
+body {
+  background-color: #F9FFFC; }
+
 .container {
   padding: 0;
   width: 100%;
