@@ -293,22 +293,22 @@ a {
     z-index: 9999;
     background: -webkit-linear-gradient(top, rgba(0,0,0,0) -1%,rgba(0,0,0,0) 0%,rgba(0,0,0,0.23) 100%);    
     ul{ 
-        margin: 0;
-        padding-bottom: 10px;
-        text-align: center;
+      margin: 0;
+      padding-bottom: 10px;
+      text-align: center;
+      display: inline-block;
+      li{
+        font-family: 'Fjalla One';
+        opacity: .8;
         display: inline-block;
-        li{
-          font-family: 'Fjalla One';
-          opacity: .8;
-          display: inline-block;
-          .fa, span, button{
-            transition: .3s all ease;
-          }
-          span:hover, .fa:hover, button:hover{
-           text-shadow: 1px 1px 1px white;
-          }
+        .fa, span, button{
+          transition: .3s all ease;
+        }
+        span:hover, .fa:hover, button:hover{
+         text-shadow: 1px 1px 1px white;
         }
       }
     }
+  }
 
 
