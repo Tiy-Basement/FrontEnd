@@ -277,7 +277,10 @@ a {
     text-align: center;
     padding-bottom: 100px;
     position: fixed;
-    top: 0;
+    top: 10%;
+    .title:hover{
+      cursor:pointer;
+    }
     .buttonBox {
       width: 50%;
       display: inline-block;

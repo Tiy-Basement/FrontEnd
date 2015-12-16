@@ -8058,7 +8058,9 @@ a {
     text-align: center;
     padding-bottom: 100px;
     position: fixed;
-    top: 0; }
+    top: 10%; }
+    .splashContainer .box-a .title:hover {
+      cursor: pointer; }
     .splashContainer .box-a .buttonBox {
       width: 50%;
       display: inline-block;
