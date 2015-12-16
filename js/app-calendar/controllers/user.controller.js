@@ -34,7 +34,7 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
         let e = moment(event.end).format('llll');
         event.start = s;
         event.end = e;
-        return event
+        return event;
       });
     })
   }

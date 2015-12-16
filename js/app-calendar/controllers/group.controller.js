@@ -85,11 +85,31 @@ let GroupController = function(GroupService, DeleteService, $stateParams, $state
     })
   }
 
+  // getUserEvents();
+  // function getUserEvents(obj){
+  //   UserService.getUserEvents(obj).then((res) =>{
+
+  //     vm.userEvents = res.data.map( function (event) {
+  //       let s = moment(event.start).format('llll');
+  //       let e = moment(event.end).format('llll');
+  //       event.start = s;
+  //       event.end = e;
+  //       return event
+  //     });
+  //   })
+  // }
+
   //get Group Events Function--- Waiting on route 
   getGroupEvents();
   function getGroupEvents(obj){
     GroupService.getGroupEvents(obj).then((res) => {
-      vm.groupEvents = res.data;
+      vm.groupEvents = res.data.map( function (event) {
+        let s = moment(event.start).format('llll');
+        let e = moment(event.end).format('llll');
+        event.start = s;
+        event.end = e;
+        return event;
+      });
       // console.log(vm.groupEvents);
     })
   }

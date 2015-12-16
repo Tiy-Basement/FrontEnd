@@ -7970,14 +7970,16 @@ a {
   text-align: left;
   background-color: #2A2B44; }
   .userContainer .sidebar .userText {
-    color: #F7C943; }
+    color: #f3b717; }
+  .userContainer .sidebar .topScroll {
+    margin: 0; }
   .userContainer .sidebar .groupDiv {
     border: 1px solid #A9A69F;
     border-radius: 5px;
     background-color: white;
     padding: 0 10px;
     margin: 10px 0; }
-  .userContainer .sidebar .groupList {
+  .userContainer .sidebar #groupList {
     padding-left: 15px;
     height: 70px;
     overflow: scroll; }
@@ -7989,11 +7991,14 @@ a {
     border: 1px solid #A9A69F;
     border-radius: 5px;
     margin: 10px 0;
-    height: 340px;
-    overflow: scroll;
+    height: 350px;
     padding: 0 10px;
     background-color: white;
     max-height: auto; }
+  .userContainer .sidebar .eventScroll {
+    border-radius: 5px;
+    height: 313px;
+    overflow: scroll; }
 
 .uEventNote {
   border: 1px solid #A9A69F;
@@ -8016,25 +8021,32 @@ a {
   margin: 0;
   float: right;
   text-align: left;
-  max-height: 650px;
+  height: 650px;
   background-color: #2A2B44; }
   .groupContainer .sidebar .groupTitle {
-    color: #F7C943; }
-  .groupContainer .sidebar .members {
+    color: #f3b717; }
+  .groupContainer .sidebar #members {
     border: 1px solid #A9A69F;
     border-radius: 5px;
     background-color: white;
     padding: 0 10px; }
-  .groupContainer .sidebar .memList {
-    padding-left: 15px; }
+  .groupContainer .sidebar .topScroll {
+    height: 65px;
+    overflow: scroll;
+    padding-left: 15px;
+    margin: 0; }
   .groupContainer .sidebar .groupNotes {
     border: 1px solid #A9A69F;
     border-radius: 5px;
-    max-height: 300px;
-    overflow: scroll;
+    height: 315px;
     padding: 0 10px;
     background-color: white;
-    max-height: auto; }
+    max-height: auto;
+    margin-bottom: 5px; }
+  .groupContainer .sidebar .eventScroll {
+    height: 278px;
+    overflow: scroll;
+    border-radius: 5px; }
   .groupContainer .sidebar .membership {
     display: flex;
     flex-direction: row;

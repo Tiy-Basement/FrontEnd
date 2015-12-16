@@ -11,9 +11,9 @@
       <h3 class="groupTitle">{{vm.groupName}}</h3>
 
       <!-- Member section -->
-      <div class="members">
+      <div id="members">
         <h5>Members</h5>
-          <ul class="memList">
+          <ul class="topScroll">
             <li ng-repeat='member in vm.members'>{{member.username}}</li>
           </ul>
       </div>
@@ -24,7 +24,7 @@
       <div class="groupNotes">
         <h5>Upcoming Events</h5>
 
-        <ul>
+        <ul class="eventScroll">
 
           <li ng-repeat ='event in vm.groupEvents'>
             <div class="gEventNote">
@@ -38,7 +38,7 @@
                   <i class="fa fa-times"></i>
                 </div>
               </h5>
-              <!-- <h6>{{event.start}}</h6>               -->
+              <h6>{{event.start}}</h6>              
               <div class="noteCont">{{event.note}}</div>
             </div>
           </li>
