@@ -16,7 +16,7 @@ let CalendarController = function ($scope, $compile, uiCalendarConfig, $cookies,
     headers: {
       'Access-Token': tkn
     },
-    backgroundColor: '#2A2B44',
+    color: '#1A1B41',
     cache: true,
     lazyFetching: true,
   };
@@ -28,6 +28,8 @@ let CalendarController = function ($scope, $compile, uiCalendarConfig, $cookies,
     },
     cache: true,
     lazyFetching: true,
+    color: '#f3b717',
+    textColor: '#1A1B41'
   }
 
   //gets events for the group calendar
@@ -38,6 +40,8 @@ let CalendarController = function ($scope, $compile, uiCalendarConfig, $cookies,
     },
     cache: true,
     lazyFetching: true,
+    color: '#f3b717',
+    textColor: '#1A1B41',
   };
 
   $scope.mergeEvents = {
@@ -48,7 +52,7 @@ let CalendarController = function ($scope, $compile, uiCalendarConfig, $cookies,
     lazyFetching: true,
     cache: true,
     rendering: 'background',
-    backgroundColor: '#2A2B44',
+    backgroundColor: '#1A1B41',
   }
   
   $scope.eventSources = [ $scope.myEvents, $scope.myGroupEvents ];
