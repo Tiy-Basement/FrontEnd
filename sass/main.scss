@@ -6,15 +6,6 @@
 // Variables
   // purples from splash page
   $purple0: #EFEFFF;
-  $purple1: #C7BDE0;
-  $purple2: #C0B4DE;
-  $purple3: #CFC9E6;
-  $purple4: #9583BF;
-  $purple5: #8572AD;
-  $purple6: #5B2084;
-  $purple7: #603C94;
-  $purple8: #463892;
-  $purple9: #92589F;
   $purpleA: #272255;
 
   //palette 1
@@ -30,7 +21,7 @@
 
   $dark: #2A2B44;
   $grey: #677077;
-  $light: #b5b5b7;
+  $light: #E6E6E6;
   $yellow: #f3b717;
 
 // Mixins
@@ -52,7 +43,6 @@ body {
 
 .wrapper {
   padding: 0 75px;
-  // background-color: $purple0;
 }
 
 
@@ -146,7 +136,7 @@ a {
     height: 650px;
     float: right;
     text-align: left;
-    background-color: $purpleA;
+    background-color: $dark;
 
     .userText {
       color: $yellow;
@@ -187,7 +177,7 @@ a {
 // User event notes
 .uEventNote {
   @include borders();
-  background-color: #C7C7E7;
+  background-color: $light;
   padding: 3px 10px 10px 10px;
   margin-bottom: 8px;
 }
@@ -243,6 +233,8 @@ a {
     .membership {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
       .btn{
         background-color: $purple0;
       }
