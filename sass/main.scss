@@ -143,6 +143,12 @@ a {
       padding-left: 15px;
     }
 
+    .route-buttons {
+      display: flex;
+      justify-content: center;
+      padding: 5px 0;
+    }
+
     .myNotes {
       @include borders();
       max-height: 358px;
@@ -196,6 +202,7 @@ a {
       background-color: white;
       padding: 0 10px;
     }
+    
 
     .memList {
       padding-left: 15px;
@@ -262,7 +269,7 @@ a {
     justify-content: space-between;
     margin: 0 auto;
     position: fixed;
-    bottom: 150px;
+    bottom: 100px;
     margin: 0 40%;
     text-align: center;
     z-index: 1;

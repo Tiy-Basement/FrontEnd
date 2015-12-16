@@ -607,7 +607,7 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var UserController = function UserController($scope, AuthService, $state, $cookies, $stateParams, FILESERVER, UserService) {
+var UserController = function UserController($scope, AuthService, $state, $cookies, $stateParams, FILESERVER, UserService, DeleteService) {
 
   var vm = this;
 
@@ -616,6 +616,7 @@ var UserController = function UserController($scope, AuthService, $state, $cooki
   vm.user = [];
   vm.userEvents = [];
   vm.activate = activate;
+  vm.deleteEvent = deleteEvent;
 
   //getUserGroups Function
   activate();
@@ -632,6 +633,12 @@ var UserController = function UserController($scope, AuthService, $state, $cooki
     UserService.getUserEvents(obj).then(function (res) {
       vm.userEvents = res.data;
       console.log(vm.userEvents);
+    });
+  }
+
+  function deleteEvent(eventId) {
+    DeleteService.deleteEvent(eventId).then(function (res) {
+      $state.reload($state.current);
     });
   }
 
@@ -663,7 +670,7 @@ var UserController = function UserController($scope, AuthService, $state, $cooki
   }
 };
 
-UserController.$inject = ['$scope', 'AuthService', '$state', '$cookies', '$stateParams', 'FILESERVER', 'UserService'];
+UserController.$inject = ['$scope', 'AuthService', '$state', '$cookies', '$stateParams', 'FILESERVER', 'UserService', 'DeleteService'];
 
 exports['default'] = UserController;
 module.exports = exports['default'];
