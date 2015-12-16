@@ -8,7 +8,7 @@
 
     <aside class="sidebar">
       <!-- group name -->
-      <h3>{{vm.groupName}}</h3>
+      <h3 class="groupTitle">{{vm.groupName}}</h3>
 
       <!-- Member section -->
       <div class="members">
@@ -45,12 +45,11 @@
         </ul>
       </div>
 
-      <button class="btn btn-default" ng-controller="GroupModalEventController" ng-click="open()">Add Group Event</button>
+      <div class="event-btn">
+        <button class="btn btn-default" ng-controller="GroupModalEventController" ng-click="open()">Add Group Event</button>
+      </div>
 
       <br>
-      <br>
-      
-      <!-- <hr> -->
       <!-- Edit Membership -->
       <div class="membership">
         <button class="btn btn-default" ng-click="vm.leaveGroup()">Leave Group</button>

@@ -23,36 +23,19 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
     });
   }
 
-  // event note constructor
-  // function EventNote (eventObj) {
-  //   vm.endTime = moment(eventObj.end).format('llll');
-  //   vm.id = eventObj.id;
-  //   vm.location = eventObj.location;
-  //   vm.note = eventObj.note;
-  //   vm.startTime = moment(eventObj.start).format('llll');
-  //   vm.title = eventObj.title;
-  //   vm.user_id = eventObj.user_id;
-  // }
 
   //getUserEvents function 
   getUserEvents();
   function getUserEvents(obj){
     UserService.getUserEvents(obj).then((res) =>{
-      vm.userEvents = res.data;
-      console.log(vm.userEvents);
-      // let evNoObj = new EventNote(res.data[0]);
-      // console.log(evNoObj);  
 
-      // 2015-12-17T01:00:00.000Z
-      // console.log(moment(res.data[0].start).format('llll'));
-
-      // vm.userEvents.endTime = moment(res.data.end).format('llll');
-      // vm.userEvents.id = res.data.id;
-      // vm.userEvents.location = res.data.location;
-      // vm.userEvents.note = res.data.note;
-      // vm.userEvents.startTime = moment(res.data.start).format('llll');
-      // vm.userEvents.user_id = res.data.user_id;
-      // console.log(vm.userEvents[0]);
+      vm.userEvents = res.data.map( function (event) {
+        let s = moment(event.start).format('llll');
+        let e = moment(event.end).format('llll');
+        event.start = s;
+        event.end = e;
+        return event
+      });
     })
   }
 
@@ -81,7 +64,6 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
     promise.then( (res) => {
       console.log(res);
       if (res.data.status === 'Authentication failed.') {
-        console.log('auth failed');
         $state.go('root2.splash');
       } else {
         console.log('logged in');

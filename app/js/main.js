@@ -207,7 +207,6 @@ var AddEventController = function AddEventController($scope, AddService, $state)
 
   $scope.addEvent = function (eventObj) {
     AddService.addEvent(eventObj).then(function (res) {
-      console.log(res);
       $state.reload($state.current);
     });
   };
@@ -297,36 +296,50 @@ var CalendarController = function CalendarController($scope, $compile, uiCalenda
 
   // gets user events for home calendar
   $scope.myEvents = {
-    url: 'http://tiy-basement.herokuapp.com/user/' + userId + '/events',
+    url: 'https://tiy-basement.herokuapp.com/user/' + userId + '/events',
     headers: {
       'Access-Token': tkn
     },
-    color: '#272255',
+    color: '#1A1B41',
     cache: true,
     lazyFetching: true
+  };
+
+  $scope.myGroupEvents = {
+    url: 'https://tiy-basement.herokuapp.com/user/' + userId + '/groups/events',
+    headers: {
+      'Access-Token': tkn
+    },
+    cache: true,
+    lazyFetching: true,
+    color: '#f3b717',
+    textColor: '#1A1B41'
   };
 
   //gets events for the group calendar
   $scope.groupEvents = {
-    url: 'http://tiy-basement.herokuapp.com/group/' + $stateParams.id + '/events',
+    url: 'https://tiy-basement.herokuapp.com/group/' + $stateParams.id + '/events',
     headers: {
       'Access-Token': tkn
     },
     cache: true,
-    lazyFetching: true
+    lazyFetching: true,
+    color: '#f3b717',
+    textColor: '#1A1B41'
   };
 
   $scope.mergeEvents = {
-    url: 'http://tiy-basement.herokuapp.com/group/' + $stateParams.id + '/members/events',
+    url: 'https://tiy-basement.herokuapp.com/group/' + $stateParams.id + '/members/events',
     headers: {
       'Access-Token': tkn
     },
     lazyFetching: true,
     cache: true,
-    color: '#1A1B41'
+    rendering: 'background',
+    backgroundColor: '#1A1B41'
   };
 
-  $scope.eventSources = [$scope.myEvents];
+  $scope.eventSources = [$scope.myEvents, $scope.myGroupEvents];
 
   $scope.groupSource = [$scope.groupEvents, $scope.mergeEvents];
 
@@ -635,36 +648,18 @@ var UserController = function UserController($scope, AuthService, $state, $cooki
     });
   }
 
-  // event note constructor
-  // function EventNote (eventObj) {
-  //   vm.endTime = moment(eventObj.end).format('llll');
-  //   vm.id = eventObj.id;
-  //   vm.location = eventObj.location;
-  //   vm.note = eventObj.note;
-  //   vm.startTime = moment(eventObj.start).format('llll');
-  //   vm.title = eventObj.title;
-  //   vm.user_id = eventObj.user_id;
-  // }
-
   //getUserEvents function
   getUserEvents();
   function getUserEvents(obj) {
     UserService.getUserEvents(obj).then(function (res) {
-      vm.userEvents = res.data;
-      console.log(vm.userEvents);
-      // let evNoObj = new EventNote(res.data[0]);
-      // console.log(evNoObj); 
 
-      // 2015-12-17T01:00:00.000Z
-      // console.log(moment(res.data[0].start).format('llll'));
-
-      // vm.userEvents.endTime = moment(res.data.end).format('llll');
-      // vm.userEvents.id = res.data.id;
-      // vm.userEvents.location = res.data.location;
-      // vm.userEvents.note = res.data.note;
-      // vm.userEvents.startTime = moment(res.data.start).format('llll');
-      // vm.userEvents.user_id = res.data.user_id;
-      // console.log(vm.userEvents[0]);
+      vm.userEvents = res.data.map(function (event) {
+        var s = moment(event.start).format('llll');
+        var e = moment(event.end).format('llll');
+        event.start = s;
+        event.end = e;
+        return event;
+      });
     });
   }
 
@@ -693,7 +688,6 @@ var UserController = function UserController($scope, AuthService, $state, $cooki
     promise.then(function (res) {
       console.log(res);
       if (res.data.status === 'Authentication failed.') {
-        console.log('auth failed');
         $state.go('root2.splash');
       } else {
         console.log('logged in');
