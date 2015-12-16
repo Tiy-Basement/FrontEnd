@@ -48,14 +48,15 @@
                     <i class="fa fa-times"></i>
                   </div>
                 </h5>
-                <!-- <h6>{{event.start}}</h6> -->
                 <div class="noteCont">{{event.note}}</div>
               </div>
             </li>
           </ul>
           
         </div>
-      <button class="btn btn-default eventBtn" ng-controller="UserEventController" ng-click="open()">Add Event</button>
+      <div class="event-btn">  
+        <button class="btn btn-default eventBtn" ng-controller="UserEventController" ng-click="open()">Add Event</button>
+      </div>
     </aside>
   </div>
 </div>

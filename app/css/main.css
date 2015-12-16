@@ -8029,6 +8029,15 @@ a {
     padding: 0 10px;
     background-color: #EDF1F9;
     max-height: auto; }
+  .groupContainer .sidebar .membership {
+    display: flex;
+    flex-direction: row; }
+    .groupContainer .sidebar .membership .btn {
+      background-color: #EFEFFF; }
+
+.event-btn {
+  display: flex;
+  justify-content: center; }
 
 .gEventNote {
   border: 1px solid #A9A69F;
