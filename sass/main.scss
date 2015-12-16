@@ -22,7 +22,11 @@
   $dark: #2A2B44;
   $grey: #677077;
   $light: #E6E6E6;
-  $yellow: #F7C943;
+  // $yellow: #DF3F00;
+  //original yellow: 
+  $yellow: #f3b717;
+
+
 
 // Mixins
   @mixin borders() {
@@ -142,6 +146,12 @@ a {
       color: $yellow;
     }
 
+    .topScroll {
+      margin: 0;
+      // height: ;
+      // overflow: scroll;
+    }
+
     .groupDiv {
       @include borders();
       background-color: white;
@@ -149,7 +159,7 @@ a {
       margin: 10px 0;
     }
 
-    .groupList {
+    #groupList {
       padding-left: 15px;
       height: 70px;
       overflow: scroll;
@@ -164,13 +174,18 @@ a {
     .myNotes {
       @include borders();
       margin: 10px 0;
-      height: 340px;
-      overflow: scroll;
+      height: 350px;
+      // overflow: scroll;
       padding: 0 10px;
       background-color: white;
       max-height: auto;
     }
 
+    .eventScroll {
+      border-radius: 5px;
+      height: 313px;
+      overflow: scroll;
+    }
   }
 }
 
@@ -181,8 +196,6 @@ a {
   padding: 3px 10px 10px 10px;
   margin-bottom: 8px;
 }
-
-
 // End of User Page
 
 
@@ -193,7 +206,6 @@ a {
   justify-content: center;
   flex-wrap: wrap;
 }
-
 
 
 //GroupCalendar Page
@@ -211,7 +223,7 @@ a {
     margin:0;
     float: right;
     text-align: left;
-    max-height: 650px;
+    height: 650px;
     background-color: $dark;
     // overflow: scroll;
 
@@ -219,24 +231,33 @@ a {
       color: $yellow;
     }
 
-    .members {
+    #members {
       @include borders();
       background-color: white;
       padding: 0 10px;
     }
-    
 
-    .memList {
+    .topScroll {
+      height: 65px;
+      overflow: scroll;
       padding-left: 15px;
+      margin: 0;
     }
 
     .groupNotes {
       @include borders();
-      max-height: 300px;
-      overflow: scroll;
+      height: 315px;
+      // overflow: scroll;
       padding: 0 10px;
       background-color: white;
       max-height: auto;
+      margin-bottom: 5px;
+    }
+
+    .eventScroll {
+      height: 278px;
+      overflow: scroll;
+      border-radius: 5px;
     }
 
     .membership {
@@ -248,8 +269,6 @@ a {
         background-color: #EEEEEE;
       }
     }
-
-
   }
 }
 
