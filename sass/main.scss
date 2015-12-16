@@ -277,70 +277,33 @@ a {
 // {o_o} I will be your guide~
 .splashContainer {
   width: 100%;
-  img{
-    width: 40%;
-    margin: 25% 30% 0% 31%;
-    position: fixed;
-    z-index: 1;
-  }
-    .backgroundPic{
-    width: 100%;
+  .background{
     height: 100%;
-    background-image:url(http://40.media.tumblr.com/cfb040c4a856fb09eb26993ceb35c68d/tumblr_nqnuyep1Hs1tccw0fo4_500.png);
-    background-repeat: no-repeat;
-    background-position: center top;
-    background-color: #626F95;
+    width: 100%;
+    background-color: #637094;
     position: fixed;
-    top: 0px;
     z-index: -1;
   }
-
-  .buttonBox {
-    width: 20%;
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-    position: fixed;
-    bottom: 100px;
-    margin: 0 40%;
+  .box-a{
+    width: 50%;
+    margin: 0 25%;
+    display: inline-block;
     text-align: center;
-    z-index: 1;
-      .loginBtn, .signUpBtn{
-        width: 150px;
-        box-shadow: 1px 1px 5px black;
-      }
-  }
-
-}
-//{o_0} End of Splash PaGe!
-
-// Footer
-  footer{
-    height: 200px;
-    width: 100%;
-    bottom: 0;
-    text-align: center;
+    padding-bottom: 100px;
     position: fixed;
-    color: #2B3C4A;
-    z-index: 9999;
-    background: -webkit-linear-gradient(top, rgba(0,0,0,0) -1%,rgba(0,0,0,0) 0%,rgba(0,0,0,0.23) 100%);    
-    ul{ 
-      margin: 0;
-      padding-bottom: 10px;
-      text-align: center;
+    top: 0;
+    .buttonBox {
+      width: 50%;
       display: inline-block;
-      li{
-        font-family: 'Fjalla One';
-        opacity: .8;
-        display: inline-block;
-        .fa, span, button{
-          transition: .3s all ease;
-        }
-        span:hover, .fa:hover, button:hover{
-         text-shadow: 1px 1px 1px white;
-        }
+      margin: 0 auto;
+      text-align: center;
+        .loginBtn, .signUpBtn{
+          display: inline-block;
+          width: 100px;
+          box-shadow: 1px 1px 5px black;
       }
     }
-  }
-
+  }  
+}
+//{o_0} End of Splash PaGe!
 
