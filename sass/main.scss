@@ -207,12 +207,16 @@ a {
     float: right;
     text-align: left;
     max-height: 650px;
-    background-color: $sidebar;
+    background-color: $dark;
     // overflow: scroll;
+
+    .groupTitle {
+      color: $yellow;
+    }
 
     .members {
       @include borders();
-      background-color: $background;
+      background-color: white;
       padding: 0 10px;
     }
     
@@ -226,7 +230,7 @@ a {
       max-height: 300px;
       overflow: scroll;
       padding: 0 10px;
-      background-color: $background;
+      background-color: white;
       max-height: auto;
     }
 
@@ -236,7 +240,7 @@ a {
       flex-wrap: wrap;
       justify-content: center;
       .btn{
-        background-color: $purple0;
+        background-color: #EEEEEE;
       }
     }
 
@@ -252,7 +256,7 @@ a {
 // Group event notes
 .gEventNote {
   @include borders();
-  background-color: $notes;
+  background-color: $light;
   padding: 3px 10px 10px 10px;
   margin-bottom: 8px;
 }
