@@ -4,7 +4,7 @@
 @import 'font-awesome';
 
 // Variables
-  // purple
+  // purples from splash page
   $purple0: #EFEFFF;
   $purple1: #C7BDE0;
   $purple2: #C0B4DE;
@@ -17,14 +17,28 @@
   $purple9: #92589F;
   $purpleA: #272255;
 
-  // browns
-  // $tan: #E3D4CB;
+  //palette 1
+  // $sidebar: #A58AA9 --> 165 138 169 --> #A09EBE
+  // $sidebar: #9CAAD3 --> 156 202 211 -->160 158 190
+  $sidebar: #A09EBE;
+  $notes: #B9B0CD;
+  $border: #A9A69F;
+  $backEvent: #BDB6A2;
+  $background: #EDF1F9;
+  // $background: #D1C8B6;
+  // light green #F0F9D9
+
+
 
 // Mixins
   @mixin borders() {
-    border: 1px solid #D7D7D7;
+    border: 1px solid $border;
     border-radius: 5px;
   }
+
+body {
+  background-color: #F0F0F5;
+}
 
 // the container angular puts everything in
 .container {
@@ -52,7 +66,7 @@ hr {
 // All buttons
 button {
   @include borders();
-  background-color: white;
+  background-color: $background;
   margin: 5px;
   text-align: center;
 
@@ -61,7 +75,7 @@ button {
     // background: #9583BF;
     // background-color: #B4A7D3;
     padding: 5px;
-    color: white;
+    color: $background;
   }
 }
 
@@ -83,7 +97,7 @@ a {
   padding: 30px 0;
   width: 40%;
   margin: 20px auto;
-  background-color: $purple0;
+  background-color: $background;
 
   label {
     font-size: 15px;
@@ -124,7 +138,11 @@ a {
     height: 650px;
     float: right;
     text-align: left;
-    background-color: $purple1;
+    background-color: $purpleA;
+
+    .userText {
+      color: white;
+    }
     // overflow: scroll;
 
     // .sideTop {
@@ -135,7 +153,7 @@ a {
 
     .groupDiv {
       @include borders();
-      background-color: white;
+      background-color: $background;
       padding: 0 10px;
     }
 
@@ -154,7 +172,7 @@ a {
       max-height: 358px;
       overflow: scroll;
       padding: 0 10px;
-      background-color: white;
+      background-color: $background;
       max-height: auto;
     }
 
@@ -164,7 +182,7 @@ a {
 // User event notes
 .uEventNote {
   @include borders();
-  background-color: $purple0;
+  background-color: $notes;
   padding: 3px 10px 10px 10px;
   margin-bottom: 8px;
 }
@@ -194,12 +212,12 @@ a {
     float: right;
     text-align: left;
     max-height: 650px;
-    background-color: $purple1;
+    background-color: $sidebar;
     // overflow: scroll;
 
     .members {
       @include borders();
-      background-color: white;
+      background-color: $background;
       padding: 0 10px;
     }
     
@@ -213,7 +231,7 @@ a {
       max-height: 300px;
       overflow: scroll;
       padding: 0 10px;
-      background-color: white;
+      background-color: $background;
       max-height: auto;
     }
 
@@ -223,7 +241,7 @@ a {
 // Group event notes
 .gEventNote {
   @include borders();
-  background-color: $purple0;
+  background-color: $notes;
   padding: 3px 10px 10px 10px;
   margin-bottom: 8px;
 }
