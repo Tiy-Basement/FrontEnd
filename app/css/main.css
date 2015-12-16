@@ -8002,6 +8002,13 @@ a {
   padding: 3px 10px 10px 10px;
   margin-bottom: 8px; }
 
+.flex-mode {
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; }
+
 .groupContainer .calendar {
   width: 79%;
   display: inline-block;

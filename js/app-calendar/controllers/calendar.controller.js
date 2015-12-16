@@ -86,8 +86,8 @@ let CalendarController = function ($scope, $compile, uiCalendarConfig, $cookies,
       eventRender: $scope.eventRender,
       timezone: 'local',
       allDaySlot: false,
-      minTime: '06:00:00',
-      maxTime: '30:00:00',
+      minTime: '05:00:00',
+      maxTime: '29:00:00',
       firstDay: 1,
     }
   };
