@@ -199,6 +199,14 @@ a {
 // End of User Page
 
 
+.flex-mode {
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 
 //GroupCalendar Page
 .groupContainer{
