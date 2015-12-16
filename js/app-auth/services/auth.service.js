@@ -24,6 +24,7 @@ let AuthService = function($http, FILESERVER, $cookies, $state) {
   // };
 
   this.logout = function () {
+    console.log('logout');
     $cookies.remove('Access-Token');
     $cookies.remove('UserID');
     FILESERVER.SERVER.CONFIG.headers['Access-Token'] = null;
