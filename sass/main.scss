@@ -22,7 +22,7 @@
   $dark: #2A2B44;
   $grey: #677077;
   $light: #E6E6E6;
-  $yellow: #f3b717;
+  $yellow: #F7C943;
 
 // Mixins
   @mixin borders() {
@@ -272,6 +272,9 @@ a {
   float: right;
 }
 
+.fc-unthemed .fc-today {
+  background-color: #F1F1F1;
+}
 
 
 //  welcome to da sPlAsH pAgE 
