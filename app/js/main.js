@@ -422,6 +422,10 @@ var GroupController = function GroupController(GroupService, DeleteService, $sta
 
   var id = $stateParams.id;
 
+  // limit the number of event notes displayed
+  // in html use <li ng-repeat ='event in vm.groupEvents | limitTo:quantity'>
+  $scope.quantity = 5;
+
   //routes to add group event page
   $scope.routeToAdd = function () {
     $state.go('root.addGroupEvent', { id: $stateParams.id });
@@ -617,6 +621,10 @@ var UserController = function UserController($scope, AuthService, $state, $cooki
   vm.userEvents = [];
   vm.activate = activate;
   vm.deleteEvent = deleteEvent;
+
+  // limit the number of event notes displayed
+  // in html use <li ng-repeat ='event in vm.userEvents | limitTo:quantity'>
+  $scope.quantity = 5;
 
   //getUserGroups Function
   activate();

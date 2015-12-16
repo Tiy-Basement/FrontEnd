@@ -10,6 +10,9 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
   vm.activate = activate;
   vm.deleteEvent = deleteEvent;
 
+  // limit the number of event notes displayed
+  // in html use <li ng-repeat ='event in vm.userEvents | limitTo:quantity'>
+  $scope.quantity = 5;
 
   //getUserGroups Function
   activate();
