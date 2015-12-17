@@ -161,7 +161,7 @@ a {
 
     #groupList {
       padding-left: 15px;
-      height: 70px;
+      height: 65px;
       overflow: scroll;
     }
 
@@ -174,7 +174,7 @@ a {
     .myNotes {
       @include borders();
       margin: 10px 0;
-      height: 350px;
+      height: 335px;
       // overflow: scroll;
       padding: 0 10px;
       background-color: white;
@@ -183,7 +183,7 @@ a {
 
     .eventScroll {
       border-radius: 5px;
-      height: 313px;
+      height: 298px;
       overflow: scroll;
     }
   }
