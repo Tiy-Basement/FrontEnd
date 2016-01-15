@@ -15,11 +15,12 @@ let UserController = function($scope, AuthService, $state, $cookies, $stateParam
   $scope.quantity = 5;
 
   //getUserGroups Function
-  activate();
+ activate();
   function activate(userObj){
     UserService.getUserGroups(userObj).then((res) =>{
       vm.groups = res.data.groups;
       vm.user = res.data.user;
+      console.log(res);
     });
   }
 

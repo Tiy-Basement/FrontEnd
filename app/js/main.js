@@ -665,6 +665,7 @@ var UserController = function UserController($scope, AuthService, $state, $cooki
     UserService.getUserGroups(userObj).then(function (res) {
       vm.groups = res.data.groups;
       vm.user = res.data.user;
+      console.log(res);
     });
   }
 
