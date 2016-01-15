@@ -20,7 +20,7 @@ let AddService = function($http, $cookies, FILESERVER, $stateParams, $state) {
     let g = new Group(groupObj);
     let tkn = $cookies.get('Access-Token');
     return $http.post(
-      'http://tiy-basement.herokuapp.com/group',
+      'https://tiy-basement.herokuapp.com/group',
       g,
       {headers: {
         'Access-Token': tkn
@@ -56,7 +56,7 @@ let AddService = function($http, $cookies, FILESERVER, $stateParams, $state) {
     let e = new Event(eventObj);
     let tkn = $cookies.get('Access-Token');
     return $http.post(
-      'http://tiy-basement.herokuapp.com/events',
+      'https://tiy-basement.herokuapp.com/events',
       e,
       {headers: {
         'Access-Token' : tkn
@@ -68,7 +68,7 @@ let AddService = function($http, $cookies, FILESERVER, $stateParams, $state) {
     let e = new Event(eventObj);
     let tkn = $cookies.get('Access-Token');
     return $http.post(
-      'http://tiy-basement.herokuapp.com/group/' + $stateParams.id + '/events',
+      'https://tiy-basement.herokuapp.com/group/' + $stateParams.id + '/events',
       e,
       {headers:{'Access-Token': tkn}}
     );
@@ -83,7 +83,7 @@ let AddService = function($http, $cookies, FILESERVER, $stateParams, $state) {
     let e = new Member(mem);
     let tkn = $cookies.get('Access-Token');
     return $http.post(
-      'http://tiy-basement.herokuapp.com/',//dont forget to add endpoint when ready
+      'https://tiy-basement.herokuapp.com/',//dont forget to add endpoint when ready
       e,
       {headers:{
         'Access-Token': tkn
