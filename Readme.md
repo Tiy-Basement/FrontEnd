@@ -1,7 +1,7 @@
-# [Basement](https://github.com/Tiy-Basement/FrontEnd)
+# [Basement](http://basement-app.surge.sh/#/)
 
 Basement is a web-based application to schedule group events based around individuals' schedules.
-
+link to live page: http://basement-app.surge.sh/#/
 
 ### Libraries, frameworks, sub-modules, etc.
  
