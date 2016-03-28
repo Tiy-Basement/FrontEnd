@@ -8084,39 +8084,121 @@ a {
 
 .splashContainer {
   width: 100%;
-  height: 100%; }
-  .splashContainer .background {
-    height: 100%;
-    width: 100%;
-    background: -webkit-linear-gradient(top, #05081e 0%, #5a5a94 58%, rgba(152, 150, 234, 0) 100%);
-    background-color: black;
-    position: fixed;
-    z-index: -1;
-    opacity: 1; }
-  .splashContainer .title:hover {
-    cursor: pointer; }
+  height: 700px;
+  background-color: #57C2AF;
+  font-family: 'Lato', sans-serif; }
   .splashContainer .box {
     width: 100%;
-    display: inline-block;
+    height: 600px;
     margin: 0 auto;
-    padding-top: 2%;
-    text-align: center; }
-    .splashContainer .box .gorilla {
-      width: 25%;
-      margin: 0 25%;
+    text-align: center;
+    position: relative;
+    z-index: 0; }
+    .splashContainer .box .btnUl {
+      width: 100%;
       display: inline-block;
-      text-align: center; }
-    .splashContainer .box .title {
-      width: 35%;
       text-align: center;
-      margin-left: 2%; }
-    .splashContainer .box .loginBtn, .splashContainer .box .signUpBtn {
-      transition: all .5s ease;
-      background-color: #F7C943;
+      margin: 0 auto;
+      padding-top: 200px; }
+      .splashContainer .box .btnUl li {
+        display: inline-block; }
+        .splashContainer .box .btnUl li .loginBtn, .splashContainer .box .btnUl li .signUpBtn {
+          width: 150px; }
+
+.splashHeader {
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+  right: 0; }
+  .splashHeader ul {
+    display: inline-block;
+    float: left;
+    margin-left: 1em; }
+    .splashHeader ul li {
       display: inline-block;
-      width: 150px;
-      box-shadow: 1px 1px 5px black; }
-    .splashContainer .box .loginBtn:hover, .splashContainer .box .signUpBtn:hover {
-      background-color: white; }
+      float: left;
+      padding: 1em 1em 0  0;
+      font-size: 1.3em;
+      color: white; }
+      .splashHeader ul li a {
+        text-decoration: none;
+        color: white;
+        transition: .5s all ease; }
+    .splashHeader ul a:hover {
+      color: black; }
+
+.logo {
+  float: left;
+  width: 70px;
+  height: 70px;
+  margin-left: 1em; }
+
+.mezCal {
+  height: 200px;
+  width: 200px;
+  border-radius: 100px;
+  padding-top: 50px;
+  margin: 0 auto;
+  border: 6px solid #52C3AF;
+  font-size: 3.6em;
+  font-weight: bold;
+  -webkit-text-fill-color: white;
+  /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  background-color: white;
+  opacity: .7; }
+
+#contact {
+  float: right;
+  color: white;
+  padding: 1em;
+  font-size: 1.3em; }
+
+#mCsplashHeader {
+  color: black;
+  float: left;
+  display: inline-block;
+  font-weight: bold; }
+
+#mayan {
+  width: 100%;
+  height: 600px;
+  background-image: url("https://waspnx.files.wordpress.com/2016/03/calendar.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: .3;
+  position: absolute;
+  z-index: -1; }
+
+#tagline {
+  font-size: 3em;
+  font-weight: bold;
+  color: black; }
+
+.footer {
+  width: 100%;
+  background: #CBEDE7;
+  opacity: .7;
+  border-top: 2px solid black;
+  border-bottom: 4px solid black; }
+  .footer ul {
+    width: 100%;
+    margin: 0;
+    padding-left: 15em; }
+    .footer ul li {
+      width: 200px;
+      height: 150px;
+      display: inline-block;
+      vertical-align: top;
+      text-align: center;
+      padding: 1em;
+      margin: 0;
+      background: #CBEDE7;
+      color: black; }
+
+@media only screen and (max-width: 450px) {
+  .footer ul {
+    padding: 2em 7em 0 7em; } }
 
 /*# sourceMappingURL=main.css.map */
